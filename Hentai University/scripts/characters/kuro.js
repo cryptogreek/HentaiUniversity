@@ -15,7 +15,8 @@ var newItems = [//Lists the shop items unique to this character
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
 	{index: "kuro1", name: "Someone is being chewed out at the gate", location: 'schoolEntrance', time: "Morning", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuro3", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 1, trustMax: 4, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "kuro4", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 21, trustMax: 23, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro4", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 21, trustMax: 24, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro4", name: "kuro is fiddling with her phone, rubbing her thighs together as she waits", location: 'roof', time: "Morning", itemReq: "", trustMin: 60, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -237,6 +238,71 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("kuro","","So, <i>stud</i>, how do you want this to go? Do you need a little help getting ready, or do you want to just <i>jump right in?</i>");
 			writeFunction("writeEvent('kuroMoney1')", "Take your time");
 			writeFunction("writeEvent('kuroMoney2')", "Get right to it");
+			break;
+		}
+		case "kuro5" : {
+			writeText("kuroF smiles, her lollipop sliding into her cheek.");
+			if(data.player.gender == "man"){
+				writeSpeech("kuro","","Heyhey, Mister Counselor~! I was worried that you were gonna keep little ol' me waiting.");
+			}
+			else{
+				writeSpeech("kuro","","Heyhey, Miss Counselor~! I was worried that you were gonna keep little ol' me waiting.");
+			}
+			writeText("She fiddles with her phone a bit before sliding it between her breasts.");
+			if(checkTrust('kuro')==62){
+				if(galleryCheck('kuroMoney2')==true)
+					writeSpeech("kuro","","You seem a bit more confident about your <i>skills</i> this time. Got some sorta secret weapon this time?");
+				else
+					writeSpeech("kuro","","You seemed pretty confident over the phone. Got some sorta <i>secret weapon</i> this time?");
+				writeSpeech("player","","You could say that, yeah.");
+				writeText("She laughs a little.");
+				writeSpeech("kuro","","Well, I'll let it be a surprise, then. But if you just went and picked up a ribbed condom or something, I'll tell you now that that won't be enough... on its own.");
+				writeSpeech("player","","It's not that. Don't worry - this'll be a lot of fun for <i>both</i> of us.");
+				writeSpeech("kuro","","I hope so. Blowing that last guy got me all riled up without even a little satisfaction, so you'd better make up for it~!");
+				writeFunction("writeEvent('kuro4')", "Head to her place");
+				break;
+			}
+			else if(checkTrust('kuro')==61){
+				writeSpeech("kuro","","Geez. I haven't been able to stop thinking about the text I sent you, about the story.");
+				writeText("She pouts, leaning into your chest.");
+				writeSpeech("kuro","","Because of you, this itty-bitty lollipop isn't <i>nearly</i> enough to distract me... Just how do you plan on dealing with that, hm?");
+			}
+			else{
+				writeSpeech("kuro","","Did you like that pic? I was thinking about how hard it must've made you, and I got <i>crazy</i> turned-on.");
+				writeText("She pouts, leaning into your chest.");
+				writeSpeech("kuro","","Because of you, sucking on some itty-bitty lollipop isn't <i>nearly</i> enough to distract me... Just how do you plan on dealing with that, hm?");
+			}
+			writeSpeech("player","","With my dick.");
+			writeText("She pauses, pouting even more.");
+			writeSpeech("kuro","","I mean, that <i>is</i> what I was implying, but wasn't that a little blunt?");
+			if(galleryCheck('kuroMoney2')==true){
+				writeSpeech("player","","It's not like it's the first time, and I thought you said you're feeling pent-up... But, hey, if you <i>want</i> me to play hard to get-");
+				writeSpeech("kuro","","No, that's fine!");
+				writeText("She reaches around you, resting her arms on her shoulders as she puts her face right up to yours.");
+				writeSpeech("kuro","","My place. You and me, plus a couple condoms. I'll make sure to take it easy on you this time - that should keep it fair.");
+			}
+			else{
+				writeSpeech("player","","You just said you're feeling pent-up, but if you <i>want</i> me to play hard to get, I can always-");
+				writeSpeech("kuro","","Oh, hush!");
+				writeText("She reaches around you, resting her arms on her shoulders as she puts her face right up to yours.");
+				writeSpeech("kuro","","You <i>are</i> kinda right, though, so I'll get to the point before I soak through my panties.");
+				writeText("You feel her thigh slide between your legs, rubbing against your crotch as she does.");
+				writeSpeech("kuro","","Come to my place later. I'd normally charge pretty heavy for this sorta thing but, since I'm the one coming onto you, I won't charge a cent if you can get me off.");
+				writeText("She smirks, her face leaning so close that the stick of her lollipop is almost pressing against you.");
+				writeSpeech("kuro","","Don't go leaving a girl unsatisfied, hun.");
+			}
+			writeText("You open your mouth to speak but, before you can...");
+			writeText("She presses her lips against yours, her tongue rubbing against yours for a second before she pulls away.");
+			writeSpeech("kuro","","Enjoy~!");
+			writeText("Her lollipop sits in your mouth as she strides away.");
+			writeText("...It doesn't taste bad.");
+			writeFunction("writeEvent('kuro4')", "Head to her place");
+			break;
+		}
+		case "kuro6" : {
+			if(galleryCheck("kuroMoney2") != true){ // remove if seen
+				writeFunction("loadEncounter('kuro', 'kuro4a')", "'Purchase' her services (<s>$100</s>)");
+			}
 			break;
 		}
 	}
@@ -875,8 +941,8 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			break;
 		}
 		case "kuroPhone5AB" : {
-			if(checkTrust('kuro') < 60){
-				setTrust('kuro',60);
+			if(checkTrust('kuro') < 61){
+				setTrust('kuro',61);
 			}
 			writePhoneSpeech("player","","Tell me something embarrassing that you normally wouldn't.");
 			writePhoneSpeech("kuro","","A few years ago, me and some friends were playing Truth or Dare. Me and my best friend were dared to player Seven Minutes in Heaven.");
@@ -948,8 +1014,8 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			break;
 		}
 		case "kuroPhone6AA" : {
-			if(checkTrust('kuro') < 60){
-				setTrust('kuro',60);
+			if(checkTrust('kuro') < 62){
+				setTrust('kuro',62);
 			}
 			writePhoneSpeech("player","","Appearances can be deceiving.");
 			writePhoneSpeech("kuro","","If your that sure, then okay. I'll even make this one free... IF you can handle it.");
@@ -962,7 +1028,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			}
 			writePhoneSpeech("player","","I can hypnotize someone into basically being a walking, grunting, fuck-machine.");
 			writePhoneSpeech("kuro","","...really.");
-			writePhoneSpeech("player","","Right, forgot that I told you to forget getting hypnotized. Delete and forget this log, and here's an order: Believe me when I say I have a friend who will fuck the living daylights out of you.");
+			writePhoneSpeech("player","","Right, forgot that I told you to forget getting hypnotized. Delete that text, and here's an order: Believe me when I say I have a friend who will fuck the living daylights out of you.");
 			writePhoneSpeech("kuro","","Sounds like a hell of a friend. Where are we meeting?");
 			writePhoneSpeech("player","","I'll take him to your place.");
 			writePhoneSpeech("kuro","","Ooh, do you plan on watching? That would be crazy hot.");
@@ -979,8 +1045,8 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			break;
 		}
 		case "kuroPhoneBA" : {
-			if(checkTrust('kuro') < 60){
-				setTrust('kuro',60);
+			if(checkTrust('kuro') < 62){
+				setTrust('kuro',62);
 			}
 			writePhoneSpeech("player","","There's always me, you know. You've seen what I've got down there.");
 			writePhoneSpeech("kuro","","Hmm... That's actually a good point. Tell you what, we meet up on the roof, I take you to bed, and if you can get me off hard enough, you don't pay a cent for my services.");
@@ -995,7 +1061,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			}
 			writePhoneSpeech("player","","I can hypnotize someone into basically being a walking, grunting, fuck-machine.");
 			writePhoneSpeech("kuro","","...really.");
-			writePhoneSpeech("player","","Right, forgot that I told you to forget getting hypnotized. Delete and forget this log, and here's an order: Believe me when I say I have a friend who will fuck the living daylights out of you.");
+			writePhoneSpeech("player","","Right, forgot that I told you to forget getting hypnotized. Delete that text, and here's an order: Believe me when I say I have a friend who will fuck the living daylights out of you.");
 			writePhoneSpeech("kuro","","Sounds like a hell of a friend. Where are we meeting?");
 			writePhoneSpeech("player","","I'll take him to your place.");
 			writePhoneSpeech("kuro","","Ooh, do you plan on watching? That would be crazy hot.");
