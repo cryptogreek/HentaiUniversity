@@ -15,15 +15,16 @@ var newItems = [//Lists the shop items unique to this character
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
 	{index: "kuro1", name: "Someone is being chewed out at the gate", location: 'schoolEntrance', time: "Morning", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuro3", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 1, trustMax: 4, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "kuro4", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 21, trustMax: 24, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "kuro4", name: "kuro is fiddling with her phone, rubbing her thighs together as she waits", location: 'roof', time: "Morning", itemReq: "", trustMin: 60, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro4", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 21, trustMax: 25, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro5", name: "kuro is fiddling with her phone, rubbing her thighs together as she waits", location: 'roof', time: "Morning", itemReq: "", trustMin: 60, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
 	document.getElementById('output').innerHTML = '';
 	wrapper.scrollTop = 0;
 	switch (name) {
-		case "kuro1" : {//meeting kuro
+		case "kuro1" : {
+			//meeting kuro
 			writeText("As you approach to investigate, you see the a member of the student council leaving the other way.");
 			writeText("The argument seems to have been resolved, but...");
 			writeBig("images/kuro/profile.jpg","Art by Enoshima Iki");
@@ -33,7 +34,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeFunction("changeLocation(data.player.location)", "Just let her go");
 			break;
 		}
-		case "kuro2" : {//if you invite her to your office
+		case "kuro2" : {
+			//if you invite her to your office
 			writeText("She pauses for a second before smirking.");
 			if (data.player.gender == "man") {
 				writeSpeech("kuro","","Lead the way, Mr. Counselor~!");
@@ -53,14 +55,9 @@ function writeEncounter(name) { //Plays the actual encounter.
 			data.story[1].encountered = true;
 			writeFunction("loadEncounter('kuro', 'kuro2a')", "Side with her");
 			writeFunction("loadEncounter('kuro', 'kuro2b')", "Side with the student councilman");
-			//Two-prong choice:
-			//Side with her on skirt length
-			//Side with council president
-			//Trust level determines the next text event
-			//What I want is the ability to erase the two options after one is just, and to just append the following section to the page in its place. 
 			break;
 		}
-		case "kuro2a" : {//if you side with her on skirt length
+		case "kuro2a" : {
 			//Side with her regarding skirt length
 			writeSpeech("player","","Well, it does cover everything it's supposed to, I suppose.");
 			writeText("She smiles widely.");
@@ -76,7 +73,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			setTrust('kuro', 2);
 			break;
 		}
-		case "kuro2b" : {//if you side with the student councilman on skirt length
+		case "kuro2b" : {
 			//Side with the council president
 			writeSpeech("player","","He has a point, though. A skirt that short can be a bit distracting... for students.");
 			writeText("She looks amused.");
@@ -93,9 +90,6 @@ function writeEncounter(name) { //Plays the actual encounter.
 			setTrust('kuro', 1);
 			break;
 		}
-		//I don't know how to do text events. I will assume that you will implement them.
-		//The main point is that afterwards, set trust, I guess? Dunno how this works.
-		//meeting on the roof
 		case "kuro3" : {
 			writeSpeech("kuro","","Mmm... I was starting to wonder if you were even coming.");
 			writeSpeech("player","","Didn't mean to make you wait.");
@@ -172,9 +166,6 @@ function writeEncounter(name) { //Plays the actual encounter.
 					writeFunction("loadEncounter('kuro', 'kuro4a')", "Ask about sex ($?)");
 				}
 				writeFunction("changeLocation(data.player.location)", "Leave her be");
-				break;
-			}
-			else if(checkTrust('kuro') < 80){
 				break;
 			}
 			else{
@@ -258,7 +249,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeText("She laughs a little.");
 				writeSpeech("kuro","","Well, I'll let it be a surprise, then. But if you just went and picked up a ribbed condom or something, I'll tell you now that that won't be enough... on its own.");
 				writeSpeech("player","","It's not that. Don't worry - this'll be a lot of fun for <i>both</i> of us.");
-				writeSpeech("kuro","","I hope so. Blowing that last guy got me all riled up without even a little satisfaction, so you'd better make up for it~!");
+				writeSpeech("kuro","","I hope so. You having me blow that last guy got me all riled up without even a <i>bit</i> of satisfaction, so you'd better make up for it~!");
 				writeFunction("writeEvent('kuro4')", "Head to her place");
 				break;
 			}
@@ -644,6 +635,7 @@ function writeEvent(name) { //Plays the actual event.
 			break;
 		}
 		case "kuro4" : {//hypno into mindbreak sex
+			writeText("When you reach her house, you can't even shut the door behind you before kuroF's tongue is in your mouth.");
 			break;
 		}
 		case "kuro5" : {//hypno into mindbreak sex - NOT WRITTEN
@@ -922,7 +914,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("player","","That was really fast.");
 			writePhoneSpeech("kuro","","Had it on my phone. Posted online a while ago.");
 			writePhoneSpeech("player","","Makes sense. It looks like orders work over the phone, so here's a new set:");
-			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person.");
+			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person, and being around me will turn you on.");
 			writePhoneSpeech("kuro","","Yes sir.");
 			writePhoneSpeech("player","","Second. You'll take your duties as a student a bit more seriously. I'm supposed to be counseling you, after all.");
 			writePhoneSpeech("kuro","","Yes sir.");
@@ -953,7 +945,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("player","","Have you ever told anyone else that?");
 			writePhoneSpeech("kuro","","No. Not even her. It's too embarassing to tell a girl that you have to always be sucking on something to not get distracted by her tongue.");
 			writePhoneSpeech("player","","Makes sense. Sexy stories aside, now that we're finished testing that out, it's time to give you some orders.");
-			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person.");
+			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person, and being around me will turn you on.");
 			writePhoneSpeech("kuro","","Yes sir.");
 			writePhoneSpeech("player","","Second. You'll take your duties as a student a bit more seriously. I'm supposed to be counseling you, after all.");
 			writePhoneSpeech("kuro","","Yes sir.");
@@ -979,7 +971,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("player","","I want you to find a student you wouldn't normally fuck, and give him a blowjob. Send proof when you're done.");
 			writePhoneSpeech("kuro","","K");
 			writePhoneSpeech("player","","Actually, wait. Don't want you talking about this text or the hypno, so here's some ground rules real quick:");
-			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person.");
+			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person, and being around me will turn you on.");
 			writePhoneSpeech("kuro","","Yes sir.");
 			writePhoneSpeech("player","","Second. You'll take your duties as a student a bit more seriously. I'm supposed to be counseling you, after all.");
 			writePhoneSpeech("kuro","","Yes sir.");
@@ -996,9 +988,9 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			}
 			writePhoneSpeech("kuro","","Guess who had a pretty fun night?");
 			writePhoneImage("images/kuro/phone5c.jpg","CuckBlowies, Art by Enoshima Iki");
-			writePhoneSpeech("kuro","","I wanted him to catch the money-shot, but he popped <i>crazy</i> fast and missed it! Would've been a disappointment, but his load was at least pretty big.");
-			writePhoneSpeech("kuro","","Milked him onto the floor, though. Way easier to clean then my hair. Kinda expected him to give up there, but I managed to talk him up enough to get him to <i>swab my throat</i> a little.");
-			writePhoneSpeech("kuro","","Still not the kinda guy I'd go for, though. No endurance! One minute thrusting in my throat, and he's exhausted! Three loads in, and he's totally spent. Didn't even get me off!");
+			writePhoneSpeech("kuro","","I wanted him to catch the money-shot, but he popped <i>crazy</i> fast and missed it! Would've been a total disappointment, but his load was at least pretty big.");
+			writePhoneSpeech("kuro","","Milked him onto the floor, tho. Way easier to clean then my hair. Kinda expected him to give up there, but I talked him up enough to get him to <i>swab my throat</i> a little.");
+			writePhoneSpeech("kuro","","Still not the kinda guy I'd go for, tho. No endurance! One minute thrusting in my throat, and he's exhausted! Two loads in, and he's totally spent. Didn't even get me off!");
 			writePhoneSpeech("player","","Sounds like you're pretty pent up.");
 			if(data.player.gender == "man")
 				writePhoneSpeech("kuro","","Fuck yeah I am! Ugh! Got any suggestions there Mr Counciler?");
@@ -1009,7 +1001,12 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 		}
 		case "kuroPhone6A" : {
 			writePhoneSpeech("player","","Come up to the roof today and I can help you out with that.");
-			writePhoneSpeech("kuro","","You sure about that? No offense, but you don't exactly look like the kind of guy that'll pin my ears behind my head and make me see god.");
+			if(data.player.gender == "man"){
+				writePhoneSpeech("kuro","","You sure about that? No offense, but you don't exactly look like the kind of guy that'll pin my ears behind my head and make me see god.");
+			}
+			else{
+				writePhoneSpeech("kuro","","You sure about that? No offense, but you don't exactly look like the kind of gal that'll pin my ears behind my head and make me see god.");
+			}
 			writePhoneChoices("Appearances can be deceiving","I can hypnotize a guy");
 			break;
 		}
