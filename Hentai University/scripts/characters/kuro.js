@@ -243,12 +243,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 }
 
 var eventArray = [ //Lists the events of the character for unlocking and replaying in the gallery.
+//Neutral Route
 	{index: "kuro1", name: "Free First Handy"},
 	{index: "kuro2", name: "Another Handjob"},
 	{index: "kuro3", name: "Ignored Back-Blaster"},
 	{index: "kuroMoney1", name: "$100 Fuck-Fest: Blow-Hard"},
 	{index: "kuroMoney2", name: "$100 Fuck-Fest: Getting Your Money's Worth"},
-	{index: "kuro4", name: "Fuck-Route: Hypno-Fuck"},
+//Primary Route
+	{index: "kuro4", name: "Primary-Route: Hypno-Fuck"},
+//Secondary Route
 	{index: "kuro5", name: "Cuck-Route: Watching and Jerking"},
 ];
 
