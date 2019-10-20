@@ -1,0 +1,8 @@
+[
+	{ "keys": ["ctrl+alt+shift+z"], "command": "run_macro_file", "args": {"file": "Packages/User/writeText.sublime-macro"} },
+	{ "keys": ["ctrl+alt+shift+x"], "command": "run_macro_file", "args": {"file": "Packages/User/writeSpeech.sublime-macro"} },
+	{ "keys": ["ctrl+alt+shift+c"], "command": "run_macro_file", "args": {"file": "Packages/User/writeTransition.sublime-macro"} },
+	{ "keys": ["ctrl+alt+shift+a"], "command": "run_macro_file", "args": {"file": "Packages/User/italic.sublime-macro"} },
+	{ "keys": ["ctrl+alt+shift+s"], "command": "run_macro_file", "args": {"file": "Packages/User/bold.sublime-macro"} },
+	{ "keys": ["ctrl+alt+shift+d"], "command": "run_macro_file", "args": {"file": "Packages/User/writePhoneSpeech.sublime-macro"} }
+]
