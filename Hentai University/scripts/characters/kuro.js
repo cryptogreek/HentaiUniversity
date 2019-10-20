@@ -636,6 +636,7 @@ function writeEvent(name) { //Plays the actual event.
 		}
 		case "kuro4" : {//hypno into mindbreak sex
 			writeText("When you reach her house, you can't even shut the door behind you before kuroF's tongue is in your mouth.");
+			
 			break;
 		}
 		case "kuro5" : {//hypno into mindbreak sex - NOT WRITTEN
