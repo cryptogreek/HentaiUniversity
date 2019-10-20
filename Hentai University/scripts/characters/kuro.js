@@ -636,6 +636,45 @@ function writeEvent(name) { //Plays the actual event.
 		}
 		case "kuro4" : {//hypno into mindbreak sex
 			writeText("When you reach her house, you can't even shut the door behind you before kuroF's tongue is in your mouth.");
+			writeText("Your back ends up pushing the door shut before she pulls back, her face flushed as she smirks.");
+			writeSpeech("kuro","","");
+
+			//
+
+			writeSpeech("player","","Not bad, kuroF. But how I about <i>I order you to relax.</i>");
+			writeText("Her eyes unfocus as you tighten your grip on her thighs, her entire body relaxing underneath you.");
+			writeSpeech("kuro","","W-Whaa...?");
+			//writeBig("IMAGE 061");
+			writeText("She tries raising her body up, but only goes up a bit as her eyes narrow slightly.");
+			writeSpeech("kuro","","I can't control my...");
+			writeText("She pauses, her eyes nearly coming back into focus...");
+			writeText("...but failing as she goes limp.");
+			writeSpeech("player","","Can you feel all of this, kuroF?");
+			writeSpeech("kuro","","Nn... It's, hazy...? What's happening...?");
+			writeText("You slow down your thrusting, only pushing halfway into her each time.");
+			writeSpeech("player","","You're going under, kuroF. Deeper and deeper into trance, with every thrust...");
+			writeText("She blinks once, before looking vaugely confused.");
+			writeSpeech("kuro","","But, trance is... that's not real, right...?");
+			writeText("Her eyes flutter slightly as you push and pull inside of her, her breathing getting softer.");
+			writeSpeech("player","","Of course it isn't. But it <i>feels</i> like it is, right?");
+			writeText("You lean forward, sawing into her again and again.");
+			writeSpeech("player","","It just feels so nice to listen, so it might as well be real... Right?");
+			writeSpeech("kuro","","A-Ah...? I guess...");
+			writeText("You slow down even more, holding back while maintaining eye-contact.");
+			writeSpeech("player","","It feels good, doesn't it?");
+			writeText("You lower one hand to her clit for emphasis, gently pressing around it.");
+			writeSpeech("kuro","","Yes...?");
+			writeText("You <b>slam</b> your hips forward.");
+			writeSpeech("kuro","","<i><b>N-Nn!</b></i>");
+			writeSpeech("player","","That was a <i>question</i>, not an <i>answer.</i>");
+			writeText("Her eyes start refocusing, but thrusting faster into her cunt pulls her mind away from it.");
+			writeSpeech("kuro","","Y-yes... It feels good...");
+			writeSpeech("player","","And it's just getting <i>better,</i> right?");
+			writeSpeech("kuro","","Yes...!");
+			writeText("She seems like she's trying to focus on squeezing around you, but she keeps failing every time you bottom-out.");
+			writeSpeech("player","","And it feels <i>good</i> to say 'Yes' to me, right?");
+			writeSpeech("kuro","","Y-Yes...! Ooooh fuck...!");
+			writeText("She starts whispering it under her breath, her body starting to quiver each time.");
 			
 			break;
 		}
