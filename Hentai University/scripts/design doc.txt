@@ -256,9 +256,23 @@ V0.0
 		town navigation mode (COMPLETE)
 		Neet js (COMPLETE)
 		Neet intro (COMPLETE)
-		Neet 2
-		Neet 3
+		Neet 2 (COMPLETE)
+		Neet 3 (COMPLETE)
+		Scarf1 (COMPLETE)
+		Scarf2 (COMPLETE)
+		Principal neet mission (COMPLETE)
+		Cash money cheat (COMPLETE)
+		Nuclear option (COMPLETE)
+		Link to cheat post at start
+		Link to cheat post in index
+		Link to mod tutorial at start
+		Link to mod tutorial in index
+		Mention cryptogreek in description
+		Link to discord in index
 		Fix logbook to show events from character js file
+		Test game
+		Change kuro, meji, maid, and lady reward points & pictures
+		Remove onload console log for kuro & meji
 		
 		
 	Cheats
@@ -266,10 +280,54 @@ V0.0
 		Stat raising
 	Principal
 		Plan route
+	Mom
+	Tomgirl
+	Purple
 	Scarf
-		Plan route
+		Plan route (COMPLETE)
+		Filler green content - She's still in the lounge, but you can't do anything with her until the challenge starts
+		scarf3 - the challenge is declared
+		scarf4 - find a way to hypnotize green
+		scarf4a - go out drinking
+		scarf4b - drug her
+		scarf4c - walk her home
+		scarf4d - snap your fingers - requires hypnosis of 4
+		scarf4e - hit with a chair confirmation
+		scarf4ea - hit her with a chair - bad end
+		scarf4f - look through her class records - classroom A
+		scarf4g - ask her about a student's success - she'll say 'he passed the test'
+		scarf5 - battle of the minds 1 - round 1, bunny
+		scarf6 - battle of the minds 2 - round 2, beach
+		scarf7 - battle of the minds 3 - round 3, beach again but you break through the illusion and creampie her
+		scarf8 - final round - in a battle of the minds, you dominate her and see her true self
 	Neet
-		Plan route
+		Plan route (COMPLETE)
+		Text to meet up with her
+		neet4a - The big reveal
+		neet4aa - Try to hypnotize her
+		neet5a - Have a long chat
+		neet5aa - 'We'll have plenty of time'
+		neet5ab - 'Enjoy who you are'
+		neet5aba - 'You'll find someone'
+		neet5abb - 'How about me?
+		neet5b - Walk her home
+		neet5ba - 'Don't hold yourself back'
+		neet5bb - 'What do you do for fun?'
+		neet5c - Go for a run around school
+		neet5ca - 'Let's stop here'
+		neet5cb - 'You gotta push your limits'
+		neet5cba - 'Let's get changed'
+		neet5cbb - 'You look great'
+		Date trust - if you do well on 2 dates, you can skip the third
+		neet6a - A little bit of hypnotism, leads to route A
+		neetA1 - hypnotize her, she starts masturbating
+		neetA2 - Walk her home, she's sure something is wrong
+		neetA3 - Titjob & acceptance
+		neet6b - Help her improve, leads to route B
+		neetB1 - Stay at her place - rubbing
+		neetB2 - Stay at her place again - fellatio
+		neetB3 - Go for another run
+		neetB4 - Erotic outfit
 	Phone Upgrade
 		App selection
 		CSS Improvement
@@ -391,27 +449,52 @@ V0.0
 		
 	Future
 		Conditional porn
-		Add artists to data array
 		Disable artists
-		Note that disabling artists does not disable them in the laptop's porn
 		Check Artists
-	Townfolk
-		Tag list
-		Disabled tags
-		randomEncounter function (checks tags)
-		tagCheck function - 'scene', 'tags', if no tags are disabled go to the scene, otherwise create a warning message with a 'proceed' (which takes you to the scene) or a 'go back' which refreshes the 
-	Hacking
-		Hacking array
-		Hack Names
-		Hack Check
-		Adding hacks
-		Hacking tab in phone
-		Hacking game generation
-		Different Board sizes
-		Placing cards
-		Enemy AI
-		Flipping cards
-		Victory
-		Defeat
-		Hack rewards
-		Hack retrying
+		
+		
+Outlines in greater detail
+	scarf
+		Plan route
+		scarf3 - the challenge is declared. You may do anything you like to green, hypnotize her to any degree your like, you just need to get her to say 'he passed the test'
+		scarf4 - find a way to hypnotize green, just a hub where you select your method
+		scarf4a - go out drinking - you take her to a bar and get her wasted. You fuck and hypnotize her, but she doesn't remember any of it the next day.
+		scarf4b - drug her
+		scarf4c - walk her home
+		scarf4d - snap your fingers - requires hypnosis of 4
+		scarf4e - hit with a chair confirmation
+		scarf4ea - hit her with a chair - bad end
+		scarf4f - look through her class records - classroom A
+		scarf4g - ask her about a student's success - she'll say 'he passed the test'
+		scarf5 - battle of the minds 1 - round 1, bunny
+		scarf6 - battle of the minds 2 - round 2, beach
+		scarf7 - battle of the minds 3 - round 3, beach again but you break through the illusion and creampie her
+		scarf8 - final round - in a battle of the minds, you dominate her and see her true self
+	Neet
+		Plan route (COMPLETE)
+		Text to meet up with her
+		neet4a - The big reveal
+		neet4aa - Try to hypnotize her
+		neet5a - Have a long chat
+		neet5aa - 'We'll have plenty of time'
+		neet5ab - 'Enjoy who you are'
+		neet5aba - 'You'll find someone'
+		neet5abb - 'How about me?
+		neet5b - Walk her home
+		neet5ba - 'Don't hold yourself back'
+		neet5bb - 'What do you do for fun?'
+		neet5c - Go for a run around school
+		neet5ca - 'Let's stop here'
+		neet5cb - 'You gotta push your limits'
+		neet5cba - 'Let's get changed'
+		neet5cbb - 'You look great'
+		Date trust - if you do well on 2 dates, you can skip the third
+		neet6a - A little bit of hypnotism, leads to route A
+		neetA1 - hypnotize her, she starts masturbating
+		neetA2 - Walk her home, she's sure something is wrong
+		neetA3 - Titjob & acceptance
+		neet6b - Help her improve, leads to route B
+		neetB1 - Stay at her place - rubbing
+		neetB2 - Stay at her place again - fellatio
+		neetB3 - Go for another run
+		neetB4 - Erotic outfit

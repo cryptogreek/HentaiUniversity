@@ -877,3 +877,18 @@ position: absolute;
 	padding: 0px;
 	font-weight: bold;
 }
+
+.closeButton {
+	top:2.5%;
+	left: 320px;
+	position: absolute;
+	font-size: 50px;
+}
+
+.openButton {
+	top:2.5%;
+	left: 20px;
+	position: absolute;
+	font-size: 50px;
+	visibility: hidden;
+}

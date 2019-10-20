@@ -672,6 +672,18 @@ function showPhone() {
 	generateContacts();
 }
 
+function closeButton() {
+	document.getElementById("menu").style.width = "0px";	
+	document.getElementById("closeButton").style.visibility = "hidden";	
+	document.getElementById("openButton").style.visibility = "visible";	
+}
+
+function openButton() {
+	document.getElementById("menu").style.width = "400px";	
+	document.getElementById("closeButton").style.visibility = "visible";	
+	document.getElementById("openButton").style.visibility = "hidden";	
+}
+
 //Menu
 function updateMenu() {
 	document.getElementById('playerName').innerHTML = data.player.name;
@@ -1240,6 +1252,15 @@ function diagnostic() {
 			setTrust('tomgirl', -1);
 			setTrust('meji', -1);
 			writeSpecial("Trap / male characters have been deactivated. You might need to use this code again in the future when more traps are added.");
+			break;
+		}
+		case "cash money": {
+			data.player.money += 100;
+			updateMenu();
+			writeSpecial("You got $100! This should be all you need, but you could always make more.");
+			break;
+		}
+		case "nuclear option": {
 			break;
 		}
 		case "new name": {
