@@ -637,7 +637,12 @@ function writeEvent(name) { //Plays the actual event.
 		case "kuro4" : {//hypno into mindbreak sex
 			writeText("When you reach her house, you can't even shut the door behind you before kuroF's tongue is in your mouth.");
 			writeText("Your back ends up pushing the door shut before she pulls back, her face flushed as she smirks.");
-			writeSpeech("kuro","","");
+			writeSpeech("kuro","","I've been waiting for this since this morning, so let's get right to the point~!");
+			writeText("She runs a finger along your crotch before starting to pull off her shirt, walking to the bed as she casually tosses her clothes to the ground.");
+			writeText("Seems like telling her to get turned on whenever she's around you is paying off pretty quickly...");
+			writeSpeech("kuro","","Come on, don't go leaving a girl hangin'~!");
+			writeText("Stripping down, you walk into her room, seeing her body stretched out across the bed.");
+			writeBig("images/kuro/6-1.jpg");
 
 			//
 
