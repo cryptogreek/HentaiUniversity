@@ -643,7 +643,15 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("kuro","","Come on, don't go leaving a girl hangin'~!");
 			writeText("Stripping down, you walk into her room, seeing her body stretched out across the bed.");
 			writeBig("images/kuro/6-1.jpg");
+			writeSpeech("kuro","","You enjoyin' the view?");
+			writeText("She straightens her legs a bit, almost going into a split as she grins.");
+			writeSpeech("kuro","","Or do you think you need a closer look?");
+			writeText("You step forward, your hand grasping your cock as you move between her legs.");
 
+			//
+
+			writeSpeech("kuro","","Stop talking and <i>fuck me, stud.</i>");
+			
 			//
 
 			writeSpeech("player","","Not bad, kuroF. But how I about <i>I order you to relax.</i>");
