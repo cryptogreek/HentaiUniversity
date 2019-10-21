@@ -287,7 +287,13 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("kuro","","Enjoy~!");
 			writeText("Her lollipop sits in your mouth as she strides away.");
 			writeText("...It doesn't taste bad.");
-			writeFunction("writeEvent('kuro4')", "Head to her place");
+			setTrust('kuro',63);
+			writeFunction("writeEncounter('kuro5a')", "Head to her place");
+			break;
+		}
+		case "kuro5a" : {
+			setTrust('kuro',63);
+			wrteEvent('kuro4');
 			break;
 		}
 		case "kuro6" : {
@@ -631,6 +637,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("You ended up spending the entire morning fucking her, but she never seemed to lose that same smug look throughout it all. The last time you went over the edge, it was imagining that face of hers contorted in pleasure.");
 			writeText("Still, considering the fact that you're a hypnotist, maybe it's possible to use <i>that</i> to take her down a notch...");
 			writeText("That's for another day, though. For now, a shower and back to work...");
+			data.player.location = "vintageStreet";
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
@@ -641,23 +648,33 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("She runs a finger along your crotch before starting to pull off her shirt, walking to the bed as she casually tosses her clothes to the ground.");
 			writeText("Seems like telling her to get turned on whenever she's around you is paying off pretty quickly...");
 			writeSpeech("kuro","","Come on, don't go leaving a girl hangin'~!");
-			writeText("Stripping down, you walk into her room, seeing her body stretched out across the bed.");
-			writeBig("images/kuro/6-1.jpg");
+			writeText("Stripping down, you walk into her room, seeing her laying down and spreading herself.");
+			writeBig("images/kuro/phone5a.jpg");
 			writeSpeech("kuro","","You enjoyin' the view?");
-			writeText("She straightens her legs a bit, almost going into a split as she grins.");
+			writeText("She spreads her legs a bit, a damp spot on the sheets becoming visible as she grins.");
 			writeSpeech("kuro","","Or do you think you need a closer look?");
-			writeText("You step forward, your hand grasping your cock as you move between her legs.");
-
-			//
-
+			writeText("You step forward, one hand grasping your cock as you move between her legs.");
+			writeSpeech("player","","How long have you been been dripping like this?");
+			writeText("She moans a bit as your other hand slides down to her warm, slick pussy.");
+			writeSpeech("kuro","","Since I woke up, of course. Your texts come with a pic of your face, y'know.");
+			writeText("You barely have to push at all to feel your finger go into her, before she squeezes down around you.");
+			writeSpeech("player","","Really, now? Just looking at my picture was enough to-");
+			writeText("You stop, feeling her calves curl around your legs.");
+			writeSpeech("kuro","","Okay, look, I love foreplay as much as the next girl, but...");
+			writeText("She pulls sharply forward, forcing you to use your hands to catch yourself as your shaft slaps against her ass.");
 			writeSpeech("kuro","","Stop talking and <i>fuck me, stud.</i>");
-			
-			//
-
-			writeSpeech("player","","Not bad, kuroF. But how I about <i>I order you to relax.</i>");
-			writeText("Her eyes unfocus as you tighten your grip on her thighs, her entire body relaxing underneath you.");
+			writeSpeech("player","","...Y'know what? Sure.");
+			writeText("You line yourself up, your head pressing against her pussylips for a moment, before you wrap your hands around her waist.");
+			writeSpeech("player","","But we're doing it my way.");
+			writeText("You roll the two of you over, her weight resting comfortably on you as you both look up.");
+			writeText("kuroF gives a slight hum of approval, her hand going down to your cock poking out between her thighs.");
+			writeSpeech("kuro","","Not my favorite position, but it'll do...");
+			writeText("She pauses.");
+			writeSpeech("kuro","","Ah, wait. Where's the condom?");
+			writeSpeech("player","","That's a good question, kuroF. But how I about <i>I order you to relax.</i>");
+			writeText("Her eyes unfocus as you grab one of her tits, her entire body relaxing underneath you.");
 			writeSpeech("kuro","","W-Whaa...?");
-			//writeBig("IMAGE 061");
+			writeBig("images/kuro/6-2.jpg");
 			writeText("She tries raising her body up, but only goes up a bit as her eyes narrow slightly.");
 			writeSpeech("kuro","","I can't control my...");
 			writeText("She pauses, her eyes nearly coming back into focus...");
@@ -688,7 +705,54 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("player","","And it feels <i>good</i> to say 'Yes' to me, right?");
 			writeSpeech("kuro","","Y-Yes...! Ooooh fuck...!");
 			writeText("She starts whispering it under her breath, her body starting to quiver each time.");
-			
+			writeText("Her legs are shaking almost uncontrollably as you pick up speed again.");
+			writeText("The way she's wildly squeezing around you, trying to control her body but failing, is almost as erotic as her moans.");
+			writeSpeech("kuro","","N-No fair...! Why do you feel so good...!?");
+			writeText("You squeeze her breast tighter as bring your mouth to her ear.");
+			writeSpeech("player","","Isn't it obvious, kuroF?");
+			writeText("Aiming for the points that make her squirm the most, you start pistoning into her cunt full-force.");
+			writeSpeech("player","","It's because this cock is the perfect fit for that little tan cunt of yours.");
+			writeText("Her breathing hitches.");
+			writeSpeech("player","","That's why you can barely focus, why you're <i>already almost cumming. And it's why...</i>");
+			writeText("Your hand moves down, caressing her abs gently.");
+			writeSpeech("kuro","","I-It's why I want you to cum... <i>in there...?</i>");
+			writeText("Your hand just barely pinches her skin, kuroF sharply sucking in air.");
+			writeSpeech("player","","Another question, kuroF?");
+			writeSpeech("kuro","","No, I meant... that <i>I want you to cum inside...!</i>");
+			writeSpeech("player","","Are you <i>sure</i> that's what you want?");
+			writeSpeech("kuro","","Y-Yes~! F-Fuck, hurry up! I'm almost-");
+			writeText("You slow down slightly, a disappointed mewl coming from her as she starts trying to thrust herself onto you.");
+			writeSpeech("player","","I'm beginning to think you forgot the power-dynamic here, kuroF.");
+			writeSpeech("kuro","","Please...!");
+			writeText("Her hand goes down to her clit, clearly intent on cumming, but...");
+			writeSpeech("player","","Until I give the order, you <i>are not allowed to orgasm.</i>");
+			writeText("You feel her slow down too.");
+			writeSpeech("kuro","","W-Wait a sec, I didn't-");
+			writeText("Your hand goes up to her hair, grabbing tightly.");
+			writeSpeech("player","","Now let's see if I can <i>fuck</i> some manners into a <i>bitch...</i>");
+			writeText("She pauses like she's going to speak, but she just meekly nods.");
+			writeText("...")
+			writeText("You bottom-out one last time, shooting a last load into her cunt as she lays there.");
+			writeText("You still didn't let her cum, the pleasure rising in her until she couldn't think of anything else.");
+			writeText("As you pull out, her folds don't hold nearly as tightly as when you started, your head pulling her open with barely a slick *pop* as you pull out.");
+			writeBig("images/kuro/6-3.jpg");
+			writeText("As your cum starts to spill out, kuroF twitches slightly.");
+			writeSpeech("kuro","","<i><b>N-No...</b></i>");
+			writeText("She reaches down, her body still hypnotically relaxed as she limply presses her hand against her gaping pussy.");
+			writeText("As satisfying as this was, leaving her like this would cause a bit of a problem.");
+			writeText("And, as everyone knows, the solution to every problem is hypnosis. No exceptions.");
+			writeText("You lean forward, smiling a bit.");
+			writeSpeech("player","","kuroF. I'm going to clean myself off and leave. I'm going to close the door behind me, and you know what'll happen?");
+			writeText("She lets out a desperate moan, barely able to focus on you.");
+			writeSpeech("player","","When you hear me close that door, you're going to <i><b>cum.</b></i> Every orgasm you <i>would</i> have had will hit you all at once when you hear me shut that door.");
+			writeText("You stand up, stretching out a bit.");
+			writeText("Purposefully taking your time, you use her shower to rinse the sex and sweat off, slowly getting your clothes back on without ever shutting a door.");
+			writeText("When you finally do leave, you shut the door behind you with a loud <i><b>*BANG*</b></i>.");
+			writeText("There's the sharp intake of breath behind the door, ragged panting a second later, and the shifting sounds of her sheets as she writhes across them.");
+			writeSpeech("player","","...Would've taken her for a screamer, but this is fine.");
+			writeText("Just for fun, you also slam the front door loud enough to be heard on your way out, casually striding down the street and wondering how she'll be feeling tomorrow.");
+			data.player.location = "vintageStreet";
+			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
 		case "kuro5" : {//hypno into mindbreak sex - NOT WRITTEN
