@@ -17,6 +17,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "kuro3", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 1, trustMax: 4, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuro4", name: "kuro is leaning against the fence", location: 'roof', time: "Morning", itemReq: "", trustMin: 21, trustMax: 25, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuro5", name: "kuro is fiddling with her phone, rubbing her thighs together as she waits", location: 'roof', time: "Morning", itemReq: "", trustMin: 60, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro6", name: "kuro is sitting near the fence, her panties in clear view", location: 'roof', time: "Morning", itemReq: "", trustMin: 63, trustMax: 63, type: "tab", top: 0, left: 0, day: "both",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -250,6 +251,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("kuro","","Well, I'll let it be a surprise, then. But if you just went and picked up a ribbed condom or something, I'll tell you now that that won't be enough... on its own.");
 				writeSpeech("player","","It's not that. Don't worry - this'll be a lot of fun for <i>both</i> of us.");
 				writeSpeech("kuro","","I hope so. You having me blow that last guy got me all riled up without even a <i>bit</i> of satisfaction, so you'd better make up for it~!");
+				setTrust('kuro',63);
 				writeFunction("writeEvent('kuro4')", "Head to her place");
 				break;
 			}
@@ -288,12 +290,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("Her lollipop sits in your mouth as she strides away.");
 			writeText("...It doesn't taste bad.");
 			setTrust('kuro',63);
-			writeFunction("writeEncounter('kuro5a')", "Head to her place");
-			break;
-		}
-		case "kuro5a" : {
-			setTrust('kuro',63);
-			wrteEvent('kuro4');
+			writeFunction("writeEvent('kuro4')", "Head to her place");
 			break;
 		}
 		case "kuro6" : {
@@ -791,6 +788,7 @@ var phoneArray = [//Lists the potential text events the player can receive at th
 	{index: "kuroPhone4", trust: 24,},
 	{index: "kuroPhone5", trust: 25,},
 	//PRIMARY ROUTE TEXTS:
+	{index: "kuroPhone7", trust: 63,},
 	{index: "kuroReward1", trust: 0,},
 	//SECONDARY ROUTE TEXTS:
 	{index: "kuroPhone6", trust: 26,},
@@ -1181,6 +1179,113 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","Ooh, do you plan on watching? That would be crazy hot.");
 			writePhoneSpeech("player","","I'll be there to make sure that everything is working properly.");
 			writePhoneSpeech("kuro","","I'm looking forward to it! See ya then, hun~!");
+			break;
+		}
+		case "kuroPhone7" : {
+			writePhoneSpeech("kuro","","Jerk.");
+			writePhoneSpeech("kuro","","Stupid jerk.");
+			writePhoneSpeech("kuro","","Stupid jerk faced jerk.");
+			writePhoneSpeech("kuro","","Your a jerk u no that?");
+			writePhoneChoices("Maybe a little","Whatever for?", "You're*");
+			break;
+		}
+		case "kuroPhone7A" : {
+			writePhoneSpeech("player","","...Okay, maybe a little.");
+			writePhoneSpeech("kuro","","A little? Hun I need NEW SHEETS");
+			writePhoneSpeech("kuro","","My nails totally fucked them up");
+			writePhoneSpeech("kuro","","Props to my main tho");
+			writePhoneSpeech("kuro","","Main, fuck autocorrect");
+			writePhoneSpeech("kuro","","MANI. AS IN MANICURE");
+			writePhoneSpeech("kuro","","Guess Im typing with two hands now");
+			writePhoneChoices("You didn't like last night?", "Two hands?");
+			break;
+		}
+		case "kuroPhone7B" : {
+			writePhoneSpeech("player","","Whatever could you mean?");
+			writePhoneSpeech("kuro","","Oh I dunno maybe the HOLES IN MY SHEETS");
+			writePhoneSpeech("kuro","","My nails totally fucked them up");
+			writePhoneSpeech("kuro","","Props to my main tho");
+			writePhoneSpeech("kuro","","Main, fuck autocorrect");
+			writePhoneSpeech("kuro","","MANI. AS IN MANICURE");
+			writePhoneSpeech("kuro","","Guess Im typing with two hands now");
+			writePhoneChoices("You didn't like last night?", "Two hands?");
+			break;
+		}
+		case "kuroPhone7C" : {
+			writePhoneSpeech("player","","You're*");
+			writePhoneSpeech("kuro","","You're life ends in 30 minutes");
+			writePhoneSpeech("player","","...Excuse me?");
+			writePhoneSpeech("kuro","","Ugh its a reference. Never mind");
+			writePhoneSpeech("kuro","","You owe me new sheets jerk.");
+			writePhoneSpeech("kuro","","I fuckin tore them last night");
+			writePhoneSpeech("kuro","","At least my nails didn't break, props to my main");
+			writePhoneSpeech("kuro","","Main, fuck autocorrect");
+			writePhoneSpeech("kuro","","MANI. AS IN MANICURE");
+			writePhoneSpeech("kuro","","Guess Im typing with two hands now");
+			writePhoneChoices("You didn't like last night?", "Two hands?");
+			break;
+		}
+		case "kuroPhone7AA" : {
+			writePhoneSpeech("player","","You didn't like last night, then?");
+			writePhoneSpeech("kuro","","Dont put words in my mouth hun");
+			writePhoneSpeech("kuro","","Dont know how you did it, but I have never cum so hard I needed to buy new sheets");
+			writePhoneSpeech("kuro","","If it weren't my bed Id be fingerfucking myself to the memory");
+			writePhoneSpeech("kuro","","Which I actually was until I saw my sheets");
+			writePhoneSpeech("kuro","","Jerk");
+			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
+			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone7AB" : {
+			writePhoneSpeech("player","","Why were you typing with one hand?");
+			writePhoneSpeech("kuro","","Don't ask questions u no the answer to");
+			writePhoneSpeech("kuro","","If it weren't MY sheets that were fucked up I wouldn't have stopped to text you");
+			writePhoneSpeech("player","","That's high praise.");
+			writePhoneSpeech("kuro","","You totally owe me new sheets jerk");
+			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
+			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone7BA" : {
+			writePhoneSpeech("player","","You didn't like last night, then?");
+			writePhoneSpeech("kuro","","Dont put words in my mouth hun");
+			writePhoneSpeech("kuro","","Dont know how you did it, but I have never cum so hard I needed to buy new sheets");
+			writePhoneSpeech("kuro","","If it weren't my bed Id be fingerfucking myself to the memory");
+			writePhoneSpeech("kuro","","Which I actually was until I saw my sheets");
+			writePhoneSpeech("kuro","","Jerk");
+			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
+			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone7BB" : {
+			writePhoneSpeech("player","","Why were you typing with one hand?");
+			writePhoneSpeech("kuro","","Don't ask questions u no the answer to");
+			writePhoneSpeech("kuro","","If it weren't MY sheets that were fucked up I wouldn't have stopped to text you");
+			writePhoneSpeech("player","","That's high praise.");
+			writePhoneSpeech("kuro","","You totally owe me new sheets jerk");
+			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
+			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone7CA" : {
+			writePhoneSpeech("player","","You didn't like last night, then?");
+			writePhoneSpeech("kuro","","Dont put words in my mouth hun");
+			writePhoneSpeech("kuro","","Dont know how you did it, but I have never cum so hard I needed to buy new sheets");
+			writePhoneSpeech("kuro","","If it weren't my bed Id be fingerfucking myself to the memory");
+			writePhoneSpeech("kuro","","Which I actually was until I saw my sheets");
+			writePhoneSpeech("kuro","","Jerk");
+			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
+			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone7CB" : {
+			writePhoneSpeech("player","","Why were you typing with one hand?");
+			writePhoneSpeech("kuro","","Don't ask questions u no the answer to");
+			writePhoneSpeech("kuro","","If it weren't MY sheets that were fucked up I wouldn't have stopped to text you");
+			writePhoneSpeech("player","","That's high praise.");
+			writePhoneSpeech("kuro","","You totally owe me new sheets jerk");
+			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
+			writePhoneSpeech("kuro","","Meat me on the roof");
 			break;
 		}
 		case "kuroReward1" : {
