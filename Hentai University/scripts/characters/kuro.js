@@ -294,9 +294,129 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro6" : {
-			if(galleryCheck("kuroMoney2") != true){ // remove if seen
-				writeFunction("loadEncounter('kuro', 'kuro4a')", "'Purchase' her services (<s>$100</s>)");
+			setTrust('kuro',64);
+			writeText("Her eyes settle on you almost immediately, her expression very controlled as she shifts slightly.");
+			if(data.player.gender == "man"){
+				writeSpeech("kuro","","You owe me those sheets, Mister C-");
 			}
+			else{
+				writeSpeech("kuro","","You owe me those sheets, Miss Couns-");
+			}
+			writeText("The door to the roof shuts behind you, her voice shifting to a high squeak as her panties darken a bit.");
+			writeText("Blushing deeply, she pushes her skirt down as she looks up at you.");
+			writeSpeech("player","","...kuroF, how many times have you heard a door-");
+			writeSpeech("kuro","","Not important!");
+			writeText("It takes another second for her to collect herself.");
+			writeSpeech("kuro","","Dunno why that's happening, but-");
+			writeText("You reach over and open the door slightly, her eyes going wide.");
+			writeSpeech("kuro","","H-Hold on a sec, you don't have to-");
+			writeText("The door closes, barely loud enough to be heard, especially over her moaning.");
+			writeSpeech("player","","You know, calling me a jerk was pretty rude.");
+			writeText("She freezes.");
+			writeFunction("writeEncounter('kuro6a')", "Let her off easy");
+			writeFunction("writeEncounter('kuro6b')", "Time to button-mash");
+			break;
+		}
+		case "kuro6a" : {
+			writeText("There's a tense silence for a moment... before you shrug.");
+			writeSpeech("player","","I guess you could just apologize, though.");
+			writeText("She nods, relaxing.");
+			writeSpeech("kuro","","Sorry, hun... They're just sheets, but I guess I was just kinda frustrated. Not used to being the, uh... <i>subby one</i>, I guess.");
+			writeSpeech("player","","It's fine. So... <i>Doors,</i> huh?");
+			writeText("She blushes which, given how hard she's been to catch off-guard, is pretty nice.");
+			writeSpeech("kuro","","Y-Yeah. I barely remember yesterday after we started fucking, but hearing you slam the door on your way out was...");
+			writeText("Her whole body shudders slightly as she remembers the sound, her legs spreading slightly.");
+			writeSpeech("kuro","","If I knew you fucked like that, I wouldn't have waited this long.");
+			writeSpeech("kuro","","...I do need new sheets, though. I was planning on skipping class to get them, but then I started texting you, and then I shut my front door, and here we are.");
+			writeText("Hm... She needs to go shopping? There probably aren't too many opportunities to trigger her, since there aren't too many traditional doors in a store...");
+			writeText("Plus, you <i>could</i> remove the trigger pretty easily if you wanted, but maybe just replacing it would be fun?");
+			writeFunction("writeEncounter('kuro6c')", "Remove the trigger");
+			writeFunction("writeEncounter('kuro6d')", "Make her get turned on by beeping noises");
+			break;
+		}
+		case "kuro6b" : {
+			writeText("There's a brief moment where you wonder if this is really a good idea.");
+			writeText("Your hand stops halfway, thinking about what would happen if she moaned too loud, if people heard and came to investigate.");
+			writeText("You pull your hand away from the door, then, when you think about losing your job...");
+			writeText("And then you decide, 'Fuck it', and start slamming that door open and closed like a motherfucker.");
+			writeText("Each time you do, kuroF makes a breathy, almost-silent squeak, her entire body collapsing down as she orgasms again and again.");
+			writeText("You were something in the dozens when you finally stopped, kuroF's eyes glazed over in orgasmic-bliss as her body twitches uncontrollably.");
+			writeText("...It might be a while before she's good to talk...");
+			writeText("...");
+			writeText("Finally recovered, kuroF glares at you for a few seconds.");
+			writeSpeech("kuro","","...If I said that that was a total dick move, would you do it again?");
+			writeSpeech("player","","No clue.");
+			writeSpeech("kuro","","Then I won't <i>explicitly</i> say that it was a dick move. Explicitly.");
+			writeSpeech("player","","That sounds like sass.");
+			writeText("You reach slowly towards the door again, her body tensing up a bit.");
+			writeText("Despite the clearly aghast expression on her face, though, you can clearly see her rubbing her thighs together...");
+			writeSpeech("kuro","","S-Sorry.");
+			writeText("She sighs, lowering her head a bit.");
+			writeSpeech("kuro","","Calling you a jerk over some sheets I tore was totally uncool. I'm just... not used to being the subby one, I guess.");
+			writeSpeech("player","","As long as you you're sorry, it's fine. Still...");
+			writeText("You smirk.");
+			writeSpeech("player","","<i>Doors,</i> huh?");
+			writeText("She blushes which, given how hard she's been to catch off-guard, is pretty nice.");
+			writeSpeech("kuro","","Y-Yeah. I barely remember yesterday after we started fucking, but hearing you slam the door on your way out was...");
+			writeText("Her whole body shudders slightly as she remembers the sound, her legs spreading slightly.");
+			writeSpeech("kuro","","If I knew you fucked like that, I wouldn't have waited this long.");
+			writeSpeech("kuro","","...I do need new sheets, though. I was planning on skipping class to get them, but then I started texting you, and then I shut my front door, and here we are.");
+			writeText("Hm... She needs to go shopping? There probably aren't too many opportunities to trigger her, since there aren't too many traditional doors in a store...");
+			writeText("Plus, you <i>could</i> remove the trigger pretty easily if you wanted, but maybe just replacing it would be fun?");
+			writeFunction("writeEncounter('kuro6c')", "Remove the trigger");
+			writeFunction("writeEncounter('kuro6d')", "Make her get turned on by beeping noises");
+			break;
+		}
+		case "kuro6c" : {
+			writeText("You make eye-contact for a moment, before speaking clearly.");
+			writeSpeech("player","","This is an order.");
+			writeText("Her eyes half-unfocus, nodding along.");
+			writeSpeech("player","","<i>You no longer orgasm when you hear a door shut.</i> That hypnotic trigger will not affect you any more. Understood?");
+			writeText("After another second, she nods firmly.");
+			writeSpeech("player","","Good. Now wake up.");
+			writeText("She blinks, her eyes refocusing.");
+			writeSpeech("kuro","","Whoa, zoned out for a sec. Sorry.");
+			writeText("She shakes her head around.");
+			writeSpeech("kuro","","Anyway, I'm gonna get new sheets, which means shopping with a friend. She's pretty miffed about us not hanging out as much, and I can't really blame her.");
+			writeText("She shrugs, but then smirks as she stands up.");
+			writeSpeech("kuro","","I'll still be keeping those old sheets, though.");
+			writeText("She wraps her arms around your waist as she presses her lips to your ear.");
+			writeSpeech("kuro","","No need to rip up the new ones when I take you home, right?");
+			writeText("She then pulls away, smiling.");
+			writeSpeech("kuro","","I'll text ya when I'm available again, 'kay?");
+			writeSpeech("player","","I'll be looking forward to it.");
+			writeText("With that, you're alone on the roof, idly noting that the spot where kuroF was sitting is slightly damp.");
+			writeText("...Well, you've still got a job to do, and a hobby to have <i>fun</i> with.");
+			writeFunction("changeLocation(data.player.location)", "Finish (for now)");
+			break;
+		}
+		case "kuro6d" : {
+			writeText("You make eye-contact for a moment, before speaking clearly.");
+			writeSpeech("player","","This is an order.");
+			writeText("Her eyes half-unfocus, nodding along.");
+			writeSpeech("player","","<i>You no longer orgasm when you hear a door shut.</i> That hypnotic trigger will not affect you any more.");
+			writeText("She shifts a bit, breathing slowly.");
+			writeSpeech("player","","Instead, the sound of loud, beeping noises will turn you on more and more.");
+			writeText("Her breathing starts getting a bit heavier.");
+			writeSpeech("player","","It could be any kind of beep, from a store's scanner, to receiving a text.");
+			writeText("If she has a friend that sends cluster-texts, she's in for quite the ride.");
+			writeSpeech("player","","Do you understand?");
+			writeText("After another second, she nods firmly.");
+			writeSpeech("player","","Good. Now wake up.");
+			writeText("She blinks, her eyes refocusing.");
+			writeSpeech("kuro","","Whoa, zoned out for a sec. Sorry.");
+			writeText("She shakes her head around.");
+			writeSpeech("kuro","","Anyway, I'm gonna get new sheets, which means shopping with a friend. She's pretty miffed about us not hanging out as much, and I can't really blame her. We'll probably spend a whole day shopping, <i>at least.</i>");
+			writeText("She shrugs, but then smirks as she stands up.");
+			writeSpeech("kuro","","I'll still be keeping those old sheets, though.");
+			writeText("She wraps her arms around your waist as she presses her lips to your ear.");
+			writeSpeech("kuro","","No need to rip up the new ones when I take you home, right?");
+			writeText("She then pulls away, smiling.");
+			writeSpeech("kuro","","I'll text ya when I'm available again, 'kay?");
+			writeSpeech("player","","I'll be looking forward to it.");
+			writeText("With that, you're alone on the roof, idly noting that the spot where kuroF was sitting is slightly damp.");
+			writeText("...Well, you've still got a job to do, and a hobby to have <i>fun</i> with.");
+			writeFunction("changeLocation(data.player.location)", "Finish (for now)");
 			break;
 		}
 	}
@@ -789,7 +909,7 @@ var phoneArray = [//Lists the potential text events the player can receive at th
 	{index: "kuroPhone5", trust: 25,},
 	//PRIMARY ROUTE TEXTS:
 	{index: "kuroPhone7", trust: 63,},
-	{index: "kuroReward1", trust: 0,},
+	{index: "kuroReward1", trust: 64,},
 	//SECONDARY ROUTE TEXTS:
 	{index: "kuroPhone6", trust: 26,},
 	{index: "kuroReward2", trust: 40,},
@@ -1290,12 +1410,37 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 		}
 		case "kuroReward1" : {
 			writePhoneImage("images/kuro/7-4.jpg", "InConclusion, Art by Enoshima Iki");
-			writePhoneSpeech("kuro", "", "You've finished all of "+fName('kuro')+"'s content for the primary route, congratulations!");
+			if(galleryCheck("kuroMoney2")){
+				writePhoneSpeech("kuro", "", "You've finished all of "+fName('kuro')+"'s content for this version, congratulations!");
+			}
+			else{
+				writePhoneSpeech("kuro","","You've reached the end of kuroF's route - congratulations!");
+				writePhoneSpeech("kuro","","You missed one scene. You can view it either by asking kuroF about sex with a lot of money on-hand, or you can just unlock it by responding to this text!");
+				writePhoneSpeech("kuro","","Thanks for playing~!");
+				writePhoneChoices("Unlock the Gallery");
+			}
+			break;
+		}
+		case "kuroReward1A" : {
+			if(galleryCheck("kuroMoney2")){
+				writePhoneImage("images/kuro/7-4.jpg", "InConclusion, Art by Enoshima Iki");
+				writePhoneSpeech("kuro", "", "You've finished all of "+fName('kuro')+"'s content for this version, congratulations!");
+			}
+			else{
+				hideStuff();
+				writeEvent("kuroMoney1");
+				writeEvent("kuroMoney2");
+				document.getElementById('output').innerHTML = '';
+				writeSpecial("Two new scenes have been added to kuroF kuroL's Gallery.");
+				writeSpecial("These are available from the computer at your home.");
+				data.player.location = "playerHouse";
+				writeFunction("changeLocation(data.player.location)", "Return home");
+			}
 			break;
 		}
 		case "kuroReward2" : {
 			writePhoneImage("images/kuro/CFin.jpg", "WatchOn, Art by Enoshima Iki");
-			writePhoneSpeech("kuro", "", "You've finished all of "+fName('kuro')+"'s content for the secondary route, congratulations!");
+			writePhoneSpeech("kuro", "", "You've finished all of the available content for "+fName('kuro')+"'s secondary route (Netorase), congratulations!");
 			break;
 		}
 		default: {
