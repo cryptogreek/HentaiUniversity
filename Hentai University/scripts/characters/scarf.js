@@ -41,33 +41,43 @@ function writeEncounter(name) { //Plays the actual encounter.
 		}
 		case "caseSelect": {
 			writeSpeech("scarf", "", "Yes? Did you need something? I loathe having my time wasted.");
+			writeSpeech("player", "", "Oh, sorry. Were you doing something?");
+			writeSpeech("scarf", "", "No, and I'd like to keep it that way.");
 			switch (checkTrust('scarf')) {
 				case 40: 
 					writeFunction("writeEncounter('scarf1')", "I was hoping to learn something");
 				break;
 				case 41:
-					writeFunction("writeEncounter('scarf1')", "I'd like another lesson");
+					writeFunction("writeEncounter('scarf2')", "I'd like another lesson");
 				break;
 				case 42:
 					writeSpeech("scarf", "", "I'm still preparing your lesson. Have some patience, child.");
 					writeSpeech("player", "", "I'll make you eat those words.");
-					writeSpeech("scarf", "", "I'd like to see you try.");
+					writeSpeech("scarf", "", "I'd absolutely love to see you try.");
 				break;
 			}
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
 		case "scarf1": {
+			writeSpeech("player", "", "Techniques. Skills. You're a confident woman, what do your know that I don't?");
+			writeSpeech("scarf", "", "Hmhm. When I was in your shoes, I had nearly an entire town at my beck and call. I did a little more than seduce students.");
+			writeSpeech("player", "", "Oh? And where's your town now?");
+			writeSpeech("scarf", "", "...<br>I'll let you in on a little tip, child. You might feel the urge to torment others. Watch as the only one who isn't mind-broken to your will sees what's become of his family and lover. Don't. Instead of reveling in madness, he'll just go to the police.");
+			writeSpeech("player", "", "I was maybe hoping for some more... Practical advice.");
+			writeSpeech("scarf", "", "Fine, fine. I am a teacher after all.");
 			writeSpeech("player", "", "I want to learn a technique to increase sensitivity. By a lot.");
 			writeSpeech("scarf", "", "Oho~? And how exactly will you use something like that?");
 			writeSpeech("player", "", "Well, to start...");
 			writeText("...");
 			writeSpeech("scarf", "", "I'm quite convinced. Very well then.");
-			writeText(fName('scarf')+" teaches you the sensitivity increase technique.");
+			writeText(fName('scarf')+" teaches you a sensitivity increase technique.");
 			data.player.hypnosis += 1;
 			raiseTrust('scarf', 1);
+			passTime();
 			updateMenu();
 			writeSpecial("Your skill in hypnosis has improved!");
+			writeSpeech("scarf", "", "Try not to get killed. Or caught. Or bored.");
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
@@ -76,11 +86,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("scarf", "", "Oho~ I can tell your flattery is empty, child, but honestly I don't care. Very well, I can teach you something.");
 			writeText("...");
 			writeSpecial("Your skill in hypnosis has improved!");
-			writeSpeech("scarf", "", "I'll admit, you have some talent. Maybe it's time for your to prove yourself?");
+			writeSpeech("player", "", "Perfect. By the way, what's with the fuzz?");
+			writeSpeech("scarf", "", "Excuse me?");
+			writeSpeech("player", "", "Whenever I look at you, you've got some kind of glow about you. It makes you look out of focus.");
+			writeSpeech("scarf", "", "My, you really are something. I'll admit, you have some talent. Maybe it's time for you to prove yourself?");
 			writeSpeech("player", "", "What did you have in mind?");
 			writeSpeech("scarf", "", "When I was your age, I didn't quite have a lovely school like this to run around in. I was seducing men into my service as playthings, and as protectors.<br>Come back some other time. I'll prepare a real challenge for you.");
 			data.player.hypnosis += 1;
 			raiseTrust('scarf', 1);
+			passTime();
 			updateMenu();
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
@@ -142,7 +156,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 }
 
 //Don't touch anything below this, or things will break.
-console.log(character.index+'.js loaded correctly. request type is '+requestType)
+//console.log(character.index+'.js loaded correctly. request type is '+requestType)
 
 switch (requestType) {
 	case "encounter": {
@@ -170,6 +184,7 @@ switch (requestType) {
 		break;
 	}
 	case "check": {
+		if (encounteredCheck(character.index) != true) {
 		for (i = 0; i < encounterArray.length; i++) {
 			if (encounterArray[i].location.includes(data.player.location)) { //check the location
 				if (encounterArray[i].time.includes(data.player.time)) { //check the time
@@ -216,6 +231,7 @@ switch (requestType) {
 					}
 				}
 			}
+		}
 		}
 		break;
 	}

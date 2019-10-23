@@ -5,6 +5,7 @@ var eventArray = [
 ];
 var newItems = [ //If price is 0 it isn't for sale
 	{name: "Butt", 				key: true, 		price: 0, 	image: "scripts/gamefiles/items/butt.jpg", description: ""},
+	{name: "Ghost AR", 			key: true, 		price: 0, 	image: "scripts/gamefiles/items/ghostAR.jpg", description: "The brand new mobile game Ghost AR! Track ghosts around the city, collect them all and save the world from their ghastly threat!"},
 	{name: "Town Map", 			key: true, 		price: 20, 	image: "scripts/gamefiles/items/map.jpg", description: "Allows you to navigate around town more easily."},
 	{name: "Hypnosis Textbook", key: false, 	price: 50, 	image: "scripts/gamefiles/items/hypnosisTextbook.jpg", description: "A textbook on hypnosis, you can read it at home to improve your skill."},
 	{name: "Hacking Textbook", 	key: false, 	price: 50, 	image: "scripts/gamefiles/items/hackingTextbook.jpg", description: "A textbook on hacking, you can read it at home to improve your skill."},
@@ -23,7 +24,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "nap", 			name: "Take a Nap", 			location: 'playerOffice', 		time: "MorningEvening", 	itemReq: "", trustMin: 0, trustMax: 0, type: "button", top: 52, left: 35, day: "both",},
 	{index: "newDay", 		name: "Go to Bed", 				location: 'playerHouse', 		time: "EveningNight", 		itemReq: "", trustMin: 0, trustMax: 0, type: "button", top: 52, left: 35, day: "both",},
 	{index: "shop", 		name: "General Store", 			location: 'shoppingDistrict', 	time: "MorningEvening", 	itemReq: "", trustMin: 0, trustMax: 0, type: "button", top: 40, left: 60, day: "both",},
-]
+];
 
 function writeEncounter(scene) {
 	console.log('now writing encounter '+scene);
@@ -48,7 +49,8 @@ function writeEncounter(scene) {
 			writeFunction("loadEncounter('system', 'prologueAlt')", "Start the game as a futanari");
 			writeText("<hr>");
 			writeText("Other notes:");
-			writeText("We're always open to comments or criticism. If you feel like school management would add a lot to the game, you'd like us to consider adding another artist, or you'd like to suggest content of your own, you can shoot us a message anywhere this game is posted. You can find the Patreon here: <a href='https://www.patreon.com/noodlejacuzzi'>Patreon Link</a><br>");
+			writeText("Are <b>you</b> interested in getting your own character into Hentai University? Well, you're in luck! Hentai University v3 includes <b>Mod Support!</b> Hop over to the game's <a href='https://noodlejacuzzi.github.io/Hentai%20University%20Modding%20Tutorial/Tutorial.html'>Modding Tutorial</a> if you're interested.");
+			writeText("We're always open to comments or criticism. If you feel like school management would add a lot to the game, you'd like us to consider adding another artist, or you'd like to suggest content of your own, you can shoot us a message anywhere this game is posted. You can find the Patreon here: <a href='https://www.patreon.com/noodlejacuzzi'>Patreon Link</a>");
 			writeText("You can also send us a message directly. Noodlejacuzzi is on discord (NoodleJacuzzi#4120) or you can send an email at noodlejacuzzi@gmail.com");
 			writeText("Captain Cryptogreek can be messaged on his reddit account where he regularly posts captions. You can also shoot him an email if you'd like him to proofread or you'd like to commission his skills at cryptogreekcaptions@gmail.com");
 			writeText("Thank you to: Swallows999, MrManPerson, Lasse Bannow, ChronosEdge, brandon, Debarre Sonny, Drashin, iNoH8+, Mirza Hasan, murgatroid99, Oliver Jones, qwerty, Roy, Skyrim mod lvr, Wild Bill, Will Osboldstone, and 凱 陳 for funding this game! The patreon funds are split as Captain Cryptogreek has taken over as lead writer for the game.");
@@ -122,6 +124,7 @@ function writeEncounter(scene) {
 		case "cheat": {
 			document.getElementById('output').innerHTML += `
 				<p class='centeredText'>You can enter cheat codes here. For example, use the code 'new name' to rename all of the game's other characters.</p>
+				<p class='centeredText'>I keep a list of all of these on my patreon, go there, even if you aren't a patron, to find them.</p>
 				<p class='centeredText'>Enter cheat code: <input type="text" id="cheatSubmission" value=""></p>
 				<p class='choiceText' onclick='diagnostic()'>Submit</p>
 			`;
@@ -251,36 +254,8 @@ function writeEncounter(scene) {
 			break;
 		}
 		case "shop": {
-			if (imagesDisabled != true) {
-				var bg = "images/locations/store.jpg";
-				document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
-				document.getElementById('output').innerHTML += `
-					<div class="playerRoom">
-						<img class="backgroundPicture" src="`+bg+`" usemap="#roomMap">
-						<div class="pictureButton" onclick="changeLocation('street')"
-						style="top: 30%; left: 25%; max-width: 30%;">Go back outside</div>
-					</div>
-				`;
-			}
-			else {
-				writeFunction("changeLocation('street')", "Go back outside");
-			}
+			changeLocation('store');
 			loadShop();
-			break;
-		}
-		case "map": {
-				var bg = "images/locations/townMap.jpg";
-				document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
-				document.getElementById('output').innerHTML += `
-					<div class="playerRoom">
-						<img class="backgroundPicture" src="`+bg+`" usemap="#roomMap">
-						<div class="pictureButton" onclick="changeLocation('playerOffice')" style="top: 15%; left: 20%; max-width: 30%;">Your Office</div>
-						<div class="pictureButton" onclick="changeLocation('schoolEntrance')" style="top: 35%; left: 23%; max-width: 30%;">University</div>
-						<div class="pictureButton" onclick="changeLocation('street')" style="top: 55%; left: 40%; max-width: 30%;">Town Streets</div>
-						<div class="pictureButton" onclick="changeLocation('playerHouse')" style="top: 45%; left: 70%; max-width: 30%;">Your Home</div>
-						<div class="pictureButton" onclick="changeLocation('shoppingDistrict')" style="top: 20%; left: 60%; max-width: 30%;">Shopping District</div>
-					</div>
-				`;
 			break;
 		}
 		case "nap": {
