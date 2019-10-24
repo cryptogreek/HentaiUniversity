@@ -923,7 +923,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("meji","","Not bad for my first <i>real</i> blowjob, right?");
 			writeSpeech("player","","mejiF.");
 			writeText("He pauses.");
-			writeSpeech("meji","","Y-Yeah?");
+			writeSpeech("meji","","...Y-Yeah?");
 			writeSpeech("player","","You were <i>amazing</i>.");
 			writeText("The smugness immediately disappears, replaced by a face-wide blush as his eyes going to pretty much anywhere except for yours.");
 			writeSpeech("meji","","...Thanks.");

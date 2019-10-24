@@ -20,7 +20,10 @@ var newItems = [//Lists the shop items unique to this character
 
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
 	{index: "mistress1", name: "A woman a bit off of the main path seems to be looking around carefully.", location: 'parkDistrict', time: "Evening", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "even",},
+	{index: "mistress2", name: "mistress is sitting on a nearby bench, humming to herself.", location: 'parkDistrict', time: "Morning", itemReq: "", trustMin: 40, trustMax: 40, type: "tab", top: 0, left: 0, day: "even",},
 	{index: "mistress2", name: "mistress is sitting on a nearby bench, humming to herself.", location: 'parkDistrict', time: "Evening", itemReq: "", trustMin: 40, trustMax: 40, type: "tab", top: 0, left: 0, day: "even",},
+	{index: "mistress3", name: "mistress is sitting at the same bench, smiling and humming.", location: 'parkDistrict', time: "Morning", itemReq: "", trustMin: 41, trustMax: 41, type: "tab", top: 0, left: 0, day: "even",},
+	{index: "mistress3", name: "mistress is sitting at the same bench, smiling and humming.", location: 'parkDistrict', time: "Evening", itemReq: "", trustMin: 41, trustMax: 41, type: "tab", top: 0, left: 0, day: "even",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -28,7 +31,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 	wrapper.scrollTop = 0;
 	switch (name) {
 		case "mistress1" : {//Introduce Mistress as being lost (she's actually an exhibitionist)
-			writeText("From the looks of it, it looks like she might be lost...? She seems to be looking around quite a bit but, after a moment, she spots you.");
+			writeText("From the looks of it, it seems like she might be lost...? She's looking around the area quite a bit but, after a moment, she spots you.");
 			writeBig("images/mistress/1-1.jpg", "Art by Oreteki18kin");
 			writeSpeech("???","images/mistress/mistress.jpg","O-Oh! Hello there!");
 			writeText("She very nearly trips over one of the branches, but keeps her balance... despite the two<i> very</i> clear challenges to it.");
@@ -83,6 +86,42 @@ function writeEncounter(name) { //Plays the actual encounter.
 			raiseTrust('mistress', 1);
 			passTime();
 			writeFunction("writeEvent('mistress1')", "Let her lead the way");
+			break;
+		}
+		case "mistress3" : {
+			writeText("Spotting you, she smiles, gesturing for you to take the seat next to her.");
+			if(data.player.time == "Morning"){
+				writeSpeech("mistress","","Good morning, playerF! How are you?");
+			}
+			else if(data.player.time == "Evening"){
+				writeSpeech("mistress","","Good evening, playerF! How are you?");
+			}
+			writeText("You sit right beside her, your hips just barely touching.");
+			writeSpeech("player","","Pretty good. How about you? Sounds like your... <i>sore throat</i> is doing better.");
+			writeText("Her face goes a little red as you see her thighs rub together a bit.");
+			writeSpeech("mistress","","It is, yes. Thanks for helping me clean up, by the way! It wouldn't have felt right to leave it my maid, and I don't think I would've finished up before she got home without you.");
+			writeText("She gives you a quick peck on the cheek.");
+			writeSpeech("player","","No problem - I was probably the messier of us anyway.");
+			writeSpeech("mistress","","Maybe, but that <i>was</i> the most fun part.");
+			writeText("She leans against your shoulder.");
+			writeSpeech("mistress","","...I still totally got caught, though. Once she asked why I was so quiet, I had to tell her - I didn't want her worrying that I was sick!");
+			writeSpeech("player","","Did she learn about the whole public-nudity thing?");
+			writeText("She laughs, lightly slapping your thigh.");
+			writeSpeech("mistress","","It's not <i>public nudity</i> if I have my <i>coat</i> on, playerF. Besides, she already knew about that; she just wanted to know about what kind of guy I found.");
+			writeFunction("writeEncounter('mistress3a')", "Take this back to her place");
+			writeFunction("writeEncounter('mistress3b')", "Go to a park path less-traveled");
+			if(checkTrust('maid') > 20)
+				writeFunction("writeEvent('mistress3c')", "You mentioned a maid?");
+			break;
+		}
+		case "mistress3a" : {
+			break;
+		}
+		case "mistress3b" : {
+			break;
+		}
+		case "mistress3c" : {
+			writeSpeech("player","","This might be a weird question, but you mentioned a maid. Her name wouldn't happen to be maidF, would it?");
 			break;
 		}
 	}
@@ -147,7 +186,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeBig("images/mistress/2-3.jpg", "Art by Oreteki18kin");
 			writeText("You slam her down hard and fast, pounding at the entrance to her throat with every thrust, the sounds of your cock fucking her mouth almost as loud as her moans around your length.");
 			writeText("As you start to approach your limit, you put even more force behind your thrusts, slamming your hips forward until you feel her hands grabbing your thighs.");
-			writeText("You start to slow down, in case you were getting to be a bit too much, when she <i>pulls.</i>");
+			writeText("You start to slow down, in case you were getting to be a bit too much, when she <b>pulls.</b>");
 			writeSpeech("player","","<i><b>Fucking Hell...!</b></i>");
 			writeText("She pulls you into her throat, the tightness almost overwhelming you as she finally presses her nose to your pelvis.");
 			writeText("Small tears are forming in her eyes, but the message is clear.");
