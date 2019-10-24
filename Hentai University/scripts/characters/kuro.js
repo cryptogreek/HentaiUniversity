@@ -233,6 +233,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro5" : {
+			passTime();
 			writeText("kuroF smiles, her lollipop sliding into her cheek.");
 			if(data.player.gender == "man"){
 				writeSpeech("kuro","","Heyhey, Mister Counselor~! I was worried that you were gonna keep little ol' me waiting.");
@@ -294,6 +295,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro6" : {
+			passTime();
 			setTrust('kuro',64);
 			writeText("Her eyes settle on you almost immediately, her expression very controlled as she shifts slightly.");
 			if(data.player.gender == "man"){
