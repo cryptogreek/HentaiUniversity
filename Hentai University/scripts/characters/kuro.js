@@ -754,8 +754,10 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("You ended up spending the entire morning fucking her, but she never seemed to lose that same smug look throughout it all. The last time you went over the edge, it was imagining that face of hers contorted in pleasure.");
 			writeText("Still, considering the fact that you're a hypnotist, maybe it's possible to use <i>that</i> to take her down a notch...");
 			writeText("That's for another day, though. For now, a shower and back to work...");
-			data.player.location = "vintageStreet";
-			writeFunction("changeLocation(data.player.location)", "Finish");
+			if(data.player.location != "gallery"){
+				data.player.location = "vintageStreet";
+				writeFunction("changeLocation(data.player.location)", "Finish");
+			}
 			break;
 		}
 		case "kuro4" : {//hypno into mindbreak sex
