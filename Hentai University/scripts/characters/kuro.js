@@ -155,7 +155,22 @@ function writeEncounter(name) { //Plays the actual encounter.
 		}
 		case "kuro4" : {//another roof-meeting
 			if(checkTrust('kuro') < 60){
-				if(checkTrust('kuro') < 24 && galleryCheck('kuro2') == true && galleryCheck('kuro3') == true && (data.story[1].textEvent.includes('kuroPhone3A') == true || data.story[1].textEvent.includes('kuroPhone3B') == true)){
+				if((checkTrust('kuro') == 24 || checkTrust('kuro') == 25) && (galleryCheck('kuroMoney2') == true)){
+					writeText("Seeing you approach, kuroF smiles up at you, but quickly returns to typing on her phone.");
+					writeSpeech("player","","You look... busy?");
+					writeSpeech("kuro","","A bit, yeah. I'm <i>totes</i> swamped today. I've got this to-do list, and I've been putting off most of it, so I gotta handle it today.");
+					writeText("She sighs a little. but then smiles up at you again.");
+					writeSpeech("kuro","","Of course, that <i>does</i> include picking up some more condoms, so once it's done?");
+					writeText("She steps forward, her breasts pressing against your chest as whispers into your ear,");
+					writeSpeech("kuro","","We can have even more <i>fun</i>.");
+					writeSpeech("player","","I'll look forward to-");
+					writeText("Her tongue gently runs along your ear-lobe.");
+					writeSpeech("kuro","","You better, hun~! Oh, and after you painted my back, you mentioned texting me a pic. Send it whenev's!");
+					writeText("With that, she darts off with a wink and a laugh, leaving you to return to your business.");
+					writeFunction("changeLocation(data.player.location)", "Leave");
+					break;
+				}
+				else if(checkTrust('kuro') < 24 && galleryCheck('kuro2') == true && galleryCheck('kuro3') == true && (data.story[1].textEvent.includes('kuroPhone3A') == true || data.story[1].textEvent.includes('kuroPhone3B') == true)){
 					writeText("kuroF smiles as you approach but jolts in place a little.");
 					writeSpeech("kuro","","Heya~! Sorry, but I- <i>hic!</i>... There's been a bit of hiccup. Can you come back tomorrow? I'm- <i>hic!</i> I'm headed home early today.");
 					writeText("She darts past you, her hand over her mouth as she continues to hiccup.");
