@@ -379,6 +379,9 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro6c" : {
+			if(checkTrust('kuro') == 64){
+				setTrust('kuro',65);
+			}
 			writeText("You make eye-contact for a moment, before speaking clearly.");
 			writeSpeech("player","","This is an order.");
 			writeText("Her eyes half-unfocus, nodding along.");
@@ -925,6 +928,7 @@ var phoneArray = [//Lists the potential text events the player can receive at th
 	//PRIMARY ROUTE TEXTS:
 	{index: "kuroPhone7", trust: 63,},
 	{index: "kuroReward1", trust: 64,},
+	{index: "kuroReward1", trust: 65,},
 	//SECONDARY ROUTE TEXTS:
 	{index: "kuroPhone6", trust: 26,},
 	{index: "kuroReward2", trust: 40,},
