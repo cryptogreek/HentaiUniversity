@@ -155,6 +155,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 		}
 		case "kuro4" : {//another roof-meeting
 			if(checkTrust('kuro') < 60){
+				if(checkTrust('kuro') < 24 && galleryCheck('kuroMoney2') == true && galleryCheck('kuro2') == true && galleryCheck('kuro3') == true && (data.story[1].textEvent.includes('kuroPhone3A') == true || data.story[1].textEvent.includes('kuroPhone3B') == true)){
+					writeText("kuroF smiles as you approach but jolts in place a little.");
+					writeSpeech("kuro","","Heya~! Sorry, but I- <i>hic!</i>... There's been a bit of hiccup. Can you come back tomorrow? I'm- <i>hic!</i> I'm headed home early today.");
+					writeText("She darts past you, her hand over her mouth as she continues to hiccup.");
+					writeText("Weird situation... It should resolve itself, though.");
+					setTrust('kuro',24);
+					writeFunction("changeLocation(data.player.location)", "Leave");
+					break;
+				}
 				writeText("As you approach her, "+fName('kuro')+" looks you over, rolling another of her lollipops in her mouth.");
 				writeSpeech("kuro","","Mm, you're a little pent-up, huh? I don't mind helping out, but there's this bag I <i>almost</i> have enough for, y'know?");
 				if(galleryCheck('kuro2') != true){
@@ -571,17 +580,17 @@ function writeEvent(name) { //Plays the actual event.
 		}
 		case "kuro3" : {//nonchalant back
 			if (data.player.location != 'gallery') {
-			if(data.player.money < 10){
-				writeSpeech("kuro","","Um... You <i>do</i> realize you don't have enough, right?");
-				writeFunction("loadEncounter('kuro', 'kuro4')", "Choose something else");
-				writeFunction("changeLocation(data.player.location)", "Leave her be");
-				scene = "kuro1";
-				break;
-			}
-			document.getElementById('output').innerHTML = '';
+				if(data.player.money < 10){
+					writeSpeech("kuro","","Um... You <i>do</i> realize you don't have enough, right?");
+					writeFunction("loadEncounter('kuro', 'kuro4')", "Choose something else");
+					writeFunction("changeLocation(data.player.location)", "Leave her be");
+					scene = "kuro1";
+					break;
+				}
+				document.getElementById('output').innerHTML = '';
 				data.player.money -=10;
 				updateMenu();
-			}
+				}
 			writeSpeech("kuro","","Jerking on me, huh? As long as you pay for any stains, <i>I'm all yours, hun.</i> Of course, can't exactly do this one here, so...");
 			writeText("She slips a piece of paper into your pocket with a wink.");
 			writeSpeech("kuro","","I'll leave the back-door unlocked.");
@@ -872,8 +881,10 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("There's the sharp intake of breath behind the door, ragged panting a second later, and the shifting sounds of her sheets as she writhes across them.");
 			writeSpeech("player","","...Would've taken her for a screamer, but this is fine.");
 			writeText("Just for fun, you also slam the front door loud enough to be heard on your way out, casually striding down the street and wondering how she'll be feeling tomorrow.");
-			data.player.location = "vintageStreet";
-			writeFunction("changeLocation(data.player.location)", "Finish");
+			if(data.player.location != "gallery"){
+				data.player.location = "vintageStreet";
+				writeFunction("changeLocation(data.player.location)", "Finish");
+			}
 			break;
 		}
 		case "kuro5" : {//hypno into mindbreak sex - NOT WRITTEN
