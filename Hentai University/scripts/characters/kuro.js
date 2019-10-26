@@ -155,7 +155,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 		}
 		case "kuro4" : {//another roof-meeting
 			if(checkTrust('kuro') < 60){
-				if(checkTrust('kuro') < 24 && galleryCheck('kuroMoney2') == true && galleryCheck('kuro2') == true && galleryCheck('kuro3') == true && (data.story[1].textEvent.includes('kuroPhone3A') == true || data.story[1].textEvent.includes('kuroPhone3B') == true)){
+				if(checkTrust('kuro') < 24 && galleryCheck('kuro2') == true && galleryCheck('kuro3') == true && (data.story[1].textEvent.includes('kuroPhone3A') == true || data.story[1].textEvent.includes('kuroPhone3B') == true)){
 					writeText("kuroF smiles as you approach but jolts in place a little.");
 					writeSpeech("kuro","","Heya~! Sorry, but I- <i>hic!</i>... There's been a bit of hiccup. Can you come back tomorrow? I'm- <i>hic!</i> I'm headed home early today.");
 					writeText("She darts past you, her hand over her mouth as she continues to hiccup.");
