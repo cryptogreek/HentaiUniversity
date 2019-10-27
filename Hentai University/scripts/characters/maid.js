@@ -172,6 +172,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "maid3aa" : {
+			if(checkTrust('maid') == 21)
+				setTrust('maid',22);
 			writeSpeech("player","","I never assumed that <i>was</i> normal. I mean, do you think that sort of thing is normal for <i>me?</i>");
 			writeText("It actually is, but...");
 			writeSpeech("maid","","Well... No, I suppose not. But it was just so...");
@@ -188,12 +190,16 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("maid","","...I think I am, yes. It feels weird, but not bad.");
 			writeSpeech("player","","Then just remember that. It's important to hold onto the important things and not let the details distract you <i>too</i> much.");
 			writeText("She smiles, nodding once.");
-			writeSpeech("maid","","I've been told similar things before about worrying too much. Anyway, thank you for taking the time to talk to me.");
-			writeSpeech("player","","Again, no problem. I'm happy to help.");
-
+			writeSpeech("maid","","I've been told similar things before about worrying too much. Anyway, thank you for taking the time to talk to me, but... Could I have some time to think about this?");
+			writeSpeech("player","","Of course. Happy to help out. When you're ready, you <i>do</i> have my number.");
+			writeText("She flushes a bit, but nods.");
+			writeSpeech("maid","","I'll talk to you later, then.");
+			writeFunction("changeLocation(data.player.location)", "Go home");
 			break;
 		}
 		case "maid3ab" : {
+			if(checkTrust('maid') == 21)
+				setTrust('maid',23);
 			writeText("Seems like it's time for a little damage control...");
 			writeSpeech("player","","Listen, maidF.");
 			writeText("She looks at you quietly.");
