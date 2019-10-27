@@ -21,6 +21,7 @@ var newItems = [//Lists the shop items unique to this character
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
 	{index: "maid1", name: "You see a woman in an unusual outfit looking through some items, looking for something.", location: 'shoppingDistrict', time: "Evening", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "odd",},
 	{index: "maid2", name: "You can see maid nearby. It looks like she just finished shopping.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 20, trustMax: 20, type: "tab", top: 0, left: 0, day: "odd",},
+	{index: "maid3", name: "maid is standing near the store entrance, but isn't holding a basket or anything.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 21, trustMax: 21, type: "tab", top: 0, left: 0, day: "odd",},
 ];
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -141,6 +142,41 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeFunction("writeEvent('maid1')", "Pull down your pants");
 			raiseTrust('maid', 1);
 			passTime();
+			break;
+		}
+		case "maid3" : {
+			writeSpeech("player","","Not shopping today?");
+			writeText("maidF turns and smiles to you.");
+			writeSpeech("maid","","Not today, no. I had some other business to attend to here, but thought you might come by.");
+			writeText("Huh, her tone is back to being formal... Did the hypnosis wear off, or is she too uncomfortable in public...?");
+			writeSpeech("player","","You weren't waiting for very long, I hope.");
+			writeSpeech("maid","","Not at all, though I wouldn't have minded if I had. I'd like to speak with you about something rather important. Do you mind if we take this conversation back to my place?");
+			writeFunction("writeEncounter('maid3a')", "Lead the way");
+			break;
+		}
+		case "maid3a" : {
+			writeSpeech("player","","If it's important, then lead the way.");
+			writeText("She nods, the two of you walking to her car...");
+			writeText("...");
+			//important thing is the video she took, she isn't sure why she did it and wants to apologize. She doesn't normally act like that at all, and doesn't want you to think of her as that sort of woman.
+			writeText("maidF takes a slow, deep breath, sitting up on the couch.");
+			writeSpeech("maid","","...I wanted to apologize for my behavior the other day.");
+			writeText("Her hands rub against each other a bit, toying with the hem of her outfit's skirt.");
+			writeSpeech("maid","","Everything got a bit hazy, but I rewatched the video, and... well...");
+			writeText("Her face flushes deeply.");
+			writeSpeech("maid","","I just wanted you to know that that wasn't... how things normally go. I'm usually far more controlled, and doing it with someone I barely know is completely out-of-character.");
+			writeText("She keeps breathing deeply, but is still clearly uncomfortable.");
+			writeText("This seems like a delicate situation...");
+			writeFunction("writeEncounter('maid3aa')", "Tell her you never assumed it <i>was</i> normal");
+			writeFunction("writeEncounter('maid3ab')", "Try hypnotizing her again");
+			break;
+		}
+		case "maid3aa" : {
+			writeSpeech("player","","I never assumed that <i>was</i> normal.");
+			break;
+		}
+		case "maid3ab" : {
+			writeText("Damage control time.");
 			break;
 		}
 		default: {
