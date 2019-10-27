@@ -155,7 +155,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "maid3a" : {
-			writeSpeech("player","","If it's important, then lead the way.");
+			writeSpeech("player","","If it's important, then I can <i>make</i> time.");
 			writeText("She nods, the two of you walking to her car...");
 			writeText("...");
 			//important thing is the video she took, she isn't sure why she did it and wants to apologize. She doesn't normally act like that at all, and doesn't want you to think of her as that sort of woman.
@@ -172,11 +172,81 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "maid3aa" : {
-			writeSpeech("player","","I never assumed that <i>was</i> normal.");
+			writeSpeech("player","","I never assumed that <i>was</i> normal. I mean, do you think that sort of thing is normal for <i>me?</i>");
+			writeText("It actually is, but...");
+			writeSpeech("maid","","Well... No, I suppose not. But it was just so...");
+			writeSpeech("player","","Different?");
+			writeText("She nods slowly.");
+			writeSpeech("player","","I get that. It probably feels weird to start doing things like that so quickly, but it's not the <i>speed</i> of it that matters.");
+			writeText("You shift your body forward, so that she's looking down just the smallest bit to meet your eyes.");
+			writeSpeech("player","","It's whether you're <i>comfortable</i> with it. And if you weren't, or aren't, then we can just take a step back and talk about it.");
+			writeText("A second of silence passes but, as it does, she starts to smile.");
+			writeSpeech("maid","","...Thank you, playerF. I can see how you became a guidance counselor.");
+			writeSpeech("player","","No problem. It's important to me that <i>you</i> want this just as much as I do.");
+			writeText("For a certain definition of <b>want</b>, of course...");
+			writeSpeech("player","","That's why I want to know - are you comfortable with this?");
+			writeSpeech("maid","","...I think I am, yes. It feels weird, but not bad.");
+			writeSpeech("player","","Then just remember that. It's important to hold onto the important things and not let the details distract you <i>too</i> much.");
+			writeText("She smiles, nodding once.");
+			writeSpeech("maid","","I've been told similar things before about worrying too much. Anyway, thank you for taking the time to talk to me.");
+			writeSpeech("player","","Again, no problem. I'm happy to help.");
+
 			break;
 		}
 		case "maid3ab" : {
-			writeText("Damage control time.");
+			writeText("Seems like it's time for a little damage control...");
+			writeSpeech("player","","Listen, maidF.");
+			writeText("She looks at you quietly.");
+			writeSpeech("player","","I think you should just take a second to slow down, and just <i>breathe</i>. It's easier to talk about things like this if you take a moment to clear your head.");
+			writeSpeech("maid","","Yeah. Yeah, that sounds right...");
+			writeText("Her breathing slows down, her body starting to relax just a bit as her chest raises and drops slowly...");
+			writeText("After a few moments, she seems relaxed enough to start listening.");
+			writeSpeech("player","","maidF?");
+			writeSpeech("maid","","Mm?");
+			writeText("Her eyes start to slowly open.");
+			writeSpeech("player","","Are you feeling a bit more relaxed?");
+			writeSpeech("maid","","Yes... I feel a bit better now.");
+			writeText("Her hands separate, sitting gently on her thighs.");
+			writeSpeech("maid","","Thank you. I think I'm ready, now.");
+			writeText("Hm... Not enough to go under, though...");
+			writeSpeech("player","","Alright. How would you like to start?");
+			writeSpeech("maid","","In short, I was worried that doing <i>that</i> with you so soon after we met might have made me seem... <i>loose.</i>");
+			writeSpeech("player","","I honestly never thought that was the case.");
+			writeText("For obvious reasons...");
+			writeText("She smiles and nods.");
+			writeSpeech("maid","","Thank you for saying that, but I still felt like it.");
+			writeText("You take a second to think over your next words carefully...");
+			writeSpeech("player","","Well... I think that you should really just ask if you were, and are, comfortable with what happened. Not the speed, but the actions. <i>Were</i> you comfortable?");
+			writeText("She nods, not hesitating.");
+			writeSpeech("maid","","Absolutely.");
+			writeText("Then, she pauses. She seems like she surprised herself with how fast she responded, but-");
+			writeSpeech("player","","And are you comfortable right now, talking to me?");
+			writeText("She nods again, your efforts paying off as you see the faint hint of her eyes starting to glaze over.");
+			writeSpeech("maid","","Y-Yeah...");
+			writeSpeech("player","","And do you <i>trust</i> me?");
+			writeText("This time, she just slowly nods.");
+			writeSpeech("player","","Then just listen to what I say...");
+			writeText("You move closer to her, lowering your voice a bit and gently placing a hand on her knee.");
+			writeSpeech("player","","...Don't worry so much about going too fast or too slow. Do what you're comfortable with and be confident in what you do. Just remember, though:");
+			writeText("You lean in to whisper into her ear.");
+			writeSpeech("player","","You're <i>always</i> comfortable around me. You said you were already, right...?");
+			writeText("Her body shivers slightly, her face flushing as she nods.");
+			writeSpeech("player","","Then, when you wake up, you'll just feel relaxed. Just like you said, you're comfortable, and that's all that matters. Believe in me <i>and</i> you, maidF... and now, <i><b>focus.</b></i>");
+			writeText("The haze vanishes suddenly, her eyes settling on your face as she smiles widely.");
+			writeSpeech("maid","","Ah, sorry. I must have spaced out...");
+			writeText("Despite how close your faces are, she seems relaxed. It seems to be working, then...");
+			writeText("It's probably best not to push it too hard today, though, considering how the last one went.");
+			writeSpeech("player","","It's fine. As long as you're feeling better, I'm happy to have helped.");
+			writeText("She nods once, before leaning forward.");
+			writeText("maidF's lips press gently against your cheek.");
+			writeSpeech("maid","","You're a sweetheart, playerF.");
+			writeText("That's a Hell of a test of will, but...");
+			writeSpeech("player","","I've gotta head out.");
+			writeText("She pauses.");
+			writeSpeech("player","","Like I said, I can make time, but I do have some business to take care of. But how about next time, we get <i>comfortable?</i>");
+			writeSpeech("maid","","I'd like that. See you then?");
+			writeSpeech("player","","Of course.");
+			writeFunction("changeLocation(data.player.location)", "Go home");
 			break;
 		}
 		default: {
