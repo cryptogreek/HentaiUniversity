@@ -644,7 +644,6 @@ div.self, .inventory,.save {
   	border: 3px solid;
   	border-radius: 5px;
 	padding: 0px;
-	visibility: hidden;
 }
 
 .lb_Name{

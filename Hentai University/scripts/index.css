@@ -631,6 +631,7 @@ div.self, .inventory,.save {
   	border: 3px solid;
   	border-radius: 5px;
 	padding: 0px;
+	visibility: hidden;
 }
 
 .lb_Name{
@@ -879,16 +880,42 @@ position: absolute;
 }
 
 .closeButton {
-	top:2.5%;
-	left: 320px;
+	top:15px;
+	left: 340px;
 	position: absolute;
 	font-size: 50px;
+  	border: 5px solid white;
+  	border-radius: 20px;
+	color:white;
+	
 }
 
 .openButton {
-	top:2.5%;
+	top:15px;
 	left: 20px;
 	position: absolute;
 	font-size: 50px;
 	visibility: hidden;
+  	border: 5px solid white;
+  	border-radius: 20px;
+	color:white;
+}
+
+.ghost {
+	position: absolute;
+	cursor: pointer;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

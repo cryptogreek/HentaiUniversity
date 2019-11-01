@@ -238,22 +238,19 @@ function startup() {
 	}
 }
 
-function preloadImages(){
+function preloadImages()
+{
 	console.log("preloading start");
-    var preloaded = new Image();
+    var preloaded=new Image();
 	for (i = 0; i < locationArray.length; i++) {
-		var bg = "images/locations/"+locationArray[i].index+"Morning.jpg";
-		document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
-		var bg = "images/locations/"+locationArray[i].index+"Evening.jpg";
-		document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
+		preloaded.src="images/locations/"+locationArray[i].index+"Morning.jpg";
+		preloaded.src="images/locations/"+locationArray[i].index+"Evening.jpg";
 	}
 	for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
-		var bg = "images/"+data.story[characterIndex].index+"/"+data.story[characterIndex].index+".jpg";
-		document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
+		preloaded.src="images/"+data.story[characterIndex].index+"/"+data.story[characterIndex].index+".jpg";
 	}
 	console.log("preloading finished");
 }
-
 function restartButton() {
 	var restart = confirm ("restart the game?");
 	if (restart == true) {

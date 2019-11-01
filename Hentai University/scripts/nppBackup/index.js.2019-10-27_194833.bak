@@ -248,8 +248,7 @@ function preloadImages(){
 		document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
 	}
 	for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
-		var bg = "images/"+data.story[characterIndex].index+"/"+data.story[characterIndex].index+".jpg";
-		document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
+		preloaded.src="images/"+data.story[characterIndex].index+"/"+data.story[characterIndex].index+".jpg";
 	}
 	console.log("preloading finished");
 }
