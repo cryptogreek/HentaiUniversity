@@ -60,7 +60,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("meji","","So, how's this supposed to go down? You ask a couple of questions, I answer, you tell "+fName('principal')+" everything's fine?");
 			writeSpeech("player","","...In a manner of speaking, yes. She didn't give very many details about you, so I'd like to know why you think she'd drop your name specifically.");
 			writeText("That was a blatant lie, of course. His file had more than a few incidents laid out in excruciating detail... but your methods require a certain level of trust when starting out.");
-			writeText("Well, that or having some seriously repressed de"+data.player.honorific+"es, but that can be a bit of a gamble. No need to put him on the defensive just yet...");
+			writeText("Well, that or having some seriously repressed desires, but that can be a bit of a gamble. No need to put him on the defensive just yet...");
 			writeText("He scoffs, leaning back a bit.");
 			writeSpeech("meji","","God, where the fuck do I <i>begin?</i> I swear, she has to have it out for me for something...");
 			writeText("Off to a good start, then.");
