@@ -587,10 +587,6 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("mejiF turns around for a moment, undoing the buttons on his shirt and his pants.");
 			writeText("When he turns back around, it's to show what he's been wearing underneath.");
 			if(galleryCheck("meji5")){
-				writeBig("images/meji/8-1.jpg");
-			}
-			else{
-				writeBig("images/meji/8-1.jpg");
 				writeSpeech("meji","","Do you like it? I've been wearing it under my uniform lately... including in your office back then.");
 				writeSpeech("player","","I'd say it looks nice, but I feel like you're not looking for a <i>verbal</i> reply.");
 				writeText("He smiles as he tosses his other clothes to the side.");
@@ -601,15 +597,18 @@ function writeEncounter(name) { //Plays the actual encounter.
 					writeText("You feel his mouth press down against the thin fabric, his hot breath and spit soaking into it as his tongue dances across the fabric.");
 					writeSpeech("meji","","Don't worry, I won't make you wait for the real deal...");
 					writeText("He slides your underwear down, your cock springing out as it does, smiling up at you and giving a wink.");
-					writeEvent("meji5");
 				}
 				else{
 					writeText("He leans his head down, lifting your skirt just enough to reveal your panties.");
 					writeText("You feel his mouth press down against the thin fabric, his hot breath and spit soaking into it as his tongue dances across the fabric.");
 					writeSpeech("meji","","Don't worry, I won't make you wait for the real deal...");
 					writeText("He slides your panties down, your cock springing out as it does, smiling up at you and giving a wink.");
-					writeEvent("meji5");
 				}
+				writeSpeech("meji","","So let's get right to it~!");
+				writeEvent("meji7");
+			}
+			else{
+				writeEvent("meji6");
 			}
 			break;
 		}
@@ -649,6 +648,7 @@ var eventArray = [ //Lists the events of the character for unlocking and replayi
 	{index: "meji4", name: "Finally Finishing"},
 	{index: "meji5", name: "Lingerie Blowjob"},
 	{index: "meji6", name: "Lingerie Blowjob Alternate"},
+	{index: "meji7", name: "Lingerie Fuck"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
@@ -1045,7 +1045,10 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("meji","","...Y-Yeah?");
 			writeSpeech("player","","You were <i>amazing</i>.");
 			writeText("The smugness immediately disappears, replaced by a face-wide blush as his eyes going to pretty much anywhere except for yours.");
-			writeSpeech("meji","","...Thanks.");
+			if((data.player.location != "gallery") && (checkFlag('meji','submissive') || checkFlag('meji','willful')))
+				writeSpeech("meji","","...Thanks. But you know, we're not stopping here~");
+			else
+				writeSpeech("meji","","...Thanks.");
 			break;
 		}
 		case "meji6" : {
@@ -1069,6 +1072,10 @@ function writeEvent(name) { //Plays the actual event.
 				writeText("He slides your panties down, your cock springing out as it does, smiling up at you and giving a wink.");
 				writeEvent("meji5");
 			}
+			break;
+		}
+		case "meji7" : {
+			
 			break;
 		}
 		default: {
