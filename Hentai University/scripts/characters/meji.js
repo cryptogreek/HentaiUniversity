@@ -587,6 +587,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("mejiF turns around for a moment, undoing the buttons on his shirt and his pants.");
 			writeText("When he turns back around, it's to show what he's been wearing underneath.");
 			if(galleryCheck("meji5")){
+				writeBig("images/meji/8-1.jpg");
 				writeSpeech("meji","","Do you like it? I've been wearing it under my uniform lately... including in your office back then.");
 				writeSpeech("player","","I'd say it looks nice, but I feel like you're not looking for a <i>verbal</i> reply.");
 				writeText("He smiles as he tosses his other clothes to the side.");
@@ -647,7 +648,7 @@ var eventArray = [ //Lists the events of the character for unlocking and replayi
 	{index: "meji3", name: "Backing Up Leotard"},
 	{index: "meji4", name: "Finally Finishing"},
 	{index: "meji5", name: "Lingerie Blowjob"},
-	{index: "meji6", name: "Lingerie Blowjob Alternate"},
+	{index: "meji6", name: "Lingerie Blowjob with Intro"},
 	{index: "meji7", name: "Lingerie Fuck"},
 ];
 
@@ -986,7 +987,7 @@ function writeEvent(name) { //Plays the actual event.
 			break;
 		}
 		case "meji5" : {
-			if (data.player.location != 'gallery' && (checkTrust('meji') == 26 || checkTrust('meji') == 46)) {
+			if (data.player.location != 'gallery' && (checkTrust('meji') == 26 || checkTrust('meji') == 46) && (checkFlag('meji','submissive') == false || checkFlag('meji','willful') == false)) {
 				writeText("mejiF grins as he raises his free hand to his shirt.");
 				writeSpeech("meji","","I was hoping I'd get to show you this soon. See, I recently saved up just enough cash to pick up something I think we'll <i>both</i> enjoy...");
 				writeText("He slides down between your legs, pulling off his clothes with practiced ease as you do the same.");
@@ -1072,6 +1073,7 @@ function writeEvent(name) { //Plays the actual event.
 				writeText("He slides your panties down, your cock springing out as it does, smiling up at you and giving a wink.");
 				writeEvent("meji5");
 			}
+			writeFunction("writeEvent('meji7')", "Get ready to fuck");
 			break;
 		}
 		case "meji7" : {
