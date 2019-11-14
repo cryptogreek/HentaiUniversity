@@ -645,7 +645,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			if(galleryCheck("meji8") == false)
 				writeFunction("writeEvent('meji8')", "Go out to town with him while he cross-dresses");
 			if(galleryCheck("meji9") == false)
-				writeFunction("writeEvent('meji8')", "Have him meet you in the gym with women's workout shorts on");
+				writeFunction("writeEvent('meji9')", "Have him meet you in the gym with women's workout shorts on");
 			writeFunction("changeLocation(data.player.location)", "Maybe later");
 			break;
 		}
