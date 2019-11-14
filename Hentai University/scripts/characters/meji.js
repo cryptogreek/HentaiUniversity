@@ -671,9 +671,11 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "meji8" : {
-			if(checkTrust('meji') == 60){
-
-			}
+			//Go for a walk with him. Tease him a bit, call him puppy and see how long he can hold back.
+			break;
+		}
+		case "meji9" : {
+			//Go to the gym and drill him from behind. Nipple-teasing happens, he blows his load, simple stuff.
 			break;
 		}
 		default: {
