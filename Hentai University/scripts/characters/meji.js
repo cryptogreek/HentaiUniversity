@@ -643,7 +643,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("meji","","Well, unless there was something else you wanted to talk about?");
 			}
 			if(galleryCheck("meji8") == false)
-				writeFunction("writeEvent('meji8')", "Go out to town with him while he cross-dresses");
+				writeFunction("writeEncounter('meji8')", "Go for a walk in town while he cross-dresses");
 			if(galleryCheck("meji9") == false)
 				writeFunction("writeEvent('meji9')", "Have him meet you in the gym with women's workout shorts on");
 			writeFunction("changeLocation(data.player.location)", "Maybe later");
@@ -662,10 +662,10 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("meji","","Did you want to talk to me about something?");
 			}
 			if(galleryCheck("meji8") == false)
-				writeFunction("writeEncounter('meji8')", "Go out with him while he cross-dresses");
+				writeFunction("writeEncounter('meji8')", "Go for a walk in town while he cross-dresses");
 			if(galleryCheck("meji9") == false)
-				writeFunction("writeEncounter('meji9')", "Have him meet you in the gym with bloomers on");
-			if(galleryCheck("meji7") && galleryCheck("meji8"))
+				writeFunction("writeEvent('meji9')", "Have him meet you in the gym with women's workout shorts on");
+			if(galleryCheck("meji8") && galleryCheck("meji9"))
 				writeSpecial("That's all the content currently available for for mejiF. More to come, though!");
 			writeFunction("changeLocation(data.player.location)", "Maybe later");
 			break;
@@ -691,6 +691,8 @@ var eventArray = [ //Lists the events of the character for unlocking and replayi
 	{index: "meji5", name: "Lingerie Blowjob"},
 	{index: "meji6", name: "Lingerie Blowjob with Intro"},
 	{index: "meji7", name: "Lingerie Fuck"},
+	{index: "meji8", name: "Public Walk and Fuck"},
+	{index: "meji9", name: "Lingerie Fuck"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
