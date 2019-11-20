@@ -32,7 +32,7 @@ var data = {
 		counseling: 0,
 		lastText: 100,
 		dayID: 1,
-		version: 4,
+		version: 5,
 		location: "",
 		pervert: false,
 	},
@@ -47,9 +47,11 @@ var data = {
 		{index: "meji", met: false, fName: "Reese", lName: "Kieran", trust: 0, encountered: false, textEvent: "", color: "#7e52a3"},
 		{index: "principal", met: false, fName: "Victoria", lName: "Devons", trust: 0, encountered: false, textEvent: "", color: "#e47311"},
 		{index: "secretary", met: false, fName: "Lisa", lName: "Jones", trust: 0, encountered: false, textEvent: "", color: "#888888"},
-		{index: "neet", met: false, fName: "Tia", lName: "Sun", trust: 0, encountered: false, textEvent: "", textColor: "#da924b"},
+		{index: "neet", met: false, fName: "Tia", lName: "Sun", trust: 0, encountered: false, textEvent: "", color: "#da924b"},
 		{index: "scarf", met: false, fName: "Casandra", lName: "Hamilton", trust: 0, encountered: false, textEvent: "", color: "#954655"},
 		{index: "green", met: false, fName: "Emma", lName: "Hamilton", trust: 0, encountered: false, textEvent: "", color: "#677b4c"},
+		{index: "succubus", fName: "Gou", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#BF76DF"},
+		{index: "nurse", fName: "Justine", lName: "Walton", trust: 0, encountered: false, textEvent: "", met: false, color: "#8D756B"},
 	],
 	gallery: [
 	],
@@ -440,21 +442,87 @@ function lName(name) {
 
 function replaceCodenames(text) {
 	var codenameCheck = "";
-	text = text.replace('playerF', data.player.name);
-	text = text.replace('playerGender', data.player.gender);
-	text = text.replace('playerG', data.player.gender);
-	text = text.replace('playerMan', data.player.gender);
-	text = text.replace('playerTitle', data.player.title);
-	text = text.replace('playerT', data.player.title);
-	text = text.replace('playerMister', data.player.title);
-	text = text.replace('playerHonorific', data.player.honorific);
-	text = text.replace('playerH', data.player.honorific);
-	text = text.replace('playerSir', data.player.honorific);
-	for (codenameIndex = 0; codenameIndex < data.story.length; codenameIndex++) {
-		codenameCheck = data.story[codenameIndex].index + "F";
-		text = text.replace(codenameCheck, data.story[codenameIndex].fName);
-		codenameCheck = data.story[codenameIndex].index + "L";
-		text = text.replace(codenameCheck, data.story[codenameIndex].lName);
+	for (geminiLoop = 0; geminiLoop < 5; geminiLoop++) {
+		text = text.replace('playerF', data.player.name);
+		text = text.replace('playerGender', data.player.gender);
+		text = text.replace('playerG', data.player.gender);
+		text = text.replace('playerMan', data.player.gender);
+		text = text.replace('playerTitle', data.player.title);
+		text = text.replace('playerT', data.player.title);
+		text = text.replace('playerMister', data.player.title);
+		text = text.replace('playerHonorific', data.player.honorific);
+		text = text.replace('playerH', data.player.honorific);
+		text = text.replace('playerSir', data.player.honorific);
+		for (codenameIndex = 0; codenameIndex < data.story.length; codenameIndex++) {
+			codenameCheck = data.story[codenameIndex].index + "F";
+			text = text.replace(codenameCheck, data.story[codenameIndex].fName);
+			codenameCheck = data.story[codenameIndex].index + "L";
+			text = text.replace(codenameCheck, data.story[codenameIndex].lName);
+		}
+	}
+	if (data.player.uwu == true) {
+		for (uwuLoop = 0; uwuLoop < 30; uwuLoop++) {
+			text = text.replace('<br>', "TESTTHING");
+			text = text.replace('th', "d");
+			text = text.replace('Th', "D");
+			text = text.replace('what', "wat");
+			text = text.replace('What', "Wat");
+			text = text.replace('l', "w");
+			text = text.replace('r', "w");
+			text = text.replace('L', "W");
+			text = text.replace('R', "W");
+			text = text.replace('TESTTHING', "<br>");
+		}
+		switch (getRandomInt(15)) {
+			case 0:
+				text = text + " ♥w♥";
+			break;
+			case 1:
+				text = text + " (˘ω˘)";
+			break;
+			case 2:
+				text = text + " (U ᵕ U❁)";
+			break;
+			case 3:
+				text = text + " ( ˊ.ᴗˋ )";
+			break;
+			case 4:
+				text = text + " ( ͡o ꒳ ͡o )";
+			break;
+			case 5:
+				text = text + " ( ´ω` )۶";
+			break;
+			case 6:
+				text = text + " OwO";
+			break;
+			case 7:
+				text = text + " (*ฅ́˘ฅ̀*)";
+			break;
+			case 8:
+				text = text + " ( ͡o ᵕ ͡o )";
+			break;
+			case 9:
+				text = text + " ✧･ﾟ: *✧･ﾟ♡*(ᵘʷᵘ)*♡･ﾟ✧*:･ﾟ✧";
+			break;
+			case 10:
+				text = text + " ★⌒ヽ(˘꒳˘ *)";
+			break;
+			case 11:
+				text = text + " (◕ ˬ ◕✿)";
+			break;
+			case 12:
+				text = text + " (◕∇◕✿)";
+			break;
+			case 13:
+				text = text + " (ꈍ ᴗ ꈍ✿)";
+			break;
+			case 14:
+				text = text + " (◕‸ ◕✿) *pout*";
+			break;
+			case 15:
+				text = text + " (≖ ︿ ≖ ✿)";
+			break;
+		}
 	}
 	return text;
 }
@@ -554,33 +622,19 @@ function checkForEncounters() {
 	}
 }
 
-function printEncounterButton(character, scene, text, top, left) {
-	if (imagesDisabled == false) {
-		document.getElementsByClassName('playerRoom')[0].innerHTML += `
-			<div class="pictureButton" onclick='loadEncounter("`+character+`", "`+scene+`")'
-			style="top: `+top+`%; left: `+left+`%; max-width: 30%;">`+text+`</div>
-		`;
-	}
-	else {
-		console.log('loading button for encounter '+scene+' with character '+character);
-		writeFunction("loadEncounter("+character+", "+scene+")", text);
-	}
+function printEncounterButton(character, scene, text, top, left, altName, altImage) {
+	document.getElementsByClassName('playerRoom')[0].innerHTML += `
+		<div class="pictureButton" onclick='loadEncounter("`+character+`", "`+scene+`")'
+		style="top: `+top+`%; left: `+left+`%; max-width: 30%;">`+text+`</div>
+	`;
 }
 
-function printEncounterTab(name, scene, text) {
+function printEncounterTab(name, scene, text, altImage, altName) {
 	if (character != "system") {
 		var tabTrust;
 		var cancelTab = false;
 		var cssName = name;
 		var img = "images/"+name+"/"+name+".jpg";
-		if (data.player.pervert != true) {
-			var checkForError = "";
-			img = "images/"+name+"/"+name+".jpg";
-		}
-		else {
-			var checkForError = `onerror ="javascript:this.src='images/`+name+`/`+name+`.jpg'"`;
-			img = "images/"+name+"/"+name+"P.jpg";
-		}
 		for (z = 0; z < data.story.length; z++) {
 			if (data.story[z].index == name) {
 				tabIndex = z;
@@ -623,6 +677,39 @@ function printEncounterTab(name, scene, text) {
 				break;
 			}
 		}
+		if (data.player.pervert != true) {
+			var checkForError = "";
+			img = "images/"+cssName+"/"+cssName+".jpg";
+		}
+		else {
+			var checkForError = `onerror ="javascript:this.src='images/`+cssName+`/`+cssName+`.jpg'"`;
+			img = "images/"+cssName+"/"+cssName+"P.jpg";
+		}
+		if (altImage == undefined) {
+			altImage = "";
+		}
+		if (altName == undefined) {
+			altName = "";
+		}
+		if (altImage != "") {
+			if (altImage.includes("images") == true) {
+				img = altImage;
+			}
+			else {
+				if (data.player.pervert != true) {
+					var checkForError = "";
+					img = "images/"+cssName+"/"+altImage;
+				}
+				else {
+					var checkForError = `onerror ="javascript:this.src='images/`+cssName+`/`+altImage+`'"`;
+					img = img.replace(".jpg", "");
+					img = "images/"+cssName+"/"+altImage+"P.jpg";
+				}
+			}
+		}
+		if (altName != "") {
+			name = altName;
+		}
 		//console.log(tabIndex);
 		console.log(cssColor);
 		if (cancelTab != true) {
@@ -633,7 +720,7 @@ function printEncounterTab(name, scene, text) {
 				<div class="textBoxContent">
 				<p class = "textName" style="color:`+cssColor+`">` + name + `</p>
 				<p class="status"> Status: ` + tabTrust + `</p>
-				<p class="switch" onclick="loadEncounter('`+data.story[tabIndex].index+`', '`+scene+`')">` + text + `</p>
+				<p class="switch" onclick="loadEncounter('`+data.story[tabIndex].index+`', '`+scene+`')">` + replaceCodenames(text) + `</p>
 			</div>	</div>
 			<br>
 			`;
@@ -657,7 +744,7 @@ function writeSpeech (name, img, text) {
 	var cssName = name;
 	var fullName = name;
 	var cssColor = "#CCCCCC";
-	if (img == "") {
+	if (img == "" && img != 'none') {
 		if (data.player.pervert != true) {
 			var checkForError = "";
 			img = "images/"+name+"/"+name+".jpg";
@@ -667,8 +754,18 @@ function writeSpeech (name, img, text) {
 			img = "images/"+name+"/"+name+"P.jpg";
 		}
 	}
-	if (img == "none") {
-		img = "scripts/gamefiles/none.png";
+	else {
+		if (img.includes("images") != true && img != 'none') {
+			if (data.player.pervert != true) {
+				var checkForError = "";
+				img = "images/"+cssName+"/"+img;
+			}
+			else {
+				var checkForError = `onerror ="javascript:this.src='images/`+name+`/`+img+`'"`;
+				img = img.replace(".jpg", "");
+				img = "images/"+cssName+"/"+img+"P.jpg";
+			}
+		}
 	}
 	if (name == "player") {
 		img = "scripts/gamefiles/profiles/" + data.player.character + ".jpg";
@@ -679,7 +776,12 @@ function writeSpeech (name, img, text) {
 		if (data.story[i].index == name) {
 			fullName = data.story[i].fName + ' ' + data.story[i].lName;
 			cssColor = data.story[i].color;
+			
 		}
+	}
+	if (img == "none") {
+		var checkForError = "";
+		img = "scripts/gamefiles/none.png";
 	}
 	document.getElementById('output').innerHTML +=`
 	<div class="textBox" style="border-color: `+cssColor+`">
@@ -727,7 +829,7 @@ function writeMed (img, cap) {
 function writeFunction (name, func) {
 	document.getElementById('output').innerHTML += `
 		<p class="choiceText" onclick="` + name + `">
-			` + func + `
+			` + replaceCodenames(func) + `
 		</p>
 	`;
 }
@@ -912,6 +1014,12 @@ function openButton() {
 //Menu
 function updateMenu() {
 	document.getElementById('playerName').innerHTML = data.player.name;
+	if (data.player.pervert != true) {
+		document.getElementById('playerName').style.color = "#86b4dc";
+	}
+	else {
+		document.getElementById('playerName').style.color = "#fc53f1";
+	}
 	document.getElementById('playerMoney').innerHTML = "$" + data.player.money;
 	document.getElementById('day').innerHTML = "Day " + data.player.day + " - " + data.player.time;
 	document.getElementById('playerImage').src = "scripts/gamefiles/characters/"+data.player.character+".jpg";
@@ -988,7 +1096,7 @@ function updateSave() {
 		data.player.honorific = "sir";
 	}
 	if (data.player.version == 3) {
-		console.log('version 2.5 detected, updating save');
+		console.log('version 3 detected, updating save');
 		data.player.version = 4;
 		alert('older save version detected! Moving you to back to your house. Feel free to restart if needed.');
 		data.player.location = 'playerHouse';
@@ -1005,6 +1113,15 @@ function updateSave() {
 		data.story[10].color = "#da924b";
 		data.story[11].color = "#954655";
 		data.story[12].color = "#677b4c";
+	}
+	if (data.player.version == 4) {
+		console.log('version 4 detected, updating save');
+		data.player.version = 5;
+		var goof = {index: "succubus", fName: "Gou", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#BF76DF", author: "NoodleJacuzzi", artist: "Gujira"};
+		data.story.push(goof);
+		goof = {index: "nurse", fName: "Justine", lName: "Walton", trust: 0, encountered: false, textEvent: "", met: false, color: "#8D756B", author: "NoodleJacuzzi", artist: "Oreteki18kin"};
+		data.story.push(goof);
+		console.log(data.story);
 	}
 	saveSlot(110);
 }
@@ -1123,8 +1240,10 @@ function galleryCheck(n) {
 	for (i = 0; i < data.gallery.length; i++) {
 		if (data.gallery[i].index.includes(n)) {
 			return true;
+			break;
 		}
 	}
+	return false;
 }
 
 //Logbook
@@ -1225,7 +1344,6 @@ function switchDesc(n) {
 		<div class=" lb_primary">
 			<h2 class = "selfDesc" style = "color: `+data.story[characterCounter].color+`">`+data.story[characterCounter].fName+` `+data.story[characterCounter].lName+`</h2>
 			<p class = "selfDesc lb_trust ">Trust: <span class="`+tabTrust+`">`+tabTrust+`</p></span>
-			<p class = "selfDesc lb_scenes">Scenes Unlocked: `+scenesUnlocked+`/`+scenesTotal+`</p>
 		</div><div class=" lb_secondary">
 			<p class = "selfDesc lb_desc">`+logbookArray[logCounter].desc+`</p>
 			<p class = "selfDesc lb_body">`+logbookArray[logCounter].body+`</p>
@@ -1462,8 +1580,16 @@ function diagnostic() {
 			break;
 		}
 		case "pervert": {
-			data.player.pervert = true;
-			writeSpecial("Pervert mode activated!");
+			if (data.player.pervert != true) {
+				data.player.pervert = true;
+				writeSpecial("Pervert mode activated!");
+				updateMenu();
+			}
+			else {
+				data.player.pervert = false;
+				writeSpecial("Pervert mode deactivated!");
+				updateMenu();
+			}
 			break;
 		}
 		case "prude": {
@@ -1474,6 +1600,7 @@ function diagnostic() {
 		case "vegetarian": {
 			setTrust('tomgirl', -1);
 			setTrust('meji', -1);
+			setTrust('succubus', -1);
 			writeSpecial("Trap / male characters have been deactivated. You might need to use this code again in the future when more traps are added.");
 			break;
 		}
@@ -1493,6 +1620,17 @@ function diagnostic() {
 		}
 		case "new name": {
 			loadEncounter('system', 'renamingRoom');
+			break;
+		}
+		case "oowoo": {
+			if (data.player.uwu != true) {
+				data.player.uwu = true;
+				writeSpecial("What's this? UwU cheat activated.");
+			}
+			else {
+				data.player.uwu = false;
+				writeSpecial("Oowoo cheat has been deactivated.");
+			}
 			break;
 		}
 		case "spookwave": {
@@ -1721,6 +1859,15 @@ function checkPhoneImages(n) {
 function deleteImage(n) {
 	data.phoneImages.splice(n, 1);
 	phoneImages();
+}
+
+function clearText(n) {
+	for (textIndex = 0; textIndex < data.story.length; textIndex++) {
+		if (data.story[textIndex].index == n) {
+			console.log('deleting text log of '+n);
+			data.story[textIndex].textEvent = "";
+		}
+	}
 }
 
 // Ghost AR game

@@ -7,7 +7,7 @@ var logbook = { //Logbook details for each character.
 	clothes: "Her preferred outfit is a riff on the school uniform, with a microskirt so short she's gotten chewed out at school more than once.",
 	home: "She mostly hangs out on the roof before and after classes.",
 	tags: "Prostitution, Phone Sex, Cum on Clothes",
-	artist: "Artist: Nagi Ichi",
+	artist: "Artist: Enoshima Iki",
 	author: "Captain Cryptogreek",
 };
 
@@ -787,6 +787,9 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("That's for another day, though. For now, a shower and back to work...");
 			if(data.player.location != "gallery"){
 				data.player.location = "vintageStreet";
+				writeFunction("changeLocation(data.player.location)", "Finish");
+			}
+			if(data.player.location == 'gallery'){
 				writeFunction("changeLocation(data.player.location)", "Finish");
 			}
 			break;
