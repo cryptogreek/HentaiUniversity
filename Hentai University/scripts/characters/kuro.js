@@ -156,7 +156,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			}
 		}
 		case "kuro4" : {//another roof-meeting
-			if(checkTrust('kuro') < 60){
+			if(checkTrust('kuro') <= 61){
 				if((checkTrust('kuro') == 24 || checkTrust('kuro') == 25) && (galleryCheck('kuroMoney2') == true)){
 					writeText("Seeing you approach, kuroF smiles up at you, but quickly returns to typing on her phone.");
 					writeSpeech("player","","You look... busy?");
@@ -209,7 +209,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro4a" : {
-			if(checkTrust('kuro')<40){
+			if(checkTrust('kuro')<=61){
 				writeText("She pauses to think for a moment, but ultimately shakes her head.");
 				writeSpeech("kuro","","Ah. No offense, but that sort of thing is... y'know? I'd need to get to know you better as a client before we can do stuff like that. Sorry, hun.");
 				if(data.player.money >= 100)
@@ -221,7 +221,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 
 				break;
 			}
-			else if(checkTrust('kuro')<60){
+			else if(checkTrust('kuro')>61){
 				writeSpeech("kuro","","Mm... I could use a good fuck, and you've been a <i>very</i> good client. Meet me at my place.");
 				writeText("She leans in towards you, standing on her toes to whisper in your ear,");
 				writeSpeech("kuro","","<i>I'll bring the condoms.</i>");
