@@ -1,4 +1,4 @@
-var character = {index: "kuro", met: false, fName: "Steph", lName: "Black", trust: 0, encountered: false, textEvent: "", textColor: "#fde1a5",};
+var character = {index: "kuro", met: false, fName: "Steph", lName: "Black", trust: 0, encountered: false, textEvent: "", color: "#fde1a5", author: "CryptoGreek", artist: "Enoshima Iki"};
 
 var logbook = { //Logbook details for each character.
 	index: "kuro", 
@@ -156,7 +156,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			}
 		}
 		case "kuro4" : {//another roof-meeting
-			if(checkTrust('kuro') <= 61){
+			if(checkTrust('kuro')<=61){
 				if((checkTrust('kuro') == 24 || checkTrust('kuro') == 25) && (galleryCheck('kuroMoney2') == true)){
 					writeText("Seeing you approach, kuroF smiles up at you, but quickly returns to typing on her phone.");
 					writeSpeech("player","","You look... busy?");
@@ -789,7 +789,7 @@ function writeEvent(name) { //Plays the actual event.
 				data.player.location = "vintageStreet";
 				writeFunction("changeLocation(data.player.location)", "Finish");
 			}
-			if(data.player.location == 'gallery'){
+			if(data.player.location == "gallery"){
 				writeFunction("changeLocation(data.player.location)", "Finish");
 			}
 			break;
