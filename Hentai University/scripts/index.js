@@ -52,6 +52,7 @@ var data = {
 		{index: "green", met: false, fName: "Emma", lName: "Hamilton", trust: 0, encountered: false, textEvent: "", color: "#677b4c"},
 		{index: "succubus", fName: "Gou", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#BF76DF"},
 		{index: "nurse", fName: "Justine", lName: "Walton", trust: 0, encountered: false, textEvent: "", met: false, color: "#8D756B"},
+		{index: "housekeep", fName: "Anri", lName: "Ramona", trust: 0, encountered: false, textEvent: "", met: false, color: "#df5877"},
 	],
 	gallery: [
 	],
@@ -786,6 +787,10 @@ function writeSpeech (name, img, text) {
 		var checkForError = "";
 		img = "scripts/gamefiles/none.png";
 	}
+	if (text.includes("HIDDEN") == true) {
+        fullName = "???";
+        text = text.replace("HIDDEN", "");
+    }
 	document.getElementById('output').innerHTML +=`
 	<div class="textBox" style="border-color: `+cssColor+`">
 		<img class = "textThumb" style="box-shadow: -5px 5px `+cssColor+`" src = "

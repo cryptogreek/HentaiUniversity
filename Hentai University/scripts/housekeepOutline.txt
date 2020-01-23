@@ -1,0 +1,48 @@
+Scene 1: Flier (housekeep0)
+	Gain Flier
+	End
+
+Scene 2: Meeting (housekeep1)
+	Scene 2-1: Tell me about yourself (housekeep1-1) [Asked]
+
+		Scene 2-2: A maid's job is to clean (housekeepClean) [Clean1]
+
+			Scene 2-3: Request Sexual Cleaning (housekeep1-2) [Blowjob]
+				Event 1: Blowjob (housekeep1)
+
+			Scene 2-4: Send him out (housekeepCleanBlueballs) [Blueballs]
+
+		Scene 2-3: Request Sexual Cleaning (housekeep1-2) [Blowjob]
+			Event 1: Blowjob (housekeep1)
+
+	Scene 2-2: A maid's job is to clean (housekeepClean) [Clean1]
+		Scene 2-3: Request Sexual Cleaning (housekeep1-2) [Blowjob]
+			Event 1: Blowjob (housekeep1)
+
+	Scene 2-3: Request Sexual Cleaning (housekeep1-2) [Blowjob]
+		Event 1: Blowjob (housekeep1)
+
+	End
+
+Scene 3: Return (housekeep2)
+	Scene 2-2: A maid's job is to clean (housekeepClean) [Clean1]
+	OR
+	Scene 3-1: Clean for me again [Clean2]
+
+	Scene 3-2: Cook for me (housekeepCook) [Cook]
+
+	Scene 3-3: Service me (housekeepSexMenu)
+
+	Scene 2-1: Tell me about yourself (housekeep1-1) [Asked]
+	OR
+	Scene 3-4: Stay a while and chat (housekeepChat)
+
+(housekeepSexMenu)
+	Scene S-1: Bend him over in front of the sink (housekeepSink) [Sink]
+	Scene S-2: Bend him over in the kitchen again (housekeepSink) <Sink>
+	Scene S-3: Fuck him in the bathroom (housekeepBath) [Bath1] <Clean2>
+	Scene S-4: Fuck him in the bathroom again (housekeepBath) <Bath1>
+	Scene S-5: Have him put on the bikini and bathe with you (housekeepBikini) [Bath2] <Bath1> <Skimpy Bikini>
+	Scene S-6: Have him put on the bikini and fuck in the bath again (housekeepBikini) <Bath2>
+	Scene S-7: Give him a blowjob (housekeepBlowjob) [BlowHim]
+	Scene S-8: Blow him again (housekeepBlowjob) <BlowHim>
