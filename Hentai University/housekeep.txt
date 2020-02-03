@@ -1,0 +1,46 @@
+Housekeep1:
+	Leads to Asked, Clean1, and Blowjob.
+
+Housekeep2:
+	Leads to Asked/Asked2, Clean1/Clean2, and Blowjob/SexMenu.
+
+Housekeep1 [COMPLETE] (0)
+Housekeep2 [COMPLETE] (40)
+HousekeepClean1 {Clean1} [COMPLETE]
+HousekeepClean2 {Clean2} [COMPLETE]
+Housekeep1-1 {Asked} [COMPLETE]
+HousekeepChat1 [COMPLETE]
+HousekeepBlueballs {Blueballs}
+HousekeepBlueballs2
+HousekeepSexMenu
+	HousekeepSink {Sink}
+	HousekseepSink2
+	HousekeepBath {Bath}
+	HousekeepBath2
+	HousekeepBikini {Bath2}
+	HousekeepBikini2
+	HousekeepBlowjob {Blowhim}
+	HousekeepBlowjob2
+
+Before the first sex scene, the player should be at 40 Trust.
+After the 1st sex scene, the player should be at 41 Trust. (blowjob)
+After the 2nd sex scene, the player should be at 42 Trust. (sink)
+After the 3rd sex scene, the player should be at 43 Trust. (bathroom)
+After the 4th sex scene, the player should be at 44 Trust. (bikini)
+After the 5th sex scene, the player should be at 45 Trust. (blowhim)
+After the 6th sex scene, the player should be at 46 Trust. (frotting)
+After the 7th sex scene, the player should be at 47 Trust. (onahole)
+After the 8th sex scene, the player should be at 48 Trust. (bunny)
+After the 9th sex scene, the player should be at 49 Trust. (fuck)
+
+In order to blow him, you have to reach a certain level of Trust.
+Preferred order: Blowjob, sink, bathroom, blowhim, bikini, frotting, onahole, fuck, bunny
+[blowjob] [COMPLETE]
+[sink]
+[bathroom]
+[blowhim]
+[bikini]
+[frotting]
+[onahole]
+[fuck]
+[bunny]
