@@ -1,4 +1,4 @@
-var character = {index: "kuro", met: false, fName: "Steph", lName: "Black", trust: 0, encountered: false, textEvent: "", color: "#fde1a5", author: "CryptoGreek", artist: "Enoshima Iki"};
+var character = {index: "kuro", met: false, fName: "Steph", lName: "Black", trust: 0, encountered: false, textEvent: "", color: "#fde1a5",};
 
 var logbook = { //Logbook details for each character.
 	index: "kuro", 
@@ -156,7 +156,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			}
 		}
 		case "kuro4" : {//another roof-meeting
-			if(checkTrust('kuro')<=61){
+			if(checkTrust('kuro') < 60){
 				if((checkTrust('kuro') == 24 || checkTrust('kuro') == 25) && (galleryCheck('kuroMoney2') == true)){
 					writeText("Seeing you approach, kuroF smiles up at you, but quickly returns to typing on her phone.");
 					writeSpeech("player","","You look... busy?");
@@ -198,7 +198,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			else{
 				//if she's been hypno'd, basically
 				writeText("As you approach her, "+fName('kuro')+"'s flushes as she stands a bit straighter, her thighs rubbing against each other.");
-				writeSpeech("kuro","","Heya Master~! Ooh, don't tell me, you're here for another night of fun with your favorite cocksock, right?");
+				writeSpeech("kuro","","Heya *Master~! Ooh, don't tell me, you're here for another night of fun with your favorite cocksock, right?");
 				writeFunction("loadEncounter('kuro', 'kuro4a')", "Have sex");
 				writeFunction("writeEvent('kuro6')", "69 each other");
 				//more scenes may be implemented later
@@ -209,7 +209,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro4a" : {
-			if(checkTrust('kuro')<=61){
+			if(checkTrust('kuro')<40){
 				writeText("She pauses to think for a moment, but ultimately shakes her head.");
 				writeSpeech("kuro","","Ah. No offense, but that sort of thing is... y'know? I'd need to get to know you better as a client before we can do stuff like that. Sorry, hun.");
 				if(data.player.money >= 100)
@@ -221,7 +221,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 
 				break;
 			}
-			else if(checkTrust('kuro')>61){
+			else if(checkTrust('kuro')<60){
 				writeSpeech("kuro","","Mm... I could use a good fuck, and you've been a <i>very</i> good client. Meet me at my place.");
 				writeText("She leans in towards you, standing on her toes to whisper in your ear,");
 				writeSpeech("kuro","","<i>I'll bring the condoms.</i>");
@@ -232,7 +232,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			else{
 				//EDIT ME TO ACCOUNT FOR THE EXISTENCE OF MULTIPLE POST-HYPNO SEX SCENES BASED ON PREVIOUS SELECTIONS
 				writeText("She laughs, her finger toying a strand of hair.");
-				writeSpeech("kuro","","Only if you promise to do it raw, Master~!");
+				writeSpeech("kuro","","Only if you promise to do it raw, *Master~!");
 				writeText("She bounces onto the balls of her feet, giving you a quick peck on the cheek before leaving the roof.");
 				writeFunction("loadEncounter('kuro', 'kuro5a')", "Finish your business for the day and head to her place");
 				break;
@@ -787,9 +787,6 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("That's for another day, though. For now, a shower and back to work...");
 			if(data.player.location != "gallery"){
 				data.player.location = "vintageStreet";
-				writeFunction("changeLocation(data.player.location)", "Finish");
-			}
-			if(data.player.location == "gallery"){
 				writeFunction("changeLocation(data.player.location)", "Finish");
 			}
 			break;
