@@ -1,4 +1,4 @@
-var character = {index: "housekeep", fName: "Anri", lName: "Ramona", trust: 0, encountered: false, textEvent: "", met: true, color: "#df5877", author: "CryptoGreek", artist: "Kinta"};
+var character = {index: "housekeep", fName: "Anri", lName: "Ramona", trust: 0, encountered: false, textEvent: "", met: true, color: "#df5877", author: "CryptoGreek", artist: "Kinta no Mousou"};
 
 var logbook = {
 	index: "housekeep", 
@@ -7,7 +7,7 @@ var logbook = {
 	clothes: "He wears a fetish-maid outfit clearly designed to entice others with his short skirt, bare shoulders, and almost-exposed chest.",
 	home: "The flier claims that he comes from 'The Maid Dimension', where perfect maids are born, and that he'll come to the house of whoever calls for his services.",
 	tags: "Maids, Crossdressing",
-	artist: "Kinta no Mousou",
+	artist: "Artist: Kinta no Mousou",
 	author: "CryptoGreek",
 };
 

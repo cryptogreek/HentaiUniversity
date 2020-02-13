@@ -1,0 +1,86 @@
+After talking with maid about the threesome, maid's Trust will be at 25.
+If the player has either never met or has made a sex tape with mistress, the flag 'first' will NOT be added to maid.
+In mistress, Trust = 55 scene, the flag 'first' is added to maid.
+If you've met Anna exactly once, mistress's Trust will be at 40, and the flag 'mistress40' will be added to maid.
+If you've had sex with Anna but didn't make a sex tape, mistress's Trust will be at 45.
+If you have never met Anna, mistress's Trust will be at 55.
+
+25TrustEncounter:
+	A: Take her to her place anyway
+	B: Tell her you'll speak to Anna, then leave
+
+		AA: After fucking her, do anal.
+		AB: After fucking her, have her clean your cock with her mouth.
+
+		ReturnAA: Fuck in the maid outfit.
+		ReturnAB: Repeat the previous scene with minor variations.
+
+
+		Events maid2 and maid2A will direct to Encounters maidEvent2A and maidEvent2B (anal/cock cleaning).
+		maid3 and maid3A will not direct anywhere, and will each be self-contained.
+
+			
+
+maidTrust==25 Encounter{
+	if(checkTrust('mistress',55)){
+		//She will tell you that she wants you to meet Anna, but you can also fuck her if you want.
+		//She would rather wait, but she's easily talked into going home with you.
+		//If you fuck her, it will:
+		if(checkFlag('maid','fuck55')){
+			if(checkFlag('maid','hypnoTalk')){
+				//She asks for the pendant, relaxes a bit, and goes to change out of her uniform.
+				//You can stop her and tell her you want to fuck her in-uniform, and she stops for a moment before shrugging and going with it.
+				//However, she says that it has to be missionary - other positions would result in some serious staining.
+				//The player comments on how it's a little weird how specific she can be with her hypnosis, but shrugs it off as everyone taking to it differently.
+				//writeEvent('maid2-3');
+				//When you fuck in the maid outfit, you say that, while it isn't the threesome she's looking for, she might have fun with this...
+				//You hypnotize her into feeling your cock in her mouth and throat just like in her pussy, every thrust feeling like its filling both her holes.
+				//She tries to tell you it's too much, but you remind her that it's a maid's duty to serve, and she has a shuddering orgasm around you.
+				//This is because, as it turns out, Anna managed to accidentally create a hypnotic trigger where being told to serve is a huge turn-on for Lena.
+				//She's left in empty-headed bliss while you thrust into her spasming cunt, her shaking milking you to completion.
+				//Despite not actually blowing you, she can still taste your cum thanks to the hypnosis.
+
+				//If you don't stop her, you basically retread the same ground, redoing the hypnoTalk scene below but with minor differences.
+				//writeEvent('maid2-1-1');
+			}
+			else{
+				//She asks for the pendant, relaxes a bit, and goes to change out of her uniform.
+				//You can stop her and tell her you want to fuck her in-uniform, and she stops for a moment before agreeing.
+				//However, she says that it has to be missionary - other positions would result in some serious staining.
+				//The player comments on how it's a little weird how specific she can be with her hypnosis, but shrugs it off as everyone taking to it differently.
+				//writeEvent('maid2-4');
+				//When you fuck in the maid outfit, you say that, while it isn't the threesome she's looking for, she might have fun with this...
+				//You hypnotize her into feeling your cock in her mouth and throat just like in her pussy, every thrust feeling like its filling both her holes.
+				//She tries to tell you it's too much, but you remind her that it's a maid's duty to serve, and she has a shuddering orgasm around you.
+				//This is because, as it turns out, Anna managed to accidentally create a hypnotic trigger where being told to serve is a huge turn-on for Lena.
+				//She's left in empty-headed bliss while you thrust into her spasming cunt, her shaking milking you to completion.
+				//Despite not actually blowing you, she can still taste your cum thanks to the hypnosis.
+
+				//If you don't stop her, you basically retread the same ground, redoing the regular scene below but with minor differences.
+				//writeEvent('maid2-1-2');
+			}
+		}
+		else{
+			if(checkFlag('maid','hypnoTalk')){
+				//She asks you to put the pendant on her. When you do, she sort of just... stops, her body relaxing.
+				//It takes her a moment before she laughs a bit, saying it's a little weird how fast it works, but saying she likes it.
+				//She gives you a wink, before switching into her bathrobe (to avoid staining her uniform).
+				//You then have a choice when she comes back - either make her feel comfortable, or put her in heat.
+				//Then you two fuck. You can follow-up with anal or with her cleaning you with her mouth.
+				//writeEvent('maid2-1');
+			}
+			else{
+				//She's a little uncomfortable, so she asks you if it'd be alright if she wore your pendant. She still isn't really into hypnosis,
+				//  but she would feel more comfortable wearing something of yours.
+				//When you do, her body relaxes a bit, and she kisses you on the lips before switching into her bathrobe (to avoid staining her uniform).
+				//You then have a choice when she comes back - either make her feel comfortable, or put her in heat.
+				//Then you two fuck. You can follow-up with anal or with her cleaning you with her mouth.
+				//writeEvent('maid2-2');
+			}
+		}
+		if(checkFlag('maid','fuck55') != true){
+			addFlag('maid','fuck55');
+		}
+	}
+}
+

@@ -1,9 +1,5 @@
 var character = {index: "meji", met: false, fName: "Reese", lName: "Kieran", trust: 0, encountered: false, textEvent: "", color: "#7e52a3", author: "CryptoGreek", artist: "Nagi Ichi"};
 
-//General tutorial stuff:
-//writeText("text"); - Writes some plain old text.
-//writeSpeech("character", "image", "dialogue") - Writes some dialogue. Leave "image" blank to find the appropriate image and name automatically.
-
 var logbook = { //Logbook details for each character.
 	index: "meji", 
 	desc: "A very outwardly-confident young man with a crossdressing habit. Despite wanting to 'keep it a secret', he goes to some <i>very</i> crowded places when dressed-up.",
