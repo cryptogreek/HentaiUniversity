@@ -23,7 +23,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "maid2", name: "You can see maid nearby. It looks like she just finished shopping.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 20, trustMax: 20, type: "tab", top: 0, left: 0, day: "odd",},
 	{index: "maid3", name: "maid is standing near the store entrance, but isn't holding a basket or anything.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 21, trustMax: 21, type: "tab", top: 0, left: 0, day: "odd",},
 	{index: "maid4", name: "maid seems to have finished shopping and is standing near the cafe.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 24, trustMax: 24, type: "tab", top: 0, left: 0, day: "odd",},
-	{index: "maid5", name: "maid is standing near the cafe, softly humming to herself as she looks around.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 25, trustMax: 27, type: "tab", top: 0, left: 0, day: "odd",},
+	{index: "maid5", name: "maid is standing near the cafe, softly humming to herself as she looks around.", location: 'shoppingDistrict', time: "MorningEvening", itemReq: "", trustMin: 25, trustMax: 28, type: "tab", top: 0, left: 0, day: "odd",},
 ];
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -518,9 +518,11 @@ function writeEncounter(name) { //Plays the actual encounter.
 					writeSpeech("maid","","I don't suppose you've talked to mistressF about... what we discussed?");
 					writeSpeech("player","","Not yet. My schedule's been a bit busy lately.");
 					writeText("She nods, smiling gently.");
-					writeSpeech("maid","","Of course, of course. I don't mean to sound impatient or anything, I'm just... I'd be lying if I said the thought didn't excite me.");
+					writeSpeech("maid","","I understand. mistressF said she might be busy for a while too - a shame, but an unavoidable one.");
+					//writeSpeech("maid","","Of course, of course. I don't mean to sound impatient or anything, I'm just... I'd be lying if I said the thought didn't excite me.");
 					writeText("She thinks for a moment.");
-					writeSpeech("maid","","If you're ever looking for her, she does enjoy her walks in the park. You should be able to find her there on most days that I'm busy.");
+					writeSpeech("maid","","I'm not sure when she'll be available again, but I do know that she likes to relax in the park, so you might find her there when her schedule clears up.");
+					//writeSpeech("maid","","If you're ever looking for her, she does enjoy her walks in the park. You should be able to find her there on most days that I'm busy.");
 					writeSpeech("player","","I'll keep that in mind. Though, in the meantime, why don't we take some time to relax between the two of us?");
 					writeText("maidF shifts in place for a moment, looking a bit unsure.");
 					writeSpeech("maid","","Well, mistressF did say it was fine, but I'm not sure about doing... <i>that</i> before you speak with her.");
@@ -532,7 +534,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("maid","","Ah, playerF! You're doing well today, I hope?");
 				writeSpeech("player","","Yup. Though, I haven't found the time to talk to mistressF yet.");
 				writeText("She nods understandingly.");
-				writeSpeech("maid","","Whenever you find the time is perfectly alright. Was there something you wanted to talk about?");
+				writeSpeech("maid","","She's been quite busy lately, so I'm not surprised. She's surprisingly diligent at times like these.");
+				//writeSpeech("maid","","Whenever you find the time is perfectly alright. Was there something you wanted to talk about?");
 				if(checkFlag('maid','fuck55'))
 					writeFunction("writeEncounter('maid5a')", "\"In the meantime, how about we head to your place again?\"");
 				else
@@ -683,13 +686,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 			}
 			else{
 				if(galleryCheck("maid3") != true){
+					if(checkTrust("maid") < 27)
+						setTrust("maid",27);
 					if(galleryCheck("maid2A") != true){
 						writeText("As you two arrive at her place again, she clearly relaxes quite a bit as she stretches out her shoulders.");
 						writeSpeech("player","","You're looking a lot more relaxed this time around. Looking forward to this?");
 						writeSpeech("maid","","And whose fault could that be, I wonder?");
 						writeText("She smiles as she looks over her shoulder at you, winking.");
 						writeSpeech("maid","","I'll go get changed so we can get started, playerF~");
-						writeFunction("writeEvent('maid3')", "Have her keep her uniform on");
+						//writeFunction("writeEvent('maid3')", "Have her keep her uniform on");
 						writeFunction("writeEvent('maid2A')", "Let her get changed again");
 						break;
 					}
@@ -699,7 +704,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 						writeSpeech("maid","","Absolutely.");
 						writeText("She smiles as she looks over her shoulder at you, winking.");
 						writeSpeech("maid","","I'll go get changed so we can get started, playerF~");
-						writeFunction("writeEvent('maid3')", "Have her keep her uniform on");
+						//writeFunction("writeEvent('maid3')", "Have her keep her uniform on");
 						writeFunction("writeEvent('maid2A')", "Let her get changed again");
 						break;
 					}
@@ -707,7 +712,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				else{
 					if(checkFlag('maid','fullSub') != true){
 						addFlag('maid','fullSub');
-						setTrust('maid',27);
+						setTrust('maid',28);
 					}
 					writeText("When you two arrive at her place, maidF barely lets the door shut all the way before wrapping her arms around you from behind.");
 					writeText("She gently rests her chin on your shoulder, her breath feeling warm against your ear.");
@@ -728,7 +733,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("maid","","W-Wait, you mean-");
 				writeSpeech("player","","<i><b>Relax.</b></i>");
 				writeText("Between her fluids and your cum, you manage to easily push your head into maidF's ass, her eyes rolling back.");
-				writeBig("images/maid/5-1.jpg");
+				writeBig("images/maid/5-1.jpg","Art by Oreteki18kin");
 				writeSpeech("maid","","<b>OH<i> FUCK~!</b></i>");
 				writeText("Her head pushes back against the pillow as she squeezes around you, making it hard to push further in as your cum spills out of her pussy.");
 				writeText("Despite being tight though, it still feels almost like...");
@@ -766,7 +771,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeText("The first spurt causes maidF to gasp sharply, guttural moaning accompanying every shot of jizz that fills her up.");
 				writeText("You keep thrusting until you feel the very last spurt spill out, her ass practically milking out every drop.");
 				writeText("Pulling out completely, finally feeling completely finished, you watch your jizz spill out of maidF's gaping holes.");
-				writeBig("images/maid/5-2.jpg");
+				writeBig("images/maid/5-2.jpg","Art by Oreteki18kin");
 				writeSpeech("maid","","T-There's so much...!");
 				writeText("She just stares in wonder at how much you came before finally leaning her head back against the pillow.");
 				writeSpeech("maid","","Ah, the... the shower is just across the hall.");
@@ -794,7 +799,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("maid","","Please use my other hole until you're satisfied, Master!");
 				writeSpeech("player","","There's a <b>good girl.</b>");
 				writeText("She bites her lip as you push in, a moan spilling out as you reach halfway.");
-				writeBig("images/maid/5-1.jpg");
+				writeBig("images/maid/5-1.jpg","Art by Oreteki18kin");
 				writeText("You start pistoning into her ass, maidF fingering her cum-filled pussy as you do.");
 				writeSpeech("maid","","G-God, you're stretching my ass so much more than Mistress's toys ever did...!");
 				writeText("Each deep, grunting thrust makes maidF moan louder, her chest heaving as she bites her lip.");
@@ -805,7 +810,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("player","","<i><b>Cumming...!</b></i>");
 				writeText("maidF's ass tightens around you as you start to cum, a throaty moan coming from her as ropes of jizz spurt into her.");
 				writeText("It takes a little while to finish up, before you finally pull your softening cock out of her as she looks down at herself.");
-				writeBig("images/maid/5-2.jpg");
+				writeBig("images/maid/5-2.jpg","Art by Oreteki18kin");
 				writeSpeech("maid","","T-Thank you, <i><b>*Master...!</b></i>");
 				writeText("With that, she flops her head back gently against the pillow, her body relaxing as she just lays there, panting with her eyes shut.");
 				writeText("She takes a bit of time to recover while you clean yourself off in the shower, just like last time.");
@@ -827,7 +832,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("maid","","W-Wait, you mean-");
 			writeSpeech("player","","<i><b>Relax.</b></i>");
 			writeText("Between her fluids and your cum, you manage to easily push your head into maidF's ass, her eyes rolling back.");
-			writeBig("images/maid/TEMPTEXTRobeFuckB (0).jpg");
+			writeBig("images/maid/5-1.jpg","Art by Oreteki18kin");
 			writeSpeech("maid","","<b>OH<i> FUCK~!</b></i>");
 			writeText("Her head pushes back against the pillow as she squeezes around you, making it hard to push further in as your cum spills out of her pussy.");
 			writeText("Despite being tight though, it still feels almost like...");
@@ -856,7 +861,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("maid","","Please... C-Cum inside!");
 			writeText("You frown down at her, slowing down more.");
 			writeSpeech("player","","I said <i>properly.</i>");
-			writeSpeech("maid","","Master, <i>please </i> fill this dirty buttslut's ass with your cum~!");
+			writeSpeech("maid","","Master, <i>please</i> fill this dirty buttslut's ass with your cum~!");
 			writeText("You smile and nod, looking into her eyes.");
 			writeSpeech("player","","<i><b>Good girl.</b></i>");
 			writeText("Just as her body starts to shudder from the praise, you <b>hammer</b> yourself in.");
@@ -865,7 +870,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("The first spurt causes maidF to gasp sharply, guttural moaning accompanying every shot of jizz that fills her up.");
 			writeText("You keep thrusting until you feel the very last spurt spill out, her ass practically milking out every drop.");
 			writeText("Pulling out completely, finally feeling completely finished, you watch your jizz spill out of maidF's gaping holes.");
-			writeBig("images/maid/TEMPTEXTRobeFuckB (1).jpg");
+			writeBig("images/maid/5-2.jpg","Art by Oreteki18kin");
 			writeSpeech("maid","","T-There's so much...!");
 			writeText("She just stares in wonder at how much you came before finally leaning her head back against the pillow.");
 			writeSpeech("maid","","Ah, the... the shower is just across the hall.");
@@ -875,7 +880,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("maid","","I'll wash everything later... and I'd like to feel all-filled-up for a while. I'll use the shower when you're done.");
 			writeSpeech("player","","Alright.");
 			writeText("...");
-			writeText("When you're all washed up and no longer covered in a mixture of your and maidF's juices, you see her walking towards the door with the tell-tale posture of someone who had a bit of rough fun.");
+			writeText("When you're all washed up and no longer covered in a mixture of your and maidF's juices, you see her walking towards the door with the tell-tale posture of someone who had a bit of rough-fun.");
 			writeSpeech("maid","","Ah, I forgot to tell you something before I shower.");
 			writeText("She leans in towards you, gently kissing you on the cheek.");
 			writeSpeech("maid","","Thank you very much, <i><b>Master~</b></i>");
@@ -887,7 +892,74 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeFunction("changeLocation(data.player.location)", "Finish");
 		}
 		case "maidEvent2B" : {
-			
+			writeSpeech("player","","Well, looks like there's quite a mess to clean up.");
+			writeText("maidF's eyes move back to you, clearing up a bit as she sees your cum-covered cock.");
+			writeText("She sits up a bit, breathing deeply as she tries to clear her head with a smile.");
+			writeSpeech("maid","","Just one moment, and I'd be happy to help, *Master~");
+			writeText("...");
+			writeBig("images/maid/6-1.jpg", "Art by Oreteki18kin")
+			writeSpeech("maid","","Haah...~!");
+			writeText("Bringing her hands up, she grasps onto your slick, hot shaft with a smile.");
+			writeSpeech("maid","","I'll make sure your cock is <i>spotless,</i> *Master~");
+			writeText("Grasping your base firmly, she slowly strokes up as cum goes with her fingers, pooling around them.");
+			writeText("Moving her head forward, she laps up a lot of it with her tongue, trailing along and catching as much as possible until halfway up the shaft.");
+			writeText("Then, her hands stop as she lifts her head up, opening her mouth to show what she'd collected thus far...");
+			writeText("...before bobbing her head down onto your cock, the hot feeling of her spit and your cum completely changing how her mouth feels.");
+			writeSpeech("player","","Fuck...!");
+			writeText("You run your hand through her hair as she bobs down, reaching her fingers halfway down before bobbing back up as her fingers move back to the base.");
+			writeText("The way she moves her hand down gently, before firmly grasping the shaft and <b>sliding</b> her hand towards her lips...");
+			writeSpeech("player","","You've been practicing...?");
+			writeText("She looks up to your eyes, a clear smile in them as she turns her head slightly, her lips carefully drawing across your extra-sensitive cockhead and pulling moans out of you.");
+			writeText("After a few more moments of that, you notice that she's started to pick up speed, her breath on your cock becoming more erratic.");
+			writeText("Then, she stops, shaking a bit in clear orgasm... a result of your cock being inside her mouth, and the suggestion from a few minutes ago.");
+			writeText("She doesn't let it stop her for long, though, because she quickly pushes her head back down onto your shaft.");
+			writeBig("images/maid/6-2.jpg","Art by Oreteki18kin");
+			writeText("Your cock pushes out some of the cum and spit from her mouth, but she quickly bobs her head further down to try and clean it up.");
+			writeText("You can feel her swallowing around you when she can, her hands now pressed onto your thighs as she hungrily takes your cock into her throat again and again.");
+			writeText("Every time she bobs up to breathe, her hands immediately move up to keep up the pressure, trying to milk every last drop out of you.");
+			writeText("It isn't too long until you can feel exactly that welling up, the constant sexual assault driving you wild.");
+			writeSpeech("player","","I'm getting close, maidF...!");
+			writeText("Hearing that, she pops her lips off of your head for a second.");
+			writeSpeech("maid","","Then use my throat as a <i>cumrag, </i> *Master~!");
+			writeText("She pushes her head back down, taking you into her throat quickly as she bobs up and down, your head rubbing against her throat barrier with every thrust.");
+			writeText("You can barely keep focused as she pushes you to, and then <b>over </b>the edge.");
+			writeSpeech("player","","Cumming...!");
+			writeText("Grabbing her ponytail, you pull her head down even harder, her hands tightly gripping your thighs as her eyes go wide and another orgasm surges through her body.");
+			writeText("You can feel her trying to swallow your load as it spurts out, doing her best as you cum even more, until she starts pulling away.");
+			writeText("You move your hand away, watching as she slowly pulls back up... and then bobs back down.");
+			writeText("You shudder as her tongue laps along your sensitive cock, before she finally pulls away.");
+			writeText("She ends up coughing hard as she separates from your cock, the huge amount of cum spilling out from her mouth as she looks up at you.");
+			writeSpeech("player","","Holy shit...");
+			writeBig("images/maid/6-3.jpg","Art by Oreteki18kin");
+			writeText("She swallows down most of what's left in her mouth before speaking.");
+			writeSpeech("maid","","D-Did I... do a good job cleaning, M-*Master?");
+			writeSpeech("player","","Better than I could've expected...");
+			writeText("You smile down at her.");
+			writeSpeech("player","","Good girl.");
+			writeText("She shivers slightly, preening as she smiles up at you. Her throat might be a bit hoarse now, though...");
+			writeSpeech("player","","Ah, sorry, let me get you a towel-");
+			writeSpeech("maid","","No need.");
+			writeText("Leaning over the side of the bed, she brings out a towel with a confident smile.");
+			writeSpeech("maid","","I thought I'd need it.");
+			writeSpeech("player","","You really think this stuff through, don't you?");
+			writeText("She nods, looking a little proud as she wipes your cum off her chest.");
+			writeText("Of course, it still leaves that faint sheen on her skin, but it gets most of it off.");
+			writeText("She's especially vigorous with cleaning off her lips, touching them to make sure they're clean.");
+			writeText("When she's sure, she leans forward and kisses you on the cheek with a smile.");
+			writeSpeech("maid","","I had a lovely time, thank you.");
+			writeSpeech("player","","Glad to hear it. I think these sheets are probably evidence of how much I enjoyed it.");
+			writeText("She laughs, nodding as she looks down, a small puddle of cum between her legs from the creampie earlier.");
+			writeSpeech("maid","","Fortunately, they're stain-resistant and easy to wash. I'll put them in the washer later today. For now...");
+			writeText("She leans back on the bed, sighing contentedly.");
+			writeSpeech("maid","","I'll rest a bit while you shower. You're hard to keep up with, you know.<br>Though getting <i>fucked stupid</i> is half the fun, so I won't complain.");
+			writeSpeech("player","","I aim to please. I'll give you a heads-up after I shower so that you can wash up too.");
+			writeSpeech("maid","","Mm... Thanks.");
+			writeText("...");
+			writeText("After you're all finished, maidF gets ready to wash up as well.");
+			writeText("As you're getting ready to head out, she does run her hand along your arm.");
+			writeSpeech("maid","","Have a wonderful rest of the day, *Master.");
+			writeSpeech("player","","You too, maidF.");
+			writeText("With that, she heads into the shower, leaving you to go about the rest of your business for the day.");
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
@@ -902,8 +974,8 @@ var eventArray = [ //Lists the events of the character for unlocking and replayi
 	{index: "maid1", name: "Casual Titjob"},
 	{index: "maid2", name: "Fucked at Home"},
 	{index: "maid2A", name: "Fucked at Home Again"},
-	{index: "maid3", name: "A Girl In Uniform"},
-	{index: "maid3A", name: "Uniformed Again"},
+	// {index: "maid3", name: "A Girl In Uniform"},
+	// {index: "maid3A", name: "Uniformed Again"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
@@ -983,12 +1055,85 @@ function writeEvent(name) { //Plays the actual event.
 		case "maid2" : {
 			document.getElementById('output').innerHTML = '';
 			writeSpecial("This is the scene in her robes.");
-			
-
-
+			writeText("You let her go and get changed, taking a minute to stretch a little bit. Nothing ruins the mood like a pulled hamstring...");
+			writeText("A minute later, you hear maidF call out in a sultry tone,");
+			writeSpeech("maid","","Can you come here, playerF?");
+			writeText("Stepping towards the door, you can see maidF laying back on the bed, looking up at you with her legs spread.");
+			writeBig("images/maid/4-1.jpg","Art by Oreteki18kin");
+			writeSpeech("maid","","I'm ready for you, <i>*Master~</i>");
+			writeSpeech("player","","That's... incredibly hot.");
+			writeText("She flushes red, but you can see a bit of pride as she spreads her lips wide.");
+			writeSpeech("maid","","And it's yours to use, if you'd like.");
+			writeSpeech("player","","I don't think I could hold back if I wanted to.");
+			writeText("You step towards the bed, discarding your clothes as quickly as you can before you move onto the bed.");
+			writeText("She stares for a few moments at your thick shaft, licking her lips at the sight.");
+			writeText("You run your cock along her pussy a few times to get nice and lubed up, before looking right into her eyes.");
+			writeSpeech("player","","At the count of three... I'll shove it all in at once. Got it?");
+			writeText("She nods, leaning back and relaxing a bit as she holds herself open.");
+			writeText("You slowly start moving your hips forward, your shaft sliding along her hot, wet cunt as she bites her lip.");
+			writeSpeech("player","","One...");
+			writeText("You slide all the way forward, your cockhead sliding against her stomach as your weight presses the base of your shaft against her.");
+			writeText("You hold that position for a few seconds, slowly shifting your hips as you feel her clit rubbing against your shaft as she moans, desperately trying to hold still.");
+			writeSpeech("player","","...Two...");
+			writeText("You slowly draw yourself back, using your hand to press your shaft down against her pussy as you do, the slick sensation feeling incredible you pull all the way back.");
+			writeText("When your head is finally lined up with her hole again, you can't help but pause and grin down at her as she tries, and fails, to keep from shifting her hips against you.");
+			writeText("The feeling of frustration mounts in her eyes as seconds go by, her movements getting more and more obvious as she rolls her hips.");
+			writeText("Finally, right when you see that she's about to snap-");
+			writeBig("images/maid/4-2.jpg","Art by Oreteki18kin");
+			writeSpeech("maid","","<i><b><font size='+2'>FUCK YES~!</font></b></i>");
+			writeText("Her face immediately goes bright red as her mouth shuts tight, embarrassment clear on her face.");
+			writeText("But since that's <b>exactly</b> the reaction you were going for, it's time for a bit of reinforcement...");
+			writeSpeech("player","","That was a very honest reaction, wasn't it?");
+			writeText("maidF nods, her cunt grasping tightly around your cock.");
+			writeSpeech("player","","That's good, then. After all, and honest girl...");
+			writeText("You lean forward completely, your face near hers as you smile.");
+			writeSpeech("player","","...is a <i><b>good girl.</b></i>");
+			writeText("You slowly start sawing in and out of her cunt, her moans stifled as she bites her lip.");
+			writeText("But you bring your hand to her mouth, your thumb pushing into it as you thrust forward slowly, a loud moan spilling out of her.");
+			writeSpeech("player","","And good, honest girls deserve a reward. So tell me, maidF - what do you want?");
+			writeText("You pull your thumb out of her mouth, her spit leaving it slick as you run it gently across her cheek.");
+			writeText("She hesitates for a few moments, before swallowing and saying,");
+			writeSpeech("maid","","I want you to <i>fuck</i> me. I...");
+			writeText("She takes a slow, deep breath.");
+			writeSpeech("maid","","I want my *Master to use me like a piece of <i>meat,</i> that exists for *his pleasure.");
+			writeText("You pause slightly, though mostly just to line yourself up properly...");
+			writeSpeech("player","","If you want to be treated like a sex toy... then keep yourself spread open, <i>slut.</i>");
+			writeText("You <b>slam</b> your hips forward, the loud clap of your hips against her ass ringing out as you start pistoning into her quickly sounding almost as loud as maidF's moans.");
+			writeText("The faster and rougher your thrusts, the louder her moaning gets as she squeezes along your shaft with every movement.");
+			writeSpeech("maid","","Yes, yes... God, just <i><b>use me...!</b></i>");
+			writeText("You use your hands to grab her thick, plump thighs for better leverage.");
+			writeSpeech("player","","Gladly.");
+			writeText("Changing your angle slightly, you push into her deeply, her head pushing back against the pillow as her mouth widens in a silent scream of pleasure.");
+			writeText("As you pitch yourself foward, her squirms beneath you as she tries to press up against your body.");
+			writeSpeech("maid","","F-Fuck, right there, please...! Just like that...!");
+			writeText("You calmly oblige, fucking her rough and hard as she starts shaking.");
+			writeText("Her orgasm has her pussy squeezing down hard, her body quivering as you just keep fucking her.");
+			writeText("But when she starts to finish cumming, you decided to <b>intervene.</b>");
+			writeText("Your hand moves to her chin, forcing her to look right at you as you ask her a nice leading question.");
+			writeSpeech("player","","You can't stop cumming, can you?");
+			writeText("Her eyes widen slightly, before she tries to nod beneath you... and fails, when you bottom-out again.");
+			writeSpeech("player","","It just keeps getting <i>stronger,</i> keep feeling<i> better,</i> right?");
+			writeSpeech("maid","","<i><b>Y-Yesss...~!</b></i>");
+			writeSpeech("player","","And you want to <i>just keep cumming</i> as long as I'm inside of you, <i><b>right?</b></i>");
+			writeText("Rather than answering, she just throws her head back, her legs pressing hard against the bed as she keeps orgasming.");
+			writeText("So, you just fuck her even harder, her uncontrolled squeezing bringing you closer and close to the edge.");
+			writeSpeech("player","","But you know what feels even better? What'll make you cum <i>even harder?</i>");
+			writeText("You squeeze down on her thighs tighter, <b>slamming</b> your cock into her with every thrust.");
+			writeSpeech("player","","You'll have the strongest, mind-numbing orgasm of your life when I <i>cum inside.</i>");
+			writeText("You speed up as much as you possibly can, breathless grunts spilling out of maidF as you do.");
+			writeSpeech("player","","Because that's how a <i><b>fuck-toy</b></i> works, <i>right?</i>");
+			writeText("You're not even sure if she can hear you properly right now, but you reach your limit.");
+			writeSpeech("player","","Here it comes...! I'm cumming!");
+			writeBig("images/maid/4-3.jpg","Art by Oreteki18kin");
+			writeText("With one more solid swing of your hips, you bottom out inside of her as you start to cum as deep inside her as you can.");
+			writeText("You can feel her cunt squeezing down on you as you shoot rope after rope of cum, filling her up as you buck your hips with each shot.");
+			writeText("When you finally finish and pull out, a fair amount of cum spills out of her as she shudders beneath you, looking down in hazy amazement.");
+			wroteBig("images/maid/4-4.jpg","Art by Oreteki18kin")
 			writeSpeech("maid","","There's so much...!");
+			writeText("Still half-addled from the orgasms, you watch as she runs her fingers along her pussy, shuddering as she finger-fucks her cum-filled cunt.");
+			writeText("Honestly, despite cumming, you don't <i>quite</i> feel satisfied yet...");
 			//writeFunction("writeEncounter('maid5b')","Go back")
-			if(data.player.currentLocation == "gallery"){
+			if(data.player.location == "gallery"){
 				writeFunction("writeEncounter('maidEvent2A')", "Fuck her ass again");
 				writeFunction("writeEncounter('maidEvent2AGallery')", "Fuck her ass (first time)");
 			}
@@ -999,47 +1144,97 @@ function writeEvent(name) { //Plays the actual event.
 		}
 		case "maid2A" : {
 			document.getElementById('output').innerHTML = '';
-			writeSpecial("This is the second scene in her robes.");
-			
-
-
-
-
+			writeSpeech("player","","Go ahead and get changed.");
+			writeText("maidF smiles, nodding... and starts slowly pulling off her uniform.");
+			writeSpeech("maid","","I already put the robe on my bed, so all that's left is to take this off and head right over. I hope you don't mind helping a little?");
+			writeSpeech("player","","I'd be happy to.");
+			writeText("The first thing to come off is the large apron, the knot in the back easily coming undone as maidF leans into you. From the feeling of stiff nubs against your chest, it's obvious...");
+			writeSpeech("player","","Skipping the bra today?");
+			writeText("Her lips press up against your neck, her breath warm against your skin.");
+			writeSpeech("maid","","I didn't want it to get in the way. And I think you know what else I decided not to wear...");
+			writeText("maidF guides your hand under the bottom of the black uniform, your fingers pressing against her already wet pussy as she grabs the hem and lifts.");
+			writeText("Pushing your finger into her, she shudders and moans into her outfit as she pulls it up and over her head.");
+			writeText("After another moment, she pulls it all the way off and drops it onto the floor, grinding against your hand...");
+			writeText("Until she steps back, her arms at her sides.");
+			writeBig("images/maid/profileP.jpg","Art by Oreteki18kin");
+			writeSpeech("player","","God, you look incredible...");
+			writeText("She blushes, but smiles widely.");
+			writeSpeech("maid","","Thank you, *Master. But let's hurry to the bed - the air's actually a little colder than I expected.");
+			writeSpeech("player","","Got it.");
+			writeText("She turns around and starts to walk, giving you a perfect eyeful of her round, shapely ass as it bounces with each step.");
+			writeText("Unable to really resist, you pull your hand back a bit...");
+			writeSpeech("maid","","<i><b>UHN~!</b></i>");
+			writeText("The slap across her ass echoes through the room as maidF looks over her shoulder at you, her face even redder now.");
+			writeSpeech("maid","","...Thank you, Master~");
+			writeText("...");
+			writeText("She lays back in her bed, her robe loosely pulled onto her body as she raises her legs like before.");
+			writeBig("images/maid/4-1.jpg","Art by Oreteki18kin");
+			writeText("She spreads her lips as wide as she can, smiling subserviently.");
+			writeSpeech("maid","","Please use these holes until you're satisfied, *Master.");
+			writeText("Wordlessly, you move onto the bed and line your hips up with hers. Running your cock along her folds is easily enough to lube up your whole shaft, as she's practically dripping from excitement.");
+			writeText("As you press your cockhead right against her, just barely keeping from pushing all the way in, you lean forward as she stares up at you hungrily.");
+			writeSpeech("player","","And what does a good fucktoy say when she gets what she wants?");
+			writeSpeech("maid","","Ah, thank yo<i><b>uUOOOH~!</b></i>");
+			writeBig("images/maid/4-2.jpg", "Art by Oreteki18kin");
+			writeSpeech("maid","","Fuck, thank you thank you <i><b>thank you~!</b></i>");
+			writeText("You keep slamming your hips into her ass, your hands going to her thighs to steady yourself as you push into her.");
+			writeText("Her eyes roll up as you can feel her start cumming around your cock. Looks like the suggestion from last time is still just as strong.");
+			writeText("Despite that, though, she still tries her best to focus on you, trying to squeeze around you in time with your thrusts.");
+			writeText("It's not perfect, but it's a valiant effort, so...");
+			writeSpeech("player","","You are just the <i>perfect little <b>sex-toy,</b></i> aren't you maidF?");
+			writeText("That pushes her over, completely making her lose control as she raises her hips and her legs press sharply against the bed.");
+			writeSpeech("player","","God, you're such a whore for a bit of praise. I bet you get whenever someone compliments you, don't you?");
+			writeText("You dig your fingers into her thighs, squeezing tightly as you fuck her savagely.");
+			writeSpeech("player","","I'd bet that all I'd have to do to make you cum <i>anywhere</i> is just say something nice about you.");
+			writeText("You can feel yourself getting closer, getting ready to cum, so you decide to really drive it home.");
+			writeSpeech("player","","Your body is <i>beautiful,</i> you know that? It's like you were <i><b>built</b></i> for sex.");
+			writeSpeech("maid","","<i><b>A-Ahn...!</b></i>");
+			writeText("She tightens around you, her eyes now shut as she rides the orgasms.");
+			writeSpeech("player","","Your wet mouth, your thick thighs, your massive lewd tits...! Face it, maidF.");
+			writeText("You feel it welling up, about to cum inside...!");
+			writeSpeech("player","","You're the <i><b>perfect little fuck-doll.</b></i>");
+			writeBig("images/maid/4-3.jpg","Art by Oreteki18kin");
+			writeText("You cum hard, but not nearly as hard as maidF as her entire body starts shaking beneath you, her eyes going wide as she gasps sharply.");
+			writeText("Every spurt has her rapidly squeezing and relaxing, unable to focus until you finally finish after more shots than you're confident in counting.");
+			writeText("The two of you just lay there for what feels like a few minutes, before you finally pull out. As you do, you can see your cum ooze out of her gaping cunt as she tries to focus.");
+			writeBig("images/maid/4-4.jpg","Art by Oreteki18kin");
+			writeText("With half-hazed eyes, she smiles dopily as she presses her hand to her pussy.");
 			writeSpeech("maid","","I feel so <i><b>full...!</b></i>");
+			writeText("As you watch her toy with her cum-filled pussy, you can't help but feel like you're not <i>quite</i> satisfied yet...");
 			//writeFunction("writeEncounter('maid5b')","Go back")
-			if(data.player.currentLocation == "gallery"){
-				writeFunction("writeEncounter('maidEvent2A')", "Fuck her ass again");
+			if(data.player.location == "gallery"){
 				writeFunction("writeEncounter('maidEvent2AGallery')", "Fuck her ass (first time)");
+				writeFunction("writeEncounter('maidEvent2A')", "Fuck her ass again");
 			}
 			else
 				writeFunction("writeEncounter('maidEvent2A')", "Fuck her ass");
 			writeFunction("writeEncounter('maidEvent2B')", "Have her suck you clean");
 			break;
 		}
-		case "maid3" : {
-			document.getElementById('output').innerHTML = '';
-			writeSpecial("This is the scene in her uniform.");
+		// case "maid3" : {
+		// 	document.getElementById('output').innerHTML = '';
+		// 	writeSpecial("This is the scene in her uniform.");
 
 			
 
 
 
-			//writeFunction("writeEncounter('maid5b')","Go back")
-			writeFunction("changeLocation(data.player.location)", "Finish");
-			break;
-		}
-		case "maid3A" : {
-			document.getElementById('output').innerHTML = '';
-			writeSpecial("This is the second scene in her uniform.");
+		// 	//writeFunction("writeEncounter('maid5b')","Go back")
+		// 	writeFunction("changeLocation(data.player.location)", "Finish");
+		// 	break;
+		// }
+		// case "maid3A" : {
+		// 	document.getElementById('output').innerHTML = '';
+		// 	writeSpecial("This is the second scene in her uniform.");
 
 			
 
 
 
-			//writeFunction("writeEncounter('maid5b')","Go back")
-			writeFunction("changeLocation(data.player.location)", "Finish");
-			break;
-		}
+		// 	//writeFunction("writeEncounter('maid5b')","Go back")
+		// 	writeFunction("changeLocation(data.player.location)", "Finish");
+		// 	break;
+		// }
 		default: {
 			writePhoneSpeech("player", "", "Error! You must've called the wrong event. Error code: Failed to write event ("+name+") in "+character.index+".js");
 			break;
