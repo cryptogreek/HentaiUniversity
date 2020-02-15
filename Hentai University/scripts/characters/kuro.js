@@ -822,7 +822,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("She pauses.");
 			writeSpeech("kuro","","Ah, wait. Where's the condom?");
 			writeSpeech("player","","That's a good question, kuroF. But how I about <i>I order you to relax.</i>");
-			writeText("Her eyes unfocus as you grab one of her tits, her entire body relaxing underneath you.");
+			writeText("Her eyes unfocus as you grab one of her tits, her entire body relaxing on top of you.");
 			writeSpeech("kuro","","W-Whaa...?");
 			writeBig("images/kuro/6-2.jpg");
 			writeText("She tries raising her body up, but only goes up a bit as her eyes narrow slightly.");
