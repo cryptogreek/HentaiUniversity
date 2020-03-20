@@ -399,7 +399,37 @@ function writeEncounter(name) { //Plays the actual encounter.
 					writeSpeech("maid","","Ah. Yes, that... sounds like her. If that's the case, I'd suggest seeing her again. I'm not sure that I should be the one to explain that.");
 					writeText("...Explain what...?");
 					writeSpeech("maid","","Never mind. I was going to introduce you two, but if you have met, then that's probably unnecessary. Just ask her how she got lost - it'll make sense after.");
-					writeSpeech("player","","Well... Alright.");
+					writeSpeech("player","","Well... Alright. And that was what you wanted to talk about?");
+					writeText("She pauses.");
+					writeSpeech("maid","","Sort of. We were talking with each other and, to be rather frank about it...");
+					writeText("She leans forward, lowering her voice a bit.");
+					writeSpeech("maid","","We've been friends with benefits for years. However, we've been talking recently about certain... <i>things.</i>");
+					writeSpeech("player","","You have my attention.");
+					writeText("She takes a moment to collect herself, visibly relaxing as she leans forward.");
+					writeSpeech("maid","","Namely that she'd like to spice things up with a cock that <i>isn't</i> made of plastic.");
+					writeSpeech("player","","...and now, you have my erection. But just to be clear - you wanted to talk with me today... about inviting me to a threesome.");
+					writeSpeech("maid","","Yes.");
+					writeSpeech("player","","...Huh. I mean, not what I was expecting, but I'd have to be an idiot to turn that down.");
+					writeText("Her expression brightens.");
+					writeSpeech("maid","","Wonderful! I'll talk to her about it tomorrow. Believe me, you will absolutely <i>adore</i> what she can do with her-");
+					writeSpeech("???","images/cafedark/cafedark.jpg","Two coffees-!");
+					writeText("There's a loud bang as maidF jumps enough for her hips to hit the table, her eyes going wide as the waitress steps towards you both.");
+					writeText("A thick silence reigns for a moment as maidF bites her lip gently.");
+					writeSpeech("???","images/cafedark/cafedark.jpg","...Are you okay?");
+					writeSpeech("maid","","<i><b>Fine, thank you.</b></i>");
+					writeText("Taking a slow, deep breath, maidF collects herself and smiles gently.");
+					writeSpeech("maid","","It's fine, just a bit of bad timing. Not your fault at all.");
+					writeSpeech("???","images/cafedark/cafedark.jpg","...Okay. I'll just leave you to it.");
+					writeText("She moves to help some of the customers closer to the entrance as maidF slowly sighs.");
+					writeSpeech("maid","","I just don't know what she sees in this...");
+					writeText("Shaking her head, she refocuses on you.");
+					writeSpeech("maid",""," I probably could've chosen a better place for this. Either way, we can continue after you talk to mistressF. She's been quite busy lately, though, so I'm not sure when she'll be available.");
+					writeSpeech("player","","Alright, I'll keept that in mind..");
+					writeText("You grab your coffee, sipping at it while you engage maidF in some small talk...");
+					writeText("When you finish talking and drinking, with maidF brooking exactly no argument on who was paying, you lean back a bit.");
+					writeText("Everything seems fine, though your eyes do drift a bit to the waitress...");
+					writeFunction("changeLocation(data.player.location)", "Finish up and leave");
+					writeFunction("writeEncounter('maid4a')", "Admire her a little bit");
 				}
 				else if(checkTrust('mistress') == 41 || checkTrust('mistress') == 43){
 					setTrust('mistress',45);

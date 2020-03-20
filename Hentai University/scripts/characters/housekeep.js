@@ -148,6 +148,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("housekeep","","I'll be right over!");
 				writeText("Just like last time, he does arrive quickly, a relaxed smile across his face as he gives a small, polite curtsy again.");
 			}
+			if(checkTrust('succubus') >= 60 && checkFlag('housekeep','Demon') != true){
+				addFlag('housekeep','Demon');
+				writeText("His nose wrinkles for a moment as he straightens up, looking around.");
+				writeSpeech("housekeep","","I have a few people I can call if you need help with your... bat problem.");
+				writeSpeech("player","","My what?<br><i>Could he mean...?</i>");
+				writeText("housekeepF's expression relaxes.");
+				writeSpeech("housekeep","","So it isn't a problem. Ignore that, I merely misunderstood.");
+				writeText("He gives another small curtsy, smiling beautifically up at you as he does.");
+			}
 			if(data.player.gender == "man")
 				writeSpeech("housekeep","","Was there anything specific you wanted me to do, *Master?");
 			else
@@ -187,6 +196,10 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeFunction("writeEncounter('housekeepSink1')", "Have him bend over and put his hands on the kitchen counter");
 			else
 				writeFunction("writeEncounter('housekeepSink2')", "Bend him over in the kitchen again");
+			if(checkFlag("housekeep","Hypno") != true)
+				writeFunction("writeEncounter('housekeepHypnoEncounter')", "Hypnotize him into servicing you for free")
+			else
+				writeFunction("writeEvent('housekeep3-1')", "Hypnotize him again")
 			// if(checkFlag("Bath") != true)
 			// 	writeFunction("writeEncounter('housekeepBath')", "Fuck in the bathroom");
 			// if(checkFlag("Bath"))
@@ -591,6 +604,33 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeFunction("writeEncounter('housekeepSexMenu')", "Do sexual things");
 			break;
 		}
+		case "housekeepHypnoEncounter" : {
+			if(checkFlag("housekeep","Hypno") != true)
+				addFlag("housekeep","Hypno");
+			writeSpeech("player","","Actually, there's a certain kind of kink I happen to enjoy.");
+			writeText("housekeepF sits up a bit straighter, softly smiling.");
+			writeSpeech("player","","How much do you know about hypnosis?");
+			writeSpeech("housekeep","","Ah...");
+			writeText("housekeepF seems to think for a moment, cupping his chin and closing his eyes for a moment.");
+			writeSpeech("housekeep","","I knew some people who were into that sort of thing, but I'm afraid that it's been too long for me to remember any details, and it wasn't something I researched personally.");
+			writeText("He opens his eyes, smiling wide again as he raises a hand to his chest.");
+			writeSpeech("housekeep","","Of course, if you wouldn't mind my inexperience, I would be more than happy to do that sort of play, *Master! Is that alright with you?");
+			writeSpeech("player","","That's perfect. Just sit down on my bed and we can get started.");
+			if(checkTrust('succubus') >= 60){
+				writeText("He smiles and nods, looking towards the bed... and pausing, his eyes narrowing slightly.");
+				writeSpeech("housekeep","","...Ah. Of course, but let me clean it first.");
+				writeText("housekeepF quickly pulls out a cloth and small, unmarked spray bottle. Within a few seconds, he's given your sheets and the windowsill a quick wipedown.");
+				writeText("It doesn't leave the sheets damp or anything, but it does leave a pleasantly relaxing lavender scent.");
+				writeSpeech("housekeep","","There. That should be enough until next time, at least.");
+				writeText("Stowing the cleaning tools, he turns around and smiles gently, sitting on the be and folding his hands neatly in his lap.");
+				writeSpeech("housekeep","","Sorry for the wait, but I'm ready for you now, *Master~");
+			}
+			else{
+				writeText("housekeepF nods jovially, smoothing his skirt gently as he takes a seat, his hands folded neatly in his lap.");
+				writeSpeech("housekeep","","I'm ready for you, *Master~");
+			}
+			break;
+		}
 		default: {
 			writePhoneSpeech("player", "", "Error! You must've called the wrong encounter. Error code: Failed to write encounter ("+name+") in "+character.index+".js");
 			break;
@@ -603,6 +643,8 @@ var eventArray = [
 	{index: "housekeep1-1", name: "A Second Blowjob"},
 	{index: "housekeep2", name: "Bending Over the Sink"},
 	{index: "housekeep2-1", name: "In the Kitchen Again"},
+	{index: "housekeep3", name: "Hypno Service"},
+	{index: "housekeep3-1", name: "Hypnotic Suggestions"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
@@ -899,6 +941,12 @@ function writeEvent(name) { //Plays the actual event.
 				writeFunction("changeLocation(data.player.location)", "Finish");
 			else
 				writeFunction("changeLocation(data.player.location)", "Wash off and get ready to sleep");
+			break;
+		}
+		case "housekeep3" : {
+			break;
+		}
+		case "housekeep3-1" : {
 			break;
 		}
 		default: {
