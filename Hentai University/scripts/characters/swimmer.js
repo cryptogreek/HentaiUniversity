@@ -25,13 +25,35 @@ function writeEncounter(name) { //Plays the actual encounter.
 	document.getElementById('output').innerHTML = '';
 	wrapper.scrollTop = 0;
 	switch (name) {
-		case "neet1": {
-			writeText("You walk into the room.");
-			writeSpeech("player", "", "Hello, neetF.");
-			writeSpeech("neet", "", "And hello to you, playerMister playerF.");
-			writeSpecial("You made a new friend!");
-			writeFunction("changeLocation('playerHouse')", "Go home");
-			writeBig("images/neet/profile.jpg", "Art by Enoshima Iki");
+		case "swimmer1": {
+			passTime();
+			setTrust('swimmer', 30)
+			addFlag("coach", "swimmermet")
+			writeText("You've been waiting for quite a while for swimmerF to get to your office. It's been nearly a half an hour since coachF said she sent her...");
+			writeText("You're picking up your phone to call coachF and ask if she's seen swimmerF, when you finally hear a knock at your door.");
+			writeSpeech("player", "", "The door is open, come on in.");
+			writeText("swimmerF strolls into your office, seemingly unaware of how late she is.");
+			writeBig("images/swimmer/profile.jpg", "Art by Himitsu Kessha Vanitas");
+			writeSpeech("swimmer", "", "Hi, playerF! coachF told me something about... Uh.. 'a student goodness program' or something and she asked me to come see you!");
+			writeSpeech("player", "", "'Student Wellness Program.' And you're a little late, swimmerF. Did something happen?");
+			writeText("She looks a little embarassed and looks away from you.");
+			writeSpeech("swimmer", "", "I'm not <i>that</i> late, am I?");
+			writeSpeech("player", "", "Getting close to an hour late, actually.");
+			writeSpeech("swimmer", "", "Oof. Sorry, playerH. I just... I got distracted on my way here. I got to talking with a friend I saw in the hallway, then I had to go to the bathroom, then I forgot my backpack in the gym, so I had to go back there, and then when I got there I got caught up talking to orangeF about...");
+			writeText("You swear, she doesn't even stop to breathe. And this sentence never ends.");
+			writeSpeech("player", "", "It's alright swimmerF. You were late, that's fine. And from the sound of it, it lines up pretty well with what I've heard from your teachers.");
+			writeText("She looks down again, stopping her endless runon sentence as you continue.");
+			writeSpeech("player", "", "That's part of the reason I asked to see you, swimmerF. It seems like... Well, I'm not trying to be rude, but do you have trouble focusing on things? In or out of class?");
+			writeSpeech("swimmer", "", "I guess, playerH. I mean... I just tend to get distracted, you know? Like, I start doing or working on something, then something else comes up and I drop what I'm working on, then I never get back to it and suddenly I have three half finished assignments and it's time for class.");
+			writeSpeech("player", "", "It's not an uncommon problem, swimmerF. I may have a way to help you with that. sportsF had a similar problem with her Organic class, and it helped her.");
+			writeSpeech("swimmer", "", "I'll be honest, playerT playerF, if I got half the improvement sportsF saw in her class, I'd do just about anything. Like, I don't know what you did, but she really turned that class around. I have to take that class next semester and I'm actually pretty worried about it, and...");
+			writeSpeech("player", "", "Breathe, swimmerF. Take a minute. I practice hypnosis. It's a pretty good tool for helping people focus. It's... It's basically guided meditation. It helped sportsF, it may help you if you want to give it a shot.");
+			writeSpeech("swimmer", "", "Sure, I guess. I don't know how much it'll help me, but I'd be willing to give it a shot. So should I like, close my eyes? Lean back? Is it one of those pocket watch dealies? Or am I going to like, watch a spiral spinning? I had a friend once who went to a stage hypnotist and she ended up dancing on stage like a....");
+			writeSpeech("player", "", "Like a chicken. Yeah, yeah. It's not really like that. And...");
+			writeText("You look at the clock. With how late she got here, you don't really have much time to work with for a session.");
+			writeSpeech("player", "", "We're kind of out of time today. But my door is always open, swing by anytime and I'll do my best to help you out.");
+			writeSpeech("swimmer", "", "Sounds good, playerT playerF! Now, I've got to take off. I think I have a calc assignment to do. Or was it biology...? Either way, then I've got to...");
+			writeFunction("changeLocation(data.player.location)", "You let her ramble as she leaves your office.");
 			break;
 		}
 		default: {
@@ -76,14 +98,15 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "placeholder", trust: 200,},
+	{index: "swimmerreward", trust: 30,},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
 	phoneRight.scrollTop = 0;
 	switch (name) {
-		case "placeholder": {
-			//Write the event's text here using writePhoneSpeech, writePhoneImage, and writePhoneChoices
+		case "swimmerreward": {
+			writePhoneImage("images/swimmer/phoneReward.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("SlackerSavior","","That's all for swimmerF for now! I'll be expanding on the students soonish.");
 			break;
 		}
 		default: {

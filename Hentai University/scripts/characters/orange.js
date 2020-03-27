@@ -48,13 +48,13 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("She looks at you as if wondering how much more to say.");
 			writeSpeech("player", "", "You don't have to share anything you don't want to, orangeF. I just want to be sure that our students are all okay. Don't worry too much, even sportsF had a lot of trouble talking to me about her problems at first. We can take as much time as you need, and if you feel uncomfortable at any point, you're not required to be here.");
 			writeText("She looks down when you mention sportsF. From what you could figure out, orangeF really looks up to her as a role model. Hopefully her recommendation helps you out here.");
-			writeSpeech("orange", "", "... Thanks, playerF. That does make me feel beter. Sorry about being so twitchy. So... Uhm... What exactly...?");
+			writeSpeech("orange", "", "... Thanks, playerF. That does make me feel better. Sorry about being so twitchy. So... Uhm... What exactly...?");
 			writeText("You give her a smile and a shrug.");
 			writeSpeech("player", "", "There isn't any real formal procedure here, orangeF. For now we can just chat. Let me know how you're doing. If there's anything bothering you at school or at home. It doesn't have to be serious. For now, think of it as getting to know each other. You don't have to think about anything too hard.");
 			writeText("She seems a little confused, but after a few seconds starts to nod and begins talking. It takes her a bit, but before long she's gotten up to speed and feeling comfortable around you.");
 			writeSpeech("orange", "", "Well, lately, my classes have been...");
 			writeSpeech("orange", "", "And I like coldF, she's fun to be around, but it always feels like she's working so hard to make things work...");
-			writeSpeech("orange", "", "I've been having trouble in scarfF's class lately, honestly. But she always seems to be two steps ahead of me and usually makes a point to help when I'm having trouble. It'd be reepy if it wasn't so helpful. But apparently she's like that with everyone...");
+			writeSpeech("orange", "", "I've been having trouble in scarfF's class lately, honestly. But she always seems to be two steps ahead of me and usually makes a point to help when I'm having trouble. It'd be creepy if it wasn't so helpful. But apparently she's like that with everyone...");
 			writeSpeech("orange", "", "Also, apparently there's a girl in my class who wants to be a pornstar! That's crazy! But... To be honest... If she did star in something I'd definitely want to see that one.");
 			writeText("It's been about an hour now, and she's much more relaxed around you now. Honestly, that last one may have been a bit too much information, but you're not complaining. She still seems to be dancing around whatever the issue was that set her off, but progress is progress.");
 			writeSpeech("orange", "", "Oh, my God! Did I just say that out loud?");
@@ -106,14 +106,15 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "placeholder", trust: 200,},
+	{index: "orangereward", trust: 40,},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
 	phoneRight.scrollTop = 0;
 	switch (name) {
-		case "placeholder": {
-			//Write the event's text here using writePhoneSpeech, writePhoneImage, and writePhoneChoices
+		case "orangereward": {
+			writePhoneImage("images/orange/phoneReward.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("SlackerSavior","","That's all for orangeF for now! I'll be expanding on the students soonish.");
 			break;
 		}
 		default: {

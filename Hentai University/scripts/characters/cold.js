@@ -1,4 +1,4 @@
-var character = {index: "cold", fName: "Kelsey", lName: "Reese", trust: 0, encountered: false, textEvent: "", met: false, color: "#FCFFFA", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas"};
+var character = {index: "cold", fName: "Kelsey", lName: "Lowe", trust: 0, encountered: false, textEvent: "", met: false, color: "#FCFFFA", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas"};
 
 var logbook = {
 	index: "cold", 
@@ -63,10 +63,10 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("player", "", "No, no. I practice hypnosis. It's not really what people think, but it can be a good tool for helping relax people and get them more comfortable. I may be able to help you with your confidence problem if you want to give it a shot.");
 			writeText("She looks skeptical. Reasonably so, but you are a little offended.");
 			writeSpeech("cold", "", "I don't know about that one, playerF. That seems... Weirdly new age-y for what I expected today.");
-			writeSpeech("player", "", "It's fine if you're not on board right now. Tell you what, ask sportsF about it. I helped her study using hypnosis. Helped her ingrain little tricks for mainaining focus when she's studying. You're not wrong that it's kind of silly, but results are results. Even if it's just placebo effect, anything that helps is a tool, right?");
+			writeSpeech("player", "", "It's fine if you're not on board right now. Tell you what, ask sportsF about it. I helped her study using hypnosis. Helped her ingrain little tricks for maintaining focus when she's studying. You're not wrong that it's kind of silly, but results are results. Even if it's just placebo effect, anything that helps is a tool, right?");
 			writeText("She still doesn't look entirely convinced, but she's coming around to the idea. She makes a show of sighing loudly as she speaks up again.");
 			writeSpeech("cold", "", "Fine. I'll ask sportsF. Her grades did really improve, but I honestly thought maybe that was just the fact that you were her tutor and she wanted to impress you.");
-			writeSpeech("cold", "", "And I mean, the worst that happens is probably just you end up looking like an idiot... Uhh, no offfense.");
+			writeSpeech("cold", "", "And I mean, the worst that happens is probably just you end up looking like an idiot... Uhh, no offense.");
 			writeSpeech("player", "", "None taken. We don't have time today, but my door is always open. If you decide that you want to try, just let me know.");
 			writeSpeech("cold", "", "I'll think it over. Now, if you'll excuse me, I should probably get to class.");
 			writeFunction("changeLocation(data.player.location)", "coldF gathers her things and leaves.");
@@ -114,14 +114,15 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "placeholder", trust: 200,},
+	{index: "coldreward", trust: 30,},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
 	phoneRight.scrollTop = 0;
 	switch (name) {
-		case "placeholder": {
-			//Write the event's text here using writePhoneSpeech, writePhoneImage, and writePhoneChoices
+		case "coldreward": {
+			writePhoneImage("images/cold/phoneReward.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("SlackerSavior","","That's all for coldF for now! I'll be expanding on the students soonish.");
 			break;
 		}
 		default: {
