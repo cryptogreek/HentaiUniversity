@@ -942,10 +942,14 @@ var phoneArray = [//Lists the potential text events the player can receive at th
 	{index: "kuroPhone3", trust: 22,},
 	{index: "kuroPhone4", trust: 24,},
 	{index: "kuroPhone5", trust: 25,},
+
 	//PRIMARY ROUTE TEXTS:
 	{index: "kuroPhone7", trust: 63,},
-	{index: "kuroReward1", trust: 64,},
-	{index: "kuroReward1", trust: 65,},
+	{index: "kuroPhone8A", trust: 64,},
+	{index: "kuroPhone8B", trust: 65,},
+	// {index: "kuroReward1", trust: 64,},
+	// {index: "kuroReward1", trust: 65,},
+
 	//SECONDARY ROUTE TEXTS:
 	{index: "kuroPhone6", trust: 26,},
 	{index: "kuroReward2", trust: 40,},
@@ -1442,6 +1446,14 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","You totally owe me new sheets jerk");
 			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
 			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone8A" : {
+			writePhoneSpeech("kuro","","NOTE: STILL TRIGGERED");
+			break;
+		}
+		case "kuroPhone8B" : {
+			writePhoneSpeech("kuro","","NOTE: NOT TRIGGERED");
 			break;
 		}
 		case "kuroReward1" : {
