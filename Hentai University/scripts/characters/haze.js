@@ -1,4 +1,4 @@
-var character = {index: "haze", fName: "Lucille", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#9c66c4", author: "CryptoGreek", artist: "Purple Haze"};
+var character = {index: "haze", fName: "Sienna", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#9c66c4", author: "CryptoGreek", artist: "Purple Haze"};
 
 var logbook = {
 	index: "haze", 
