@@ -1,93 +1,59 @@
-var character = {index: "chubby", met: false, fName: "Margaret", lName: "Williams", trust: 0, encountered: false, textEvent: "", color: "#da924b",};
+var character =  {index: "cafedark", fName: "Mia", lName: "Gray", trust: 0, encountered: false, textEvent: "", met: false, color: "#83E4B7", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false,};
 
-//General tutorial stuff:
-//writeText("text"); - Writes some plain old text.
-//writeSpeech("character", "image", "dialogue") - Writes some dialogue. Leave "image" blank to find the appropriate image and name automatically.
-
-var logbook = { //Logbook details for each character.
-	index: "chubby", 
-	desc: "The mother of a university student, she's struggling to help her daughter improve her grades.",
-	body: "She's a bit out of shape, but has a pretty good looking mom-bod with huge breasts. You've never seen her without a smile on her face.",
-	clothes: "She prefers softer colors, her baggy clothes actually make her look larger than she is.",
-	home: "She lives on Vintage Street with her daughter. She tends to sleep through the evenings.",
-	tags: "Mom-Daughter Threesome",
-	artist: "Artist: Oreteki18kin",
-	author: "Noodle Jacuzzi",
+var logbook = {
+	index: "", 
+	desc: "",
+	body: "",
+	clothes: "",
+	home: "",
+	tags: "",
+	artist: "",
+	author: "",
 };
 
-var newItems = [//Lists the shop items unique to this character
+var newItems = [
+	{name: "", 				key: true, 		price: 0, 	image: "scripts/gamefiles/items/.jpg", description: ""},
+	{name: "", 				key: true, 		price: 0, 	image: "scripts/gamefiles/items/.jpg", description: ""},
 ];
 
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
-]
+	{index: "placeholder", name: "", requirements: "trust principal 10000;", altName: "", altImage: "",},
+];
 
 function writeEncounter(name) { //Plays the actual encounter.
 	document.getElementById('output').innerHTML = '';
 	wrapper.scrollTop = 0;
 	switch (name) {
-		case "test": {
-			writeBig("images/tomgirl/1-2.jpg", "Art by Nagi Ichi");
-			writeSpeech("???", "none", "Bro, it's not just the fact that they're missing! The whole thing just screams lazy!");
-			writeSpeech("tomgirl", "", "Dude, I don't care about your virtual animals. I-");
-			writeText("Two students are having a heated discussion about something, and one of them turns towards you as you walk up the stairs.");
-			writeText("The one looking at you has an effeminate look to him, but gives off a pretty disrespectful vibe. His name is "+fName('tomgirl')+" "+lName('tomgirl')+" if you remember your files right.");
-			writeText("He's staring at you, so you decide to...");
-			writeBig("images/tomgirl/1-3.jpg", "Art by Nagi Ichi");
-			writeFunction("loadEncounter('tomgirl', 'tomgirl2')", "Invite "+fName('tomgirl')+" to your office");
-			writeFunction("changeLocation(data.player.location)", "Walk on by");
+		case "neet1": {
+			writeText("You walk into the room.");
+			writeSpeech("player", "", "Hello, neetF.");
+			writeSpeech("neet", "", "And hello to you, playerMister playerF.");
+			writeSpecial("You made a new friend!");
+			writeFunction("changeLocation('playerHouse')", "Go home");
+			writeBig("images/neet/profile.jpg", "Art by Enoshima Iki");
 			break;
 		}
 		default: {
 			writeSpeech("player", "", "Error! You must've called the wrong encounter. Error code: Failed to write encounter ("+name+") in "+character.index+".js");
+			break;
 		}
 	}
 }
 
-var eventArray = [ //Lists the events of the character for unlocking and replaying in the gallery.
-	{index: "chubby1", name: "Mother's Payment"},
+var eventArray = [
+	{index: "placeholder", name: "Event Name"},
+	{index: "placeholder", name: "Event Name"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
 	document.getElementById('output').innerHTML = '';
 	wrapper.scrollTop = 0;
 	switch (name) {
-		case "chubby1": {
-			writeSpeech("chubby", "", "Ah, hello!");
-			writeText("chubbyF ushers you in quickly and closes the door.");
-			writeSpeech("chubby", "", "Welcome back, *Master. I'm afraid purpleF is out right now. She's meeting with some friends. She's been doing so well lately, thank you again for all you've done.");
-			writeSpeech("player", "", "No problem. I'm actually here for you.");
-			writeSpeech("chubby", "", "Oh? Ah, I see.");
-			writeText("One look at the bulge in your pants is all she needs to see.");
-			writeText("...");
-			writeBig("images/chubby/1-3.jpg", "Art by Oreteki18kin");
-			writeSpeech("chubby", "", "Hmmhmm~ It's so warm and wet inside me, isn't it? Is it to your liking? I haven't had a "+data.player.gender+" in years, never someone like you, *Master.");
-			writeSpeech("player", "", "You feel amazing, almost as tight as your daughter's pussy.");
-			writeSpeech("chubby", "", "So polite! But, you know how a "+data.player.gender+" like you shows their honesty, right? <br>Not~<br>With~<br>Words~");
-			writeText("Each word is punctuated with a gyration of her hips and a rhythmic clench of her pussy.");
-			writeSpeech("chubby", "", "You're so cute *Master, you've got such a dreamy look on your face. Will you cum inside me? Will you pump enough sperm inside me to make me cumdrunk?");
-			writeText("You can feel your balls clenching as you hear the front door opening and shutting after.");
-			writeBig("images/chubby/1-4.jpg", "Art by Oreteki18kin");
-			writeSpeech("chubby", "", "Cumming~<br>Welcome home honey! *Master is here!");
-			writeSpeech("purple", "", "*Master?!");
-			writeText("purpleF runs into the room as your cock flops out of her mother.");
-			writeBig("images/chubby/1-2.jpg", "Art by Oreteki18kin");
-			if (data.player.gender == "man") {
-				writeSpeech("chubby", "", "Don't worry honey, I saved you some. I'm sure *he'll be ready for another round after *he watches you suck his cum out of my pussy.");
-			}
-			else {
-				writeSpeech("chubby", "", "Don't worry honey, I saved you some. I'm sure she'll be ready for another round after she watches you suck her cum out of my pussy.");
-			}
-			writeText("...");
-			writeBig("images/purple/3-3.jpg", "Art by Oreteki18kin");
-			writeText("You collapse backwards onto the bedspread, totally spent.");
-			writeSpeech("chubby", "", "Now now purpleF, no need to be greedy.");
-			writeText("The daughter doesn't have the stamina of the mother. After only two rounds purpleF couldn't take any more, and now she grimaces as she sucks the results of your fourth and fifth round off her mother's tits.");
-			writeSpeech("chubby", "", "Now, what do we say for *Master?");
-			writeSpeech("purple", "", "*Mwah*!<br>Thank you for filling us up *Master!");
-			writeText("After a short break, you opt to get a move on as they fall asleep coated in your pungent cum.");
-			if (data.player.location == "vintageStreet") {
-				writeFunction("changeLocation(data.player.location)", "Finish");
-			}
+		case "placeholder": {
+			break;
+		}
+		default: {
+			writeSpeech("player", "", "Error! You must've called the wrong event. Error code: Failed to write event ("+name+") in "+character.index+".js");
 			break;
 		}
 	}
@@ -108,20 +74,25 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
+	{index: "empty", requirements: ""},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
+	phoneRight.scrollTop = 0;
 	switch (name) {
+		case "placeholder": {
+			//Write the event's text here using writePhoneSpeech, writePhoneImage, and writePhoneChoices
+			break;
+		}
 		default: {
 			writePhoneSpeech("player", "", "Error! You must've called the wrong event. Error code: Failed to write phone event("+name+") in "+character.index+".js");
-			clearText('chubby');
 			break;
 		}
 	}
 }
 
 //Don't touch anything below this, or things will break.
-//console.log(character.index+'.js loaded correctly. request type is '+requestType)
+console.log(character.index+'.js loaded correctly. request type is '+requestType)
 
 switch (requestType) {
 	case "encounter": {

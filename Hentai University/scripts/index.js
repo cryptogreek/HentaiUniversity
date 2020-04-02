@@ -32,28 +32,39 @@ var data = {
 		counseling: 0,
 		lastText: 100,
 		dayID: 1,
-		version: 6,
+		version: 7,
 		location: "",
 		pervert: false,
 		color: "#86b4dc",
 	},
 	story: [
-		{index: "mom", met: false, fName: "Emily", lName: "Smith", trust: 0, encountered: false, textEvent: "", color: "#CCCCCC",},
-		{index: "kuro", met: false, fName: "Steph", lName: "Black", trust: 0, encountered: false, textEvent: "", color: "#fde1a5"},
-		{index: "tomgirl", met: false, fName: "Sam", lName: "White", trust: 0, encountered: false, textEvent: "", color: "#a79e9a"},
-		{index: "purple", met: false, fName: "Mary", lName: "Williams", trust: 0, encountered: false, textEvent: "", color: "#cb86ef"},
-		{index: "chubby", met: false, fName: "Margaret", lName: "Williams", trust: 0, encountered: false, textEvent: "", color: "#da924b"},
-		{index: "maid", met: false, fName: "Lena", lName: "Rogers", trust: 0, encountered: false, textEvent: "", color: "#CCCCCC"},
-		{index: "mistress", met: false, fName: "Anna", lName: "Fletcher", trust: 0, encountered: false, textEvent: "", color: "#ed9082"},
-		{index: "meji", met: false, fName: "Reese", lName: "Kieran", trust: 0, encountered: false, textEvent: "", color: "#7e52a3"},
-		{index: "principal", met: false, fName: "Victoria", lName: "Devons", trust: 0, encountered: false, textEvent: "", color: "#e47311"},
-		{index: "secretary", met: false, fName: "Lisa", lName: "Jones", trust: 0, encountered: false, textEvent: "", color: "#888888"},
-		{index: "neet", met: false, fName: "Tia", lName: "Sun", trust: 0, encountered: false, textEvent: "", color: "#da924b"},
-		{index: "scarf", met: false, fName: "Casandra", lName: "Hamilton", trust: 0, encountered: false, textEvent: "", color: "#954655"},
-		{index: "green", met: false, fName: "Emma", lName: "Hamilton", trust: 0, encountered: false, textEvent: "", color: "#677b4c"},
-		{index: "succubus", fName: "Gou", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#BF76DF"},
-		{index: "nurse", fName: "Justine", lName: "Walton", trust: 0, encountered: false, textEvent: "", met: false, color: "#8D756B"},
-		{index: "housekeep", fName: "Anri", lName: "Ramona", trust: 0, encountered: false, textEvent: "", met: false, color: "#df5877", author: "CryptoGreek", artist: "Kinta no Mousou"},
+		{index: "mom", 			met: false, fName: "Emily", lName: "Smith", 		trust: 0, encountered: false, textEvent: "", color: "#CCCCCC", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "kuro", 		met: false, fName: "Steph", lName: "Black", 		trust: 0, encountered: false, textEvent: "", color: "#fde1a5", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "tomgirl", 		met: false, fName: "Sam", lName: "White", 			trust: 0, encountered: false, textEvent: "", color: "#a79e9a", author: "NoodleJacuzzi", artist: "Nagi Ichi", textHistory: "", unreadText: false},
+		{index: "purple", 		met: false, fName: "Mary", lName: "Williams", 		trust: 0, encountered: false, textEvent: "", color: "#cb86ef", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false},
+		{index: "chubby", 		met: false, fName: "Margaret", lName: "Williams", 	trust: 0, encountered: false, textEvent: "", color: "#da924b", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false},
+		{index: "maid", 		met: false, fName: "Lena", lName: "Rogers", 		trust: 0, encountered: false, textEvent: "", color: "#CCCCCC", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "mistress", 	met: false, fName: "Anna", lName: "Fletcher", 		trust: 0, encountered: false, textEvent: "", color: "#ed9082", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "meji", 		met: false, fName: "Reese", lName: "Kieran", 		trust: 0, encountered: false, textEvent: "", color: "#7e52a3", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "principal", 	met: false, fName: "Victoria", lName: "Devons", 	trust: 0, encountered: false, textEvent: "", color: "#e47311", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false},
+		{index: "secretary", 	met: false, fName: "Lisa", lName: "Jones", 			trust: 0, encountered: false, textEvent: "", color: "#888888", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false},
+		{index: "neet", 		met: false, fName: "Tia", lName: "Sun", 			trust: 0, encountered: false, textEvent: "", color: "#da924b", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "scarf", 		met: false, fName: "Casandra", lName: "Hamilton", 	trust: 0, encountered: false, textEvent: "", color: "#954655", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "green", 		met: false, fName: "Emma", lName: "Hamilton", 		trust: 0, encountered: false, textEvent: "", color: "#677b4c", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false},
+		{index: "succubus", 	met: false, fName: "Gou", lName: "", 				trust: 0, encountered: false, textEvent: "", color: "#BF76DF", author: "NoodleJacuzzi", artist: "Gujira 4 Gou", textHistory: "", unreadText: false},
+		{index: "nurse", 		met: false, fName: "Justine", lName: "Walton", 		trust: 0, encountered: false, textEvent: "", color: "#8D756B", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false},
+		{index: "housekeep", 	met: false, fName: "Anri", lName: "Ramona", 		trust: 0, encountered: false, textEvent: "", color: "#df5877", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false},
+		{index: "haze", 		met: false, fName: "Madeleine", lName: "", 			trust: 0, encountered: false, textEvent: "", color: "#F683C8", author: "CryptoGreek", artist: "Purple Haze", textHistory: "", unreadText: false,},
+		{index: "nikki", 		met: false, fName: "Nikki", lName: "Hunt", 			trust: 0, encountered: false, textEvent: "", color: "#445B6D", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false,},
+		{index: "cafedark", 	met: false, fName: "Mia", lName: "Gray", 			trust: 0, encountered: false, textEvent: "", color: "#83E4B7", author: "CryptoGreek", artist: "Oreteki18kin", textHistory: "", unreadText: false,},
+		{index: "incubus", 		met: false, fName: "Lily", lName: "", 				trust: 0, encountered: false, textEvent: "", color: "#FFF6BD", author: "NoodleJacuzzi", artist: "Gujira 4 Gou", textHistory: "", unreadText: false,},
+		{index: "president", 	met: false, fName: "Madison", lName: "Moore", 		trust: 0, encountered: false, textEvent: "", color: "#AD7961", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,},
+		{index: "treasurer", 	met: false, fName: "Abigail", lName: "Adams", 		trust: 0, encountered: false, textEvent: "", color: "#CFA18A", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,},
+		{index: "ojou", 		met: false, fName: "Olivia", lName: "Wright", 		trust: 0, encountered: false, textEvent: "", color: "#4EAAB5", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,},
+		{index: "mama", 		met: false, fName: "Sofia", lName: "Rossi", 		trust: 0, encountered: false, textEvent: "", color: "#A2DAF1", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false,},
+		{index: "pinstripe", 	met: false, fName: "Edith", lName: "Weber", 		trust: 0, encountered: false, textEvent: "", color: "#924F82", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false,},
+		{index: "instructor", 	met: false, fName: "Charlotte", lName: "Reid", 		trust: 0, encountered: false, textEvent: "", color: "#FD7380", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,},
+		{index: "nagatoro", 	met: false, fName: "Ash", lName: "Martin", 			trust: 0, encountered: false, textEvent: "", color: "#6E6C94", author: "NoodleJacuzzi", artist: "Kinta no Mousou", textHistory: "", unreadText: false,},
 	],
 	gallery: [
 	],
@@ -254,7 +265,7 @@ function startup() {
 }
 
 function preloadImages(){
-	console.log("preloading start");
+	console.log("preloading...");
     var preloaded = new Image();
 	for (i = 0; i < locationArray.length; i++) {
 		var bg = "images/locations/"+locationArray[i].index+"Morning.jpg";
@@ -266,7 +277,7 @@ function preloadImages(){
 		var bg = "images/"+data.story[characterIndex].index+"/"+data.story[characterIndex].index+".jpg";
 		document.getElementById('wrapperBG').style.backgroundImage = "url("+bg+")";
 	}
-	console.log("preloading finished");
+	//console.log("preloading finished");
 }
 
 function restartButton() {
@@ -282,7 +293,9 @@ function disablePictures() {
 		document.getElementById("playerImage").style.width = "0%";
 		document.getElementById("playerImage").style.border = "none";
 		imagesDisabled = true;
-		changeLocation(data.player.location);
+		if (data.player.location != "") {
+			changeLocation(data.player.location);
+		}
 	}
 	else {
 		location.reload();
@@ -313,7 +326,7 @@ function passTime() {
 function loadCharacter(name) {
 	for (loadIndex = 0; loadIndex < data.story.length; loadIndex++) {
 		if (data.story[loadIndex].index == name) {
-			alert(name+' found already in the data variable, aborting function');
+			console.log(name+' found already in the data variable, aborting function');
 			name = 'failed';
 		}
 	}
@@ -339,9 +352,12 @@ function modCharacter() {
 	loadCharacter(goof);
 	document.getElementById('output').innerHTML = '';
 	writeBig("images/"+goof+"/profile.jpg", "New character");
-	writeText("Loaded the index file, has been added to the game! If the above image is broken, one of the following has happened:");
+	writeText("Loaded the index file, a mod has been loaded into to the game! Be sure to drop by the modding channel to encourage the artist! If the above image is broken, one of the following has happened:");
 	writeText("The character you added does not have a profile.jpg image in their images folder.");
 	writeText("The images folder isn't named appropriately, or is in the wrong place. It should be in Hentai University/images");
+	writeText("If the characters aren't appearing below, one of the following has happened:");
+	writeText("You've already loaded this mod.");
+	writeText("The mod character's .js file is in the wrong place. It should be in the Hentai University/scripts/characters folder.");
 	writeText("You mistyped the index. If this is the case, load an older save immediately and try again.");
 	if (data.player.location == "") {
 		writeFunction("writeEncounter('system', 'start')", "Back to the start menu");
@@ -961,19 +977,27 @@ function printEncounterTab(name, scene, text, altImage, altName) {
 			altName = "";
 		}
 		if (altImage != "") {
-			img = altImage;
+			img = altImage
 		}
-		if (altName != "") {
-			name = altName;
+		if (scene.includes("Beach")==true) {
+			if (data.player.location != "beach") {
+				cancelTab = true;
+			}
+		}
+		if (scene.includes("Casino")==true) {
+			if (data.player.location != "casino") {
+				cancelTab = true;
+			}
 		}
 		//console.log(tabIndex);
-		console.log(cssColor);
+		//console.log(cssColor);
 		if (cancelTab != true) {
 			console.log("Now generating tab for " + name + ", linking to scene " + scene + " with the text " + text + " " +altImage);
 			writeSpeech(name, img, `
 				<p class="status"> Status: ` + tabTrust + `</p>	
 				<p class="switch" onclick="loadEncounter('`+data.story[tabIndex].index+`', '`+scene+`')">` + replaceCodenames(text) + `</p>
-			`);
+			`, altName, ""
+			);
 		}
 	}
 }
@@ -1066,92 +1090,86 @@ function writeSpecial (text) {
 	}
 }
 
-function writeSpeech (name, img, text) {
-	var cssName = name;
-	var fullName = name;
-	console.log(img);
-	var cssColor = "#CCCCCC";
-	if (img == "" && img != 'none') {
-		if (data.player.pervert != true) {
-			var checkForError = "";
-			img = "images/"+name+"/"+name+".jpg";
-		}
-		else {
-			var checkForError = `onerror ="javascript:this.src='images/`+name+`/`+name+`.jpg'"`;
-			img = "images/"+name+"/"+name+"P.jpg";
-		}
+function writeSpeech (name, img, text, altName, altColor) {
+	var finalName = "";
+	var finalImg = "";
+	var finalColor = "";
+	var checkForError = "";
+	//If the player is using a shortcut...
+	if (img == "") {
+		finalImg = "images/"+name+"/"+name+".jpg";
 	}
 	else {
-		if (img.includes("images") != true && img != 'none') {
-			if (data.player.pervert != true) {
-				var checkForError = "";
-				img = "images/"+cssName+"/"+img;
-			}
-			else {
-				var checkForError = `onerror ="javascript:this.src='images/`+name+`/`+img+`'"`;
-				img = "images/"+cssName+"/"+img+"P.jpg";
-			}
-		}
-	}
-	if (img.includes('.jpgP') == true) {
-		img = img.replace('.jpgP', 'P');
-	}
-	if (name == "player") {
-		img = "scripts/gamefiles/profiles/" + data.player.character + ".jpg";
-		fullName = data.player.name;
-		if (data.player.pervert != true) {
-			cssColor = "#86b4dc";
+		if (img.includes("images") != true) {
+			finalImg = "images/"+name+"/"+img;
 		}
 		else {
-			cssColor = "#fc53f1";
+			finalImg = img;
 		}
 	}
-	console.log(img);
+	//Check for pervert mode
+	if (data.player.pervert == true) {
+		var checkForError = `onerror ="javascript:this.src='images/`+name+`/`+name+`P.jpg'"`;
+		finalImg = finalImg.replace('.jpg', 'P.jpg');
+	}
+	//Check if a transparent shot should be used
 	if (data.player.style == "persona" || data.player.style == "royalty") {
-		var checkForError = `onerror ="javascript:this.src='`+img+`'"`;
-		if (data.player.pervert == true) {
-			if (name == "player") {
-				img = img.replace('.jpg', 'T.png');
-			}
-			else {
-				img = img.replace('P.jpg', 'T.png');
-			}
-		}
-		else {
-			img = img.replace('.jpg', 'T.png');
-		}
+		var checkForError = `onerror ="javascript:this.src='images/`+name+`/`+name+`.jpg'"`;
+		finalImg = finalImg.replace('P.jpg', '.jpg');
+		finalImg = finalImg.replace('.jpg', 'T.png');
 	}
+	//Search the data variable for if a shortcut was used
 	for (i = 0; i < data.story.length; i++) {
 		if (data.story[i].index == name) {
-			fullName = data.story[i].fName + ' ' + data.story[i].lName;
-			cssColor = data.story[i].color;
-			
+			finalName = data.story[i].fName + ' ' + data.story[i].lName;
+			finalColor = data.story[i].color;
+		}
+	}
+	//If the name is player, use the player's details
+	if (name == "player") {
+		finalImg = "scripts/gamefiles/profiles/" + data.player.character + ".jpg";
+		finalName = data.player.name;
+		switch (data.player.color) {
+			case null:
+			case "":
+			data.player.color = "#86b4dc"
+			default:
+			finalColor = data.player.color;
 		}
 	}
 	if (img == "none") {
-		var checkForError = "";
-		img = "scripts/gamefiles/none.png";
+		finalImg = "images/none.png";
 	}
+	//HIDDEN shortcut for crypto to mask the name of the character
 	if (text.includes("HIDDEN") == true) {
-		fullName = "???";
+		finalName = "???";
 		text = text.replace("HIDDEN", "");
 	}
+	//Check if an alternate final color should be used.
+	if (altColor != null && altColor != "") {
+		finalColor = altColor;
+	}
+	//Check if an alternate final name should be used.
+	if (altName != null && altName != "") {
+		finalName = altName;
+	}
+	//Output the speech in the assigned style.
 	switch (data.player.style) {
 		case "lobotomy": {
 			document.getElementById('output').innerHTML += `
-			<div class="textBoxLobotomy" style="border-color: `+cssColor+`;
+			<div class="textBoxLobotomy" style="border-color: `+finalColor+`;
 			background: linear-gradient(90deg, 
 			#000000 10px, 
-			`+cssColor+` 10px, 
-			`+cssColor+` 210px, 
+			`+finalColor+` 10px, 
+			`+finalColor+` 210px, 
 			#000000 210px);">
-				<div class = "lobotomyThumb" style="background-color: `+cssColor+`">
+				<div class = "lobotomyThumb" style="background-color: `+finalColor+`">
 					<div class = "lobotomyThumbBorder">
 						<img class = "textThumbLobotomy" src = "
-							`+ img +`
+							`+ finalImg +`
 						"`+checkForError+`>
 					</div>
-					<p class = "textNameLobotomy">`+ fullName + `</p>
+					<p class = "textNameLobotomy">`+ finalName + `</p>
 				</div>
 				<div class="textBoxContentLobotomy">
 				<p>` + replaceCodenames(text) + `</p>
@@ -1167,19 +1185,19 @@ function writeSpeech (name, img, text) {
 					<div class = "royaltyImageHolder">
 						<img class = "textThumbRoyalty" style="
 							position:absolute;
-							-webkit-filter: drop-shadow(2px 2px 0 `+cssColor+`)
-							drop-shadow(-2px -2px 0 `+cssColor+`);
-							filter: drop-shadow(2px 2px 0 `+cssColor+`)
-							drop-shadow(-2px -2px 0 `+cssColor+`);"
-						src = "`+img+`"`+checkForError+`>
-						<img class = "textThumbRoyalty" src = "`+img+`"`+checkForError+`>
+							-webkit-filter: drop-shadow(2px 2px 0 `+finalColor+`)
+							drop-shadow(-2px -2px 0 `+finalColor+`);
+							filter: drop-shadow(2px 2px 0 `+finalColor+`)
+							drop-shadow(-2px -2px 0 `+finalColor+`);"
+						src = "`+finalImg+`"`+checkForError+`>
+						<img class = "textThumbRoyalty" src = "`+finalImg+`"`+checkForError+`>
 					</div>
-					<div class="nameBoxRoyalty" style = "border-color:`+cssColor+`;">
-						<p class = "textNameRoyalty" style = "color:`+cssColor+`;">`+fullName+`</p>
+					<div class="nameBoxRoyalty" style = "border-color:`+finalColor+`;">
+						<p class = "textNameRoyalty" style = "color:`+finalColor+`;">`+finalName+`</p>
 					</div>
 				</div>
 				<div class="textBoxContentRoyalty">
-					<div class="dialogueBoxRoyalty" style = "border-color:`+cssColor+`">
+					<div class="dialogueBoxRoyalty" style = "border-color:`+finalColor+`">
 						<p>` + replaceCodenames(text) + `</p>
 					</div>
 				</div>
@@ -1191,17 +1209,17 @@ function writeSpeech (name, img, text) {
 			document.getElementById('output').innerHTML += `
 			<div class="textBoxPersona">
 				<div class = "personaThumb">
-					<img class = "textThumbPersona" src = "`+img+`"`+checkForError+`>
+					<img class = "textThumbPersona" src = "`+finalImg+`"`+checkForError+`>
 				</div>
 				<div class="textBoxContentPersona">
 					<div class="nameBoxPersona">
-						<p class = "textNamePersona" style = "color:`+cssColor+`">`+ fullName + `</p>
-						<div class="textNamePersonaWhite" style = "border-color:`+cssColor+`"></div>
+						<p class = "textNamePersona" style = "color:`+finalColor+`">`+ finalName + `</p>
+						<div class="textNamePersonaWhite" style = "border-color:`+finalColor+`"></div>
 						<div class="textNamePersonaBlack"></div>
 						<div class="personaNameArrow"></div>
-						<div class="personaNameArrowShadow" style = "border-right-color:`+cssColor+`"></div>
+						<div class="personaNameArrowShadow" style = "border-right-color:`+finalColor+`"></div>
 					</div>
-					<div class="dialogueBoxPersona" style = "border-color:`+cssColor+`">
+					<div class="dialogueBoxPersona" style = "border-color:`+finalColor+`">
 						<p>` + replaceCodenames(text) + `</p>
 					</div>
 				</div>
@@ -1211,12 +1229,12 @@ function writeSpeech (name, img, text) {
 		}
 		default: {
 			document.getElementById('output').innerHTML +=`
-			<div class="textBox" style="border-color: `+cssColor+`">
-				<img class = "textThumb" style="box-shadow: -5px 5px `+cssColor+`" src = "
-					`+ img +`
+			<div class="textBox" style="border-color: `+finalColor+`">
+				<img class = "textThumb" style="box-shadow: -5px 5px `+finalColor+`" src = "
+					`+ finalImg +`
 				"`+checkForError+`>
 				<div class="textBoxContent">
-				<p class = "textName" style="color:`+cssColor+`">`+ fullName + `</p>
+				<p class = "textName" style="color:`+finalColor+`">`+ finalName + `</p>
 				<p>` + replaceCodenames(text) + `</p>
 			</div>
 			<br>
@@ -1374,6 +1392,108 @@ function writeFunction (name, func) {
 					` + replaceCodenames(func) + `
 				</p>
 			`;
+		}
+	}
+}
+
+function writeHTML(text) {
+	//Separate the text into lines
+	var lines = text.split('\n');
+	//For each of these lines
+	for(var lineCounter = 0;lineCounter < lines.length;lineCounter++){
+		//Remove all tabs from the line, in case we use tab spacing
+		while (lines[lineCounter].includes('\t') == true) {
+			lines[lineCounter] = lines[lineCounter].replace(`\t`, ``);
+		}
+		//If the line is not empty (we don't want to print empty lines)
+		if (lines[lineCounter] != "") {
+			//Grab the first word of the line to use as the command
+			var command = lines[lineCounter].replace(/ .*/,'');
+			//Depending on which command, execute different code. Convert the command to lowercase as well in case we used Sp instead of sp, as js is case-sensitive.
+			switch (command.toLowerCase()) {
+				//If the command is "t"
+				case "t": {
+					//Remove the command from the line we actually want to print.
+					lines[lineCounter] = lines[lineCounter].replace(command+` `, ``);
+					//Execute the writeText command to print everything left to the screen.
+					writeText(lines[lineCounter]);
+					//Don't execute any of the below switch cases.
+					break;
+				}
+				case "sp": {
+					//Get the name of our speaker
+					var name = lines[lineCounter].split(command+` `).pop().split(`;`)[0];
+					//If "; im" is in our code we want to specify a specific profile image, so use that. Otherwise set the image variable blank so it can be automatically found.
+					if (lines[lineCounter].includes("; im")) {
+						var image = lines[lineCounter].split(`im `).pop().split(`;`)[0];
+						lines[lineCounter] = lines[lineCounter].replace(`im `+image+`; `, ``);
+					}
+					else {
+						var image = "";
+					}
+					//If "; altName" is in our code we want to use an alternate name for the character, so use that. Otherwise set the altName variable blank.
+					if (lines[lineCounter].includes("; altName")) {
+						var altName = lines[lineCounter].split(`altName `).pop().split(`;`)[0];
+						lines[lineCounter] = lines[lineCounter].replace(`altName `+altName+`; `, ``);
+					}
+					else {
+						var altName = "";
+					}
+					//If "; altColor" is in our code we want to specify a specific color for the character, so use that. Otherwise set the altColor variable blank.
+					if (lines[lineCounter].includes("; altColor")) {
+						var altColor = lines[lineCounter].split(`altColor `).pop().split(`;`)[0];
+						lines[lineCounter] = lines[lineCounter].replace(`altColor `+altColor+`; `, ``);
+					}
+					else {
+						var altColor = "";
+					}
+					//Remove the command from the line we actually want to print.
+					lines[lineCounter] = lines[lineCounter].replace(command+` `+name+`; `, ``);
+					//Execute the writeSpeech command to print everything we have left.
+					//TODO: Add custom colors and custom names
+					writeSpeech(name, image, lines[lineCounter], altName, altColor);
+					break;
+				}
+				case "im": {
+					//Get the location of the image
+					var location = lines[lineCounter].split(command+` `).pop().split(`;`)[0];
+					//If "; cap" is in our code we want to attach a caption to our image. Otherwise leave the caption blank.
+					if (lines[lineCounter].includes("; cap")) {
+						var caption = lines[lineCounter].split(`cap `).pop().split(`;`)[0];
+					}
+					else {
+						var caption = "";
+					}
+					//Bring up the image on screen. Since we aren't printing the line itself we don't need to clean it by removing commands.
+					writeBig(location, caption);
+					break;
+				}
+				case "b": {
+					//Get the label of our button
+					var name = lines[lineCounter].split(`b `).pop().split(`;`)[0];
+					//Get the function we want our button to perform
+					var func = lines[lineCounter].split(`f `).pop().split(`;`)[0];
+					//If "; arg" is in our code we want the function to have a special argument. Otherwise leave the argument section blank.
+					if (lines[lineCounter].includes("; arg")) {
+						var argument = lines[lineCounter].split(`arg `).pop().split(`;`)[0];
+					}
+					else {
+						var argument = "";
+					}
+					//Write the button to the screen using the information we've collected.
+					writeFunction(func+"('"+argument+"')", name)
+					break;
+				}
+				//This is for convenience. If the line is just an elipses, replace it with a horizontal line cutting across the screen.
+				case "...": {
+					writeText("<hr>");
+					break;
+				}
+				//If the command isn't found in the list above then the code can't be parsed (understood), print an error code in red.
+				default: {
+					writeText("<span style='color:red'>Unknown command. The line '"+lines[lineCounter]+"' could not be parsed.");
+				}
+			}
 		}
 	}
 }
@@ -1810,7 +1930,7 @@ function updateMenu() {
 			else {
 				document.getElementById('playerImage').style.borderColor = "#fc53f1";
 			}
-			console.log(data.player.style);
+			//console.log(data.player.style);
 			break;
 		}
 		case "royalty": {
@@ -1836,13 +1956,13 @@ function updateMenu() {
 			else {
 				document.getElementById('playerImage').style.borderColor = "#fc53f1";
 			}
-			console.log(data.player.style);
+			//console.log(data.player.style);
 			break;
 		}
 		default: {
 			document.getElementById('title').style.fontFamily = "arial, sans-serif";
 			document.getElementById('menu').style.fontFamily = "arial, sans-serif";
-			console.log(document.getElementById('title').style.fontFamily);
+			//console.log(document.getElementById('title').style.fontFamily);
 			for (i = 0; i < menuButtons.length; i++) {
 				document.getElementById(menuButtons[i].ID).innerHTML = menuButtons[i].name;
 				document.getElementById(menuButtons[i].ID).style.borderRadius = "5px";
@@ -1943,6 +2063,57 @@ function updateSave() {
 		data.story.push(goof);
 		console.log(data.story);
 	}
+	if (data.player.version == 6) {
+		console.log('version 6 detected, updating save');
+		data.player.version = 7;
+		var goof = {index: "haze", fName: "Madeleine", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#F683C8", author: "CryptoGreek", artist: "Purple Haze", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "nikki", fName: "Nikki", lName: "Hunt", trust: 0, encountered: false, textEvent: "", met: false, color: "#445B6D", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "cafedark", fName: "Mia", lName: "Grey", trust: 0, encountered: false, textEvent: "", met: false, color: "#83E4B7", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "incubus", fName: "Lily", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#FFF6BD", author: "NoodleJacuzzi", artist: "Gujira 4 Gou", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "president", fName: "Madison", lName: "Moore", trust: 0, encountered: false, textEvent: "", met: false, color: "#AD7961", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "treasurer", fName: "Abigail", lName: "Adams", trust: 0, encountered: false, textEvent: "", met: false, color: "#CFA18A", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "ojou", fName: "Olivia", lName: "Wright", trust: 0, encountered: false, textEvent: "", met: false, color: "#4EAAB5", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "mama", fName: "Sofia", lName: "Rossi", trust: 0, encountered: false, textEvent: "", met: false, color: "#A2DAF1", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "pinstripe", fName: "Edith", lName: "Weber", trust: 0, encountered: false, textEvent: "", met: false, color: "#924F82", author: "NoodleJacuzzi", artist: "Enoshima Iki", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "instructor", fName: "Charlotte", lName: "Reid", trust: 0, encountered: false, textEvent: "", met: false, color: "#FD7380", author: "NoodleJacuzzi", artist: "Oreteki18kin", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		var goof = {index: "nagatoro", fName: "Ash", lName: "Martin", trust: 0, encountered: false, textEvent: "", met: false, color: "#6E6C94", author: "NoodleJacuzzi", artist: "Kinta no Mousou", textHistory: "", unreadText: false,};
+		data.story.push(goof);
+		for (y = 0; y < data.story.length; y++) {
+			data.story[y].textHistory = "";
+			data.story[y].unreadText = false;
+		}
+		var loadZoe = true
+		for (loadIndex = 0; loadIndex < data.story.length; loadIndex++) {
+			if (data.story[loadIndex].index == "sports") {
+				console.log('sports found already in the data variable, aborting function');
+				var loadZoe = false
+			}
+		}
+		if (loadZoe == true) {
+			var goof = {index: "sports", fName: "Zoe", lName: "Parker", trust: 0, encountered: false, textEvent: "", met: false, color: "#496EBF", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "swimmer", fName: "Naomi", lName: "Greens", trust: 0, encountered: false, textEvent: "", met: false, color: "#8DB7D0", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "orange", fName: "Vanessa", lName: "Lions", trust: 0, encountered: false, textEvent: "", met: false, color: "#BA5B17", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "cold", fName: "Kelsey", lName: "Lowe", trust: 0, encountered: false, textEvent: "", met: false, color: "#FCFFFA", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "coach", fName: "Amy", lName: "Silver", trust: 0, encountered: false, textEvent: "", met: false, color: "#D7BB2E", author: "Slackersavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			writeSpecial("Characters by mod author SlackerSavior have been added to the game!");
+		}
+		console.log(data.story);
+	}
 	saveSlot(110);
 }
 
@@ -1984,7 +2155,7 @@ function saveFile(){
 	hideStuff();
 	document.getElementById('output').innerHTML = '';
 	writeText("Copy the full length below and paste it into the input box when you want to load the data. I recommend copying to a txt file.");
-	writeText("" + JSON.stringify(data) + "");
+	document.getElementById('output').innerHTML += JSON.stringify(data);
 	writeFunction("changeLocation(data.player.location)", "Finished copying");
 }
 
@@ -2002,6 +2173,55 @@ function loadFile(){
 		loadSlot(110);
 	}
 	updateSave();
+}
+
+function saveTXT() {
+	var date = new Date();
+	date = date.toDateString() + " " + date.toLocaleTimeString();
+    var textFileAsBlob = new Blob([JSON.stringify(data)], {type:'text/plain'});
+    var downloadLink = document.createElement("a");
+    downloadLink.download = "HU "+date+".noodle";
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null)
+    {
+        // Chrome allows the link to be clicked
+        // without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    }
+    else
+    {
+        // Firefox requires the link to be added to the DOM
+        // before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
+}
+
+const fr = new FileReader();
+fr.addEventListener("load", fileLoaded);
+
+function loadSave(){
+    files = document.getElementById('loadFile').files;
+    if(files.length == 0)
+        return;
+    file = files[0];
+    fr.readAsText(file);
+}
+function fileLoaded(){
+    console.log(fr.result);
+	var fakedata = fr.result;
+	fakedata = JSON.parse(fakedata);
+	if (fakedata.player.hypnosis == null) {
+		alert("Whoa there! I don't think that's a Hentai University save file! If it is, be sure to let me (Noodlejacuzzi) know and I'll help you out.");
+	}
+	else {
+		data = fakedata;
+		changeLocation(data.player.location);
+	}
 }
 
 function generateSave() {
@@ -2403,11 +2623,13 @@ function diagnostic() {
 			if (data.player.pervert != true) {
 				data.player.pervert = true;
 				writeSpecial("Pervert mode activated!");
+				data.player.color = "#fc53f1";
 				updateMenu();
 			}
 			else {
 				data.player.pervert = false;
 				writeSpecial("Pervert mode deactivated!");
+				data.player.color = "#86b4dc";
 				updateMenu();
 			}
 			break;
@@ -2469,7 +2691,7 @@ function diagnostic() {
 		case "nuclear option": {
 			data.player.hypnosis = 3;
 			data.player.hacking = 3;
-			data.player.counseling = 3;
+			data.player.counseling = 4;
 			updateMenu();
 			writeSpecial("All of your stats have been set to 3. You can keep improving them past this point, but you shouldn't see any skill-related roadblocks from here on!");
 			break;
@@ -2657,6 +2879,10 @@ function generateContacts() {
 	for (i = 0; i < data.story.length; i++) {
 		if (data.story[i].textEvent!= "") {
 			document.getElementById('phoneLeft').innerHTML += `<h3 class = "button char_` + data.story[i].index + `" style = "color: `+data.story[i].color+`" onclick = "switchContact('`+i+`')">` + data.story[i].fName + `</h3 >`;
+		}
+	}
+	for (i = 0; i < data.story.length; i++) {
+		if (data.story[i].unreadText != false) {
 			data.player.lastText = i;
 		}
 	}
@@ -2679,8 +2905,33 @@ function switchContact(n) {
 	console.log("contact switched");
 	document.getElementById('phoneRight').innerHTML = '';
 	document.getElementById('phoneWindow').innerHTML = data.story[n].fName;
+	data.story[n].unreadText = false;
 	data.player.lastText = n;
 	loadPhoneEvent(data.story[data.player.lastText].index, data.story[data.player.lastText].textEvent);
+}
+
+function checkUnread(n) {
+	for (textIndex = 0; textIndex < data.story.length; textIndex++) {
+		if (data.story[textIndex].index.includes(n)) {
+			if (data.story[textIndex].unreadText == true) {
+				return true;
+				break;
+			}
+		}
+	}
+	return false;
+}
+
+function checkText(character, target) {
+	for (textIndex = 0; textIndex < data.story.length; textIndex++) {
+		if (data.story[textIndex].index.includes(character)) {
+			if (data.story[textIndex].textHistory.includes(target)) {
+				return true;
+				break;
+			}
+		}
+	}
+	return false;
 }
 
 function phoneImages() {

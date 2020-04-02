@@ -23,6 +23,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "mom3", name: "mom is drunkenly stumbling home", location: 'apartmentOutside', time: "Evening", itemReq: "", trustMin: 60, trustMax: 60, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "mom4", name: "mom is walking down the street", location: 'vintageStreet', time: "Evening", itemReq: "Beer", trustMin: 79, trustMax: 89, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "mom5", name: "Knock on mom's door", location: 'apartmentOutside', time: "MorningEvening", itemReq: "", trustMin: 90, trustMax: 90, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "momCasino1", name: "mom is here", location: 'casino', time: "MorningEvening", itemReq: "", trustMin: 90, trustMax: 200, type: "tab", top: 0, left: 0, day: "both",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -209,6 +210,34 @@ function writeEncounter(name) { //Plays the actual encounter.
 			passTime();
 			setTrust('mom', 100);
 			writeFunction("changeLocation(data.player.location)", "Go back");
+			break;
+		}
+		case "momCasino1": {
+			writeBig("images/scarf/casinoMom1.jpg", "Art by Enoshima Iki");
+			writeSpeech("mom", "", "Heeey~! C'mon in, have a grand old time! Just the two of us!");
+			writeSpeech("player", "", "momF? What're you wearing?");
+			writeText("It's a trick of the mind, you're filling in the blanks of the casino yourself. You're aware enough to know that falling down the rabbit hole is a bad idea, but...");
+			writeBig("images/scarf/casinoMom2.jpg", "Art by Enoshima Iki");
+			writeSpeech("mom", "", "I'm headed in now. If you wanna follow, well...");
+			writeText("Too self concious to finish her statement, she walks through a small door you didn't see before.");
+			writeSpeech("scarf", "bunny.jpg", "Relax... Let yourself sink in and enjoy~");
+			writeFunction("writeEncounter('momCasino2')", "Follow momF");
+			writeFunction("changeLocation(data.player.location)", "Resist, keep on track");
+			break;
+		}
+		case "momCasino2": {
+			writeBig("images/scarf/casinoMom3.jpg", "Art by Enoshima Iki");
+			writeSpeech("mom", "", "So, what kinda fun were you hoping to have with me? I was hoping we could...");
+			writeText("Her voice fades out as a pleasant haze fills your mind.");
+			writeBig("images/scarf/casinoMom4.jpg", "Art by Enoshima Iki");
+			writeSpeech("scarf", "bunny.jpg", "Just relax, enjoy. There's nothing left to worry about, I'll do all the thinking for you.");
+			writeBig("images/scarf/casinoMom5.jpg", "Art by Enoshima Iki");
+			writeSpeech("scarf", "bunny.jpg", "Your body will follow my instructions, while your mind enjoys a little slice of heaven on repeat.");
+			writeBig("images/scarf/casinoMom6.jpg", "Art by Enoshima Iki");
+			writeSpeech("scarf", "bunny.jpg", "Forever and ever. Goodnight, child.");
+			writeText("Her voice is like waves against brittle rocks. Each splash takes a little more of you away, until you're broken apart and spread throughout the ocean.");
+			writeText("Some small, last part of you recognizes her soft hand on your cheek before it fades away, leaving you with nothing but the pleasure of an endless night in the casino with momF.");
+			writeFunction("loadEncounter('scarf', 'failure')", "The End");
 			break;
 		}
 	}
@@ -540,51 +569,144 @@ switch (requestType) {
 	}
 	case "check": {
 		if (encounteredCheck(character.index) != true) {
-			for (i = 0; i < encounterArray.length; i++) {
-				if (encounterArray[i].location.includes(data.player.location)) { //check the location
-					if (encounterArray[i].time.includes(data.player.time)) { //check the time
-						if (encounterArray[i].trustMin <= checkTrust('mom') && encounterArray[i].trustMax >= checkTrust('mom')) { //check the trust requirements
-							if (encounterArray[i].day == "even" && data.player.day%2 == 0) {
-								if (encounterArray[i].itemReq != "" && checkItem(encounterArray[i].reqItem) != true) {
-									console.log('event available, but you lack the appropriate item');
+			for (number = 0; number < encounterArray.length; number++) { //start going through encounter array
+				var finalLocation = "";
+				var finalResult = true;
+				if (encounterArray[number].location != null) {
+					var finalLocation = encounterArray[number].location;
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+						if (encounterArray[number].time.includes(data.player.time)) { //check the time
+							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
+								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {
+									finalResult = false;
+									//console.log("Failed event "+encounterArray[number].index+" for "+character.index+" due to incorrect parity");
 								}
-								else {
-									if (encounterArray[i].type == "tab") { //check the type of the encounter (tab / button)
-										printEncounterTab(character.index, encounterArray[i].index, encounterArray[i].name);
-									}
-									else {
-										printEncounterButton(character.index, encounterArray[i].index, encounterArray[i].name, encounterArray[i].top, encounterArray[i].left);
-									}
+								if (encounterArray[number].day == "odd" && data.player.day%2 == 0) {
+									finalResult = false;
+									//console.log("Failed event "+encounterArray[number].index+" for "+character.index+" due to incorrect parity");
 								}
-							}
-							if (encounterArray[i].day == "odd" && data.player.day%2 == 1) {
-								if (encounterArray[i].itemReq != "" && checkItem(encounterArray[i].itemReq) != true) {
-									console.log('event available, but you lack the appropriate item');
-								}
-								else {
-									if (encounterArray[i].type == "tab") { //check the type of the encounter (tab / button)
-										printEncounterTab(character.index, encounterArray[i].index, encounterArray[i].name);
-									}
-									else {
-										printEncounterButton(character.index, encounterArray[i].index, encounterArray[i].name, encounterArray[i].top, encounterArray[i].left);
-									}
+								if (encounterArray[number].itemReq != "" && checkItem(encounterArray[number].itemReq) != true) {
+									finalResult = false;
+									//console.log("Failed event "+encounterArray[number].index+" for "+character.index+" due to incorrect item");
 								}
 							}
-							if (encounterArray[i].day == "both") {
-								if (encounterArray[i].itemReq != "" && checkItem(encounterArray[i].itemReq) != true) {
-									console.log('event available, but you lack the appropriate item');
-								}
-								else {
-									if (encounterArray[i].type == "tab") { //check the type of the encounter (tab / button)
-										printEncounterTab(character.index, encounterArray[i].index, encounterArray[i].name);
-									}
-									else {
-										printEncounterButton(character.index, encounterArray[i].index, encounterArray[i].name, encounterArray[i].top, encounterArray[i].left);
-									}
-								}
+							else {
+								//console.log("Failed event "+encounterArray[number].index+" for "+character.index+" due to incorrect trust at "+checkTrust(character.index)+". Trustmin: "+encounterArray[number].trustMin);
+								finalResult = false;
+							}
+						}
+						else {
+							//console.log("Failed event "+encounterArray[number].index+" for "+character.index+" due to incorrect time");
+							finalResult = false;
+						}
+					}
+					else {
+						//console.log("Failed event "+encounterArray[number].index+" for "+character.index+" due to incorrect location");
+						finalResult = false;
+					}
+				}
+				else {
+					console.log("Now examining encounter entry "+encounterArray[number].index+encounterArray[number].requirements);
+					var finalResult = true;
+					if (encounterArray[number].requirements.includes("loc") == true) {
+						var loc = encounterArray[number].requirements.split(`location `).pop().split(`;`)[0];
+						var finalLocation = loc;
+						if (data.player.gps != true) {
+							if (loc.includes(data.player.location) != true) {
+								finalResult = false;
+							}
+						}
+						else {
+							if (loc.includes(data.player.location) != true && data.player.location != "map") {
+								finalResult = false;
 							}
 						}
 					}
+					if (encounterArray[number].requirements.includes("item") == true) {
+						var item = encounterArray[number].requirements.split(`item `).pop().split(`;`)[0];
+						if (checkItem(item) != true) {
+							finalResult = false;
+						}
+					}
+					if (encounterArray[number].requirements.includes("time") == true) {
+						var time = encounterArray[number].requirements.split(`time `).pop().split(`;`)[0];
+						if (time.includes(data.player.time.toLowerCase()) != true) {
+							finalResult = false;
+						}
+					}
+					if (encounterArray[number].requirements.includes("parity") == true) {
+						var time = encounterArray[number].requirements.split(`parity `).pop().split(`;`)[0];
+						switch (parity) {
+							case "even": {
+								if (data.player.day%2 == 1) {
+									finalResult = false;
+								}
+							}
+							case "odd": {
+								if (data.player.day%2 == 0) {
+									finalResult = false;
+								}
+							}
+							default: {
+								//console.log("Error! Parity defined but an invalid parity used. BE sure to use either even or odd, and make sure you have a semicolon afterwards.");
+							}
+						}
+					}
+					for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
+						var corruptionTarget = data.story[characterIndex].index;
+						if (encounterArray[number].requirements.includes("trust " + corruptionTarget) == true) {
+							var trust = encounterArray[number].requirements.split(`trust `+corruptionTarget+` `).pop().split(`;`)[0];
+							if (checkTrust(corruptionTarget) != trust) {
+								finalResult = false;
+							}
+							//console.log("Index has a trust requirement of "+ trust +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
+						}
+						if (encounterArray[number].requirements.includes("trustMin " + corruptionTarget) == true) {
+							var trustMin = encounterArray[number].requirements.split(`trustMin `+corruptionTarget+` `).pop().split(`;`)[0];
+							if (checkTrust(corruptionTarget) < trustMin) {
+								finalResult = false;
+							}
+							//console.log("Index has a trust minimum of "+ trustMin +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
+						}
+						if (encounterArray[number].requirements.includes("trustMax " + corruptionTarget) == true) {
+							var trustMax = encounterArray[number].requirements.split(`trustMax `+corruptionTarget+` `).pop().split(`;`)[0];
+							if (checkTrust(corruptionTarget) > trustMax) {
+								finalResult = false;
+							}
+							//console.log("Index has a trust maximum of "+ trustMax +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
+						}
+						if (encounterArray[number].requirements.includes("flag " + corruptionTarget) == true) {
+							var flag = encounterArray[number].requirements.split(`flag `+corruptionTarget+` `).pop().split(`;`)[0];
+							if (checkFlag(corruptionTarget, flag) != true) {
+								finalResult = false;
+							}
+							//console.log("Index has a flag requirement of "+ flag +" with character "+corruptionTarget+", final result is "+finalResult);
+						}
+					}
+				}
+				if (finalResult == true) {
+					//console.log("Final result for "+encounterArray[number].index+" true, location is "+finalLocation);
+					if (data.player.location == "map" && finalLocation != "beach" && finalLocation != "casino") {
+						var textString = "";
+						for (locationIndex = 0; locationIndex < locationArray.length; locationIndex++) { //find the location target
+							if (locationArray[locationIndex].index == finalLocation) {
+								var textString = locationArray[locationIndex].name + " - ";
+							}
+						}
+						if (textString != "") {
+							printEncounterTab(character.index, encounterArray[number].index, textString + encounterArray[number].name, encounterArray[number].altImage, encounterArray[number].altName);
+						}
+						else {
+							printEncounterTab(character.index, encounterArray[number].index, encounterArray[number].name, encounterArray[number].altImage, encounterArray[number].altName);
+						}
+					}
+					else {
+						//console.log(number);
+						printEncounterTab(character.index, encounterArray[number].index, encounterArray[number].name, encounterArray[number].altImage, encounterArray[number].altName);
+					}
+				}
+				else {
+					//console.log("!!!!!!!!!!!!!!!!!!!!!!!!!final result for "+encounterArray[number].index+" false, location is "+finalLocation);
 				}
 			}
 		}
@@ -628,14 +750,84 @@ switch (requestType) {
 		break;
 	}
 	case "phoneCheck": {
+		var finalMessage = "";
 		for (number = 0; number < phoneArray.length; number++) { //start going through phone array
-			if (checkTrust(character.index) == phoneArray[number].trust) { //if the player's trust with the character meets the text requirement
-				for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
-					if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
-						if (data.story[phoneEventCheck].textEvent.includes(phoneArray[number].index)==false) {
-							notification(character.index)
-							data.story[phoneEventCheck].textEvent = phoneArray[number].index;
-							console.log(data.story[phoneEventCheck].textEvent);
+			if (phoneArray[number].trust != null) {
+				if (checkTrust(character.index) == phoneArray[number].trust) { //if the player's trust with the character meets the text requirement
+					for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
+						if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
+							if (data.story[phoneEventCheck].textEvent.includes(phoneArray[number].index)==false) {
+								notification(character.index)
+								data.story[phoneEventCheck].textEvent = phoneArray[number].index;
+								console.log(data.story[phoneEventCheck].textEvent);
+							}
+						}
+					}
+				}
+			}
+			else {
+				//console.log("Now examining phone entry "+phoneArray[number].index+phoneArray[number].requirements);
+				var finalResult = true;
+				if (phoneArray[number].requirements.includes("item") == true) {
+					var item = phoneArray[number].requirements.split(`item `).pop().split(`;`)[0];
+					if (checkItem(item) != true) {
+						finalResult = false;
+					}
+				}
+				for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
+					var corruptionTarget = data.story[characterIndex].index;
+					if (phoneArray[number].requirements.includes("trust " + corruptionTarget) == true) {
+						var trust = phoneArray[number].requirements.split(`trust `+corruptionTarget+`: `).pop().split(`;`)[0];
+						if (checkTrust(corruptionTarget) != trust) {
+							finalResult = false;
+						}
+						//console.log("Index has a trust requirement of "+ trust +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
+					}
+					if (phoneArray[number].requirements.includes("trustMin " + corruptionTarget) == true) {
+						var trustMin = phoneArray[number].requirements.split(`trustMin `+corruptionTarget+` `).pop().split(`;`)[0];
+						if (checkTrust(corruptionTarget) < trustMin) {
+							finalResult = false;
+						}
+						//console.log("Index has a trust minimum of "+ trustMin +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
+					}
+					if (phoneArray[number].requirements.includes("trustMax " + corruptionTarget) == true) {
+						var trustMax = phoneArray[number].requirements.split(`trustMax `+corruptionTarget+` `).pop().split(`;`)[0];
+						if (checkTrust(corruptionTarget) > trustMax) {
+							finalResult = false;
+						}
+						//console.log("Index has a trust maximum of "+ trustMax +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
+					}
+					if (phoneArray[number].requirements.includes("flag " + corruptionTarget) == true) {
+						var flag = phoneArray[number].requirements.split(`flag `+corruptionTarget+` `).pop().split(`;`)[0];
+						if (checkFlag(corruptionTarget, flag) != true) {
+							finalResult = false;
+						}
+						//console.log("Index has a flag requirement of "+ flag +" with character "+corruptionTarget+", final result is "+finalResult);
+					}
+				}
+				if (finalResult == true) {
+					for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
+						if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
+							if (data.story[phoneEventCheck].textEvent.includes(phoneArray[number].index)==false) {
+								finalMessage = phoneArray[number].index;
+							}
+						}
+					}
+				}
+				if (finalMessage != "") {
+					for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) {
+						if (data.story[phoneEventCheck].index == character.index) {
+							if (
+							data.story[phoneEventCheck].unreadText != true &&
+							data.story[phoneEventCheck].textEvent.includes(finalMessage)==false &&
+							data.story[phoneEventCheck].textHistory.includes(finalMessage)==false
+							) {
+								notification(character.index);
+								data.story[phoneEventCheck].unreadText = true;
+								data.story[phoneEventCheck].textEvent = finalMessage;
+								data.story[phoneEventCheck].textHistory += finalMessage;
+								console.log(data.story[phoneEventCheck].textEvent);
+							}
 						}
 					}
 				}

@@ -22,7 +22,7 @@
 			<div id="titlePanel">
 				<p id = "title" class = "title">Hentai University</p>
 				<div id="closeButton" class="closeButton" onclick="closeButton()"><</div>
-				<p id = "version" class = "version">V6</p>
+				<p id = "version" class = "version">V8</p>
 				<!--<p id = "version" class = "version">Updates are in progress, will post this version soon</p>-->
 				<p id = "author">
 					<a href="https://noodlejacuzzi.github.io/index.html">Noodle Jacuzzi</a><br>
@@ -140,9 +140,22 @@
 				<div class = "saveSlot">
 					<p id = "save109Name" class = "saveName">Manual</p>
 					<p id = "save109Date" class = "saveDate"></p>
+					<!-- <p id = "load109Button" class = "loadFileButton button" onclick = "loadFile()">Load from text string</p>
+					<!-- <p id = "delete109Button" class = "deleteButton button" onclick = "deleteSlot(9)"></p> -->
+					<!-- <p id = "save109Button" class = "saveFileButton button" onclick = "saveFile()">Save to text string</p> -->
+					<p id = "save109Button" class = "saveFileButton button" onclick = "saveTXT()">Save to .txt file</p>
+					<input type="file" id="loadFile" onload="fileLoaded()" class = "loadFileButton button" onchange = "loadSave()"></input>
+				</div>
+				<div class = "saveSlot">
+					<p id = "save109Name" class = "saveName">String</p>
+					<p id = "save109Date" class = "saveDate"></p>
 					<p id = "load109Button" class = "loadFileButton button" onclick = "loadFile()">Load from text string</p>
 					<!-- <p id = "delete109Button" class = "deleteButton button" onclick = "deleteSlot(9)"></p> -->
 					<p id = "save109Button" class = "saveFileButton button" onclick = "saveFile()">Save to text string</p>
+				</div>
+				<div class = "saveSlot">
+					<p id = "save109Name" class = "saveName">Auto</p>
+					<p class = "loadFileButton button">The game autosaves regularly. Refresh the page to load the autosave anytime.</p>
 				</div>
 			</div>
 
