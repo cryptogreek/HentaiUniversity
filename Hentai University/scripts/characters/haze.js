@@ -28,6 +28,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 	wrapper.scrollTop = 0;
 	switch (name) {
 		case "haze1": {
+			if(checkFlag('haze','First') != true)
+				addFlag('haze','First');
 			writeText("Laying back down, the drowsiness spreads through your body more and more, your eyelids feeling almost absurdly heavy.");
 			writeText("You didn't realize how cold the room felt until you slid back under the covers, curling up as the gentle press of sleep weighs your mind down...");
 			writeText("...");
@@ -56,7 +58,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("She approaches you, leaning forward and running a finger up your neck...");
 			writeText("-before pressing her mouth against yours, moaning gently as her tongue drags against yours.");
 			writeText("A moment later, she pulls back, grinning.");
-			writeSpeech("haze","","I go by Lucille. A <i>wonderful</i> little snack suggested the name a few centuries ago when I was looking for something new, and it stuck. And as for where you are...");
+			writeSpeech("haze","","I go by hazeF. A <i>wonderful</i> little snack suggested the name a few centuries ago when I was looking for something new, and it stuck. And as for where you are...");
 			writeText("She gestures vaguely at your head.");
 			writeSpeech("haze","","You're in here~! You're having a pleasantly lucid dream right now, with me!");
 			writeSpeech("player","","Okay. So you're a figment of my imagination, tossed into the dream?");
@@ -92,7 +94,12 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("player","","...then you'd want to hang around a sexual hypnotist.");
 			writeSpeech("haze","","Bingo-bongo! I've been making sure those victims of yours end up in my neck of the dream-woods when you put them under - you have <i>excellent</i> taste by the way - but in all the time I've been around you, this is the first you've popped in here. So...");
 			writeText("She grins widely again, spreading her arms out wide.");
-			writeSpeech("haze","","Welcome to my place! Don't worry about, like, having your dreams and aspirations for the future eaten by the way - you taking over the town with hypnosis would <i>literally</i> be the best thing that could happen to me, so I support you ten billion percent!");
+
+			writeSpeech("haze","","Welcome to my place! It's basically a dream, but also kinda not. You could think of it as a manifestation of a subsection of the collective unconscious manipulable by supernatural entities... or just a Dreamland. They're basically the same thing.");
+			writeText("She rests her hands on her hips.");
+			writeSpeech("haze","","Standard dream rules apply - time is weird, mental strength lets you manipulate things, and you can force yourself awake pretty easily. Most folks go with pinching themselves, but it's really the thought that counts, not the action.");
+			addFlag('haze','Dreamer');
+			writeSpeech("haze","","Oh, and don't worry about, like, having your dreams and aspirations for the future eaten by the way - you taking over the town with hypnosis would <i>literally</i> be the best thing that could happen to me right now, so I support you ten billion percent!");
 			if(checkTrust('succubus' >= 60)){
 				writeSpeech("player","","...Neat. So I guess that makes you like my familiar or something?");
 				writeSpeech("haze","","Definitely the 'something'. I don't do the whole 'contracting' thing - I don't like being tied down, y'know? I'll leave that to the cum-drunk subby-succys. I'd rather just flit about and enjoy dreams from all over the world, free to enjoy whatever I'm feeling into that year.");
@@ -363,7 +370,13 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("She chuckles, shaking her head.");
 			writeSpeech("haze","","Not too far off, actually. I've been a lot more careful about my feeding ever since I got a bit ahead of myself... if you'll forgive the pun.");
 			writeText("...What pun?");
-			writeSpeech("haze","","I try not to make ripples anymore. If some lower-ranked demon wants to go around, raising their mark to the top of the world to get themselves a sip at corrupted essence, then more power to 'em. But honestly...");
+			writeSpeech("haze","","Either way, welcome to my place. It's basically a dream, but also kinda not. You could think of it as a manifestation of a subsection of the collective unconscious manipulable by supernatural entities... or just a Dreamland. They're basically the same thing.");
+			writeText("She rests her hands on her hips.");
+			writeSpeech("haze","","Standard dream rules apply - time is weird, mental strength lets you manipulate things, and you can force yourself awake pretty easily. Most folks go with pinching themselves, but it's really the thought that counts, not the action.");
+			addFlag('haze','Dreamer');
+			writeSpeech("haze","","Oh, and don't worry about, like, having your dreams and aspirations for the future eaten by the way - you taking over the town with hypnosis would <i>literally</i> be the best thing that could happen to me right now, so I support you ten billion percent!");
+			writeSpeech("player","","And I take it you mean moral support, not actual assistance?");
+			writeSpeech("haze","","Got it in one. I do my best to not make ripples anymore. If some lower-ranked demon wants to go around, raising their mark to the top of the world to get themselves a sip of that corrupted essence, then more power to 'em. But honestly...");
 			writeText("She grins, pushing out her chest.");
 			writeBig("images/haze/1-1.jpg", "Art by Purple Haze");
 			writeSpeech("haze","","I might not get to have fun as <i>often</i> as them, but I've learned to appreciate <i>every single moment.</i> And seeing as you're down here~...");
@@ -380,7 +393,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("You try to focus on standing and, sure enough, you feel the sensation of solid ground beneath your feet a moment later.");
 			writeSpeech("haze","","Ooh, nice - fast learner, aren't ya?");
 			writeText("She smiles and sits down on the air, though you can still see the shape of ass flatten a bit like she was sitting on an invisible chair.");
-			writeSpeech("haze","","Sorry about last time, by the way. I'm usually better with controlling myself, but you don't exactly have a long history of hypnotizing and fucking studs, so I got a little <i>too</i> excited.");
+			writeSpeech("haze","","Sorry about last time, by the way. I'm usually better with controlling myself, but you don't exactly have a long history of hypnotizing and fucking <i>studs</i>, so I got a little <i>too</i> excited.");
 			writeText("She pauses, looking over you.");
 			writeSpeech("haze","","I, uh... didn't drain you <i>too</i> hard, right? You were fine after you woke up?");
 			writeSpeech("player","","I was out for most of the afternoon, if that's what you mean.");
@@ -390,8 +403,11 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("hazeF just kinda shrugs, leaning back on the non-existant furniture.");
 			writeSpeech("haze","","Sorry, then. Like I said before, I don't get to feed as often as I'd like, and most of the people I <i>do</i> feed on tend to be pretty average - one of many trade-offs, I guess.");
 			writeText("At that, her grin quickly returns, a faint shimmer surrounding her body.");
-			writeSpeech("haze","","Speaking of, if you're here looking for a quickie, I'd be <i>thrilled</i> to get another taste of you~");
+			writeSpeech("haze","","Speaking of, if you're here looking for a quickie, I'd be <i>thrilled</i> to get another taste of you~ Though if you're interested, I could try on another 'look' for you~");
 
+			writeFunction("writeEvent('haze1C')", "Use her as she is");
+			writeFunction("writeEncounter('hazeChange1')", "Take a look at her other forms");
+			writeFunction("writeEncounter('hazeStory1')", "You came to chat, actually");
 			break;
 		}
 		case "haze2" : {
@@ -403,6 +419,23 @@ function writeEncounter(name) { //Plays the actual encounter.
 			else{
 				break;
 			}
+			break;
+		}
+		case "hazeEvent1RepA" : {
+			writeText("Seeing as she's already thrusting it forward, you grab her chest and grope her, hearing her moan excitedly as she smiles.");
+			writeBig("images/haze/1-2.jpg","Art by Purple Haze");
+			writeText("Her nipples are hard under your palms, her breathing getting the littlest bit heavier as she leans into your hands.");
+			writeSpeech("haze","","Mm, you like my tits playerF? You can probably tell that I'm not the only one getting excited here~");
+			writeSpeech("player","","I noticed.");
+			writeText("Moving your hands a bit, you start toying with her nipples, listening to her groan in pleasure as you squeeze them.");
+			writeBig("images/haze/1-3.jpg","Art by Purple Haze");
+			writeSpeech("haze","","Haa~");
+			break;
+		}
+		case "hazeEvent1RepB" : {
+			break;
+		}
+		case "hazeEvent1RepC" : {
 			break;
 		}
 		default: {
@@ -422,9 +455,12 @@ function writeEvent(name) { //Plays the actual event.
 	switch (name) {
 		case "haze1A": {
 			if(data.player.location != "gallery"){
+				if(checkFlag('haze','First')){
+					removeFlag('haze','First');
+					writeEvent("haze1B");
+				}
 				if(checkTrust('haze') < 40)
 					setTrust('haze',40);
-				writeEvent("haze1B");
 				if(checkFlag('haze','Explain'))
 					removeFlag('haze','Explain');
 			}
@@ -449,7 +485,10 @@ function writeEvent(name) { //Plays the actual event.
 		}
 		case "haze1B" : {
 			if(data.player.location != "gallery"){
-				writeEvent("haze1A");
+				if(checkFlag('haze','First')){
+					removeFlag('haze','First');
+					writeEvent("haze1A");
+				}
 				if(checkTrust('haze') < 40)
 					setTrust('haze',40);
 				if(checkFlag('haze','Explain') != true)
@@ -477,6 +516,18 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("After a minute or so of that, though, you both seem ready to move on to something a little more <b>stimulating</b>...");
 			writeFunction("writeEncounter('hazeEvent1A')", "Titfuck her");
 			writeFunction("writeEncounter('hazeEvent1B')", "Have her blow you");
+			break;
+		}
+		case "haze1C" : {
+			writeSpeech("player","","I'll check out those other forms of yours later, I think. For now...");
+			writeText("hazeF grins, running a hand along her stomach.");
+			writeSpeech("haze","","Mm, interested in playing with me like this, huh? I can't really blame you - I wouldn't have copied this form if I didn't like it~!");
+			writeText("She strides forward confidently folding her arms behind her back and leaning forward with a seductive look.");
+			writeSpeech("haze","","But there's just so many things we could do~ I just can't seem to decide~");
+			writeText("Obviously, she wants you to choose how you take her...");
+			writeFunction("writeEncounter('hazeEvent1RepA')", "Use her tits");
+			writeFunction("writeEncounter('hazeEvent1RepB')", "Have her suck you off");
+			writeFunction("writeEncounter('hazeEvent1RepC')", "Tell her to turn around and show herself off");
 			break;
 		}
 		default: {

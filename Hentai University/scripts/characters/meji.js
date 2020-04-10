@@ -670,8 +670,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 			}
 			if(galleryCheck("meji8") != true)
 				writeFunction("writeEvent('meji8')", "Go for a walk in town while he cross-dresses");
-			// if(galleryCheck("meji9") != true)
-			// 	writeFunction("writeEvent('meji9')", "Have him meet you in the gym with women's workout shorts on");
+			if(galleryCheck("meji9") != true)
+				writeFunction("writeEncounter('meji9')", "Have him meet you in the gym with women's workout shorts on");
 			// if(galleryCheck("meji8") && galleryCheck("meji9"))
 			if(galleryCheck("meji8"))
 				writeSpecial("That's all the content currently available for for mejiF. More to come, though!");
@@ -679,7 +679,6 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "meji8" : {
-			passTime();
 			if(checkTrust('meji') == 61)
 				writeSpeech("player","","Actually, public-play isn't such a bad idea. I know you own a girl's uniform, but...");
 			else
@@ -836,11 +835,68 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
-		case "meji8b" : {
-			//Go to the gym and drill him from behind. Nipple-teasing happens, he blows his load, simple stuff.
+		case "meji9" : {
+			document.getElementById('output').innerHTML = '';
+			writeSpeech("player","","Do you happen to have any women's workout shorts?");
+			if(checkFlag('meji','willful')){
+				if(checkTrust('sports') >= 111){
+					writeSpeech("meji","","Women's shorts? I mean, I don't actually <i>have</i> any, but I could get a pair pretty easily. sportsF and I have been chatting after her club lately.");
+					writeText("He smirks up at you, his hand on his hip.");
+					writeSpeech("meji","","Turns out we have a few talking points in common, <i>*Master~</i>");
+					writeSpeech("player","","Huh. Yeah, I did mention you to her, but I didn't think she'd approach you.");
+					writeSpeech("meji","","Mm, she wanted to talk to me about the best ways to please you.");
+					if(checkTrust('sports') >= 130){
+						writeSpeech("meji","","Specifically, she wanted some pointers on how to make anal feel even better. I guess she really enjoyed having you fuck her ass, *Sir~ Just thinking about the way you had her gushing over how good it felt is getting me turned on like <i>crazy.</i>");
+						writeSpeech("player","","Good. That'll make it that much more fun for both of us when you meet me in the gym wearing those shorts.");
+					}
+					else{
+						writeSpeech("meji","","...Of course, I only really have tips for anal, and she's never taken anything up there, so we ended up just gushing over how you taste. You should've seen how she was rubbing her thighs together when I mentioned how good you make anal feel though~!");
+						writeSpeech("player","","I'll have to keep that in mind while training her... In the meantime, make sure to get a pair of workout shorts and meet me in the gym later.");
+					}
+				}
+				else{
+					writeSpeech("meji","","Women's shorts? Yeah, I've got a pair at home. I wear them while exercising, since they don't limit my movement much.");
+					writeSpeech("player","","Excellent. In that case, I want you to come to the gym wearing them.");
+					writeText("He nods with a confident grin.");
+				}
+				writeSpeech("meji","","You got it, *Sir! I'll have them on under some pants, just in case someone comes while I'm waiting for you.");
+			}
+			else{
+				if(checkTrust('sports') >= 111){
+					writeSpeech("meji","","Women's shorts...? I mean, I don't own my own pair, but I can get a pair. I've been spending time with sportsF lately. She came to talk to me after you mentioned me to her, and we've been hanging out a bunch, talking about...");
+					writeText("His face reddens a bit.");
+					writeSpeech("meji","","Well, about <i>you,</i> mostly, but we also talked about clothes too. I'd have asked about borrowing some, but I think it's pretty obvious that most of hers wouldn't exactly fit me.");
+					writeSpeech("player","","Oh? You actually have me curious now... When you discussed me, what were you two talking about specifically?");
+					if(checkTrust('sports') >= 130){
+						writeText("His face gets even redder, but he smiles proudly as he shifts in place.");
+						writeSpeech("meji","","I gave her tips on anal. Things like my preferred lube, how to make it feel better for her, and ways to make it more fun for you, too!");
+						writeSpeech("player","","Huh, giving sex tips to my other toys, huh? You're a very good little slave, you know that?");
+						writeText("His face lights up in embarrassment as he looks down at the ground bashfully.");
+						writeSpeech("meji","","...Thank you, *Sir~");
+					}
+					else{
+						writeText("His face gets even redder as he shifts in embarrassment.");
+						writeSpeech("meji","","How to please you, our favorite times having sex with you... We spent a little while gushing over your taste, too. When I told her about the time where you made me cum with just anal, she seemed really, <i>really</i> excited.");
+						writeSpeech("player","","Huh. Good to know - I'll have to keep that in mind while training her. I might have another little <i>butt-slut</i> on my hands.");
+						writeText("He smiles up at you, nodding.");
+						writeSpeech("meji","","I hope she enjoys it as much as I do, *Sir.");
+					}
+					writeSpeech("player","","Anyway, you should go get those shorts and meet me in the gym while wearing them. I plan on having some fun with you today.");
+					writeText("He nods excitedly.");
+					writeSpeech("meji","","Yes *Sir! I'll have them under my pants in case someone comes to the gym before we meet up.");
+				}
+				else{
+					writeText("He pauses to think.");
+					writeSpeech("meji","","Women's shorts? I do, actually. I have them at home - I use them when I'm exercising. Did you want me to wear them?");
+					writeSpeech("player","","Yes. I want you to come to the gym wearing them, probably under some pants so that if someone comes before I do, you won't get caught.");
+					writeSpeech("meji","","Of course, *Sir. I'll head home to get them now, and then I'll wait for you in the gym~");
+				}
+			}
+			writeSpeech("player","","Sounds good. I'll see you there.");
+			writeFunction("writeEvent('meji9')", "Kill some time before heading to the gym");
 			break;
 		}
-		case "meji9" : {
+		case "meji8b" : {
 			//Go to the gym and drill him from behind. Nipple-teasing happens, he blows his load, simple stuff.
 			break;
 		}
@@ -1170,7 +1226,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("He slows, almost to a stop, and brings his hand to his stomach, ignoring his cock completely.");
 			writeSpeech("meji","","Fucking me senseless one day, and then turning around and leaving me to fill myself up with some plastic toy... And then you let <i>me</i> choose how today goes?");
 			writeText("Without even moving, you can feel his ass start tightening rhythmically around you, rapidly milking your length as you see the muscles in his abs rapidly tighten along with it.");
-			writeSpeech("meji","","This is your fault, <i><b>"+data.player.honorific+",</b></i>, and the only way to make up for it is to <i>draing your balls inside of me <b>down to the last drop.</b></i>");
+			writeSpeech("meji","","This is your fault, <i><b>"+data.player.honorific+",</b></i>, and the only way to make up for it is to <i>draining your balls inside of me <b>down to the last drop.</b></i>");
 			writeText("You open your mouth to reply, but he quickly starts bouncing again, the tightening only speeding up, and you feel yourself lose it.");
 			writeBig("images/meji/6-2.jpg", "Art by Nagi Ichi");
 			writeSpeech("meji","","F-Fuck, it's hot...!");
@@ -1382,7 +1438,8 @@ function writeEvent(name) { //Plays the actual event.
 			break;
 		}
 		case "meji8" : {
-			passTime();
+			if(data.player.location != "gallery")
+				passTime();
 			document.getElementById('output').innerHTML = '';
 			writeText("You arrive a bit earlier than you intended, so you spend a few minutes meandering about the district.");
 			writeText("Seems like there's a coffee shop near here. You might have to try that place out sometime...");
@@ -1436,8 +1493,8 @@ function writeEvent(name) { //Plays the actual event.
 			break;
 		}
 		case "meji9" : {
-			//Meet with
 			document.getElementById('output').innerHTML = '';
+			
 			break;
 		}
 		default: {
