@@ -1,14 +1,14 @@
-var character = {index: "nikki", fName: "Nikki", lName: "Hunt", trust: 0, encountered: false, textEvent: "", met: false, color: "#89a3a4", author: "CryptoGreek", artist: "Enoshima Iki", textHistory: "", unreadText: false,};
+var character = {index: "nikki", fName: "Nikki", lName: "Hunt", trust: 0, encountered: false, textEvent: "", met: false, color: "#445B6D", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false,};
 
 var logbook = {
-	index: "nikki", 
-	desc: "A seemingly soft-spoken university student with a bit of a freaky streak. She's surprisingly diligent when it comes to school.",
-	body: "Her body is outrageously curvy, which she does absolutely nothing to hide. It's also pretty easy to tell that she has some sort of an issue with bras...",
-	clothes: "Her clothes, or at least her shirt, is clearly custom-fitted to give her body room to breathe, highlighting her assets in the process.",
-	home: "Her schedule's packed during the day, but she hangs out in the east hallway for a while during the evenings.",
-	tags: "Casual Sex, Nymphomania, Cum-Play, Group Sex",
-	artist: "Enoshima Iki",
-	author: "Cryptogreek",
+	index: "", 
+	desc: "",
+	body: "",
+	clothes: "",
+	home: "",
+	tags: "",
+	artist: "",
+	author: "",
 };
 
 var newItems = [
@@ -17,7 +17,7 @@ var newItems = [
 ];
 
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
-	{index: "nikki1", name: "You spot someone walking down the hall", requirements: "trust nikki 0; location eastHallway", altName: "", altImage: "",},
+	{index: "placeholder", name: "", requirements: "?trust principal 10000;", altName: "", altImage: "",},
 ];
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -41,7 +41,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 }
 
 var eventArray = [
-	{index: "nikki1", name: "Classroom Handjob"},
+	{index: "placeholder", name: "Event Name"},
 	{index: "placeholder", name: "Event Name"},
 ];
 
@@ -49,18 +49,7 @@ function writeEvent(name) { //Plays the actual event.
 	document.getElementById('output').innerHTML = '';
 	wrapper.scrollTop = 0;
 	switch (name) {
-		case "nikki1": {
-			writeBig("images/nikki/profile.jpg","Art by Enoshima Iki");
-			if(galleryCheck('kuro1')){
-				writeText("She stops, her eyes going wide at the sight of you. A moment later, she's looking around the hallway.");
-				writeSpeech("player","","Er... Sorry, have we me-");
-				writeText("Immediately, you feel her reach forward and grab your hand, silently pulling you into an adjacent, empty room.");
-				writeText("You hear the door shut with a click, your nerves on edge as you reach into your pocket-");
-				writeSpeech("nikki","","...kuroF's picture doesn't do you justice.");
-				writeText("-and you stop, your hand brushing against the pendant.");
-				writeSpeech("player","","You're... the friend, then? The one from the phone?");
-				
-			}
+		case "placeholder": {
 			break;
 		}
 		default: {
@@ -85,7 +74,7 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "empty", requirements: ""},
+	{index: "empty", requirements: "?trust principal 10000;"},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
@@ -97,15 +86,24 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 		}
 		default: {
 			writePhoneSpeech("player", "", "Error! You must've called the wrong event. Error code: Failed to write phone event("+name+") in "+character.index+".js");
+			clearText(character.index);
 			break;
 		}
 	}
 }
 
 //Don't touch anything below this, or things will break.
-console.log(character.index+'.js loaded correctly. request type is '+requestType)
+//console.log(character.index+'.js loaded correctly. request type is '+requestType)
 
 switch (requestType) {
+	case "load": {
+		data.story.push(character);
+		console.log(character);
+		console.log(data.story);
+		writeSpecial(character.fName+" has been added to the game!");
+		writeSpeech(character.index, "", character.fName+ " " + character.lName + ", written by "+ logbook.author + ", art by "+ logbook.artist+".");
+		break;
+	}
 	case "encounter": {
 		writeEncounter(eventName);
 		break;
@@ -172,82 +170,11 @@ switch (requestType) {
 					}
 				}
 				else {
-					console.log("Now examining encounter entry "+encounterArray[number].index+encounterArray[number].requirements);
-					var finalResult = true;
-					if (encounterArray[number].requirements.includes("loc") == true) {
-						var loc = encounterArray[number].requirements.split(`location `).pop().split(`;`)[0];
-						var finalLocation = loc;
-						if (data.player.gps != true) {
-							if (loc.includes(data.player.location) != true) {
-								finalResult = false;
-							}
-						}
-						else {
-							if (loc.includes(data.player.location) != true && data.player.location != "map") {
-								finalResult = false;
-							}
-						}
-					}
-					if (encounterArray[number].requirements.includes("item") == true) {
-						var item = encounterArray[number].requirements.split(`item `).pop().split(`;`)[0];
-						if (checkItem(item) != true) {
-							finalResult = false;
-						}
-					}
-					if (encounterArray[number].requirements.includes("time") == true) {
-						var time = encounterArray[number].requirements.split(`time `).pop().split(`;`)[0];
-						if (time.includes(data.player.time.toLowerCase()) != true) {
-							finalResult = false;
-						}
-					}
-					if (encounterArray[number].requirements.includes("parity") == true) {
-						var time = encounterArray[number].requirements.split(`parity `).pop().split(`;`)[0];
-						switch (parity) {
-							case "even": {
-								if (data.player.day%2 == 1) {
-									finalResult = false;
-								}
-							}
-							case "odd": {
-								if (data.player.day%2 == 0) {
-									finalResult = false;
-								}
-							}
-							default: {
-								//console.log("Error! Parity defined but an invalid parity used. BE sure to use either even or odd, and make sure you have a semicolon afterwards.");
-							}
-						}
-					}
-					for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
-						var corruptionTarget = data.story[characterIndex].index;
-						if (encounterArray[number].requirements.includes("trust " + corruptionTarget) == true) {
-							var trust = encounterArray[number].requirements.split(`trust `+corruptionTarget+` `).pop().split(`;`)[0];
-							if (checkTrust(corruptionTarget) != trust) {
-								finalResult = false;
-							}
-							//console.log("Index has a trust requirement of "+ trust +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
-						}
-						if (encounterArray[number].requirements.includes("trustMin " + corruptionTarget) == true) {
-							var trustMin = encounterArray[number].requirements.split(`trustMin `+corruptionTarget+` `).pop().split(`;`)[0];
-							if (checkTrust(corruptionTarget) < trustMin) {
-								finalResult = false;
-							}
-							//console.log("Index has a trust minimum of "+ trustMin +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
-						}
-						if (encounterArray[number].requirements.includes("trustMax " + corruptionTarget) == true) {
-							var trustMax = encounterArray[number].requirements.split(`trustMax `+corruptionTarget+` `).pop().split(`;`)[0];
-							if (checkTrust(corruptionTarget) > trustMax) {
-								finalResult = false;
-							}
-							//console.log("Index has a trust maximum of "+ trustMax +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
-						}
-						if (encounterArray[number].requirements.includes("flag " + corruptionTarget) == true) {
-							var flag = encounterArray[number].requirements.split(`flag `+corruptionTarget+` `).pop().split(`;`)[0];
-							if (checkFlag(corruptionTarget, flag) != true) {
-								finalResult = false;
-							}
-							//console.log("Index has a flag requirement of "+ flag +" with character "+corruptionTarget+", final result is "+finalResult);
-						}
+					//console.log("Now examining encounter entry "+encounterArray[number].index+encounterArray[number].requirements);
+					var requirements = checkRequirements(encounterArray[number].requirements);
+					//console.log(requirements);
+					if (requirements != true) {
+						finalResult = false;
 					}
 				}
 				if (finalResult == true) {
@@ -317,82 +244,45 @@ switch (requestType) {
 	}
 	case "phoneCheck": {
 		var finalMessage = "";
+		var finalResult = true;
 		for (number = 0; number < phoneArray.length; number++) { //start going through phone array
-			if (phoneArray[number].trust != null) {
-				if (checkTrust(character.index) == phoneArray[number].trust) { //if the player's trust with the character meets the text requirement
-					for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
-						if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
-							if (data.story[phoneEventCheck].textEvent.includes(phoneArray[number].index)==false) {
+			//Start finding the data.story variable associated with the character
+			for (phoneHistoryCheck = 0; phoneHistoryCheck < data.story.length; phoneHistoryCheck++) {
+				if (data.story[phoneHistoryCheck].index == character.index) {
+					//If the character has no unread texts
+					//If the character does not have this text in their text history
+					if (
+					data.story[phoneHistoryCheck].unreadText != true &&
+					data.story[phoneHistoryCheck].textHistory.includes(phoneArray[number].index) != true &&
+					data.story[phoneHistoryCheck].textEvent != phoneArray[number].index
+					) {
+						//If the phone record is using the old system...
+						if (phoneArray[number].trust != null) {
+							var finalResult = false;
+							if (checkTrust(character.index) == phoneArray[number].trust) { //if the player's trust with the character meets the text requirement
+								for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
+									if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
+										if (data.story[phoneEventCheck].textEvent.includes(phoneArray[number].index)==false) {
+											notification(character.index)
+											data.story[phoneEventCheck].textEvent = phoneArray[number].index;
+											console.log(data.story[phoneEventCheck].textEvent);
+										}
+									}
+								}
+							}
+						}
+						else {
+							if (phoneArray[number].requirements.includes("?time") == false) {
+								phoneArray[number].requirements += "?time Morning;";
+							}
+							//Check the requirements
+							var requirements = checkRequirements(phoneArray[number].requirements);
+							console.log("Now examining encounter entry "+phoneArray[number].index+phoneArray[number].requirements+", result is "+requirements);
+							if (requirements != false) {
 								notification(character.index)
-								data.story[phoneEventCheck].textEvent = phoneArray[number].index;
-								console.log(data.story[phoneEventCheck].textEvent);
-							}
-						}
-					}
-				}
-			}
-			else {
-				//console.log("Now examining phone entry "+phoneArray[number].index+phoneArray[number].requirements);
-				var finalResult = true;
-				if (phoneArray[number].requirements.includes("item") == true) {
-					var item = phoneArray[number].requirements.split(`item `).pop().split(`;`)[0];
-					if (checkItem(item) != true) {
-						finalResult = false;
-					}
-				}
-				for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
-					var corruptionTarget = data.story[characterIndex].index;
-					if (phoneArray[number].requirements.includes("trust " + corruptionTarget) == true) {
-						var trust = phoneArray[number].requirements.split(`trust `+corruptionTarget+`: `).pop().split(`;`)[0];
-						if (checkTrust(corruptionTarget) != trust) {
-							finalResult = false;
-						}
-						//console.log("Index has a trust requirement of "+ trust +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
-					}
-					if (phoneArray[number].requirements.includes("trustMin " + corruptionTarget) == true) {
-						var trustMin = phoneArray[number].requirements.split(`trustMin `+corruptionTarget+` `).pop().split(`;`)[0];
-						if (checkTrust(corruptionTarget) < trustMin) {
-							finalResult = false;
-						}
-						//console.log("Index has a trust minimum of "+ trustMin +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
-					}
-					if (phoneArray[number].requirements.includes("trustMax " + corruptionTarget) == true) {
-						var trustMax = phoneArray[number].requirements.split(`trustMax `+corruptionTarget+` `).pop().split(`;`)[0];
-						if (checkTrust(corruptionTarget) > trustMax) {
-							finalResult = false;
-						}
-						//console.log("Index has a trust maximum of "+ trustMax +" compared to "+checkTrust(corruptionTarget)+", final result is "+finalResult);
-					}
-					if (phoneArray[number].requirements.includes("flag " + corruptionTarget) == true) {
-						var flag = phoneArray[number].requirements.split(`flag `+corruptionTarget+` `).pop().split(`;`)[0];
-						if (checkFlag(corruptionTarget, flag) != true) {
-							finalResult = false;
-						}
-						//console.log("Index has a flag requirement of "+ flag +" with character "+corruptionTarget+", final result is "+finalResult);
-					}
-				}
-				if (finalResult == true) {
-					for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
-						if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
-							if (data.story[phoneEventCheck].textEvent.includes(phoneArray[number].index)==false) {
-								finalMessage = phoneArray[number].index;
-							}
-						}
-					}
-				}
-				if (finalMessage != "") {
-					for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) {
-						if (data.story[phoneEventCheck].index == character.index) {
-							if (
-							data.story[phoneEventCheck].unreadText != true &&
-							data.story[phoneEventCheck].textEvent.includes(finalMessage)==false &&
-							data.story[phoneEventCheck].textHistory.includes(finalMessage)==false
-							) {
-								notification(character.index);
-								data.story[phoneEventCheck].unreadText = true;
-								data.story[phoneEventCheck].textEvent = finalMessage;
-								data.story[phoneEventCheck].textHistory += finalMessage;
-								console.log(data.story[phoneEventCheck].textEvent);
+								data.story[phoneHistoryCheck].unreadText = true;
+								data.story[phoneHistoryCheck].textEvent = phoneArray[number].index;
+								data.story[phoneHistoryCheck].textHistory += phoneArray[number].index;
 							}
 						}
 					}
