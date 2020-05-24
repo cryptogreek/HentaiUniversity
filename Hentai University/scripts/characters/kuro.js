@@ -21,6 +21,8 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "kuro5", name: "kuro is fiddling with her phone, rubbing her thighs together as she waits", location: 'roof', time: "Morning", itemReq: "", trustMin: 60, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuro6", name: "kuro is sitting near the fence, her panties in clear view", location: 'roof', time: "Morning", itemReq: "", trustMin: 63, trustMax: 63, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuroCasino1", name: "kuro is here", location: 'casino', time: "MorningEvening", itemReq: "", trustMin: 60, trustMax: 200, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro7", name: "kuro is standing near the fence, toying with the hem of her skirt", location: 'roof', time: "Morning", itemReq: "", trustMin: 70, trustMax: 70, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro7", name: "kuro is leaning against the fence again, typing into her phone casually - IF TWO THINGS APPEARED, I MISSED THIS SUPER OBVIOUS ERROR", location: 'roof', time: "Morning", itemReq: "", trustMin: 70, trustMax: 70, type: "tab", top: 0, left: 0, day: "both",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -197,14 +199,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 				break;
 			}
 			else{
-				//if she's been hypno'd, basically
-				writeText("As you approach her, "+fName('kuro')+"'s flushes as she stands a bit straighter, her thighs rubbing against each other.");
-				writeSpeech("kuro","","Heya *Master~! Ooh, don't tell me, you're here for another night of fun with your favorite cocksock, right?");
-				writeFunction("loadEncounter('kuro', 'kuro4a')", "Have sex");
-				writeFunction("writeEvent('kuro6')", "69 each other");
-				//more scenes may be implemented later
-				data.player.location = "roof";
-				writeFunction("changeLocation(data.player.location)", "Leave her be");
+				// //if she's been hypno'd, basically
+				// writeText("As you approach her, "+fName('kuro')+"'s flushes as she stands a bit straighter, her thighs rubbing against each other.");
+				// writeSpeech("kuro","","Heya *Master~! Ooh, don't tell me, you're here for another night of fun with your favorite cocksock, right?");
+				// writeFunction("loadEncounter('kuro', 'kuro4a')", "Have sex");
+				// writeFunction("writeEvent('kuro6')", "69 each other");
+				// //more scenes may be implemented later
+				// data.player.location = "roof";
+				// writeFunction("changeLocation(data.player.location)", "Leave her be");
+				writeText("This text should never appear in the game. If it did, then Crypto messed up - tell him that he really should clean up after himself more often.");
 				break;
 			}
 			break;
@@ -485,6 +488,14 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("Eventually, she even stops that much, leaving you to the endless cacophany of sexual sensation that you chose.");
 			writeText("The only thing you can think about anymore, the only thing you <i>want</i> to think about anymore, is the pleasure of an endless night in the casino with kuroF.");
 			writeFunction("loadEncounter('scarf', 'failure')", "The End");
+			break;
+		}
+		case "kuro7" : {
+			if(checkTrust('kuro')==64)
+				if(!checkFlag('kuro','Triggered'))
+					addFlag('kuro','Triggered');
+			setTrust('kuro',70);
+			writeSpeech("kuro","","Hey, this is some temporary text~! We'll get to the good stuff soon, <i>stud,</i> so have a little patience!");
 			break;
 		}
 	}
@@ -981,8 +992,8 @@ var phoneArray = [//Lists the potential text events the player can receive at th
 	{index: "kuroPhone5", trust: 25,},
 	//PRIMARY ROUTE TEXTS:
 	{index: "kuroPhone7", trust: 63,},
-	{index: "kuroReward1", trust: 64,},
-	{index: "kuroReward1", trust: 65,},
+	{index: "kuroPhone8", trust: 64,},
+	{index: "kuroPhone9", trust: 65,},
 	//SECONDARY ROUTE TEXTS:
 	{index: "kuroPhone6", trust: 26,},
 	{index: "kuroReward2", trust: 40,},
@@ -1479,6 +1490,20 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","You totally owe me new sheets jerk");
 			writePhoneSpeech("kuro","","Gotta hurry if I wanna be at school on time");
 			writePhoneSpeech("kuro","","Meat me on the roof");
+			break;
+		}
+		case "kuroPhone8" : {
+			if(!checkFlag('kuro','Triggered'))
+				addFlag('kuro','Triggered');
+			if(checkTrust('kuro')==64)
+				setTrust('kuro',70);
+			writePhoneSpeech("kuro","","Heya~! Just giving you a heads-up that I picked up those new sheets");
+			writePhoneSpeech("kuro","","Me and "+data.story[17].fName.charAt(0)+" are spending the rest of the day shopping around");
+			break;
+		}
+		case "kuroPhone9" : {
+			if(checkTrust('kuro')==65)
+				setTrust('kuro',70);
 			break;
 		}
 		case "kuroReward1" : {
