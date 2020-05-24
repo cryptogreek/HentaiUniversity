@@ -1497,13 +1497,111 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 				addFlag('kuro','Triggered');
 			if(checkTrust('kuro')==64)
 				setTrust('kuro',70);
-			writePhoneSpeech("kuro","","Heya~! Just giving you a heads-up that I picked up those new sheets");
-			writePhoneSpeech("kuro","","Me and "+data.story[17].fName.charAt(0)+" are spending the rest of the day shopping around");
+			writePhoneSpeech("kuro","","Do u have any idea how hard it is to keep a straight face like this");
+			writePhoneSpeech("kuro","","And dont play dum, u kno exactly what I mean");
+			writePhoneChoices("You don't like it?", "That's kinda the point");
+			break;
+		}
+		case "kuroPhone8A" : {
+			writePhoneSpeech("player","","You don't like it?");
+			writePhoneSpeech("kuro","","Don't put words in my mouth (only dick)");
+			writePhoneSpeech("kuro","","It's different when I'm actually with "+data.story[17].fName.charAt(0)+" instead of on the phone");
+			writePhoneSpeech("kuro","","She bought a whole bunch of stuff, and the cashier had to scan");
+			writePhoneSpeech("kuro","","Every");
+			writePhoneSpeech("kuro","","Single");
+			writePhoneSpeech("kuro","","One");
+			writePhoneChoices("Sounds like you had fun", "Do you want me to deal with it?");
+			break;
+		}
+		case "kuroPhone8AA" : {
+			writePhoneSpeech("player","","Sounds like you had fun.");
+			writePhoneSpeech("kuro","","I had to ask "+data.story[17].fName.charAt(0)+" to handle paying while I went to the bathroom");
+			writePhoneSpeech("kuro","","If this stall were cleaner I'd be jilling myself silly to a pic of you rn");
+			writePhoneSpeech("player","","That's a pretty high compliment.");
+			writePhoneSpeech("kuro","","Ahhhh she keeps texting me");
+			writePhoneSpeech("kuro","","Y u gotta text in short messages "+data.story[17].fName.charAt(0));
+			writePhoneSpeech("kuro","","God and we're not even half done with shopping");
+			writePhoneSpeech("kuro","","I'm totally getting you back for this hun");
+			writePhoneChoices("I'm looking forward to it", "[Bombard her with texts]");
+			break;
+		}
+		case "kuroPhone8AB" : {
+			writePhoneSpeech("player","","If it's too much, I can deal with it and get rid of the trigger.");
+			writePhoneSpeech("kuro","","It's not too much");
+			writePhoneSpeech("kuro","","It's just");
+			writePhoneSpeech("kuro","","Embarassing");
+			writePhoneSpeech("kuro","","Ahhhh she keeps texting me");
+			writePhoneSpeech("kuro","","Y u gotta text in short messages "+data.story[17].fName.charAt(0));
+			writePhoneSpeech("kuro","","God and we're not even half done with shopping");
+			writePhoneSpeech("kuro","","I'm totally getting you back for this hun");
+			writePhoneChoices("I'm looking forward to it", "[Bombard her with texts]");
+
+			break;
+		}
+		case "kuroPhone8AAA" : {
+			break;
+		}
+		case "kuroPhone8AAB" : {
+			writePhoneSpeech("player","","You");
+			writePhoneSpeech("player","","Shouldn't");
+			writePhoneSpeech("player","","Threaten");
+			writePhoneSpeech("player","","Me");
+			writePhoneSpeech("player","","With");
+			writePhoneSpeech("player","","A");
+			writePhoneSpeech("player","","Good");
+			writePhoneSpeech("player","","Time");
+			writePhoneSpeech("player","","Steph");
+			writePhoneSpeech("kuro","","no fair");
+			writePhoneSpeech("player","","Fair");
+			writePhoneSpeech("player","","Isn't");
+			writePhoneSpeech("player","","As");
+			writePhoneSpeech("player","","Fun.");
+			writePhoneSpeech("player","","And I think we both know that, don't we Steph?");
+			writePhoneSpeech("player","","...You there?");
+			writePhoneSpeech("kuro","","Just checking that I'm alone in the bathroom");
+			writePhoneSpeech("kuro","","If someone heard me cumming my brains out in a public toilet, I'd die of shame");
+			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)", but you'd better meat me tomorrow");
+			writePhoneSpeech("player","","Meet*");
+			writePhoneSpeech("kuro","","That wasn't a typo hun");
+			writePhoneSpeech("kuro","","Kisses~!");
+			break;
+		}
+		case "kuroPhone8ABA" : {
+			break;
+		}
+		case "kuroPhone8ABB" : {
+			writePhoneSpeech("player","","You");
+			writePhoneSpeech("player","","Shouldn't");
+			writePhoneSpeech("player","","Threaten");
+			writePhoneSpeech("player","","Me");
+			writePhoneSpeech("player","","With");
+			writePhoneSpeech("player","","A");
+			writePhoneSpeech("player","","Good");
+			writePhoneSpeech("player","","Time");
+			writePhoneSpeech("player","","Steph");
+			writePhoneSpeech("kuro","","no fair");
+			writePhoneSpeech("player","","Fair");
+			writePhoneSpeech("player","","Isn't");
+			writePhoneSpeech("player","","As");
+			writePhoneSpeech("player","","Fun.");
+			writePhoneSpeech("player","","And I think we both know that, don't we Steph?");
+			writePhoneSpeech("player","","...You there?");
+			writePhoneSpeech("kuro","","Just checking that I'm alone in the bathroom");
+			writePhoneSpeech("kuro","","If someone heard me cumming my brains out in a public toilet, I'd die of shame");
+			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)", but you'd better meat me tomorrow");
+			writePhoneSpeech("player","","Meet*");
+			writePhoneSpeech("kuro","","That wasn't a typo hun");
+			writePhoneSpeech("kuro","","Kisses~!");
+			break;
+		}
+		case "kuroPhone8B" : {
+			writePhoneSpeech("player","","That's kinda the point.");
 			break;
 		}
 		case "kuroPhone9" : {
 			if(checkTrust('kuro')==65)
 				setTrust('kuro',70);
+			writePhoneSpeech("kuro","","Me and "+data.story[17].fName.charAt(0)+" are spending the rest of the day shopping around");
 			break;
 		}
 		case "kuroReward1" : {
