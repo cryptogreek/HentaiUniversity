@@ -95,7 +95,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("hazeF scoffs, shaking her head.");
 			writeSpeech("haze","","I can only eat the dreams of people that are either sleeping deeply... or who are basically in the same <i>state</i> as sleeping. And if I like my dreams sexually-charged...");
 			writeSpeech("player","","...then you'd want to hang around a sexual hypnotist.");
-			writeSpeech("haze","","Bingo-bongo! I've been making sure those victims of yours end up in my neck of the dream-woods when you put them under - you have <i>excellent</i> taste by the way - but in all the time I've been around you, this is the first you've popped in here. So...");
+			writeSpeech("haze","","Bingo-bongo! I've been making sure those victims of yours end up in my neck of the dream-woods when you put them under - you have <i>excellent</i> taste by the way - but in all the time I've been around you, this is the first time you've popped in here. So...");
 			writeText("She grins widely again, spreading her arms out wide.");
 
 			writeSpeech("haze","","Welcome to my place! It's basically a dream, but also kinda not. You could think of it as a manifestation of a subsection of the collective unconscious manipulable by supernatural entities... or just a Dreamland. They're basically the same thing.");
@@ -227,7 +227,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("But she doesn't slow down, her body still bouncing and her hand still stroking as you realize the pleasure isn't getting weaker.");
 			writeSpeech("haze","","Keep going~! Empty those thick, beautiful balls all over me~!");
 			writeSpeech("player","","I can't stop...!");
-			writeText("More and more cum spurts out, your body tensing up as cum rope after rope, covering her hair and hand for what feels like minutes before she finally lets out a gentle giggle.");
+			writeText("More and more cum spurts out, your body tensing up as you cum rope after rope, covering her hair and hand for what feels like minutes before she finally lets out a gentle giggle.");
 			writeSpeech("haze","","Haah~ Jeez, you really are something, aren't you playerF?");
 			writeBig("images/haze/1-6.jpg","Art by Purple Haze");
 			writeSpeech("haze","","This is totally my favorite part~");
@@ -795,7 +795,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("haze","","Good answer, darling~ Feel free to play with these tits all you like~!");
 			writeText("You can feel her nipples stiffen under your palms as she uses her hands to get you both off, the sound of her stirring up her wet pussy filling the air as she bites her lip.");
 			writeText("A moment later, she pulls both of her hands away, switching them around as you feel her slick hand start to get your shaft wet with her fluids.");
-			writeText("Moving you own hands, you give her nipples a sharp squeeze.");
+			writeText("Moving your own hands, you give her nipples a sharp squeeze.");
 			writeBig("images/haze/1-3.jpg","Art by Purple Haze");
 			writeSpeech("haze","","Ahn~!");
 			writeText("She seems to enjoy it, her grip tightening a little bit as she starts jerking you off more slowly.");
