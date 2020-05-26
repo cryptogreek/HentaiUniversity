@@ -21,8 +21,13 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "kuro5", name: "kuro is fiddling with her phone, rubbing her thighs together as she waits", location: 'roof', time: "Morning", itemReq: "", trustMin: 60, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuro6", name: "kuro is sitting near the fence, her panties in clear view", location: 'roof', time: "Morning", itemReq: "", trustMin: 63, trustMax: 63, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "kuroCasino1", name: "kuro is here", location: 'casino', time: "MorningEvening", itemReq: "", trustMin: 60, trustMax: 200, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "kuro7", name: "kuro is standing near the fence, toying with the hem of her skirt", location: 'roof', time: "Morning", itemReq: "", trustMin: 70, trustMax: 70, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "kuro7", name: "kuro is leaning against the fence again, typing into her phone casually - IF TWO THINGS APPEARED, I MISSED THIS SUPER OBVIOUS ERROR", location: 'roof', time: "Morning", itemReq: "", trustMin: 70, trustMax: 70, type: "tab", top: 0, left: 0, day: "both",},
+	//{index: "kuro7", name: "kuro is standing near the fence, toying with the hem of her skirt", location: 'roof', time: "Morning", itemReq: "", trustMin: 70, trustMax: 70, type: "tab", top: 0, left: 0, day: "both",},
+	//{index: "kuro7", name: "kuro is leaning against the fence again, typing into her phone casually - IF TWO THINGS APPEARED, I MISSED THIS SUPER OBVIOUS ERROR", location: 'roof', time: "Morning", itemReq: "", trustMin: 70, trustMax: 70, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuro7", name: "kuro is leaning against the fence with her eyes shut, her skirt squeezed tightly in one fist as she bites her lip", requirements: "?trust kuro 71; ?flag kuro PentUp; ?location roof;", altName: "", altImage: "",},
+	{index: "kuro7", name: "kuro is looking out at the town through the fence, fiddling with her skirt", requirements: "?trust kuro 71; ?flag kuro Disciplined; ?location roof;", altName: "", altImage: "",},
+	{index: "kuro7", name: "kuro is leaning against the fence, typing something on her phone", requirements: "?trust kuro 71; !flag kuro PentUp; !flag kuro Disciplined; ?location roof;", altName: "", altImage: "",},
+	{index: "kuroLate", name: "kuro is sitting on the ground with a disappointed expression, fiddling with her phone", location: 'roof', time: "Evening", itemReq: "", trustMin: 72, trustMax: 72, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "kuroStoodUp", name: "kuro is leaning against the fence, a lollipop in her mouth and her phone in her hand", location: 'roof', time: "Morning", itemReq: "", trustMin: 73, trustMax: 73, type: "tab", top: 0, left: 0, day: "both",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -31,7 +36,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 	switch (name) {
 		case "kuro1" : {
 			//meeting kuro
-			writeText("As you approach to investigate, you see the a member of the student council leaving the other way.");
+			writeText("As you approach to investigate, you see a member of the student council leaving the other way.");
 			writeText("The argument seems to have been resolved, but...");
 			writeBig("images/kuro/profile.jpg","Art by Enoshima Iki");
 			writeSpeech("kuro","","Heya~! Looks like the two of us were being a bit loud, huh? Sorry~!");
@@ -287,6 +292,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 				break;
 			}
 			else if(checkTrust('kuro')==61){
+				if(!checkFlag('kuro','OralFixation'));
+					addFlag('kuro','OralFixation');
 				writeSpeech("kuro","","Geez. I haven't been able to stop thinking about the text I sent you, about the story.");
 				writeText("She pouts, leaning into your chest.");
 				writeSpeech("kuro","","Because of you, this itty-bitty lollipop isn't <i>nearly</i> enough to distract me... Just how do you plan on dealing with that, hm?");
@@ -358,7 +365,10 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("She blushes which, given how hard she's been to catch off-guard, is pretty nice.");
 			writeSpeech("kuro","","Y-Yeah. I barely remember yesterday after we started fucking, but hearing you slam the door on your way out was...");
 			writeText("Her whole body shudders slightly as she remembers the sound, her legs spreading slightly.");
-			writeSpeech("kuro","","If I knew you fucked like that, I wouldn't have waited this long.");
+			if(!galleryCheck('kuroMoney2'))
+				writeSpeech("kuro","","If I knew you fucked like that, I wouldn't have waited this long.");
+			else
+				writeSpeech("kuro","","God, that was so much better than the first time.");
 			writeSpeech("kuro","","...I do need new sheets, though. I was planning on skipping class to get them, but then I started texting you, and then I shut my front door, and here we are.");
 			writeText("Hm... She needs to go shopping? There probably aren't too many opportunities to trigger her, since there aren't too many traditional doors in a store...");
 			writeText("Plus, you <i>could</i> remove the trigger pretty easily if you wanted, but maybe just replacing it would be fun?");
@@ -385,13 +395,16 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("kuro","","S-Sorry.");
 			writeText("She sighs, lowering her head a bit.");
 			writeSpeech("kuro","","Calling you a jerk over some sheets I tore was totally uncool. I'm just... not used to being the subby one, I guess.");
-			writeSpeech("player","","As long as you you're sorry, it's fine. Still...");
+			writeSpeech("player","","As long as you're sorry, it's fine. Still...");
 			writeText("You smirk.");
 			writeSpeech("player","","<i>Doors,</i> huh?");
 			writeText("She blushes which, given how hard she's been to catch off-guard, is pretty nice.");
 			writeSpeech("kuro","","Y-Yeah. I barely remember yesterday after we started fucking, but hearing you slam the door on your way out was...");
 			writeText("Her whole body shudders slightly as she remembers the sound, her legs spreading slightly.");
-			writeSpeech("kuro","","If I knew you fucked like that, I wouldn't have waited this long.");
+			if(!galleryCheck('kuroMoney2'))
+				writeSpeech("kuro","","If I knew you fucked like that, I wouldn't have waited this long.");
+			else
+				writeSpeech("kuro","","God, that was so much better than the first time.");
 			writeSpeech("kuro","","...I do need new sheets, though. I was planning on skipping class to get them, but then I started texting you, and then I shut my front door, and here we are.");
 			writeText("Hm... She needs to go shopping? There probably aren't too many opportunities to trigger her, since there aren't too many traditional doors in a store...");
 			writeText("Plus, you <i>could</i> remove the trigger pretty easily if you wanted, but maybe just replacing it would be fun?");
@@ -491,11 +504,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "kuro7" : {
-			if(checkTrust('kuro')==64)
-				if(!checkFlag('kuro','Triggered'))
-					addFlag('kuro','Triggered');
-			setTrust('kuro',70);
-			writeSpeech("kuro","","Hey, this is some temporary text~! We'll get to the good stuff soon, <i>stud,</i> so have a little patience!");
+			if(checkFlag('kuro','PentUp')){
+				writeSpeech("kuro","","Hey, this is some temporary text~! We'll get to the good stuff soon, <i>stud,</i> so have a little patience while I focus on this swirly picture!");
+			}
+			else if(checkFlag('kuro','Disciplined')){
+				writeSpeech("kuro","","Hey, this is some temporary text~! We'll get to the good stuff soon, <i>stud,</i> so have a little patience while I appreciate that tasty discipline!");
+			}
+			else{
+				writeSpeech("kuro","","Hey, this is some temporary text~! We'll get to the good stuff soon, <i>stud,</i> so have a little patience!");
+			}
 			break;
 		}
 	}
@@ -591,6 +608,8 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("You are, in all honesty, a little spent. It actually takes you a moment to realize that she couldn't have locked it behind her, which you quickly jump up to fix.");
 			writeText("Still... That was one <i>Hell</i> of a handjob.");
 			if (data.player.location != 'gallery') {
+				if(!checkFlag('nikki','Phone'))
+					addFlag('nikki','Phone');
 				data.player.location = "playerOffice";
 				passTime();
 				setTrust('kuro', 20);
@@ -615,7 +634,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("It doesn't take you two long at all to get there, or for you to get undressed.");
 			writeText("A few seconds later, she smirks as she raises her hand to her mouth.");
 			writeSpeech("kuro","","Let's make just a little more noise this time, okay?");
-			writeText("Sliding her lollipop into her cheek, she runs her wet tongue across and palm and fingers, covering it in her saliva.");
+			writeText("Sliding her lollipop into her cheek, she runs her wet tongue across her palm and fingers, covering it in her saliva.");
 			writeText("The slick sensation of her hand, tightening and letting go quickly and rhythmically, immediately has you biting back a moan.");
 			writeText("Then, "+fName('kuro')+" raises her phone, the screen showing some other girl's name on the other end of the line.");
 			writeSpeech("kuro","","Don't worry about her leaking anything about you, stud. Even if I actually <i>did</i> tell her your name, her <i>pussy's</i> the only thing that'd be leaking anywhere.");
@@ -809,8 +828,8 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("You saw into her cunt with each thrust, changing the angle slightly with each time to see how she reacts. She's good at keeping her feelings off of her face, but...");
 			writeSpeech("player","","Ah, so you like it there?");
 			writeText("...she's not <i>quite</i> as good when it comes to keeping her calves from tensing.");
-			writeText("Each time you thrust deep, angling up just enough to feel her your head rubbing against every ridge inside of her, you feel her calves get just a little bit tenser.");
-			writeText("Despite that, though, she manages to keep a mostly-controlled fact the entire time, focusing on squeezing tightly around you instead.");
+			writeText("Each time you thrust deep, angling up just enough to feel your head rubbing against every ridge inside of her, you feel her calves get just a little bit tenser.");
+			writeText("Despite that, though, she manages to keep a mostly-controlled face the entire time, focusing on squeezing tightly around you instead.");
 			writeSpeech("kuro","","Sorry, h-hun~ But when you try and fuck me like that, I can't help but take it as a challenge~!");
 			writeText("At that, she lifts her body a bit, almost like a sit-up, and almost the entire sensation of fucking her changes.");
 			writeText("You can just barely see her abs moving where her shirt rides up and her skirt slid aside, tightening and relaxing quickly as she squeezes around you.");
@@ -825,7 +844,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("player","","<i><b>Cumming...!</b></i>");
 			writeBig("images/kuro/5-5.jpg", "Art by Enoshima Iki");
 			writeSpeech("kuro","","Nnn~... I can <i>feel</i> your hot, <i>fat</i> load stretching that condom down there... Looks like I won, huh?");
-			writeText("After the last few ropes spurt into the condom, you slowly pull out with wet sound.");
+			writeText("After the last few ropes spurt into the condom, you slowly pull out with a wet sound.");
 			writeSpeech("player","","Looks like it. Still, it's not like I'm <i>completely</i> spent.");
 			writeText("She grins, reaching over the bed and grabbing a few more condoms.");
 			writeSpeech("kuro","","I was <i><b>really</b></i> hoping you'd say that.");
@@ -852,7 +871,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("She spreads her legs a bit, a damp spot on the sheets becoming visible as she grins.");
 			writeSpeech("kuro","","Or do you think you need a closer look?");
 			writeText("You step forward, one hand grasping your cock as you move between her legs.");
-			writeSpeech("player","","How long have you been been dripping like this?");
+			writeSpeech("player","","How long have you been dripping like this?");
 			writeText("She moans a bit as your other hand slides down to her warm, slick pussy.");
 			writeSpeech("kuro","","Since I woke up, of course. Your texts come with a pic of your face, y'know.");
 			writeText("You barely have to push at all to feel your finger go into her, before she squeezes down around you.");
@@ -869,7 +888,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("kuro","","Not my favorite position, but it'll do...");
 			writeText("She pauses.");
 			writeSpeech("kuro","","Ah, wait. Where's the condom?");
-			writeSpeech("player","","That's a good question, kuroF. But how I about <i>I order you to relax.</i>");
+			writeSpeech("player","","That's a good question, kuroF. But how about <i>I order you to relax.</i>");
 			writeText("Her eyes unfocus as you grab one of her tits, her entire body relaxing underneath you.");
 			writeSpeech("kuro","","W-Whaa...?");
 			writeBig("images/kuro/6-2.jpg", "Art by Enoshima Iki");
@@ -881,7 +900,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("kuro","","Nn... It's, hazy...? What's happening...?");
 			writeText("You slow down your thrusting, only pushing halfway into her each time.");
 			writeSpeech("player","","You're going under, kuroF. Deeper and deeper into trance, with every thrust...");
-			writeText("She blinks once, before looking vaugely confused.");
+			writeText("She blinks once, before looking vaguely confused.");
 			writeSpeech("kuro","","But, trance is... that's not real, right...?");
 			writeText("Her eyes flutter slightly as you push and pull inside of her, her breathing getting softer.");
 			writeSpeech("player","","Of course it isn't. But it <i>feels</i> like it is, right?");
@@ -906,7 +925,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("Her legs are shaking almost uncontrollably as you pick up speed again.");
 			writeText("The way she's wildly squeezing around you, trying to control her body but failing, is almost as erotic as her moans.");
 			writeSpeech("kuro","","N-No fair...! Why do you feel so good...!?");
-			writeText("You squeeze her breast tighter as bring your mouth to her ear.");
+			writeText("You squeeze her breast tighter as you bring your mouth to her ear.");
 			writeSpeech("player","","Isn't it obvious, kuroF?");
 			writeText("Aiming for the points that make her squirm the most, you start pistoning into her cunt full-force.");
 			writeSpeech("player","","It's because this cock is the perfect fit for that little tan cunt of yours.");
@@ -994,6 +1013,10 @@ var phoneArray = [//Lists the potential text events the player can receive at th
 	{index: "kuroPhone7", trust: 63,},
 	{index: "kuroPhone8", trust: 64,},
 	{index: "kuroPhone9", trust: 65,},
+	{index: "kuroPhone10", requirements:"?trust kuro 70; ?flag kuro PentUp;"},
+	{index: "kuroPhone11", requirements:"?trust kuro 70; ?flag kuro Disciplined;"},
+	{index: "kuroPhone12", requirements:"?trust kuro 70; !flag kuro Disciplined; !flag kuro PentUp;"},
+	{index: "kuroPhone13", requirements:"?trust kuro 73; !flag kuro Disciplined; !flag kuro PentUp;"},
 	//SECONDARY ROUTE TEXTS:
 	{index: "kuroPhone6", trust: 26,},
 	{index: "kuroReward2", trust: 40,},
@@ -1067,19 +1090,19 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 				setTrust('kuro', 21);
 			}
 			writePhoneSpeech("kuro","","Gmorning mister counciler!! Howya doin?");
-			writePhoneChoices("Good morning, Stephanie","Morning Steph","What's the hizzity-hizzaps, Steph-dawg?");
+			writePhoneChoices("Good morning to you too","Morning kuroF","What's the hizzity-hizzaps, kuroF-dawg?");
 			break;
 		}
 		case "kuroPhone2A" : {
-			writePhoneSpeech("player","","Good morning, Stephanie. I'm doing well - how are you?");
-			writePhoneSpeech("kuro","","It's STEPH silly!!! it's way cuter!");
+			writePhoneSpeech("player","","Good morning to you too. I'm doing well - how are you?");
+			writePhoneSpeech("kuro","","Lol that's wayy too formal silly!!!");
 			writePhoneSpeech("kuro","","Hope your having a good day... and that maybe i can make it better~");
 			writePhoneSpeech("kuro","","Maybe come up to the roof later? (.^_~.)");
 			writePhoneSpeech("kuro","","I'll be waiting hun!");
 			break;
 		}
 		case "kuroPhone2B" : {
-			writePhoneSpeech("player","","Morning Steph. Pretty good, you?");
+			writePhoneSpeech("player","","Morning kuroF. Pretty good, you?");
 			writePhoneSpeech("kuro","","Pretty good pretty good! could do with a little more fun tho >(^*^)>");
 			writePhoneSpeech("kuro","","Maybe with you?");
 			writePhoneSpeech("kuro","","Thats only if you come up to the roof later tho! .(^-^).");
@@ -1087,7 +1110,9 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			break;
 		}
 		case "kuroPhone2C" : {
-			writePhoneSpeech("player","","What's the hizzity-hizzaps, Steph-dawg?");
+			if(!checkFlag('kuro','Radicool'))
+				addFlag('kuro','Radicool');
+			writePhoneSpeech("player","","What's the hizzity-hizzaps, kuroF-dawg?");
 			writePhoneSpeech("kuro","","...");
 			writePhoneSpeech("kuro","","Honey...");
 			writePhoneSpeech("kuro","","No.");
@@ -1234,9 +1259,9 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","Had it on my phone. Posted online a while ago.");
 			writePhoneSpeech("player","","Makes sense. It looks like orders work over the phone, so here's a new set:");
 			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person, and being around me will turn you on.");
-			writePhoneSpeech("kuro","","Yes sir.");
+			writePhoneSpeech("kuro","","Yes playerSir.");
 			writePhoneSpeech("player","","Second. You'll take your duties as a student a bit more seriously. I'm supposed to be counseling you, after all.");
-			writePhoneSpeech("kuro","","Yes sir.");
+			writePhoneSpeech("kuro","","Yes playerSir.");
 			writePhoneSpeech("player","","Third. You will continue to act the same as you always do unless it would conflict with other orders.");
 			writePhoneSpeech("kuro","","Kk, should be pretty easy");
 			writePhoneSpeech("player","","Finally, fourth. You will think the text was some outdated meme. You will delete these texts from your log and forget this conversation, but still follow your orders.");
@@ -1265,9 +1290,9 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","No. Not even her. It's too embarassing to tell a girl that you have to always be sucking on something to not get distracted by her tongue.");
 			writePhoneSpeech("player","","Makes sense. Sexy stories aside, now that we're finished testing that out, it's time to give you some orders.");
 			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person, and being around me will turn you on.");
-			writePhoneSpeech("kuro","","Yes sir.");
+			writePhoneSpeech("kuro","","Yes playerSir.");
 			writePhoneSpeech("player","","Second. You'll take your duties as a student a bit more seriously. I'm supposed to be counseling you, after all.");
-			writePhoneSpeech("kuro","","Yes sir.");
+			writePhoneSpeech("kuro","","Yes playerSir.");
 			writePhoneSpeech("player","","Third. You will continue to act the same as you always do unless it would conflict with other orders.");
 			writePhoneSpeech("kuro","","Kk, should be pretty easy");
 			writePhoneSpeech("player","","Finally, fourth. You will think the text was some outdated meme. You will delete these texts from your log. You will forget this conversation, but still follow your orders.");
@@ -1291,9 +1316,9 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","K");
 			writePhoneSpeech("player","","Actually, wait. Don't want you talking about this text or the hypno, so here's some ground rules real quick:");
 			writePhoneSpeech("player","","First. You have to listen to what I tell you in-person, and being around me will turn you on.");
-			writePhoneSpeech("kuro","","Yes sir.");
+			writePhoneSpeech("kuro","","Yes playerSir.");
 			writePhoneSpeech("player","","Second. You'll take your duties as a student a bit more seriously. I'm supposed to be counseling you, after all.");
-			writePhoneSpeech("kuro","","Yes sir.");
+			writePhoneSpeech("kuro","","Yes playerSir.");
 			writePhoneSpeech("player","","Third. You will continue to act the same as you always do unless it would conflict with other orders.");
 			writePhoneSpeech("kuro","","Kk, should be pretty easy");
 			writePhoneSpeech("player","","Finally, fourth. You will think the text was some outdated meme. You will delete these texts from your log. You will forget this conversation, but still follow your orders.");
@@ -1504,7 +1529,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 		}
 		case "kuroPhone8A" : {
 			writePhoneSpeech("player","","You don't like it?");
-			writePhoneSpeech("kuro","","Don't put words in my mouth (only dick)");
+			writePhoneSpeech("kuro","","My mouth is for putting dicks in, not words");
 			writePhoneSpeech("kuro","","It's different when I'm actually with "+data.story[17].fName.charAt(0)+" instead of on the phone");
 			writePhoneSpeech("kuro","","She bought a whole bunch of stuff, and the cashier had to scan");
 			writePhoneSpeech("kuro","","Every");
@@ -1522,7 +1547,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","Y u gotta text in short messages "+data.story[17].fName.charAt(0));
 			writePhoneSpeech("kuro","","God and we're not even half done with shopping");
 			writePhoneSpeech("kuro","","I'm totally getting you back for this hun");
-			writePhoneChoices("I'm looking forward to it", "[Bombard her with texts]");
+			writePhoneChoices("If it's too much, I can remove the trigger", "[Discipline her by sending a bunch of texts]");
 			break;
 		}
 		case "kuroPhone8AB" : {
@@ -1534,14 +1559,23 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("kuro","","Y u gotta text in short messages "+data.story[17].fName.charAt(0));
 			writePhoneSpeech("kuro","","God and we're not even half done with shopping");
 			writePhoneSpeech("kuro","","I'm totally getting you back for this hun");
-			writePhoneChoices("I'm looking forward to it", "[Bombard her with texts]");
-
+			writePhoneChoices("I'm looking forward to it", "[Discipline her by sending a bunch of texts]");
 			break;
 		}
 		case "kuroPhone8AAA" : {
+			writePhoneSpeech("player","","Threatening me with a good time? I'm looking forward to it.");
+			writePhoneSpeech("kuro","","I'll make sure to fulfill your expectations then hun");
+			writePhoneSpeech("kuro","","Assuming this beeping doesn't make me cum my braind out anyway");
+			writePhoneSpeech("kuro","","We totes oughta talk about that next time btw, you still haven't told me how you do it");
+			writePhoneSpeech("kuro","","In the meantime tho, gotta get back to "+data.story[17].fName.charAt(0)+", but you'd better meat me tomorrow");
+			writePhoneSpeech("player","","Meet*");
+			writePhoneSpeech("kuro","","That wasn't a typo hun");
+			writePhoneSpeech("kuro","","Kisses~!");
 			break;
 		}
 		case "kuroPhone8AAB" : {
+			if(!checkFlag('kuro','Disciplined'))
+				addFlag('kuro','Disciplined');
 			writePhoneSpeech("player","","You");
 			writePhoneSpeech("player","","Shouldn't");
 			writePhoneSpeech("player","","Threaten");
@@ -1550,26 +1584,36 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("player","","A");
 			writePhoneSpeech("player","","Good");
 			writePhoneSpeech("player","","Time");
-			writePhoneSpeech("player","","Steph");
+			writePhoneSpeech("player","","kuroF");
 			writePhoneSpeech("kuro","","no fair");
 			writePhoneSpeech("player","","Fair");
 			writePhoneSpeech("player","","Isn't");
 			writePhoneSpeech("player","","As");
 			writePhoneSpeech("player","","Fun.");
-			writePhoneSpeech("player","","And I think we both know that, don't we Steph?");
+			writePhoneSpeech("player","","And I think we both know that, don't we kuroF?");
 			writePhoneSpeech("player","","...You there?");
 			writePhoneSpeech("kuro","","Just checking that I'm alone in the bathroom");
 			writePhoneSpeech("kuro","","If someone heard me cumming my brains out in a public toilet, I'd die of shame");
-			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)", but you'd better meat me tomorrow");
+			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)+", but you'd better meat me tomorrow");
 			writePhoneSpeech("player","","Meet*");
 			writePhoneSpeech("kuro","","That wasn't a typo hun");
 			writePhoneSpeech("kuro","","Kisses~!");
 			break;
 		}
 		case "kuroPhone8ABA" : {
+			writePhoneSpeech("player","","Threatening me with a good time? I'm looking forward to it.");
+			writePhoneSpeech("kuro","","I'll make sure to fulfill your expectations then hun");
+			writePhoneSpeech("kuro","","Assuming this beeping doesn't make me cum my brains out anyway");
+			writePhoneSpeech("kuro","","We totes oughta talk about that next time btw, you still haven't told me how you do it");
+			writePhoneSpeech("kuro","","In the meantime tho, gotta get back to "+data.story[17].fName.charAt(0)+", but you'd better meat me tomorrow");
+			writePhoneSpeech("player","","Meet*");
+			writePhoneSpeech("kuro","","That wasn't a typo hun");
+			writePhoneSpeech("kuro","","Kisses~!");
 			break;
 		}
 		case "kuroPhone8ABB" : {
+			if(!checkFlag('kuro','Disciplined'))
+				addFlag('kuro','Disciplined');
 			writePhoneSpeech("player","","You");
 			writePhoneSpeech("player","","Shouldn't");
 			writePhoneSpeech("player","","Threaten");
@@ -1578,17 +1622,17 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("player","","A");
 			writePhoneSpeech("player","","Good");
 			writePhoneSpeech("player","","Time");
-			writePhoneSpeech("player","","Steph");
+			writePhoneSpeech("player","","kuroF");
 			writePhoneSpeech("kuro","","no fair");
 			writePhoneSpeech("player","","Fair");
 			writePhoneSpeech("player","","Isn't");
 			writePhoneSpeech("player","","As");
 			writePhoneSpeech("player","","Fun.");
-			writePhoneSpeech("player","","And I think we both know that, don't we Steph?");
+			writePhoneSpeech("player","","And I think we both know that, don't we kuroF?");
 			writePhoneSpeech("player","","...You there?");
 			writePhoneSpeech("kuro","","Just checking that I'm alone in the bathroom");
 			writePhoneSpeech("kuro","","If someone heard me cumming my brains out in a public toilet, I'd die of shame");
-			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)", but you'd better meat me tomorrow");
+			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)+", but you'd better meat me tomorrow");
 			writePhoneSpeech("player","","Meet*");
 			writePhoneSpeech("kuro","","That wasn't a typo hun");
 			writePhoneSpeech("kuro","","Kisses~!");
@@ -1596,12 +1640,209 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 		}
 		case "kuroPhone8B" : {
 			writePhoneSpeech("player","","That's kinda the point.");
+			writePhoneSpeech("kuro","","Ye, but still");
+			writePhoneSpeech("kuro","","I keep almost moaning whenever I hear something beep");
+			writePhoneSpeech("kuro","","Like, it's totally hot, but I could swear "+data.story[17].fName.charAt(0)+"'s getting sus");
+			writePhoneSpeech("kuro","","If I didn't know better, I'd say she knows and bought like 40 different things just to rile me up");
+			writePhoneSpeech("kuro","","Had to ask her to handle paying while I 'use the bathroom'");
+			writePhoneSpeech("kuro","","Srsly, if this stall was cleaner, I'd probably skip texting and go straight to jilling with a pic of u");
+			writePhoneChoices("If it's too much, I can remove the trigger", "[Send hypno-pic and order her not to cum]");
+			break;
+		}
+		case "kuroPhone8BA" : {
+			writePhoneSpeech("player","","If it's too much, I can deal with it and get rid of the trigger.");
+			writePhoneSpeech("kuro","","It's not too much");
+			writePhoneSpeech("kuro","","It's just");
+			writePhoneSpeech("kuro","","Embarassing");
+			writePhoneSpeech("kuro","","Ahhhh she keeps texting me");
+			writePhoneSpeech("kuro","","Y u gotta text in short messages "+data.story[17].fName.charAt(0));
+			writePhoneSpeech("kuro","","God and we're not even half done with shopping");
+			writePhoneSpeech("kuro","","I'm totally getting you back for this hun");
+			writePhoneChoices("I'm looking forward to it", "[Discipline her by sending a bunch of texts]");
+			break;
+		}
+		case "kuroPhone8BAA" : {
+			writePhoneSpeech("player","","Threatening me with a good time? I'm looking forward to it.");
+			writePhoneSpeech("kuro","","I'll make sure to fulfill your expectations then hun");
+			writePhoneSpeech("kuro","","Assuming this beeping doesn't make me cum my braind out anyway");
+			writePhoneSpeech("kuro","","We totes oughta talk about that next time btw, you still haven't told me how you do it");
+			writePhoneSpeech("kuro","","In the meantime tho, gotta get back to "+data.story[17].fName.charAt(0)+", but you'd better meat me tomorrow");
+			writePhoneSpeech("player","","Meet*");
+			writePhoneSpeech("kuro","","That wasn't a typo hun");
+			writePhoneSpeech("kuro","","Kisses~!");
+			break;
+		}
+		case "kuroPhone8BAB" : {
+			if(!checkFlag('kuro','Disciplined'))
+				addFlag('kuro','Disciplined');
+			writePhoneSpeech("player","","You");
+			writePhoneSpeech("player","","Shouldn't");
+			writePhoneSpeech("player","","Threaten");
+			writePhoneSpeech("player","","Me");
+			writePhoneSpeech("player","","With");
+			writePhoneSpeech("player","","A");
+			writePhoneSpeech("player","","Good");
+			writePhoneSpeech("player","","Time");
+			writePhoneSpeech("player","","kuroF");
+			writePhoneSpeech("kuro","","no fair");
+			writePhoneSpeech("player","","Fair");
+			writePhoneSpeech("player","","Isn't");
+			writePhoneSpeech("player","","As");
+			writePhoneSpeech("player","","Fun.");
+			writePhoneSpeech("player","","And I think we both know that, don't we kuroF?");
+			writePhoneSpeech("player","","...You there?");
+			writePhoneSpeech("kuro","","Just checking that I'm alone in the bathroom");
+			writePhoneSpeech("kuro","","If someone heard me cumming my brains out in a public toilet, I'd die of shame");
+			writePhoneSpeech("kuro","","Gotta get back to "+data.story[17].fName.charAt(0)+", but you'd better meat me tomorrow");
+			writePhoneSpeech("player","","Meet*");
+			writePhoneSpeech("kuro","","That wasn't a typo hun");
+			writePhoneSpeech("kuro","","Kisses~!");
+			break;
+		}
+		case "kuroPhone8BB" : {
+			if(!checkFlag('kuro','PentUp'))
+				addFlag('kuro','PentUp');
+			writePhoneSpeech("player","","Sounds like you're getting really turned on. It would be a real shame if I were to say...");
+			writePhoneImage("images/kuro/hypno.gif","Hypnosis");
+			writePhoneSpeech("player","","You're not allowed to cum. Until I remove this trigger, at least.");
+			writePhoneSpeech("player","","You'll still get more and more turned on with every beep, but you won't be able to go over the edge.");
+			writePhoneSpeech("player","","You'll be stuck edging over and over, your breathing getting heavier and more ragged, your body getting more desperate.");
+			writePhoneSpeech("player","","Doesn't that sound like fun, kuroF?");
+			writePhoneSpeech("kuro","","Yes");
+			writePhoneSpeech("player","","Good. But remember, getting caught would be very bad, so I'll help out a little.");
+			writePhoneSpeech("player","","No matter how turned on you get, you'll still act normally around other people.");
+			writePhoneSpeech("player","","You won't show any abnormal signs of arousal around others, no matter how desperately you want to fill your pussy until you have a screaming orgasm.");
+			writePhoneSpeech("player","","Do you understand?");
+			writePhoneSpeech("kuro","","Yes");
+			writePhoneSpeech("player","","Good girl. Now go back to shopping with your friend, and make sure to listen very closely to all the sounds around you while you shop.");
+			writePhoneSpeech("player","","You wouldn't want to miss any beeping, would you?");
+			writePhoneSpeech("kuro","","No");
+			writePhoneSpeech("kuro","","But hun");
+			writePhoneSpeech("kuro","","You know what your getting urself into dont you?");
+			writePhoneSpeech("player","","If you do well, I'll make sure to reward you when I see you.");
+			writePhoneSpeech("kuro","","Okay, but don't say I didn't warn you");
+			writePhoneSpeech("kuro","","I'm going back to shopping now, but I'll see you soon");
+			writePhoneSpeech("kuro","","Kisses~");
 			break;
 		}
 		case "kuroPhone9" : {
 			if(checkTrust('kuro')==65)
 				setTrust('kuro',70);
+			writePhoneSpeech("kuro","","Just wanted to give you a quick update!");
 			writePhoneSpeech("kuro","","Me and "+data.story[17].fName.charAt(0)+" are spending the rest of the day shopping around");
+			writePhoneSpeech("kuro","","We'll be finishing up sometime later today, though we'll be kicking back and watching some movies tonite");
+			writePhoneSpeech("kuro","","Will be available tomorrow tho! I'm sure you missed me a whole bunch~");
+			writePhoneChoices("I'm fine, you should enjoy your time with your friend","I get the feeling you're the one that misses me","It's a little boring without my cocksleeve");
+			break;
+		}
+		case "kuroPhone9A" : {
+			writePhoneSpeech("player","","I'm doing fine. You should enjoy your time with your friend though, since you mentioned that you haven't spent as much time together.");
+			writePhoneSpeech("kuro","","Aww, how considerate~! But your supposed to say something like");
+			writePhoneSpeech("kuro","","kuroF my life is so lonely without a tanned sex goddess draining my balls, I totes need you around my cock ASAP");
+			writePhoneSpeech("kuro","","Gotta make a girl feel wanted y'know?");
+			writePhoneSpeech("player","","kuroF, I want to pin you down and fuck you until neither one of us can move, but I can be patient enough to wait for you to hang out with friends between rampant sweaty fuck-fests.");
+			writePhoneSpeech("kuro","","Ahhhhhhh that was perfect!! If I didn't want to make "+data.story[17].fName.charAt(0)+" wait, I'd totally end up jilling myself in bathroom stall while sexting~");
+			writePhoneSpeech("kuro","","But fun times will have to wait until I see you on the roof~ Just thinking about what you did, what you can do to me and make me cum from, gets me so fcking horny");
+			writePhoneSpeech("kuro","","I'm looking forward to all the fun we'll be having but I gtg, kisses~!");
+			break;
+		}
+		case "kuroPhone9B" : {
+			writePhoneSpeech("player","","I have the weirdest feeling that you're the one that misses me more.");
+			writePhoneSpeech("kuro","","Lol just cuz ur rite doesn't mean you should say it!! Read the mood hun~");
+			writePhoneSpeech("kuro","","I swear, closing my front door might not have made me cum, but just remembering it");
+			writePhoneSpeech("kuro","","Unf. Just thinking about what you did, what you can do to me and make me cum from, gets me so fcking horny");
+			writePhoneSpeech("kuro","","I can't wait to see you again");
+			writePhoneSpeech("kuro","","But I'd better get back to "+data.story[17].fName.charAt(0)+" before chatting with you ends with me jilling it in a public bathroom, lol~");
+			writePhoneSpeech("player","","I'll see on the roof some time, then.");
+			writePhoneSpeech("kuro","","I'm looking forward to it, kisses~!");
+			break;
+		}
+		case "kuroPhone9C" : {
+			writePhoneSpeech("player","","Honestly, it's a little boring, not having a cute little cocksock shuddering on top of me.");
+			writePhoneSpeech("kuro","","Ahhhhhhh stop that~!! You're gonna make it even harder to focus, jerk!");
+			writePhoneSpeech("kuro","","I can't wait to see you on the roof again");
+			writePhoneSpeech("kuro","","That thing you did with the doors, I totally wanna know more about it");
+			writePhoneSpeech("kuro","","Closing my front door didn't make me start cumming and stuff, but just remembering it got me so fcking wet");
+			writePhoneSpeech("kuro","","But I'd better get back to "+data.story[17].fName.charAt(0)+" before chatting with you ends with me jilling it in a public bathroom, lol~");
+			writePhoneSpeech("player","","I'll see on the roof some time, and you'd better be ready to make me shudder hun (not that you've had trouble with it thus far~)");
+			writePhoneSpeech("kuro","","I'm looking forward to it, kisses~!");
+			break;
+		}
+		case "kuroPhone10" : {
+			if(checkTrust('kuro')==70)
+				setTrust('kuro',71);
+			writePhoneSpeech("kuro","","You, me");
+			writePhoneSpeech("kuro","","Roof");
+			writePhoneSpeech("kuro","","Please");
+			break;
+		}
+		case "kuroPhone11" : {
+			if(checkTrust('kuro')==70)
+				setTrust('kuro',71);
+			writePhoneSpeech("kuro","","Heya! Gonna be up on the roof later today");
+			writePhoneSpeech("kuro","","Looking forward to some fun if you have the time~");
+			writePhoneSpeech("kuro","","Kisses~!");
+			break;
+		}
+		case "kuroPhone12" : {
+			if(checkTrust('kuro')==70)
+				setTrust('kuro',71);
+			writePhoneSpeech("kuro","","Heyhey~! Got my new sheets, spent some time watching movies with "+data.story[17].fName.charAt(0)+", and my schedule just happns to be open~");
+			writePhoneSpeech("kuro","","I wonder if a certain sexy counselor will be cumming by the roof today~?");
+			writePhoneSpeech("kuro","","But for realzies, I'm pretty horny ngl");
+			writePhoneSpeech("kuro","","We gonna fck today?");
+			writePhoneChoices("I'll meet you on the roof", "I'm busy today, maybe some other time");
+			break;
+		}
+		case "kuroPhone12A" : {
+			if(checkTrust('kuro')==71)
+				setTrust('kuro',72);
+			writePhoneSpeech("player","","Be on the roof when I get to the school.");
+			writePhoneSpeech("kuro","","Nnf, I'm looking forward to it~ Don't leave me hanging!");
+			break;
+		}
+		case "kuroPhone12B" : {
+			writePhoneSpeech("player","","Sorry, but I have some business I have to handle. Maybe some other time?");
+			writePhoneSpeech("kuro","","Awww... but okay. I can be patient too! Good luck with your stuff, I'll be on the roof whenever you need a lovely pair of lips around your cock~");
+			writePhoneSpeech("kuro","","And spoiler-alert: I mean both kinds of lips~");
+			break;
+		}
+		case "kuroPhone13" : {
+			if(checkTrust('kuro')==72)
+				setTrust('kuro',73);
+			writePhoneSpeech("kuro","","So like, not to be that chick, but you kinda dipped on me?");
+			writePhoneSpeech("kuro","","I was super excited, but you didn't show");
+			writePhoneSpeech("kuro","","Did something come up?");
+			writePhoneChoices("Sorry, important business came up", "Sorry, I forgot you were waiting", "I wanted to tease you a bit more");
+			break;
+		}
+		case "kuroPhone13A" : {
+			writePhoneSpeech("player","","Sorry, some important stuff came up that I had to handle. You didn't wait too long, did you?");
+			writePhoneSpeech("kuro","","Not that long, no.");
+			writePhoneSpeech("kuro","","And yeah, I figured something might've pulled you away - it's totes fine, things happen!");
+			writePhoneSpeech("kuro","","I'll be up on the roof again later today, maybe I'll see you there?");
+			writePhoneSpeech("kuro","","Kisses~!");
+			break;
+		}
+		case "kuroPhone13B" : {
+			if(!checkFlag('kuro','StoodUp'))
+				addFlag('kuro','StoodUp');
+			writePhoneSpeech("player","","Sorry, I... kinda forgot you were waiting for me.");
+			writePhoneSpeech("kuro","","Wow");
+			writePhoneSpeech("kuro","","Not gonna lie, that kinda stings");
+			writePhoneSpeech("kuro","","If you're not sure if you'll be coming, just say you're not sure");
+			writePhoneSpeech("kuro","","I don't like being stood up");
+			writePhoneSpeech("player","","Sorry about that.");
+			writePhoneSpeech("kuro","","It's fine, it happens. I've had times where I forgot to respond to a text, so I get it");
+			writePhoneSpeech("kuro","","I'll be on the roof again. Come by if you can?");
+			break;
+		}
+		case "kuroPhone13A" : {
+			writePhoneSpeech("player","","I wanted to tease you a bit more.");
+			writePhoneSpeech("kuro","","Ah. See, I didn't really get that from the text?");
+			writePhoneSpeech("kuro","","I was more disappointed than aroused by being stood up");
+			writePhoneSpeech("kuro","","Denial play is fine, just be a bit more clear next time? Thanks");
+			writePhoneSpeech("kuro","","I'll be up on the roof again today, come by if you have the time");
 			break;
 		}
 		case "kuroReward1" : {
