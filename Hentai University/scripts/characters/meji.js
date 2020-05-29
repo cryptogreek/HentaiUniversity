@@ -16,12 +16,12 @@ var logbook = { //Logbook details for each character.
 };
 
 var newItems = [//Lists the shop items unique to this character
-	{name: "Leotard", 			key: true, 		price: 20, 	image: "scripts/gamefiles/items/leotard.jpg", description: "A sports-leotard for women."},
+{name: "Leotard", 			key: true, 		price: 20, 	image: "scripts/gamefiles/items/leotard.jpg", description: "A sports-leotard for women."},
 ];
 
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
-	{index: "meji1a", name: "A particularly loud student is walking down the hall.", location: 'westHallway', time: "Morning", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "meji2", name: "You spot a familiar face.", location: 'street', time: "Evening", itemReq: "", trustMin: 10, trustMax: 10, type: "tab", top: 0, left: 0, day: "both",},
+{index: "meji1a", name: "A particularly loud student is walking down the hall.", location: 'westHallway', time: "Morning", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "both",},
+{index: "meji2", name: "You spot a familiar face.", location: 'street', time: "Evening", itemReq: "", trustMin: 10, trustMax: 10, type: "tab", top: 0, left: 0, day: "both",},
 
 	//Submissive meji
 	{index: "meji3", name: "You can see meji coming down the hall with his friends.", location: 'westHallway', time: "Morning", itemReq: "", trustMin: 20, trustMax: 24, type: "tab", top: 0, left: 0, day: "both",},
@@ -37,7 +37,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "meji7", name: "meji's leaning against the wall and looking through his phone.", location: 'westHallway', time: "Morning", itemReq: "", trustMin: 61, trustMax: 65, type: "tab", top: 0, left: 0, day: "both",},
 
 	{index: "meji11", name: "meji's moving between classes at the moment. Doesn't seem like he knows anything new, though...", location: 'westHallway', time: "Morning", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
-];
+	];
 
 function writeEncounter(name) { //Plays the actual encounter.
 	document.getElementById('output').innerHTML = '';
@@ -552,8 +552,8 @@ function writeEncounter(name) { //Plays the actual encounter.
 					writeText("Before you can respond, he darts off. Seems like he's really excited to show you whatever it is he got...");
 			}
 			writeText("...");
-				writeText("Shutting the door as you step into his house, you can hear what sounds like mejiF humming from the main room.");
-				writeText("He goes quiet as you walk further in.");
+			writeText("Shutting the door as you step into his house, you can hear what sounds like mejiF humming from the main room.");
+			writeText("He goes quiet as you walk further in.");
 			if(checkFlag('meji','willful'))
 				writeSpeech("meji","","playerF?");
 			else{
@@ -611,9 +611,9 @@ function writeEncounter(name) { //Plays the actual encounter.
 					writeSpeech("meji","","Don't worry, I won't make you wait for the real deal...");
 					writeText("He slides your panties down, your cock springing out as it does, smiling up at you and giving a wink.");
 				}
-			writeSpeech("meji","","So let's get right to it~!");
-			writeFunction("writeEvent('meji7')", "Get ready to fuck");
-			break;
+				writeSpeech("meji","","So let's get right to it~!");
+				writeFunction("writeEvent('meji7')", "Get ready to fuck");
+				break;
 			}
 			else{
 				writeEvent("meji6");
@@ -1147,7 +1147,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("meji","","Anyway, I think it'd probably be a good idea for me to make sure my class schedule for next semester has a few periods that I can use to help out with information-gathering, especially on other guys like me.");
 				writeSpeech("player","","Well, seeing as that <i>is</i> technically my job, I can pull that up on my computer.");
 				writeSpeech("meji","","That would be lovely, thanks! I was thinking of taking a biology course with Miss nurseL...");
-				}
+			}
 			writeText("...");
 			writeText("The two of you spend a while discussing class schedules and the optimal amount of free time to be spent on convincing boys to join your harem before heading your separate way for the day.");
 			writeFunction("changeLocation(data.player.location)", "Finish up");
@@ -1170,15 +1170,15 @@ function writeEncounter(name) { //Plays the actual encounter.
 }
 
 var eventArray = [ //Lists the events of the character for unlocking and replaying in the gallery.
-	{index: "meji1", name: "Beginner's Training"},
-	{index: "meji2", name: "Feeling Numb"},
-	{index: "meji3", name: "Backing Up Leotard"},
-	{index: "meji4", name: "Finally Finishing"},
-	{index: "meji5", name: "Lingerie Blowjob"},
-	{index: "meji6", name: "Lingerie Blowjob with Intro"},
-	{index: "meji7", name: "Lingerie Fuck"},
-	{index: "meji8", name: "Public Walk and Fuck"},
-	{index: "meji9", name: "Women's Shorts Fuck"},
+{index: "meji1", name: "Beginner's Training"},
+{index: "meji2", name: "Feeling Numb"},
+{index: "meji3", name: "Backing Up Leotard"},
+{index: "meji4", name: "Finally Finishing"},
+{index: "meji5", name: "Lingerie Blowjob"},
+{index: "meji6", name: "Lingerie Blowjob with Intro"},
+{index: "meji7", name: "Lingerie Fuck"},
+{index: "meji8", name: "Public Walk and Fuck"},
+{index: "meji9", name: "Women's Shorts Fuck"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
@@ -1431,7 +1431,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("He does a little hop, and you feel his lips just barely brush against your ear.");
 			writeText("With that, he darts out of the room, leaving you with a bit of time left before dark and a raging hard-on.");
 			if (data.player.location != 'gallery') {
-			data.player.location = 'gym';
+				data.player.location = 'gym';
 				writeFunction("changeLocation(data.player.location)", "Get going");
 				raiseTrust('meji', 1);
 				passTime();
@@ -1508,10 +1508,10 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("Despite how much you want to sleep yourself, you opt to get up, move him onto the couch, and finally head home.");
 			writeText("Good fucking <i>God</i>, you need a shower...");
 			if (data.player.location != 'gallery') {
-			writeFunction("changeLocation(data.player.location)", "Go home and sleep");
-			raiseTrust('meji', 1);
-			passTime();
-			passTime();
+				writeFunction("changeLocation(data.player.location)", "Go home and sleep");
+				raiseTrust('meji', 1);
+				passTime();
+				passTime();
 			}
 			break;
 		}
@@ -1903,7 +1903,7 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "mejiReward", trust: 100,},
+{index: "mejiReward", trust: 100,},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
@@ -2042,24 +2042,24 @@ switch (requestType) {
 			if (newItems[item].price != 0) {
 				if (newItems[item].key == false) {
 					document.getElementById('output').innerHTML += `
-						<div class = "shopItem" onclick = "purchase('`+newItems[item].name+`','`+newItems[item].image+`','`+newItems[item].price+`','`+newItems[item].key+`')">
-							<p class = "shopName">`+newItems[item].name+`</p>
-							<p class = "shopDesc">`+newItems[item].description+`</p>
-							<p class = "shopPrice">$`+newItems[item].price+`</p>
-							<img class ="shopImage" src="`+newItems[item].image+`">
-						</div>
-						<br>
+					<div class = "shopItem" onclick = "purchase('`+newItems[item].name+`','`+newItems[item].image+`','`+newItems[item].price+`','`+newItems[item].key+`')">
+					<p class = "shopName">`+newItems[item].name+`</p>
+					<p class = "shopDesc">`+newItems[item].description+`</p>
+					<p class = "shopPrice">$`+newItems[item].price+`</p>
+					<img class ="shopImage" src="`+newItems[item].image+`">
+					</div>
+					<br>
 					`;
 				}
 				else {
 					if (checkItem(newItems[item].name) == false) {
 						document.getElementById('output').innerHTML += `
 						<div class = "shopItem" onclick = "purchase('`+newItems[item].name+`','`+newItems[item].image+`','`+newItems[item].price+`','`+newItems[item].key+`')">
-								<p class = "shopName">`+newItems[item].name+`</p>
-								<p class = "shopDesc">`+newItems[item].description+`</p>
-								<p class = "shopPrice">$`+newItems[item].price+`</p>
-								<img class ="shopImage" src="`+newItems[item].image+`">
-							</div>
+						<p class = "shopName">`+newItems[item].name+`</p>
+						<p class = "shopDesc">`+newItems[item].description+`</p>
+						<p class = "shopPrice">$`+newItems[item].price+`</p>
+						<img class ="shopImage" src="`+newItems[item].image+`">
+						</div>
 						<br>
 						`;
 					}
@@ -2082,13 +2082,13 @@ switch (requestType) {
 					//If the character has no unread texts
 					//If the character does not have this text in their text history
 					if (
-					data.story[phoneHistoryCheck].unreadText != true &&
-					data.story[phoneHistoryCheck].textHistory.includes(phoneArray[number].index) != true &&
-					data.story[phoneHistoryCheck].textEvent != phoneArray[number].index
-					) {
+						data.story[phoneHistoryCheck].unreadText != true &&
+						data.story[phoneHistoryCheck].textHistory.includes(phoneArray[number].index) != true &&
+						data.story[phoneHistoryCheck].textEvent != phoneArray[number].index
+						) {
 						//If the phone record is using the old system...
-						if (phoneArray[number].trust != null) {
-							var finalResult = false;
+					if (phoneArray[number].trust != null) {
+						var finalResult = false;
 							if (checkTrust(character.index) == phoneArray[number].trust) { //if the player's trust with the character meets the text requirement
 								for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
 									if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
