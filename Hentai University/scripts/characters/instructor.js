@@ -74,12 +74,6 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "?trust check", requirements: "?trust principal 41; ?trustMin kuro 0;"},
-	{index: "?item check", requirements: "?item Town Map; ?item Flier;"},
-	{index: "!item check", requirements: "!item Town Map;"},
-	{index: "?time check", requirements: "?time Evening;"},
-	{index: "?flag check", requirements: "?flag principal AAA; ?flag kuro BBB BBB;"},
-	{index: "!flag check", requirements: "!flag principal AAA; !flag kuro BBB BBB;"},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
@@ -143,7 +137,7 @@ switch (requestType) {
 				var finalResult = true;
 				if (encounterArray[number].location != null) {
 					var finalLocation = encounterArray[number].location;
-					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map" && data.player.gps == true) { //check the location
 						if (encounterArray[number].time.includes(data.player.time)) { //check the time
 							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
 								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {

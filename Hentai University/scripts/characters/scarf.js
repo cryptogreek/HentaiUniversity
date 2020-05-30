@@ -30,8 +30,8 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "beach1", name: "Explore the beach.", location: 'beach', time: "MorningEvening", itemReq: "", trustMin: 62, trustMax: 62, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "beach2", name: "Explore the beach.", location: 'beach', time: "MorningEvening", itemReq: "", trustMin: 63, trustMax: 63, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "statusQuo", name: "scarf is here in her office.", location: 'teacherLounge', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "escape", name: "scarf is here.", location: 'beach', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "escape", name: "scarf is here.", location: 'casino', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "escapeCasino", name: "scarf is here.", location: 'casino', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "escapeBeach", name: "scarf is here.", location: 'beach', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
 ];
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -66,7 +66,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "scarf1": {
-			writeSpeech("player", "", "Techniques. Skills. You're a confident woman, what do your know that I don't?");
+			writeSpeech("player", "", "Techniques. Skills. You're a confident woman, what do you know that I don't?");
 			writeSpeech("scarf", "", "Hmhm. When I was in your shoes, I had nearly an entire town at my beck and call. I did a little more than seduce students.");
 			writeSpeech("player", "", "Oh? And where's your town now?");
 			writeSpeech("scarf", "", "...<br>I'll let you in on a little tip, child. You might feel the urge to torment others. Watch as the only one who isn't mind-broken to your will sees what's become of his family and lover. Don't. Instead of reveling in madness, he'll just go to the police.");
@@ -123,7 +123,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			break;
 		}
 		case "scarfCheat": {
-			writeText("The room feels you a little warmer as scarfF gives you a familiar whistful smile.");
+			writeText("The room feels a little warmer as scarfF gives you a familiar whistful smile.");
 			writeText("The air conditioner is pretty strong in this room, you can almost feel a breeze as scarfF grabs the bottom of her sweater. You were expecting some new hypnosis technique, but this works too.");
 			writeText("scarfF gives a playful sigh as she pulls up her sweater. The soft sound of the nearby waves aren't enough to distract you as she flashes you her-<br>Wait.");
 			writeBig("images/scarf/scarfBeach1.jpg", "Art by Enoshima Iki");
@@ -356,7 +356,14 @@ function writeEncounter(name) { //Plays the actual encounter.
 			unencounter('scarf');
 			break;
 		}
-		case "escape": {
+		case "escapeCasino": {
+			writeSpeech("scarf", "", "Bored already? Well, it's to be expected. The more interesting your own life, the more interesting these hypnotic palaces are. Oho~<br>Care to head back now?");
+			writeFunction("changeLocation('teacherLounge')", "Finish");
+			writeFunction("changeLocation(data.player.location)", "Change your mind");
+			unencounter('scarf');
+			break;
+		}
+		case "escapeBeach": {
 			writeSpeech("scarf", "", "Bored already? Well, it's to be expected. The more interesting your own life, the more interesting these hypnotic palaces are. Oho~<br>Care to head back now?");
 			writeFunction("changeLocation('teacherLounge')", "Finish");
 			writeFunction("changeLocation(data.player.location)", "Change your mind");
@@ -380,7 +387,7 @@ function writeEvent(name) { //Plays the actual event.
 	wrapper.scrollTop = 0;
 	switch (name) {
 		case "scarfCasino": {
-			writeText("You spot her again and make sure to keep a close eye on her bunny ears as you force your way through the crowd. Focusing on the image of her in your mind, the crowd seems to grow thinner, almost vanish.");
+			writeText("You spot her again and make sure to keep a close eye on her bunny ears as you force your way through the crowd. Focusing on the image of her in your mind, the crowd seems to grow thinner, almost vanishing.");
 			writeSpeech("scarf", "", "I can see the locale isn't to your liking.");
 			writeSpeech("player", "", "I'm not a gambling *man, scarfF. The game is ending here in my win.");
 			writeText("The crowd is gone now, scarfF isn't running anymore. She walks towards you, placing a single finger on your chest, and before you know it you're flat on your back.");
@@ -522,7 +529,7 @@ switch (requestType) {
 				var finalResult = true;
 				if (encounterArray[number].location != null) {
 					var finalLocation = encounterArray[number].location;
-					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map" && data.player.gps == true) { //check the location
 						if (encounterArray[number].time.includes(data.player.time)) { //check the time
 							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
 								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {

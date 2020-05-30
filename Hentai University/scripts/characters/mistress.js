@@ -23,6 +23,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "mistress2", name: "mistress is sitting on a nearby bench, humming to herself.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 40, trustMax: 40, type: "tab", top: 0, left: 0, day: "even",},
 	{index: "mistress3", name: "mistress is sitting at the same bench, smiling and humming.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 41, trustMax: 41, type: "tab", top: 0, left: 0, day: "even",},
 	{index: "mistress4", name: "mistress is at the same bench, but she seems to be stretching her legs.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 42, trustMax: 44, type: "tab", top: 0, left: 0, day: "even",},
+	{index: "mistress5", name: "mistress is sitting on the bench, swinging her legs playfully while humming.", requirements: "?trust mistress 40; ?flag maid mistress40; ?location parkDistrict;", altName: "", altImage: "",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -145,12 +146,14 @@ function writeEncounter(name) { //Plays the actual encounter.
 		}
 		case "mistress3b" : {
 			document.getElementById('output').innerHTML = '';
+			if(!checkFlag('maid','mistressSexTape'))
+				addFlag('maid','mistressSexTape');
 			setTrust('mistress', 42);
 			writeSpeech("player","","This might be a weird question, but you mentioned a maid. Her name wouldn't happen to be maidF, would it?");
 			writeText("Her eyes widen in surprise.");
 			writeSpeech("mistress","","You know her?");
 			writeSpeech("player","","Yeah. We met in the shopping district, and we... hit it off, I suppose.");
-			if(data.player.gender == "Man")
+			if(data.player.gender == "man")
 				writeSpeech("mistress","","Huh. I can hardly believe that we both took the same man home...");
 			else
 				writeSpeech("mistress","","Huh. I can hardly believe that we both took the same woman home...");
@@ -235,7 +238,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("player","","You're a fan of stretching yourself out, then?");
 			writeSpeech("mistress","","It's more fun with a partner~!");
 			writeText("She doesn't miss a beat as she turns her head and winks at you, still stretching out one of her legs as she smiles.");
-			if(checkFlag('maid','mistressSexTape') == true){
+			if(checkFlag('maid','mistressSexTape') == true && checkTrust('maid') != 25){
 				writeSpeech("mistress","","I talked to maidF, by the way. Though, to be fair, <i>talking</i> wasn't what she used her mouth for during most of the conversation.");
 				writeText("She grins widely, finishing her stretch as she stands up straight.");
 				writeSpeech("mistress","","You already know, of course, but she has <i>very</i> good control of her tongue. Once she finished <i>cleaning</i>, though, I brought up the idea of all three of us <i>coming together,</i> and I have to say...");

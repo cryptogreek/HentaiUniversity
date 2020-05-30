@@ -1310,7 +1310,9 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 			writePhoneSpeech("player","","And for each new addition, I promise to reward you, slut.");
 			writePhoneSpeech("coach",""," Oh! Thank you Master! Then I'll get right to it.");
 			writePhoneSpeech("player","","I already have a few ideas, slut. I'm going to send you some students' files. I'll meet you in the teacher's lounge when I'm ready.");
-			setTrust('coach', 100);
+			if (checkTrust('coach') == 81) {
+				setTrust('coach', 100);
+			}
 			break;
 		}
 		case "coachreward": {
@@ -1326,7 +1328,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 
 switch (requestType) {
 	case "load": {
-		data.story.push(character);
+		//data.story.push(character);
 		console.log(character);
 		console.log(data.story);
 		writeSpecial(character.fName+" has been added to the game!");
@@ -1367,7 +1369,7 @@ switch (requestType) {
 				var finalResult = true;
 				if (encounterArray[number].location != null) {
 					var finalLocation = encounterArray[number].location;
-					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map" && data.player.gps == true) { //check the location
 						if (encounterArray[number].time.includes(data.player.time)) { //check the time
 							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
 								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {

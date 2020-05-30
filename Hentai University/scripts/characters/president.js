@@ -25,6 +25,7 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "corruptionFollowup1", name: "The Student Council room is here", requirements: "?trust president 80;?location northHallway;", altName: "", altImage: "",},
 	{index: "nudePainting1", name: "There's a commotion in the hall", requirements: "?trust president 81;?location schoolEntrance;", altName: "", altImage: "",},
 	{index: "presidentArtRoom1", name: "Someone is in the art room", requirements: "?trust president 82;?location westHallway;", altName: "", altImage: "",},
+	{index: "stage3Quo", name: "The Student Council room is here", requirements: "?trust president 100;?location northHallway;", altName: "", altImage: "",},
 ];
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -274,6 +275,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeHTML(`
 				sp player; I was hoping to introduce you to someone. Have you met mejiF mejiL?
 				sp president; I haven't dealt with him personally, but I know <i>of</i> him. Particularly his tendency towards truancy and general delinquent behaviors.
+				...
 				sp meji; Ah, you're the student council president, presidentF, right? I'm mejiF, I don't believe we've met.
 				t mejiF politely extends his hand forward, which presidentF shakes while looking him over.
 				sp president; I am, yes, and we haven't, no. Though it seems we do know one another by reputation.
@@ -493,6 +495,24 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeFunction("changeLocation(data.player.location)", "Finish");
 			break;
 		}
+		case "stage3Quo": {
+			if (checkFlag("president", "treasurerCorrupted") != true) {
+				writeHTML(`
+					t You knock on the door to the student council, and after a moment presidentF opens the door.
+					sp president; What is-? Ah, hello *sir. treasurerF is away for a moment, so we have some privacy.
+				`);
+				writeFunction("writeEncounter('treasurerCorruption')", "Talk about treasurerF");
+			}
+			writeFunction("writeEncounter('cancel')", "Go back");
+			break;
+		}
+		case "treasurerCorruption": {
+			writeEvent("presidenttreasurerCorruption");
+			setTrust('president', 101);
+			addFlag('president', 'treasurerCorrupted');
+			writeFunction("changeLocation(data.player.location)", "Finish");
+			break;
+		}
 		case "cancel": {
 			unencounter('president');
 			changeLocation(data.player.location);
@@ -657,6 +677,79 @@ function writeEvent(name) { //Plays the actual event.
 			`);
 			break;
 		}
+		case "presidenttreasurerCorruption": {
+			writeHTML(`
+				sp player; So your little groupie came by my house the other day, she's pretty worried about you.
+				sp president; treasurerF... She means well, I'm sure.<br>I worry she's been overworking herself since I've been taking leisure time.
+				sp player; We could always-
+				t You're interupted as presidentF leans against your body and begins undoing the buttons on her outfit.
+				sp president; I want to hypnotize her. What exactly do you need? I recall I needed to be quite relaxed.
+				sp player; ... Well, not always. An extreme state of shock, sexual haze, there are plenty of states where someone is open to suggestion.<br>What are you getting out your phone for?
+				sp president; I'm asking her to come here before I start disrobing.<br>Do you need help getting undressed? 
+				sp player; What, are we going to seduce her?
+				sp president; In a fashion. 
+				...
+				im images/president/artRoom2.jpg
+				sp president; Ah~! Ah~!
+				t As you're balls-deep in the student council president you suddenly hear the door open and quickly shut behind you.
+				sp treasurer; presidentF?! What are you doing?! What is <i>he</i> doing to you?!
+				t You'd expected her to watch through the keyhole for a while first, but apparently treasurerF is a bit more proactive than you gave her credit for.
+				sp president; im images/president/presidentP.jpg; Ghh~! treasurerF~! Y-you're... Here~!
+				im images/president/artRoom3.jpg
+				sp president; im images/president/presidentP.jpg; Cumming~!
+				sp treasurer; Stop! Get off her!
+				t treasurerF rushes up to you to try and shove you away from her friend, but from the fact that she didn't try and get help makes it pretty clear she's aware that presidentF isn't being forced.
+				sp president; Calm... Calm down.
+				sp treasurer; No way... This is insane! That magic stuff was real? But it's fake! It's-
+				t Taking control of the situation presidentF quickly moves forwards to grab treasurerF's hand and press it against her breast.
+				sp president; Does this <i>feel</i> fake to you?
+				sp treasurer; Th-that's not... What I...
+				sp president; I had a whole speech prepared but I'm afraid you've arrived just as my train of thought derailed.<br>So, treasurerF, you've found us. What will you do?
+				sp treasurer; I'll get him arrested, and I'll get you-
+				sp president; Expelled? Arrested as well? He and I are together now, treasurerF.<br>I understand you're frightened, shocked, but I sent you that text for a reason. I want to make you a deal.
+				t This is beginning to spiral out of your control, you didn't instruct presidentF to do any of this. This charisma is probably what got her elected though, she'll make a good president once you've taken over the school.
+				sp treasurer; ... What is it?
+				t It's not clear if she's staying out of some morbid fascination with her friend being railed on the table she works at, or if she thinks a deal is the only way to save presidentF, but she's clearly invested as presidentF pulls her closer to whisper something in her ear. A blush spreads across her face deep enough to make her look bright red.
+				t treasurerF clutches presidentF's hand tightly. She looks at you, then back at presidentF. 
+				...
+				im images/president/treasurerCorruption0.jpg
+				sp treasurer; This is degrading...
+				sp president; It's a matter of being relaxed, right? Of course you'd be more comfortable naked.
+				sp treasurer; Th-that's not how normal people feel while they're naked in public!
+				sp president; Oh? Am I abnormal? You say it so negatively. I remember when you joined the council, you said I was "extraordinary".
+				sp treasurer; You are! I-I mean-
+				sp president; Just relax. Come, sit on my lap.
+				sp treasurer; A-and you meant what you said, right? He's so slimy I bet he uses uncooked bacon as a hand towel, why would I trust him? 
+				sp president; You joined this council because you trusted me, that's all I'm asking you to do. Have faith in what I see is a better future for the school.<br>Besides, I think you'll find this path is a lot more fun than the straight and narrow.
+				sp treasurer; Just this once... Just this once, and he can't say anything? And you'll be here the whole time? If I can make it through this and still-
+				im images/president/treasurerCorruption1.jpg
+				sp treasurer; M-miss~!
+				t As presidentF's lips wrap around treasurerF's nipple, she looks at you to signal for you to start.
+				im images/president/treasurerCorruption2.jpg
+				sp treasurer; Ghh!
+				t treasurerF grits her teeth and presidentF winces as you thrust in. You give her a moment to adjust while presidentF soothes treasurerF by fondling and licking her body, keeping her attention.
+				t Thinking quickly you start timing slow thrusts like a mock metronome, pumping in and out as presidentF alternates between sucking on her friend's nipple and whispering suggestions into treasurerF's ear.
+				sp president; Focus on me, treasurerF. Focus on how your heart races when you think of me, when you look at me, smell me.
+				t presidentF whispers corruptive words of how good giving in will feel, but even more importantly what life will be like for the two of them, alone, in the student council room from now on.
+				sp president; Let it flow through you, and everything you feel in your heart, is me. I am the one touching you, treasurerF. I am the one in front of you. Think of me, only me.
+				t While treasurerF probably convinced her that you wouldn't try to hypnotize her, presidentF's soothing voice is doing that for you.
+				t Slowly, treasurerF's gaze starts to unfocus. Her jaw unclenches. Her shoulders untense.
+				sp president; Feel your heartbeat. Faster. Faster...
+				t Thrusting in a rhythm begins to feel easier, in and out... In and out... You feel your eyes-
+				sp president; Mmm? *Sir?
+				t You feel yourself snap out of a light trance and you step back.
+				im images/president/treasurerCorruption3.jpg
+				t treasurerF is completely out of it, a full load in her cunt and another on her abdomen. You must've put yourself into a trance, presidentF actually has some strong talent as a hypnotist.
+				t You wave your hand in front of treasurerF's face, and she barely responds.
+				sp player; Nice, she's out. So, what did you actually tell her? That if she managed to make it without being hypnotised, I'd turn you back to normal?
+				sp president; No, I told her that if she stayed in control that I'd be hers to do with as she pleased. 
+				sp player; Oh, wow. You put a lot of faith into my performance.
+				sp president; And you delivered. Now, I'll be spending the evening with treasurerF to make sure the work we did... <i>Sticks</i>. My goal is that when you and her are... Relaxing... That she'll see you as me. I'll see you again?
+				sp player; Sometimes you act like you're in charge, presidentF.
+				t presidentF merely smirks and goes back to amusing herself with treasurerF's shuddering body.
+			`);
+			break;
+		}
 		default: {
 			writeSpeech("player", "", "Error! You must've called the wrong event. Error code: Failed to write event ("+name+") in "+character.index+".js");
 			break;
@@ -679,7 +772,7 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "reward", requirements: "?trust president 100;"},
+	{index: "reward", requirements: "?trust president 101;"},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event

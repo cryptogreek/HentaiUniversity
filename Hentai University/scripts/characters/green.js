@@ -22,6 +22,8 @@ var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatabl
 	{index: "introduction", name: "A teacher is doing paperwork here", location: 'teacherLounge', time: "MorningEvening", itemReq: "File T-1", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "greenQuo", name: "green is hanging out in her sister's office", location: 'teacherLounge', time: "MorningEvening", itemReq: "", trustMin: 41, trustMax: 41, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "filler", name: "green's office is here", location: 'teacherLounge', time: "MorningEvening", itemReq: "", trustMin: 43, trustMax: 43, type: "tab", top: 0, left: 0, day: "both",},
+	{index: "greenBeachReturn", name: "green is here, being hit on by some men", location: 'beach', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
+	//index: "greenNewQuo", name: "green's office is here", location: 'teacherLounge', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
 	{index: "greenNewQuo", name: "green's office is here", location: 'teacherLounge', time: "MorningEvening", itemReq: "", trustMin: 100, trustMax: 100, type: "tab", top: 0, left: 0, day: "both",},
 ];
 
@@ -43,7 +45,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText(fName('green')+" suddenly stands up with a angry glare in her eyes.");
 			writeSpeech("green", "", "So you're the piece of shit that's been doing all this...");
 			writeSpeech("player", "", "Fuck, wait.");
-			writeText("She starts charging towards you. You've never actually fought anybody, and your hypnosis has never backfired this hard before. It likes like you have no choice but to fight.");
+			writeText("She starts charging towards you. You've never actually fought anybody, and your hypnosis has never backfired this hard before. It looks like you have no choice but to fight.");
 			writeText("... Or that's what you thought. You hear someone snapping their fingers and "+fName('green')+" goes slump on the ground.");
 			writeSpeech("scarf", "", "You shouldn't play with other people's toys, you know.");
 			writeBig("images/scarf/profile.jpg", "Art by Enoshima Iki");
@@ -160,7 +162,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("...");
 			writeText("Hopefully a more casual environment will let you bypass scarfF's protection.");
 			writeSpeech("green", "", "Ah, don't mind any of her stuff. She's into those Chinese cartoons.");
-			writeText("The place is pretty tidy on first pass, but a lot of the stuff all around is pretty weirdly organized. Like somebody told robot 'clean this place up' without explaining any of the nuance.");
+			writeText("The place is pretty tidy on first pass, but a lot of the stuff all around is pretty weirdly organized. Like somebody told a robot 'clean this place up' without explaining any of the nuance.");
 			writeBig("images/scarf/scarfApron.jpg", "Art by Enoshima Iki");
 			writeSpeech("green", "", "So, what're ya hungry for?");
 			writeSpeech("player", "", "Oh, uh, anything's fine. You don't really need to make anything.");
@@ -178,7 +180,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("player", "", "Why would she need a book on snapping? She sounded fine before.");
 			writeSpeech("green", "casual.jpg", "Dunno why, but she said she needed to sound consistent. Honestly, she practiced so much I can still hear it when I go to sleep.<br>Helpful tip, I fuckin' hate the sound. No faster way for your ass to hit the street.");
 			writeSpeech("player", "", "I'll keep it to myself then.");
-			writeSpeech("green", "casual.jpg", "Ah, you're fine, doesn't hit those notes that fuck me right up. You don't got that echo-y sound afterwards. Now stop snoopin' through boring shit and come eat.");
+			writeSpeech("green", "casual.jpg", "Ah, you're fine, yours don't hit those notes that fuck me right up. You don't got that echo-y sound afterwards. Now stop snoopin' through boring shit and come eat.");
 			writeFunction("writeEncounter('greenHome2')", "Continue");
 			break;
 		}
@@ -264,7 +266,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("green", "", "Yeah? What's up?");
 			writeText("Really quick, that psychology exam, how did tomgirlF do again?");
 			writeSpeech("green", "", "He passed.");
-			writeSpeech("player", "", "The what now?");
+			writeSpeech("player", "", "What did he pass, exactly?");
 			writeSpeech("green", "", "He passed the test, why? What's up?");
 			writeText("*SNAP*");
 			writeText("greenF goes slack as scarfF cuts her out of the conversation.");
@@ -320,6 +322,21 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("Before you fall into an endless loop of pleasure, you can hear a voice whispering into your ear.");
 			writeSpeech("scarf", "bikini.jpg", "You put up a good resistance, child. Just relax, enjoy.");
 			writeFunction("loadEncounter('scarf', 'failure')", "The End");
+			break;
+		}
+		case "greenBeachReturn": {
+			writeSpeech("green", "bikini.jpg", "Yo!");
+			writeBig("images/scarf/greenBeach1.jpg");
+			writeSpeech("green", "bikini.jpg", "Fancy seeing you in my dream like this.");
+			writeSpeech("player", "", "No time, got a competition to win. Talk to you-");
+			writeText("Letting yourself engage with the fake reality is a bad idea, you could get distracted for longer than you realize.");
+			writeSpeech("Playboy", "images/none.png", "Hey hot stuff, you're lookin pretty good!");
+			writeBig("images/scarf/greenBeach2.jpg");
+			writeText("A pair of tanned beachgoers have come up to start hitting on greenF");
+			writeSpeech("green", "bikini.jpg", "Oh, stop. I'm old enough to be your-");
+			writeSpeech("Playboy", "images/none.png", "One second. Hey, bro. She yours?");
+			writeFunction("writeEncounter('greenBeach')", "Yeah, she's with me");
+			writeFunction("changeLocation(data.player.location)", "Ignore them, focus");
 			break;
 		}
 		case "greenNewQuo": {
@@ -516,7 +533,7 @@ switch (requestType) {
 				var finalResult = true;
 				if (encounterArray[number].location != null) {
 					var finalLocation = encounterArray[number].location;
-					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map" && data.player.gps == true) { //check the location
 						if (encounterArray[number].time.includes(data.player.time)) { //check the time
 							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
 								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {

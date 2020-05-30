@@ -398,6 +398,20 @@ function checkTrust(name) {
 	}
 }
 
+function resetProgress(name) {
+	for (trustIndex = 0; trustIndex < data.story.length; trustIndex++) {
+		if (data.story[trustIndex].index == name) {
+			alert("Progress with "+data.story[trustIndex].fName+" has been reset. Hopefully this doesn't cause any issues!");
+			console.log('setting the trust of '+name+' to 0');
+			data.story[trustIndex].trust = 0;
+			data.story[trustIndex].met = "";
+			data.story[trustIndex].textHistory = "";
+			data.story[trustIndex].encountered = false;
+			data.story[trustIndex].textEvent = "";
+		}
+	}
+}
+
 function addFlag(character, flag) {
 	console.log(character+flag);
 	for (flagIndex = 0; flagIndex < data.story.length; flagIndex++) {
@@ -579,7 +593,7 @@ function replaceCodenames(text) {
 			text = text.replace(codenameCheck, data.story[codenameIndex].lName);
 		}
 	}
-	if (data.player.uwu == true) {
+	if (data.player.uwu == true && text.includes('onclick') == false) {
 		for (uwuLoop = 0; uwuLoop < 30; uwuLoop++) {
 			text = text.replace('<br>', "TESTTHING");
 			text = text.replace('th', "d");
@@ -672,7 +686,7 @@ function checkRequirements(string) {
 	}
 	while (string.includes("?location ") == true) {
 		var check = string.split(`?location `).pop().split(`;`)[0];
-		if (data.player.gps == true && data.player.location != "map") {
+		if (data.player.gps == true && data.player.location == "map") {
 			//Do nothing
 		}
 		else {
@@ -806,6 +820,20 @@ function checkRequirements(string) {
 				finalResult = false;
 			}
 			string = string.replace(`?maxTrust `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?trustMin "+corruptionTarget) == true) {
+			var check = string.split(`?trustMin `+corruptionTarget+` `).pop().split(`;`)[0];
+			if (checkTrust(corruptionTarget) < check) {
+				finalResult = false;
+			}
+			string = string.replace(`?trustMin `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?trustMax "+corruptionTarget) == true) {
+			var check = string.split(`?trustMax `+corruptionTarget+` `).pop().split(`;`)[0];
+			if (checkTrust(corruptionTarget) > check) {
+				finalResult = false;
+			}
+			string = string.replace(`?trustMax `+corruptionTarget+` `+check+`;`, ``);
 		}
 		while (string.includes("!flag "+corruptionTarget) == true) {
 			var check = string.split(`!flag `+corruptionTarget+` `).pop().split(`;`)[0];
@@ -1760,6 +1788,10 @@ function listArtists() {
 	document.getElementById('output').innerHTML += `<a class="choiceText" href = "https://www.pixiv.net/en/users/215082">Gujira 4 Gou's Pixiv</a>`;
 	writeMed("images/housekeep/profile.jpg", "Art by Kinta no Mousou");
 	document.getElementById('output').innerHTML += `<a class="choiceText" href = "https://www.pixiv.net/en/users/13253890">Kinta no Mousou's Pixiv</a>`;
+	writeMed("images/haze/profile.jpg", "Art by Purple Haze");
+	document.getElementById('output').innerHTML += `<a class="choiceText" href = "https://www.pixiv.net/en/users/1233996">Purple Haze's Pixiv</a>`;
+	writeMed("images/coach/profile.jpg", "Art by Himitsu Kessha Vanitas");
+	document.getElementById('output').innerHTML += `<a class="choiceText" href = "https://www.pixiv.net/en/users/16913239">Himitsu Kessha Vanitas's Pixiv</a>`;
 }
 
 //Showing & hiding windows
@@ -2248,6 +2280,26 @@ function updateSave() {
 	if (data.player.version == 6) {
 		console.log('version 6 detected, updating save');
 		data.player.version = 7;
+		var loadZoe = true
+		for (loadIndex = 0; loadIndex < data.story.length; loadIndex++) {
+			if (data.story[loadIndex].index == "sports") {
+				//console.log('sports found already in the data variable, aborting function');
+				var loadZoe = false
+			}
+		}
+		if (loadZoe == true) {
+			var goof = {index: "sports", fName: "Zoe", lName: "Parker", trust: 0, encountered: false, textEvent: "", met: false, color: "#496EBF", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "swimmer", fName: "Naomi", lName: "Greens", trust: 0, encountered: false, textEvent: "", met: false, color: "#8DB7D0", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "orange", fName: "Vanessa", lName: "Lions", trust: 0, encountered: false, textEvent: "", met: false, color: "#BA5B17", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "cold", fName: "Kelsey", lName: "Lowe", trust: 0, encountered: false, textEvent: "", met: false, color: "#FCFFFA", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			var goof = {index: "coach", fName: "Amy", lName: "Silver", trust: 0, encountered: false, textEvent: "", met: false, color: "#D7BB2E", author: "Slackersavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
+			data.story.push(goof);
+			writeSpecial("Characters by mod author SlackerSavior have been added to the game!");
+		}
 		var goof = {index: "haze", fName: "Sienna", lName: "", trust: 0, encountered: false, textEvent: "", met: false, color: "#F683C8", author: "CryptoGreek", artist: "Purple Haze", textHistory: "", unreadText: false,};
 		data.story.push(goof);
 		var goof = {index: "nikki", fName: "Nikki", lName: "Hunt", trust: 0, encountered: false, textEvent: "", met: false, color: "#445B6D", author: "CryptoGreek", artist: "Kinta no Mousou", textHistory: "", unreadText: false,};
@@ -2275,26 +2327,6 @@ function updateSave() {
 			data.story[y].unreadText = false;
 		}
 		console.log(data.story);
-	}
-	var loadZoe = true
-	for (loadIndex = 0; loadIndex < data.story.length; loadIndex++) {
-		if (data.story[loadIndex].index == "sports") {
-			//console.log('sports found already in the data variable, aborting function');
-			var loadZoe = false
-		}
-	}
-	if (loadZoe == true) {
-		var goof = {index: "sports", fName: "Zoe", lName: "Parker", trust: 0, encountered: false, textEvent: "", met: false, color: "#496EBF", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
-		data.story.push(goof);
-		var goof = {index: "swimmer", fName: "Naomi", lName: "Greens", trust: 0, encountered: false, textEvent: "", met: false, color: "#8DB7D0", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
-		data.story.push(goof);
-		var goof = {index: "orange", fName: "Vanessa", lName: "Lions", trust: 0, encountered: false, textEvent: "", met: false, color: "#BA5B17", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
-		data.story.push(goof);
-		var goof = {index: "cold", fName: "Kelsey", lName: "Lowe", trust: 0, encountered: false, textEvent: "", met: false, color: "#FCFFFA", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
-		data.story.push(goof);
-		var goof = {index: "coach", fName: "Amy", lName: "Silver", trust: 0, encountered: false, textEvent: "", met: false, color: "#D7BB2E", author: "Slackersavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false};
-		data.story.push(goof);
-		writeSpecial("Characters by mod author SlackerSavior have been added to the game!");
 	}
 	saveSlot(110);
 }
@@ -2331,12 +2363,33 @@ function loadSlot(slot) {
 	}
 	//sceneTransition(data.player.currentScene);
 	updateSave();
+	for (layer1 = 0; layer1 < data.story.length; layer1++) {
+		var counter = 0;
+		var index = data.story[layer1].index;
+		for (layer2 = 0; layer2 < data.story.length; layer2++) {
+			if (index == data.story[layer2].index) {
+				counter += 1;
+			}
+		}
+		if (counter > 1) {
+			console.log('duplicate character found in data variable, removing '+index);
+			data.story.splice(layer1, 1);
+			console.log(data);
+		}
+	}
 }
 
 function saveFile(){
 	hideStuff();
+	document.getElementById('output').innerHTML += `<textArea id = "copyData">`+JSON.stringify(data)+`</textArea>`;
+	var copyText = document.getElementById("copyData");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+	//alert("Copied the text: " + copyText.value);
+	
 	document.getElementById('output').innerHTML = '';
-	writeText("Copy the full length below and paste it into the input box when you want to load the data. I recommend copying to a txt file.");
+	writeText("Save data copied! It's been added to your clipboard, or you can manually copy the information below.");
 	document.getElementById('output').innerHTML += JSON.stringify(data);
 	writeFunction("changeLocation(data.player.location)", "Finished copying");
 }
@@ -2848,6 +2901,7 @@ function diagnostic() {
 			setTrust('meji', -1);
 			setTrust('succubus', -1);
 			setTrust('housekeep', -1);
+			setTrust('nagatoro', -1);
 			writeSpecial("Trap / male characters have been deactivated. You might need to use this code again in the future when more traps are added.");
 			break;
 		}
@@ -2895,9 +2949,9 @@ function diagnostic() {
 		case "nuclear option": {
 			data.player.hypnosis = 3;
 			data.player.hacking = 3;
-			data.player.counseling = 4;
+			data.player.counseling = 9;
 			updateMenu();
-			writeSpecial("All of your stats have been set to 3. You can keep improving them past this point, but you shouldn't see any skill-related roadblocks from here on!");
+			writeSpecial("All of your stats have been set to 3 or above. You can keep improving them past this point, but you shouldn't see any skill-related roadblocks from here on!");
 			break;
 		}
 		case "new name": {
@@ -3057,20 +3111,20 @@ function writePhoneChoices (text1, text2, text3) {
 		var choiceList = `
 				<div id = "phoneChoice">
 				<p class="choiceText" onclick="phoneChoice('A')">
-					` + text1 + `
+					` + replaceCodenames(text1) + `
 				</p>
 		`;
 		if (typeof text2 != 'undefined') {
 			choiceList += `
 				<p class="choiceText" onclick="phoneChoice('B')">
-					` + text2 + `
+					` + replaceCodenames(text2) + `
 				</p>
 		`;
 		}
 		if (typeof text3 != 'undefined') {
 			choiceList += `
 				<p class="choiceText" onclick="phoneChoice('C')">
-					` + text3 + `
+					` + replaceCodenames(text3) + `
 				</p>
 		`;
 		}

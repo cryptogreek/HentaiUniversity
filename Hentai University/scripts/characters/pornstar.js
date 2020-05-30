@@ -1,4 +1,4 @@
-var character = {index: "pornstar", fName: "Andrea", lName: "Cummings", trust: 0, encountered: false, textEvent: "", met: false, color: "#454857", author: "NoodleJacuzzi", artist: "Oreteki18kin"};
+var character = {index: "pornstar", fName: "Andrea", lName: "Cummings", trust: 0, encountered: false, textEvent: "", textHistory: "", met: false, color: "#454857", author: "NoodleJacuzzi", artist: "Oreteki18kin"};
 
 var logbook = {
 	index: "pornstar", 
@@ -45,7 +45,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("player", "", "All this to test if I'm worthy of your daughter?");
 			writeSpeech("pornstar", "", "Of course not! But hearing about how my little girl shot her first creampie...<br>I'm just horny, now hurry up and-");
 			writeBig("images/pornstar/1-2.jpg", "Art by Oreteki");
-			writeSpeech("pornstar", "", "Ah~! Oh my, so forwards!");
+			writeSpeech("pornstar", "", "Ah~! Oh my, so forward!");
 			writeSpeech("player", "", "Shut up! What the fuck is wrong with your head? 'My little girl got creampied'! How the hell does that get you off?");
 			writeSpeech("pornstar", "", "Nnngh~! More! I love when you talk dirty to me. Tell me what it was like.<br>She said it was ass to pussy. Did she feel good-Nnngh~!");
 			writeSpeech("player", "", "SHUT. UP. You and your daughter are both fucked in the head! I fucked her into the ground and she liked it!");
@@ -112,8 +112,8 @@ switch (requestType) {
 		data.story.push(character);
 		console.log(character);
 		console.log(data.story);
-		writeSpecial(character.fName+" has been added to the game!");
-		writeSpeech(character.index, "", character.fName+ " " + character.lName + ", written by "+ logbook.author + ", art by "+ logbook.artist+".");
+		//writeSpecial(character.fName+" has been added to the game!");
+		//writeSpeech(character.index, "", character.fName+ " " + character.lName + ", written by "+ logbook.author + ", art by "+ logbook.artist+".");
 		break;
 	}
 	case "encounter": {
@@ -150,7 +150,7 @@ switch (requestType) {
 				var finalResult = true;
 				if (encounterArray[number].location != null) {
 					var finalLocation = encounterArray[number].location;
-					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map" && data.player.gps == true) { //check the location
 						if (encounterArray[number].time.includes(data.player.time)) { //check the time
 							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
 								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {

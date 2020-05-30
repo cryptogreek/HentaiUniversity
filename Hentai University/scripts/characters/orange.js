@@ -73,7 +73,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("orange", "", "No. I got made fun of again today. I just... Uggh. I wanted to punch those losers right in the head.");
 			writeText("She looks down even more, fiddling with her hands and getting very quiet as she continues.");
 			writeSpeech("orange", "", "They're lucky sportsF was there. She got me cooled down enough to walk away.");
-			writeSpeech("orange", "", "... I'm also luck coachF was there. I didn't think I'd ever say it, but she chased those guys off and made sure I was okay afterwards.");
+			writeSpeech("orange", "", "... I'm also in luck coachF was there. I didn't think I'd ever say it, but she chased those guys off and made sure I was okay afterwards.");
 			writeText("She sighs heavily and takes a minute. You let her cool down. No hurry now.");
 			writeSpeech("orange", "", "I still wanted to clock the guys, but coachF and sportsF talked me out of it and told me it'd be better if I came down here. They figured you could calm me down or something.");
 			writeText("She finally looks up from her hands and looks at you.");
@@ -103,7 +103,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeText("She wiggles a little in her chair, trying to get herself comfortable.");
 			writeSpeech("orange", "", "Just to check, if I fall asleep it's okay, right? I did that a couple times in Karate, and I did just come from practice so I'm kinda tired and...");
 			writeSpeech("player", "", "That's fine, orangeF. If you fall asleep, I guess we did get you calmed down and relaxed, right?");
-			writeFunction("loadEncounter('orange', 'orange2b')", "I've got some time. We can talk.");
+			writeFunction("loadEncounter('orange', 'orange2b')", "How are you feeling now, orangeF?");
 			break;
 		}
 		case "orange2b": {
@@ -151,7 +151,7 @@ function writeEvent(name) { //Plays the actual event.
 		case "orange2c": {
 			writeSpeech("player", "", "Ah. I see. So, orangeF, if I were to look at you like that, how would that make you feel?");
 			writeText("She shuffles a little in her chair.");
-			writeSpeech("orange", "", "I mean... It would make me feel good. You're a good guy. And you've helped out a lot of people in the school.");
+			writeSpeech("orange", "", "I mean... It would make me feel good. You're a good *guy. And you've helped out a lot of people in the school.");
 			writeText("For a certain value of 'help'.");
 			writeSpeech("player", "", "Well, orangeF, I do see you that way. Like I said, you're a very beautiful girl. Does that make you feel like lashing out? Or does that make you feel good?");
 			writeSpeech("orange", "", "It makes me feel good. But I don't know what to <i>do</i> about it. It feels like anything I should do is wrong.");
@@ -250,7 +250,7 @@ function writePhoneEvent(name) { //Plays the relevant phone event
 
 switch (requestType) {
 	case "load": {
-		data.story.push(character);
+		//data.story.push(character);
 		console.log(character);
 		console.log(data.story);
 		writeSpecial(character.fName+" has been added to the game!");
@@ -291,7 +291,7 @@ switch (requestType) {
 				var finalResult = true;
 				if (encounterArray[number].location != null) {
 					var finalLocation = encounterArray[number].location;
-					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map") { //check the location
+					if (encounterArray[number].location.includes(data.player.location) || data.player.location == "map" && data.player.gps == true) { //check the location
 						if (encounterArray[number].time.includes(data.player.time)) { //check the time
 							if (encounterArray[number].trustMin <= checkTrust(character.index) && encounterArray[number].trustMax >= checkTrust(character.index)) { //check the trust requirements
 								if (encounterArray[number].day == "even" && data.player.day%2 == 1) {
