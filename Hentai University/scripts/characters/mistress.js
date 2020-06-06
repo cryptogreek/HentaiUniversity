@@ -19,11 +19,11 @@ var newItems = [//Lists the shop items unique to this character
 ];
 
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
-	{index: "mistress1", name: "A woman a bit off of the main path seems to be looking around carefully.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "even",},
-	{index: "mistress2", name: "mistress is sitting on a nearby bench, humming to herself.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 40, trustMax: 40, type: "tab", top: 0, left: 0, day: "even",},
-	{index: "mistress3", name: "mistress is sitting at the same bench, smiling and humming.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 41, trustMax: 41, type: "tab", top: 0, left: 0, day: "even",},
-	{index: "mistress4", name: "mistress is at the same bench, but she seems to be stretching her legs.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 42, trustMax: 44, type: "tab", top: 0, left: 0, day: "even",},
-	{index: "mistress5", name: "mistress is sitting on the bench, swinging her legs playfully while humming.", requirements: "?trust mistress 40; ?flag maid mistress40; ?location parkDistrict;", altName: "", altImage: "",},
+{index: "mistress1", name: "A woman a bit off of the main path seems to be looking around carefully.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "even",},
+{index: "mistress2", name: (checkFlag('maid','mistress40') ? "You can see mistress sitting on the park bench, humming and patting her thighs to some catchy melody" : "mistress is sitting on a nearby bench, humming to herself."), location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 40, trustMax: 40, type: "tab", top: 0, left: 0, day: "even",},
+{index: "mistress3", name: "mistress is sitting at the same bench, smiling and humming happily.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 41, trustMax: 41, type: "tab", top: 0, left: 0, day: "even",},
+{index: "mistress4", name: "mistress is at the same bench, but she seems to be stretching her legs.", location: 'parkDistrict', time: "MorningEvening", itemReq: "", trustMin: 42, trustMax: 44, type: "tab", top: 0, left: 0, day: "even",},
+{index: "mistress5", name: "You can see maidF's friend, mistress, sitting on the bench, swinging her legs playfully while humming.", requirements: "?trust mistress 55; ?location parkDistrict;", altName: "", altImage: "",},
 ]
 
 function writeEncounter(name) { //Plays the actual encounter.
@@ -65,30 +65,35 @@ function writeEncounter(name) { //Plays the actual encounter.
 		}
 		case "mistress2" : {//Meet Mistress in the woods again, she invites you over and gives you a blowie
 			document.getElementById('output').innerHTML = '';
-			writeText("As you start to approach, her eyes lock onto you almost immediately.");
-			writeText("She stands, smiling as she starts to blush.");
-			writeBig("images/mistress/1-2.jpg", "Art by Oreteki18kin");
-			writeSpeech("player","","Not lost this time, then?");
-			writeSpeech("mistress","","Not this time. Thanks again, by the way!");
-			writeText("She sits back down, patting the open spot on the bench beside her.");
-			writeSpeech("mistress","","Just standing around is a bit boring, so if you'd like to chat?");
-			writeSpeech("player","","I'm not sure I'll be that exciting, but I'd be happy to talk.");
-			writeText("...");
-			writeText("The two of you chat for a little while. You don't learn a lot, aside from the fact that she's from a rather wealthy family, until...");
-			writeSpeech("player","","No offense meant, but... How did you get lost last time? This isn't exactly the largest of parks.");
-			writeText("Her face gets even redder as she leans back a little bit.");
-			writeSpeech("mistress","","Hm... Well, it's not <i>really</i> that I got lost, per se... It's a little hard to explain carefully, but if you're okay with a bit of bluntness...");
-			writeText("She gently grabs your hand, carefully raising it up...");
-			writeText("And pressing it against her breast, the soft material of the coat not quite thick enough to hide what she's trying to show you.");
-			writeSpeech("player","","No bra, huh?");
-			writeSpeech("mistress","","Just stockings. No bra, no panties.");
-			writeText("She smiles wide, taking in your expression as you feel her other hand trace along your thigh.");
-			writeSpeech("mistress","","I didn't think anyone would come along. When I heard you coming... Well, there's a reason I said <i>standing around</i> is boring. Now, my place is pretty close so, in continuing to be blunt, let me ask...");
-			writeText("She leans a bit closer to your ear.");
-			writeSpeech("mistress","","<i>Would you be willing to spend some more time with a <b>pervert</b> like me?</i>");
-			raiseTrust('mistress', 1);
-			passTime();
-			writeFunction("writeEvent('mistress1')", "Let her lead the way");
+			if(!checkFlag('maid','mistress40')){
+				writeText("As you start to approach, her eyes lock onto you almost immediately.");
+				writeText("She stands, smiling as she starts to blush.");
+				writeBig("images/mistress/1-2.jpg", "Art by Oreteki18kin");
+				writeSpeech("player","","Not lost this time, then?");
+				writeSpeech("mistress","","Not this time. Thanks again, by the way!");
+				writeText("She sits back down, patting the open spot on the bench beside her.");
+				writeSpeech("mistress","","Just standing around is a bit boring, so if you'd like to chat?");
+				writeSpeech("player","","I'm not sure I'll be that exciting, but I'd be happy to talk.");
+				writeText("...");
+				writeText("The two of you chat for a little while. You don't learn a lot, aside from the fact that she's from a rather wealthy family, until...");
+				writeSpeech("player","","No offense meant, but... How did you get lost last time? This isn't exactly the largest of parks.");
+				writeText("Her face gets even redder as she leans back a little bit.");
+				writeSpeech("mistress","","Hm... Well, it's not <i>really</i> that I got lost, per se... It's a little hard to explain carefully, but if you're okay with a bit of bluntness...");
+				writeText("She gently grabs your hand, carefully raising it up...");
+				writeText("And pressing it against her breast, the soft material of the coat not quite thick enough to hide what she's trying to show you.");
+				writeSpeech("player","","No bra, huh?");
+				writeSpeech("mistress","","Just stockings. No bra, no panties.");
+				writeText("She smiles wide, taking in your expression as you feel her other hand trace along your thigh.");
+				writeSpeech("mistress","","I didn't think anyone would come along. When I heard you coming... Well, there's a reason I said <i>standing around</i> is boring. Now, my place is pretty close so, in continuing to be blunt, let me ask...");
+				writeText("She leans a bit closer to your ear.");
+				writeSpeech("mistress","","<i>Would you be willing to spend some more time with a <b>pervert</b> like me?</i>");
+				raiseTrust('mistress', 1);
+				passTime();
+				writeFunction("writeEvent('mistress1')", "Let her lead the way");
+			}
+			else{
+				writeSpecial("IN PROGRESS");
+			}
 			break;
 		}
 		case "mistress3" : {
@@ -233,176 +238,201 @@ function writeEncounter(name) { //Plays the actual encounter.
 			if(checkTrust('mistress')==42)
 				if(checkFlag('maid','mistressSexTape') != true)
 					addFlag('maid','mistressSexTape');
-			setTrust('mistress',50);
-			writeText("As you approach, you can see that her leggings are noticably thicker today. One leg is lifted onto the bench as she leans her body forward, her hand lazily reaching her ankle.");
-			writeSpeech("player","","You're a fan of stretching yourself out, then?");
-			writeSpeech("mistress","","It's more fun with a partner~!");
-			writeText("She doesn't miss a beat as she turns her head and winks at you, still stretching out one of her legs as she smiles.");
-			if(checkFlag('maid','mistressSexTape') == true && checkTrust('maid') != 25){
-				writeSpeech("mistress","","I talked to maidF, by the way. Though, to be fair, <i>talking</i> wasn't what she used her mouth for during most of the conversation.");
-				writeText("She grins widely, finishing her stretch as she stands up straight.");
-				writeSpeech("mistress","","You already know, of course, but she has <i>very</i> good control of her tongue. Once she finished <i>cleaning</i>, though, I brought up the idea of all three of us <i>coming together,</i> and I have to say...");
-				writeText("Stepping forward, she leans her chest against yours and whispers in your ear,");
-				writeSpeech("mistress","","I've never seen her wetter. It's really a shame that she's not available today - the thought of her watching while you bounce me on that wonderful cock of yours...");
-				writeText("A moment later, you feel the barest touch against your ear as the tip of her tongue taps your lobe.");
-				writeSpeech("mistress","","It would be enough to make a total perv like me soak right through my panties... If I were wearing any~!");
-				writeSpeech("player","","You know, if you keep teasing me like that, I might not be able to wait to get to your place.");
-				writeText("mistressF pauses, frowning slightly.");
-				writeSpeech("mistress","","Hm. I can see how that might be a problem...");
-				writeText("She grabs your hand gently and smiles kindly...");
-				writeText("As she brings your hand underneath her coat, your fingers touching the soaked-through fabric that barely covers her pussy.");
-				writeSpeech("mistress","","Then again, <i>it's only a problem if we're <b>caught~!</b></i>");
-				writeText("Her other arm goes over your shoulder as she pulls you close, her lips pressing against your neck as she pulls you towards the bench.");
+				setTrust('mistress',50);
+				writeText("As you approach, you can see that her leggings are noticably thicker today. One leg is lifted onto the bench as she leans her body forward, her hand lazily reaching her ankle.");
+				writeSpeech("player","","You're a fan of stretching yourself out, then?");
+				writeSpeech("mistress","","It's more fun with a partner~!");
+				writeText("She doesn't miss a beat as she turns her head and winks at you, still stretching out one of her legs as she smiles.");
+				if(checkFlag('maid','mistressSexTape') == true && checkTrust('maid') != 25){
+					writeSpeech("mistress","","I talked to maidF, by the way. Though, to be fair, <i>talking</i> wasn't what she used her mouth for during most of the conversation.");
+					writeText("She grins widely, finishing her stretch as she stands up straight.");
+					writeSpeech("mistress","","You already know, of course, but she has <i>very</i> good control of her tongue. Once she finished <i>cleaning</i>, though, I brought up the idea of all three of us <i>coming together,</i> and I have to say...");
+					writeText("Stepping forward, she leans her chest against yours and whispers in your ear,");
+					writeSpeech("mistress","","I've never seen her wetter. It's really a shame that she's not available today - the thought of her watching while you bounce me on that wonderful cock of yours...");
+					writeText("A moment later, you feel the barest touch against your ear as the tip of her tongue taps your lobe.");
+					writeSpeech("mistress","","It would be enough to make a total perv like me soak right through my panties... If I were wearing any~!");
+					writeSpeech("player","","You know, if you keep teasing me like that, I might not be able to wait to get to your place.");
+					writeText("mistressF pauses, frowning slightly.");
+					writeSpeech("mistress","","Hm. I can see how that might be a problem...");
+					writeText("She grabs your hand gently and smiles kindly...");
+					writeText("As she brings your hand underneath her coat, your fingers touching the soaked-through fabric that barely covers her pussy.");
+					writeSpeech("mistress","","Then again, <i>it's only a problem if we're <b>caught~!</b></i>");
+					writeText("Her other arm goes over your shoulder as she pulls you close, her lips pressing against your neck as she pulls you towards the bench.");
+				}
+				else if(checkTrust('maid')>=21){
+					writeSpeech("mistress","","You know, while I wasn't surprised that my maid asked me about the guy I took home... I <i>was</i> a bit surprised when she told me that the guy that filled me up was the same guy from the video she sent.");
+					writeText("She grins widely, finishing her stretch as she stands up straight.");
+					writeSpeech("mistress","","We had a very interesting conversation after that. Though, to be fair, <i>talking</i> wasn't what she used her mouth for during most of the conversation. You already know, of course, but she has <i>very</i> good control of her tongue.");
+					writeText("Her hand traces along your shirt for a moment, her eyes roaming about for a few seconds.");
+					writeSpeech("mistress","","Once we, ah, <i>came</i> to an understanding, though, I brought up the idea of all three of us <i>together,</i> and I have to say...");
+					writeText("Stepping forward, she leans her chest against yours and whispers in your ear,");
+					writeSpeech("mistress","","I've never seen her wetter. It's really a shame that she's not available today - the thought of her watching while you bounce me on that wonderful cock of yours...");
+					writeText("A moment later, you feel the barest touch against your ear as the tip of her tongue taps your lobe.");
+					writeSpeech("mistress","","It would be enough to make a total perv like me soak right through my panties... If I were wearing any~!");
+					writeSpeech("player","","You know, if you keep teasing me like that, I might not be able to wait to get to your place.");
+					writeText("mistressF pauses, frowning slightly.");
+					writeSpeech("mistress","","Hm. I can see how that might be a problem...");
+					writeText("She grabs your hand gently and smiles kindly...");
+					writeText("As she brings your hand underneath her coat, your fingers touching the soaked-through fabric that barely covers her pussy.");
+					writeSpeech("mistress","","Then again, <i>it's only a problem if we're <b>caught~!</b></i>");
+					writeText("Her other arm goes over your shoulder as she pulls you close, her lips pressing against your neck as she pulls you towards the bench.");
+				}
+				else{
+					setTrust('maid',30);
+					if(checkFlag('mistress','first') != true)
+						addFlag('mistress','first');
+					writeSpeech("mistress","","I was talking with my maid earlier. Odd segue, I know, but I think it's worth mentioning, since...");
+					writeText("She pauses to think over her words, pulling her leg off of the bench before nodding firmly.");
+					writeSpeech("mistress","","...since she's both my best friend, and my <i>other</i> sex-friend.");
+					writeText("She reaches into coat, exposed skin flashing through for just a moment as she pulls out a wallet from an inner pocket.");
+					writeSpeech("mistress","","Here!");
+					writeBig("images/maid/profileCasual.jpg");
+					writeSpeech("mistress","","I don't have a picture of her in the maid's uniform on-hand.");
+					writeSpeech("player","","...Sorry, but I'm not entirely sure I get what you're pushing toward.");
+					writeSpeech("mistress","","A threesome, mostly.");
+					writeSpeech("player","","...Bit blunt, but I have no problems with this.");
+					writeText("She grins.");
+					writeSpeech("mistress","","I thought you wouldn't. She's been pretty tense lately, which I blame on the fact that she hasn't had a nice <i>fucking</i> for a while, so I was thinking we could fuck two birds with one cock!");
+					writeSpeech("player","","That pun doesn't exactly evoke a pleasant visual image.");
+					writeSpeech("mistress","","Some time around the twenties, bird was a slang term for women.");
+					writeSpeech("player","","Not exactly my point, but alright. Though I think it might be a good idea if I meet...");
+					writeText("You pause.");
+					writeSpeech("mistress","","maidF.");
+					writeSpeech("player","","-if I meet maidF and talk to her personally before we go straight to the threesome.");
+					writeSpeech("mistress","","She thought the same thing. She spends her free days at the shopping district - I'm sure you two will get along great!");
+					writeText("With that, her smile widens to a grin as she steps towards you, pressing her chest against yours as she whispers into your ear.");
+					writeSpeech("mistress","","Now, with that said...");
+					writeText("Your body shivers slightly, feeling the barest touch of her tongue gliding across the outer edge of your ear.");
+					writeSpeech("mistress","","As much as I <i>love</i> imagining the sounds you two would make if you plow maidF, I'd really rather make those sounds underneath you~!");
+					writeSpeech("player","","You know, if you keep teasing me like that, I might not be able to wait to get to your place.");
+					writeText("mistressF pauses, frowning slightly.");
+					writeSpeech("mistress","","Hm. I can see how that might be a problem...");
+					writeText("She grabs your hand gently and smiles kindly...");
+					writeText("As she brings your hand underneath her coat, your fingers touching the soaked-through fabric that barely covers her pussy.");
+					writeSpeech("mistress","","Then again, <i>it's only a problem if we're <b>caught~!</b></i>");
+					writeText("Her other arm goes over your shoulder as she pulls you close, her lips pressing against your neck as she pulls you towards the bench.");
+				}
+				writeFunction("writeEvent('mistress4')", "Roll with it");
+				break;
 			}
-			else if(checkTrust('maid')>=21){
-				writeSpeech("mistress","","You know, while I wasn't surprised that my maid asked me about the guy I took home... I <i>was</i> a bit surprised when she told me that the guy that filled me up was the same guy from the video she sent.");
-				writeText("She grins widely, finishing her stretch as she stands up straight.");
-				writeSpeech("mistress","","We had a very interesting conversation after that. Though, to be fair, <i>talking</i> wasn't what she used her mouth for during most of the conversation. You already know, of course, but she has <i>very</i> good control of her tongue.");
-				writeText("Her hand traces along your shirt for a moment, her eyes roaming about for a few seconds.");
-				writeSpeech("mistress","","Once we, ah, <i>came</i> to an understanding, though, I brought up the idea of all three of us <i>together,</i> and I have to say...");
-				writeText("Stepping forward, she leans her chest against yours and whispers in your ear,");
-				writeSpeech("mistress","","I've never seen her wetter. It's really a shame that she's not available today - the thought of her watching while you bounce me on that wonderful cock of yours...");
-				writeText("A moment later, you feel the barest touch against your ear as the tip of her tongue taps your lobe.");
-				writeSpeech("mistress","","It would be enough to make a total perv like me soak right through my panties... If I were wearing any~!");
-				writeSpeech("player","","You know, if you keep teasing me like that, I might not be able to wait to get to your place.");
-				writeText("mistressF pauses, frowning slightly.");
-				writeSpeech("mistress","","Hm. I can see how that might be a problem...");
-				writeText("She grabs your hand gently and smiles kindly...");
-				writeText("As she brings your hand underneath her coat, your fingers touching the soaked-through fabric that barely covers her pussy.");
-				writeSpeech("mistress","","Then again, <i>it's only a problem if we're <b>caught~!</b></i>");
-				writeText("Her other arm goes over your shoulder as she pulls you close, her lips pressing against your neck as she pulls you towards the bench.");
+			case "mistress4a" : {
+				document.getElementById('output').innerHTML = '';
+				writeSpeech("player","","The way you're panting is less like a whore...");
+				writeText("You press your head against her opening, her slick cheek nuzzling against your hand.");
+				writeSpeech("player","","...It's more like a <i>bitch in heat.</i>");
+				writeText("You push your head just barely into her, feeling her shudder as her eyes flutter shut and a low moan starts from her mouth-");
+				writeSpeech("mistress","","<i><b>Nn~!</b></i>");
+				writeText("-before a sharp, wet slap rings out.");
+				writeText("It was hard enough to make her go quiet, but gentle enough to avoid leaving the slightest mark...");
+				writeText("But from the rapid spasming around your cockhead, it's clear how she felt about it.");
+				writeSpeech("mistress","","Do it again~...!");
+				writeText("Your thumb goes back into her mouth, feeling her tongue slide across it as she tries to look at your eyes, but keeps losing focus.");
+				writeSpeech("player","","You're not giving the orders right now, mistressF.");
+				writeText("Slowly pushing your hips forward, you finally start to properly stretch her out as you push your hand further into her mouth.");
+				writeText("When she doesn't gag even a bit, a sparkle of pride flashes across her eyes.");
+				writeSpeech("player","","You've been practicing.");
+				writeText("She gives a small, excited little nod.");
+				writeSpeech("player","","Good girl.");
+				writeText("She quivers a little, loyally sucking on your finger as you start thrusting back and forth, her unfocused spasms milking your cock unpredictably.");
+				writeText("But the height of the bench makes the angle a little less than comfortable, so...");
+				writeSpeech("mistress","","Nn?");
+				writeText("A look of confusion crosses mistressF's face for a moment as you step onto the bench... before a look of glee replaces it as she recognizes the position.");
+				writeText("You have to use your hands to stabilize yourself for a moment, leaving her mouth empty.");
+				writeSpeech("mistress","","Fuck yes... Yes, yes, yes...!");
+				writeText("She stares right at the point where you're connected, before-");
+				writeBig("images/mistress/4-2p.jpg", "Art by Oreteki18kin");
+				writeSpeech("mistress","","<i><b><font size='+2'>NngAHN~!</font></b></i>");
+				writeText("The sound of her moan rings out loudly as you plunge into her, her eyes widening as she bites her lip sharply.");
+				writeSpeech("mistress","","O-Oh God, that was too loud...!");
+				writeText("Despite that fact, you don't slow down.");
+				writeText("Her eyes keep shifting around to the path, expecting someone to come walking down to investigate...");
+				writeText("And every time she starts looking, she squeezes down tighter and pants even heavier, pushing you closer to the edge.");
+				writeSpeech("player","","I'm getting close...");
+				writeText("You put more force and weight behind your thrusts, forcing mistressF to squeal just a bit louder every time.");
+				writeSpeech("player","","If someone came right now, tell me what they'd see.");
+				writeText("Her breathing hitches, her eyes settling firmly on the path.");
+				writeSpeech("mistress","","<i><b>Me...!</b></i>");
+				writeSpeech("mistress","","They'd see me, a total <i>slut</i> getting pounded in public~!");
+				writeText("You can feel her approaching her own edge, her pussy squeezing quickly around you.");
+				writeSpeech("mistress","","And they'd see <i>you</i> pumping a thick, <i>hot</i> load into my pussy...!");
+				writeText("Her eyes flutter for a moment, her entire body tensing at the thought of getting caught, and-");
+				writeSpeech("mistress","","<i><b>C-Cumming~!</b></i>");
+				writeText("You slam your hips against hers, the rapid clenching around your cock pushing you over the edge.");
+				writeText("Her head shifts forward as you start jizzing inside of her, her lips capturing yours as you feel her tongue press into your mouth.");
+				writeText("The kiss barely keeps the moans silent, her ankles resting gently against your shoulders as the two of you finally finish cumming.");
+				writeSpeech("mistress","","That was... <i><b>incredible...</b></i>");
+				writeText("She looks down at herself as you pull out, the frankly incredible amount of cum starting to pour out of her as she stares in orgasmic bliss.");
+				writeBig("images/mistress/4-3p.jpg");
+				writeText("Her legs slowly come down, her feet resting gently on the ground as you step off the bench.");
+				writeText("It takes her a second to start sitting up, which you help her with.");
+				writeSpeech("mistress","","...We have to do this again some time.");
+				writeText("You open your mouth to respond, but...");
+				writeText("A rustling in the bushes sets you on high alert, mistressF sitting up sharply as her thighs clap together with a wet slapping sound.");
+				writeSpeech("player","","Who's-");
+				writeText("...only for a squirrel to bound out of the bush, darting into the distance with what appears to be a pine cone.");
+				writeText("There's a moment of silence...");
+				writeSpeech("mistress","","Heh... Hahahaha...!");
+				writeText("Raising her hand to her mouth, mistressF starts laughing, shaking her head.");
+				writeSpeech("player","","...I'm not sure I get what's so funny.");
+				writeText("It takes her a moment to stop giggling enough to say,");
+				writeSpeech("mistress","","Do you think it came here for the <i><b>nuts?</b></i>");
+				writeSpeech("player","","...Wow. That was terrible.");
+				writeText("She just laughs even harder, though you can actually see your cum dripping out from between her thighs.");
+				writeText("She follows our gaze, before her smile turns saucy.");
+				writeText("Pulling her leggings up, she presses her hand against her pussy, the soft snap of the elastic ringing out as she gets them in place.");
+				writeText("There's a very clear, very dark spot at her crotch but, as she shakily stands, you notice that her coat goes low enough to hide it.");
+				writeSpeech("mistress","","Thank you.");
+				writeText("She presses her lips against yours again, though this time, she chastely stops at that.");
+				writeSpeech("mistress","","Next time, though...");
+				writeText("She leans a bit closer, her voice low...");
+				writeSpeech("mistress","","...try to slap hard enough to leave <i>marks.</i>");
+				writeSpeech("player","","Sure thing. Do you want me to walk you home, or...?");
+				writeSpeech("mistress","","Thank you, but no. I actually have some private errands to run.");
+				writeSpeech("player","","...And you wanted to feel my cum sloshing around inside you while you do them.");
+				writeText("She kisses your cheek with a grin.");
+				writeSpeech("mistress","","Next time, I promise I'll actually take you to my <i>bed</i>. That way, we don't have to worry about how <i>loud</i> you can make me scream~!");
+				writeSpeech("player","","I'll look forward to it. Stay safe.");
+				writeSpeech("mistress","","You too, cutie.");
+				writeText("She winks at you and starts walking off, a bit of a spring in her steps after she gets past the shakiness.");
+				if(data.player.gender=="man")
+					writeFunction("changeLocation(data.player.location)", "Fix your pants and leave");
+				else
+					writeFunction("changeLocation(data.player.location)", "Fix your skirt and leave");
+				break;
 			}
-			else{
-				setTrust('maid',30);
-				if(checkFlag('mistress','first') != true)
-					addFlag('mistress','first');
-				writeSpeech("mistress","","I was talking with my maid earlier. Odd segue, I know, but I think it's worth mentioning, since...");
-				writeText("She pauses to think over her words, pulling her leg off of the bench before nodding firmly.");
-				writeSpeech("mistress","","...since she's both my best friend, and my <i>other</i> sex-friend.");
-				writeText("She reaches into coat, exposed skin flashing through for just a moment as she pulls out a wallet from an inner pocket.");
-				writeSpeech("mistress","","Here!");
-				writeBig("images/maid/profileCasual.jpg");
-				writeSpeech("mistress","","I don't have a picture of her in the maid's uniform on-hand.");
-				writeSpeech("player","","...Sorry, but I'm not entirely sure I get what you're pushing toward.");
-				writeSpeech("mistress","","A threesome, mostly.");
-				writeSpeech("player","","...Bit blunt, but I have no problems with this.");
-				writeText("She grins.");
-				writeSpeech("mistress","","I thought you wouldn't. She's been pretty tense lately, which I blame on the fact that she hasn't had a nice <i>fucking</i> for a while, so I was thinking we could fuck two birds with one cock!");
-				writeSpeech("player","","That pun doesn't exactly evoke a pleasant visual image.");
-				writeSpeech("mistress","","Some time around the twenties, bird was a slang term for women.");
-				writeSpeech("player","","Not exactly my point, but alright. Though I think it might be a good idea if I meet...");
-				writeText("You pause.");
-				writeSpeech("mistress","","maidF.");
-				writeSpeech("player","","-if I meet maidF and talk to her personally before we go straight to the threesome.");
-				writeSpeech("mistress","","She thought the same thing. She spends her free days at the shopping district - I'm sure you two will get along great!");
-				writeText("With that, her smile widens to a grin as she steps towards you, pressing her chest against yours as she whispers into your ear.");
-				writeSpeech("mistress","","Now, with that said...");
-				writeText("Your body shivers slightly, feeling the barest touch of her tongue gliding across the outer edge of your ear.");
-				writeSpeech("mistress","","As much as I <i>love</i> imagining the sounds you two would make if you plow maidF, I'd really rather make those sounds underneath you~!");
-				writeSpeech("player","","You know, if you keep teasing me like that, I might not be able to wait to get to your place.");
-				writeText("mistressF pauses, frowning slightly.");
-				writeSpeech("mistress","","Hm. I can see how that might be a problem...");
-				writeText("She grabs your hand gently and smiles kindly...");
-				writeText("As she brings your hand underneath her coat, your fingers touching the soaked-through fabric that barely covers her pussy.");
-				writeSpeech("mistress","","Then again, <i>it's only a problem if we're <b>caught~!</b></i>");
-				writeText("Her other arm goes over your shoulder as she pulls you close, her lips pressing against your neck as she pulls you towards the bench.");
+			case "mistress5" : {
+				document.getElementById('output').innerHTML = '';
+				writeSpeech("player","","Ah, mistressF mistressL?");
+				writeText("She turns to look at you with a smile.");
+				writeSpeech("mistress","","Yup, that's me!");
+				writeText("Her eyes trail along your body for a moment, before she laughs a little.");
+				writeSpeech("mistress","","You know, you look pretty good with your clothes on~");
+				writeText("Standing up, she offers her hand to you.");
+				writeSpeech("mistress","","Happy to meet you, playerF. maidF's told me a little bit about you, and I couldn't help but get a bit interested in meeting up.");
+				writeSpeech("player","","Same here - she talked to me a bit about a certain proposition, and she mentioned she'd speak to you about it too?");
+				writeSpeech("mistress","","Well, I suppose I technically came up with the proposition.");
+				writeText("She laughs lightly, running a hand through her hair.");
+				writeSpeech("mistress","","At first, I was just teasing her about having so much fun without me, but when she asked if I was interested in a threesome, I decided I wanted to meet you. You're the first "+(data.player.gender=="man" ? "man " : "person aside from me that ")+"she's been interested in since college.");
+				writeSpeech("player","","It's been my pleasure thus far - she's a good person, though she does seem to have a bit of trouble relaxing sometimes.");
+				writeSpeech("mistress","","Mm, I'd say you'd be suprised by how <i>relaxed</i> she can get, but~...");
+				writeText("She steps a bit closer to you, her fingers brushing against your arm...");
+				writeSpeech("mistress","","Given that she showed me the video you two took, I think you know pretty well how to make her <i>open up~!</i>");
+				writeSpeech("player","","...Not to be presumptuous, but I'm beginning to think that you didn't want to meet me for coffee and conversation.");
+				writeSpeech("mistress","","When it comes to people, I trust maidF. Probably more than my own judgement, actually - she's always been the more level-headed of us. If she trusts you enough to let you <i>paint her chest white</i> then I'm sure it's fine.");
+				writeText("She pauses for a moment.");
+				writeSpeech("mistress","","Though, uh... I mean, if I'm being a bit too forward, I'd be fine with having a chat over coffee.");
+				writeFunction("writeEncounter('mistress5a')", "This is a good amount of forwardness");
+				writeFunction("writeEncounter('mistress5b')", "Let's have a chat first");
+				break;
 			}
-			writeFunction("writeEvent('mistress4')", "Roll with it");
-			break;
-		}
-		case "mistress4a" : {
-			document.getElementById('output').innerHTML = '';
-			writeSpeech("player","","The way you're panting is less like a whore...");
-			writeText("You press your head against her opening, her slick cheek nuzzling against your hand.");
-			writeSpeech("player","","...It's more like a <i>bitch in heat.</i>");
-			writeText("You push your head just barely into her, feeling her shudder as her eyes flutter shut and a low moan starts from her mouth-");
-			writeSpeech("mistress","","<i><b>Nn~!</b></i>");
-			writeText("-before a sharp, wet slap rings out.");
-			writeText("It was hard enough to make her go quiet, but gentle enough to avoid leaving the slightest mark...");
-			writeText("But from the rapid spasming around your cockhead, it's clear how she felt about it.");
-			writeSpeech("mistress","","Do it again~...!");
-			writeText("Your thumb goes back into her mouth, feeling her tongue slide across it as she tries to look at your eyes, but keeps losing focus.");
-			writeSpeech("player","","You're not giving the orders right now, mistressF.");
-			writeText("Slowly pushing your hips forward, you finally start to properly stretch her out as you push your hand further into her mouth.");
-			writeText("When she doesn't gag even a bit, a sparkle of pride flashes across her eyes.");
-			writeSpeech("player","","You've been practicing.");
-			writeText("She gives a small, excited little nod.");
-			writeSpeech("player","","Good girl.");
-			writeText("She quivers a little, loyally sucking on your finger as you start thrusting back and forth, her unfocused spasms milking your cock unpredictably.");
-			writeText("But the height of the bench makes the angle a little less than comfortable, so...");
-			writeSpeech("mistress","","Nn?");
-			writeText("A look of confusion crosses mistressF's face for a moment as you step onto the bench... before a look of glee replaces it as she recognizes the position.");
-			writeText("You have to use your hands to stabilize yourself for a moment, leaving her mouth empty.");
-			writeSpeech("mistress","","Fuck yes... Yes, yes, yes...!");
-			writeText("She stares right at the point where you're connected, before-");
-			writeBig("images/mistress/4-2p.jpg", "Art by Oreteki18kin");
-			writeSpeech("mistress","","<i><b><font size='+2'>NngAHN~!</font></b></i>");
-			writeText("The sound of her moan rings out loudly as you plunge into her, her eyes widening as she bites her lip sharply.");
-			writeSpeech("mistress","","O-Oh God, that was too loud...!");
-			writeText("Despite that fact, you don't slow down.");
-			writeText("Her eyes keep shifting around to the path, expecting someone to come walking down to investigate...");
-			writeText("And every time she starts looking, she squeezes down tighter and pants even heavier, pushing you closer to the edge.");
-			writeSpeech("player","","I'm getting close...");
-			writeText("You put more force and weight behind your thrusts, forcing mistressF to squeal just a bit louder every time.");
-			writeSpeech("player","","If someone came right now, tell me what they'd see.");
-			writeText("Her breathing hitches, her eyes settling firmly on the path.");
-			writeSpeech("mistress","","<i><b>Me...!</b></i>");
-			writeSpeech("mistress","","They'd see me, a total <i>slut</i> getting pounded in public~!");
-			writeText("You can feel her approaching her own edge, her pussy squeezing quickly around you.");
-			writeSpeech("mistress","","And they'd see <i>you</i> pumping a thick, <i>hot</i> load into my pussy...!");
-			writeText("Her eyes flutter for a moment, her entire body tensing at the thought of getting caught, and-");
-			writeSpeech("mistress","","<i><b>C-Cumming~!</b></i>");
-			writeText("You slam your hips against hers, the rapid clenching around your cock pushing you over the edge.");
-			writeText("Her head shifts forward as you start jizzing inside of her, her lips capturing yours as you feel her tongue press into your mouth.");
-			writeText("The kiss barely keeps the moans silent, her ankles resting gently against your shoulders as the two of you finally finish cumming.");
-			writeSpeech("mistress","","That was... <i><b>incredible...</b></i>");
-			writeText("She looks down at herself as you pull out, the frankly incredible amount of cum starting to pour out of her as she stares in orgasmic bliss.");
-			writeBig("images/mistress/4-3p.jpg");
-			writeText("Her legs slowly come down, her feet resting gently on the ground as you step off the bench.");
-			writeText("It takes her a second to start sitting up, which you help her with.");
-			writeSpeech("mistress","","...We have to do this again some time.");
-			writeText("You open your mouth to respond, but...");
-			writeText("A rustling in the bushes sets you on high alert, mistressF sitting up sharply as her thighs clap together with a wet slapping sound.");
-			writeSpeech("player","","Who's-");
-			writeText("...only for a squirrel to bound out of the bush, darting into the distance with what appears to be a pine cone.");
-			writeText("There's a moment of silence...");
-			writeSpeech("mistress","","Heh... Hahahaha...!");
-			writeText("Raising her hand to her mouth, mistressF starts laughing, shaking her head.");
-			writeSpeech("player","","...I'm not sure I get what's so funny.");
-			writeText("It takes her a moment to stop giggling enough to say,");
-			writeSpeech("mistress","","Do you think it came here for the <i><b>nuts?</b></i>");
-			writeSpeech("player","","...Wow. That was terrible.");
-			writeText("She just laughs even harder, though you can actually see your cum dripping out from between her thighs.");
-			writeText("She follows our gaze, before her smile turns saucy.");
-			writeText("Pulling her leggings up, she presses her hand against her pussy, the soft snap of the elastic ringing out as she gets them in place.");
-			writeText("There's a very clear, very dark spot at her crotch but, as she shakily stands, you notice that her coat goes low enough to hide it.");
-			writeSpeech("mistress","","Thank you.");
-			writeText("She presses her lips against yours again, though this time, she chastely stops at that.");
-			writeSpeech("mistress","","Next time, though...");
-			writeText("She leans a bit closer, her voice low...");
-			writeSpeech("mistress","","...try to slap hard enough to leave <i>marks.</i>");
-			writeSpeech("player","","Sure thing. Do you want me to walk you home, or...?");
-			writeSpeech("mistress","","Thank you, but no. I actually have some private errands to run.");
-			writeSpeech("player","","...And you wanted to feel my cum sloshing around inside you while you do them.");
-			writeText("She kisses your cheek with a grin.");
-			writeSpeech("mistress","","Next time, I promise I'll actually take you to my <i>bed</i>. That way, we don't have to worry about how <i>loud</i> you can make me scream~!");
-			writeSpeech("player","","I'll look forward to it. Stay safe.");
-			writeSpeech("mistress","","You too, cutie.");
-			writeText("She winks at you and starts walking off, a bit of a spring in her steps after she gets past the shakiness.");
-			if(data.player.gender=="man")
-				writeFunction("changeLocation(data.player.location)", "Fix your pants and leave");
-			else
-				writeFunction("changeLocation(data.player.location)", "Fix your skirt and leave");
-			break;
 		}
 	}
-}
 
 var eventArray = [ //Lists the events of the character for unlocking and replaying in the gallery.
-	{index: "mistress1", name: "Penthouse Blowies"},
-	{index: "mistress2", name: "Mating Press"},
-	{index: "mistress3", name: "Mating Press - Video for the Maid"},
-	{index: "mistress4", name: "Public Park Press"},
+{index: "mistress1", name: "Penthouse Blowies"},
+{index: "mistress2", name: "Mating Press"},
+{index: "mistress3", name: "Mating Press - Video for the Maid"},
+{index: "mistress4", name: "Public Park Press"},
 ];
 
 function writeEvent(name) { //Plays the actual event.
@@ -620,8 +650,8 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "mistressReward", trust: 50,},
-	{index: "mistressRewardDuo", trust: 55,},
+{index: "mistressReward", trust: 50,},
+{index: "mistressRewardDuo", trust: 55,},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
@@ -784,24 +814,24 @@ switch (requestType) {
 			if (newItems[item].price != 0) {
 				if (newItems[item].key == false) {
 					document.getElementById('output').innerHTML += `
-						<div class = "shopItem" onclick = "purchase('`+newItems[item].name+`','`+newItems[item].image+`','`+newItems[item].price+`','`+newItems[item].key+`')">
-							<p class = "shopName">`+newItems[item].name+`</p>
-							<p class = "shopDesc">`+newItems[item].description+`</p>
-							<p class = "shopPrice">$`+newItems[item].price+`</p>
-							<img class ="shopImage" src="`+newItems[item].image+`">
-						</div>
-						<br>
+					<div class = "shopItem" onclick = "purchase('`+newItems[item].name+`','`+newItems[item].image+`','`+newItems[item].price+`','`+newItems[item].key+`')">
+					<p class = "shopName">`+newItems[item].name+`</p>
+					<p class = "shopDesc">`+newItems[item].description+`</p>
+					<p class = "shopPrice">$`+newItems[item].price+`</p>
+					<img class ="shopImage" src="`+newItems[item].image+`">
+					</div>
+					<br>
 					`;
 				}
 				else {
 					if (checkItem(newItems[item].name) == false) {
 						document.getElementById('output').innerHTML += `
 						<div class = "shopItem" onclick = "purchase('`+newItems[item].name+`','`+newItems[item].image+`','`+newItems[item].price+`','`+newItems[item].key+`')">
-								<p class = "shopName">`+newItems[item].name+`</p>
-								<p class = "shopDesc">`+newItems[item].description+`</p>
-								<p class = "shopPrice">$`+newItems[item].price+`</p>
-								<img class ="shopImage" src="`+newItems[item].image+`">
-							</div>
+						<p class = "shopName">`+newItems[item].name+`</p>
+						<p class = "shopDesc">`+newItems[item].description+`</p>
+						<p class = "shopPrice">$`+newItems[item].price+`</p>
+						<img class ="shopImage" src="`+newItems[item].image+`">
+						</div>
 						<br>
 						`;
 					}
@@ -824,13 +854,13 @@ switch (requestType) {
 					//If the character has no unread texts
 					//If the character does not have this text in their text history
 					if (
-					data.story[phoneHistoryCheck].unreadText != true &&
-					data.story[phoneHistoryCheck].textHistory.includes(phoneArray[number].index) != true &&
-					data.story[phoneHistoryCheck].textEvent != phoneArray[number].index
-					) {
+						data.story[phoneHistoryCheck].unreadText != true &&
+						data.story[phoneHistoryCheck].textHistory.includes(phoneArray[number].index) != true &&
+						data.story[phoneHistoryCheck].textEvent != phoneArray[number].index
+						) {
 						//If the phone record is using the old system...
-						if (phoneArray[number].trust != null) {
-							var finalResult = false;
+					if (phoneArray[number].trust != null) {
+						var finalResult = false;
 							if (checkTrust(character.index) == phoneArray[number].trust) { //if the player's trust with the character meets the text requirement
 								for (phoneEventCheck = 0; phoneEventCheck < data.story.length; phoneEventCheck++) { //go through the characters
 									if (data.story[phoneEventCheck].index == character.index) { //check what text is currently assigned to the character
