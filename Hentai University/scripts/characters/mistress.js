@@ -425,6 +425,25 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeFunction("writeEncounter('mistress5b')", "Let's have a chat first");
 				break;
 			}
+			case "mistress5a" : {
+				break;
+			}
+			case "mistress5b" : {
+				writeSpeech("player","","If it's not a problem, I think I'd rather to get to know you a bit first.");
+				writeSpeech("mistress","","Ah, alright. We could drop by Starway and chat there?");
+				writeSpeech("player","","That's the nearby cafe, right? Sure, let's go.");
+				writeText("...");
+				writeText("You two get seated at the cafe pretty quickly, the same girl from before taking your orders.");
+				writeText("You don't see any other employees this time either... How odd.");
+				writeText("You and mistressF start off with pretty idle chat, but it does get to more interesting subjects pretty quickly.");
+				writeSpeech("mistress","","Well, maidF and I met in high school - we shared a few classes, and she helped me out a few times. She started coming over to help me study, and...");
+				writeText("She smirks.");
+				writeSpeech("mistress","","She came to help me study Poli-Sci, but we spent a whole lot more time on <i>anatomy</i>, you could say.");
+				writeText("mistressF smiles brightly, her hands folded in her lap as she looks at you.");
+				writeSpeech("mistress","","The rest is just raunchy, dirty history. What about you two? From what I hear, you only met recently.");
+				writeSpeech("player","","Yeah, that's true. We met in the shopping district - I saw her maid uniform");
+				break;
+			}
 		}
 	}
 
