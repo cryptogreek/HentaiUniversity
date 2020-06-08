@@ -426,9 +426,11 @@ function writeEncounter(name) { //Plays the actual encounter.
 				break;
 			}
 			case "mistress5a" : {
+				document.getElementById('output').innerHTML = '';
 				break;
 			}
 			case "mistress5b" : {
+				document.getElementById('output').innerHTML = '';
 				writeSpeech("player","","If it's not a problem, I think I'd rather to get to know you a bit first.");
 				writeSpeech("mistress","","Ah, alright. We could drop by Starway and chat there?");
 				writeSpeech("player","","That's the nearby cafe, right? Sure, let's go.");
