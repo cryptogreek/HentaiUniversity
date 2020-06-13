@@ -443,7 +443,92 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("mistress","","She came to help me study Poli-Sci, but we spent a whole lot more time on <i>anatomy</i>, you could say.");
 				writeText("mistressF smiles brightly, her hands folded in her lap as she looks at you.");
 				writeSpeech("mistress","","The rest is just raunchy, dirty history. What about you two? From what I hear, you only met recently.");
-				writeSpeech("player","","Yeah, that's true. We met in the shopping district - I saw her maid uniform");
+				writeSpeech("player","","Yeah, that's true. We met in the shopping district - her outfit caught my eye, and we started talking.");
+				writeText("mistressF nods.");
+				writeSpeech("mistress","","Yeah, her uniform's pretty nice. A bit old-fashioned, but that's a big part of the appeal... for me, at least.");
+				writeSpeech("player","","Is that the reason she wears it?");
+				writeSpeech("mistress","","Nah, she just likes it. Though, I'd be lying if I said I didn't enjoy the view.");
+				writeText("At that, mistressF takes a sip of her coffee.");
+				writeSpeech("mistress","","That's pretty much it for how we met, though. Was there anything else you wanted to know?");
+				writeFunction("writeEncounter('mistress5ba')", "\"What do you do for a living?\"");
+				writeFunction("writeEncounter('mistress5bb')", "\"Will this be your first threesome?\"");
+				writeFunction("writeEncounter('mistress5bc')", "\"Nope, that was it\"");
+				break;
+			}
+			case "mistress5ba" : {
+				document.getElementById('output').innerHTML = '';
+				if(!checkFlag('mistress','chatBA'))
+					addFlag('mistress','chatBA');
+				writeSpeech("player","","What do you do for a living?");
+				writeSpeech("mistress","","Technically, not much. The family business is real estate, which means an annoying amount of paperwork, but enough passive income that I don't have to worry about much.");
+				writeSpeech("player","","Sounds pretty comfy.");
+				writeSpeech("mistress","","It is. Makes my schedule a <i>little</i> hectic sometimes, but I'm smart enough to know I lucked out. Still, real estate management isn't very interesting, so it probably won't come up too often unless something big happens. My schedule's usually pretty open.");
+				writeText("Actually, all of that <b>is</b> pretty interesting given your own activities, but that's something to keep in mind for another time.");
+				writeSpeech("player","","Well, I'm at least glad to hear that you're doing pretty well - and it explains how you can afford to pay maidF to be your maid.");
+				writeSpeech("mistress","","Yup. She's hardworking too, so she's easily worth paying.<br>Was there anything else you wanted to know about?");
+				if(!checkFlag('mistress','chatBB'))
+					writeFunction("writeEncounter('mistress5bb')", "\"Will this be your first threesome?\"");
+				writeFunction("writeEncounter('mistress5bc')", "\"Nope, that was it\"");
+				break;
+			}
+			case "mistress5bb" : {
+				document.getElementById('output').innerHTML = '';
+				if(!checkFlag('mistress','chatBB'))
+					addFlag('mistress','chatBB');
+				writeSpeech("player","","Will this be your first threesome, or have you two 'experimented' before?");
+				writeSpeech("mistress","","This is our first. We've talked about the <i>idea</i> before, but we never really found a guy. Between college and post-graduation life, we just never got around to it.");
+				writeText("She grins, sitting up a bit straighter, and obviously emphasizing her chest.");
+				writeSpeech("mistress","","You'll actually be our first experience with a "+((data.player.gender == 'man') ? "man" : "<i>real</i> cock")+", playerF~");
+				writeSpeech("player","","I'm flattered that two beautiful women would want me for their first.");
+				writeSpeech("mistress","","Mm, try and save some honeyed words for maidF~ She gets embarrassed by compliments, and I'll <i>love</i> seeing how flushed you'll get her.<br>But before I get <i>too</i> excited, did you have any other questions?");
+				if(!checkFlag('mistress','chatBA'))
+					writeFunction("writeEncounter('mistress5ba')", "\"What do you do for a living?\"");
+				writeFunction("writeEncounter('mistress5bc')", "\"Nope, that was it\"");
+				break;
+			}
+			case "mistress5bc" : {
+				document.getElementById('output').innerHTML = '';
+				if(checkFlag('mistress','chatBA'))
+					removeFlag('mistress','chatBB');
+				if(checkFlag('mistress','chatBB'))
+					removeFlag('mistress','chatBB');
+				writeSpeech("player","","Nope, that was it.");
+				writeText("At that, mistressF smiles a bit wider.");
+				writeSpeech("mistress","","Glad to hear it. Does that mean you're interested in...?");
+				writeText("She lets the silence hang for a moment as you nod.");
+				writeSpeech("player","","I was interested from the start - I just wanted to talk first.");
+				writeText("She's surprisingly relaxed around you already, but it never hurts to get to know a potential partner.");
+				writeSpeech("mistress","","Mm, true. So I guess now, the question is what kinda fun you'd like to have~");
+				writeText("She leans forward on the table, resting her chin on her hand.");
+				writeSpeech("mistress","","We could always call maidF, but if you're interested in getting a feel for me before the threesome, I've got maidF's approval on that front~");
+				writeFunction("writeEncounter('mistress5ca')", "\"Let's take this back to your place\"");
+				writeFunction("writeEncounter('mistress5cb')", "\"maidF mentioned you were into almost getting caught...\"");
+				writeFunction("writeEncounter('mistress5cc')", "\"Let's meet up with maidF\"");
+				break;
+			}
+			case "mistress5ca" : {
+				document.getElementById('output').innerHTML = '';
+				writeSpeech("player","","Let's take this back to your place.");
+				break;
+			}
+			case "mistress5cb" : {
+				document.getElementById('output').innerHTML = '';
+				writeSpeech("player","","You know, maidF mentioned that you were into almost getting caught...");
+				writeSpeech("mistress","","Oh?");
+				writeText("She gives a mischievous smile.");
+				writeSpeech("mistress","","Well... She's not wrong. I wouldn't do anything obvious in a place like <i>this</i>...");
+				writeText("She gestures very subtely to the cafe at large.");
+				writeSpeech("mistress","","But if you're trying to say you'd like a little <i>risky business,</i> I know a nice little place that I could show you~");
+				writeSpeech("player","","Let's get the bill, and then you can lead the way.");
+				writeText("She nods excitedly.");
+				writeText("...");
+
+				
+				break;
+			}
+			case "mistress5cc" : {
+				document.getElementById('output').innerHTML = '';
+				writeSpeech("player","","Let's take this back to your place.");
 				break;
 			}
 		}
@@ -451,6 +536,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 
 var eventArray = [ //Lists the events of the character for unlocking and replaying in the gallery.
 {index: "mistress1", name: "Penthouse Blowies"},
+{index: "mistress1-1", name: "Penthouse Blowies, Alt"},
 {index: "mistress2", name: "Mating Press"},
 {index: "mistress3", name: "Mating Press - Video for the Maid"},
 {index: "mistress4", name: "Public Park Press"},

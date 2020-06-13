@@ -814,7 +814,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("maid","","Please... C-Cum inside!");
 				writeText("You frown down at her, slowing down more.");
 				writeSpeech("player","","I said <i>properly.</i>");
-				writeSpeech("maid","","*Master, <i>please </i> fill this dirty buttslut's ass with your cum~!");
+				writeSpeech("maid","","*Master, <i>please</i> fill this dirty buttslut's ass with your cum~!");
 				writeText("You smile and nod, looking into her eyes.");
 				writeSpeech("player","","<i><b>Good girl.</b></i>");
 				writeText("Just as her body starts to shudder from the praise, you <b>hammer</b> yourself in.");
