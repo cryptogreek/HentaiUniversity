@@ -20,9 +20,9 @@ var newItems = [//Lists the shop items unique to this character
 
 var encounterArray = [//Lists encounters as they appear on the map. Nonrepeatable, only one per day per character by default.
 	{index: "introduction1", name: "Principal principal's Office is here. You should introduce yourself.", location: 'northHallway', time: "MorningEvening", itemReq: "", trustMin: 0, trustMax: 0, type: "tab", top: 0, left: 0, day: "both",},
-	{index: "caseSelect", name: "Enter Principal principal's Office.", requirements: "?location northHallway; ?trustMin principal 41; !counseling 9; !flag principal council;",},
-	{index: "councilStart", name: "principal wanted to see you", requirements: "?location northHallway; ?trustMin principal 41; ?counseling 9; !flag principal council;",},
-	{index: "caseSelect", name: "Enter Principal principal's Office.", requirements: "?location northHallway; ?trustMin principal 41; ?counseling 9; ?flag principal council;",},
+	{index: "caseSelect", name: "Enter Principal principal's Office.", requirements: "?location northHallway; ?trustMin principal 41; !counseling 5; !flag principal council;",},
+	{index: "councilStart", name: "principal wanted to see you", requirements: "?location northHallway; ?trustMin principal 41; ?counseling 5; !flag principal council;",},
+	{index: "caseSelect", name: "Enter Principal principal's Office.", requirements: "?location northHallway; ?trustMin principal 41; ?counseling 5; ?flag principal council;",},
 	{index: "principalBeach1", name: "principal is here with some other women.", location: 'beach', time: "MorningEvening", itemReq: "", trustMin: 41, trustMax: 200, type: "tab", top: 0, left: 0, day: "both",},
 ];
 
@@ -60,6 +60,11 @@ function writeEncounter(name) { //Plays the actual encounter.
 				writeSpeech("principal", "", "It's not an issue. This meeting isn't mandatory, your supervisor should have filled you in on your responsibilities already. Correct? We've never had a dedicated counselor here, so I'm afraid there's not much framework for you.");
 			}
 			writeText("She takes a seat at her desk. Despite it being the middle of the day, the desk is spotless except for a few papers, her computer, and a bottle of hand sanitizer.");
+			if (checkItem("Town Map") == false) {
+				writeSpeech("principal", "", "I do at least have a map of the town. There are a number of districts outside the school, it might be worth it to do infrequent housecalls. I apologize I couldn't find one in time to include with your letter.");
+				addItem("Town Map", true, "scripts/gamefiles/items/map.jpg")
+				writeSpecial("You obtained a town map!");
+			}
 			writeSpeech("player", "", "It's not a problem. So, should I get right to work then?");
 			writeSpeech("principal", "", "Did you have a particular student in mind? I'm quite proud of the fact that our students are remarkably well-adjusted.");
 			writeSpeech("player", "", "From the pact you made for eternal youth, and the school's success, of course.");
@@ -100,7 +105,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			else {
 				if (data.story[8].met.includes('purpleF') != true) {
 					writeSpeech("principal", "", "Have you had a chance to speak with Ms. "+lName('purple')+" yet?");
-					if(checkTrust('purple') > 80) {
+					if(checkTrust('purple') > 60) {
 						writeFunction("writeEncounter('purpleCaseEnd')", "Report on "+fName('purple')+"'s case.");
 					}
 				}
@@ -124,7 +129,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			else {
 				if (data.story[8].met.includes('starletF') != true) {
 					writeSpeech("principal", "", "Have you spoken with Miss starletL yet? Gotten her to change her mind?");
-					if(checkTrust('starlet') > 83) {
+					if(checkTrust('starlet') > 82) {
 						writeFunction("writeEncounter('starletCaseEnd')", "Report on starletL's case.");
 					}
 				}
@@ -489,7 +494,7 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "council", requirements: "?counseling 9;"},
+	{index: "council", requirements: "?counseling 5; !flag principal council;"},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event

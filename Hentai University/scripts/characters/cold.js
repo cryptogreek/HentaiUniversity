@@ -77,7 +77,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("player", "", "Is there something wrong, coldF? Or did you just want to chat?");
 			writeSpeech("cold", "", "No. Nothing is wrong. I was just thinking, maybe if you had time we could do what we talked about last time?");
 			writeSpeech("player", "", "Are you sure? You seemed hesitant about it last time, and if you're uncomfortable we can just...");
-			writeText("She holds up one hand to stop you, and holds one hand over her own mouth as mumbles her answer.");
+			writeText("She holds up one hand to stop you, and holds one hand over her own mouth as she mumbles her answer.");
 			writeSpeech("cold", "", "I talked to sportsF about it, and she said it really did help her. And coachF heard us and told me that was also the reason she was able to stop smoking... Well, as much. And that's about as glowing a review as I can think of.");
 			writeSpeech("cold", "", "I mean, it still seems silly, but...");
 			writeSpeech("player", "", "I understand, coldF. I'd be more than willing to try it out with you...");
@@ -97,7 +97,7 @@ function writeEncounter(name) { //Plays the actual encounter.
 			writeSpeech("player", "", "Down and down we'll go. From your neck, to your shoulders. Deep breath in... Hold it and gather the stress... Then <i>let it all out</i>. Until you're light and relaxed. Then we'll go deeper...");
 			writeText("The change is subtle, at first, if you don't know what you're looking for. Her shoulders resting easier. Her breathing coming more slowly.");
 			writeSpeech("player", "", "From your shoulders, down to your arms. In. Tense. Hold. Out. Further and further down. Slowly. Finding comfort with each movement, each shift of your body weight. Sinking further as we move down your body.");
-			writeText("And you continue moving down. Slowly and steadily, you bring her fully into trance. And once she's there, you can start working in earnest.");
+			writeText("And you continue moving down. Slowly and steadily, you bring her fully into a trance. And once she's there, you can start working in earnest.");
 			writeSpeech("player", "", "And finally, your feet, coldF. We've cornered the last of the stress here. One last breath, nice and deep. Gather it all up. And let it out. How do you feel now?");
 			writeSpeech("cold", "", "Relaxed. Calm. It's... Really nice.");
 			writeSpeech("player", "", "Good. That's good. Now we can have a talk, okay?");
@@ -161,12 +161,12 @@ function writeEvent(name) { //Plays the actual event.
 			writeText("She stops. Seemingly trying to find a thought.");
 			writeSpeech("cold", "", "But... Not now. Now, all I want is for you to touch me.");
 			writeSpeech("player", "", "Take your pants off, we don't want them ruined.");
-			writeText("coldF stands and slowly takes off her jeans, and you shuffle yourself onto the chair she had been sitting before patting your lap. Slowly, she lowers herself down. You move your hands to her legs and spread them apart, leaving her pussy spread underneath her panties. Despite her lack of worrying thoughts, her body is tense and rigid.");
+			writeText("coldF stands and slowly takes off her jeans, and you shuffle yourself onto the chair she had been sitting on before patting your lap. Slowly, she lowers herself down. You move your hands to her legs and spread them apart, leaving her pussy spread underneath her panties. Despite her lack of worrying thoughts, her body is tense and rigid.");
 			writeSpeech("player", "", "Stay where I move you, coldF. Let me take over. Let me take control. When I'm in control, you've got nothing to worry about.");
 			writeText("Her body almost immediately relaxes, leaving her putty in your hands. You pull her arms up over her head, giving you access to her breasts as well as her now wet slit.");
 			writeBig("images/cold/2b4.jpg", "Art by Himitsu Kessha Vanitas");
 			writeSpeech("player", "", "See, coldF? When you let me take control. When you let me take all your worries away. Tell me how it feels.");
-			writeText("You start to move your fingers, teasing the flash of her breasts, but avoiding her sensitive nipples for the moment. Doing the same with the other hand. Teasing the area around her cunt, fingers touching slightly around her lower lips briefly, before moving to the areas above and to the side. Fingers lightly brushing the sensitive area above, and along her thighs.");
+			writeText("You start to move your fingers, teasing the flesh of her breasts, but avoiding her sensitive nipples for the moment. Doing the same with the other hand. Teasing the area around her cunt, fingers touching slightly around her lower lips briefly, before moving to the areas above and to the side. Fingers lightly brushing the sensitive area above, and along her thighs.");
 			writeSpeech("cold", "", "Feels good. To give you control. No need to overthink. I can just... Enjoy it.");
 			writeText("You let your fingers wander closer. Finally letting your fingers fix around her clit and her nipple. Giving the <i>slightest</i> pinch, eliciting a swift cry of pleasure from coldF's lips.");
 			writeBig("images/cold/2b5.jpg", "Art by Himitsu Kessha Vanitas");
@@ -175,7 +175,7 @@ function writeEvent(name) { //Plays the actual event.
 			writeSpeech("player", "", "Beg for it.");
 			writeSpeech("cold", "", "Please! I need your fingers inside me! Don't~");
 			writeSpeech("cold", "", "Aaa~!");
-			writeText("Your fingers start slow. One moving in, pushing pash whatever resistance her body still had, and slowly prodding. It's not long before you feel her gushing faster and harder onto your hand. You get the feeling this girl was pent up before she came here. You keep up the movement, making sure she's ready before finger two enters, and she lets loose another cry.");
+			writeText("Your fingers start slow. One moving in, pushing past whatever resistance her body still had, and slowly prodding. It's not long before you feel her gushing faster and harder onto your hand. You get the feeling this girl was pent up before she came here. You keep up the movement, making sure she's ready before finger two enters, and she lets loose another cry.");
 			writeSpeech("cold", "", "That's... Too much! Keep going! Feels too good!");
 			writeText("Never one to disappoint, you double down. Fingers moving rapidly now that you've felt out her sensitive spots, each move of the wrist moving your fingers in and out, and each full entrance causing her to shake in pleasure. Each shake a mini orgasm, pre shocks for the main event, which is quick to come when you finally manage to find a spot that lets your pinky rest on her clit as you continue to finger fuck her.");
 			writeBig("images/cold/2b6.jpg", "Art by Himitsu Kessha Vanitas");
@@ -227,15 +227,47 @@ function writeEvent(name) { //Plays the actual event.
 }
 
 var phoneArray = [//Lists the potential text events the player can receive at the start of the day, depending on their trust.
-	{index: "coldreward", trust: 50,},
+	{index: "coldreward", trust: 51,},
+	{index: "coldphone1", trust: 50,},
 ]
 
 function writePhoneEvent(name) { //Plays the relevant phone event
 	phoneRight.scrollTop = 0;
 	switch (name) {
+		case "coldphone1": {
+			setTrust('cold', 51)
+			writePhoneSpeech("cold","","Hello? This is coldF coldL.");
+			writePhoneSpeech("player","","Hello, this is playerF. We exchanged numbers yesterday coldF. You didn't need to give me a full introduction.");
+			writePhoneSpeech("cold","","Oh. Yeah. Sorry. I just got nervous I had put in your number wrong and wanted to be sure. Sorry.");
+			writePhoneSpeech("player","","Two sorries in a single message? You doing okay?");
+			writePhoneSpeech("cold","","I was just nervous, okay? And I didn't want you to think I was being weird, but I seem to have screwed that up.");
+			writePhoneSpeech("player","","Release. No need to worry. We're both pretty weird. No reason to stress out over a little text.");
+			writePhoneSpeech("cold","","Right. No reason to worry about any little texts. I actually had another reason I wanted to text you.");
+			writePhoneSpeech("player","","What do you need, coldF?");
+			writePhoneSpeech("cold","","I was wondering if we could have another... Meeting? Session? What are these things called?");
+			writePhoneSpeech("player","","Session is fine. And yeah. That sounds great. I have a pretty good idea for one, actually. Can you meet me in the town center during the evening?");
+			writePhoneSpeech("cold","","Sure. It may be late, after volleyball practice. Is that okay?");
+			writePhoneSpeech("player","","That's perfectly fine. Oh, and one more thing. Do you remember how I touched you when you were at my office?");
+			writePhoneSpeech("cold","","I");
+			writePhoneSpeech("cold","","Mmm");
+			writePhoneSpeech("cold","","Yes.");
+			writePhoneSpeech("player","","I want you to prepare for our session today by doing that to yourself all day, whenever you manage to get some alone time. But for at least 30 minutes before you meet up with me. I don't mind how late it might make you. We'll have time.");
+			writePhoneSpeech("player","","If you can manage it, take pictures and send them to me. I'd like proof you're taking all this seriously.");
+			writePhoneSpeech("cold","","Okay.");
+			writePhoneSpeech("player","","You may cum at any time before the last 30 minutes, but for the last 30 minutes I want you to bring and keep yourself as close to the edge of cumming.");
+			writePhoneImage("images/cold/phone1.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("cold","","This is harder than I thought. Finding free time to do this can be kind of a hassle.");
+			writePhoneImage("images/cold/phone2.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("cold","","Frick! I was so close, but then my alarm went off and I had to go to class. Need to wash my hands before I get this all over my notebook.");
+			writePhoneImage("images/cold/phone3.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("cold","","Finally! Ahh! It's really hard to get a picture like that. I just had to set my phone to keep taking pictures, and sort through for the good ones.");
+			writePhoneImage("images/cold/phone4.jpg", "Art by Himitsu Kessha Vanitas")
+			writePhoneSpeech("cold","","Last thirty minutes. Really hard to think. Hard to type too. On my way.");
+			break;
+		}
 		case "coldreward": {
 			writePhoneImage("images/cold/phoneReward.jpg", "Art by Himitsu Kessha Vanitas")
-			writePhoneSpeech("SlackerSavior","","That's all for coldF for now! I'll be expanding on the students soonish.");
+			writePhoneSpeech("SlackerSavior","scripts\gamefiles\profiles\slacker.jpg","That's all for coldF for now! I'll be expanding on the students soonish.");
 			break;
 		}
 		default: {

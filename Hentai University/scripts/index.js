@@ -25,6 +25,7 @@ var data = {
 		characterArtist: "Art by Ishimura",
 		currentScene: "start",
 		time: "Morning",
+		blacklist: [],
 		day: 1,
 		money: 30,
 		hypnosis: 1,
@@ -32,7 +33,7 @@ var data = {
 		counseling: 0,
 		lastText: 100,
 		dayID: 1,
-		version: 7,
+		version: 8,
 		location: "",
 		pervert: false,
 		color: "#86b4dc",
@@ -69,7 +70,7 @@ var data = {
 		{index: "swimmer", 		met: false, fName: "Naomi", lName: "Greens", 		trust: 0, encountered: false, textEvent: "", color: "#8DB7D0", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false},
 		{index: "orange", 		met: false, fName: "Vanessa", lName: "Lions", 		trust: 0, encountered: false, textEvent: "", color: "#BA5B17", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false},
 		{index: "cold", 		met: false, fName: "Kelsey", lName: "Lowe", 		trust: 0, encountered: false, textEvent: "", color: "#FCFFFA", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false},
-		{index: "coach", 		met: false, fName: "Amy", lName: "Silver", 			trust: 0, encountered: false, textEvent: "", color: "#D7BB2E", author: "Slackersavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false},
+		{index: "coach", 		met: false, fName: "Amy", lName: "Silver", 			trust: 0, encountered: false, textEvent: "", color: "#D7BB2E", author: "SlackerSavior", artist: "Himitsu Kessha Vanitas", textHistory: "", unreadText: false},
 	],
 	gallery: [
 	],
@@ -253,6 +254,41 @@ var ghostArray = [
 	{name: "Yorihime", 				difficulty: 1, rarity: "01", time:"MorningEvening", top: 70, left: 85, requirement: 0, location: "playerOffice", 
 	description: "A being from another world, a place of shrines and fairies."},
 ];
+
+var quickAuthorArray = [
+	{index: "mom", author: "NoodleJacuzzi",},
+	{index: "tomgirl", author: "NoodleJacuzzi",},
+	{index: "purple", author: "NoodleJacuzzi",},
+	{index: "chubby", author: "NoodleJacuzzi",},
+	{index: "principal", author: "NoodleJacuzzi",},
+	{index: "secretary", author: "NoodleJacuzzi",},
+	{index: "neet", author: "NoodleJacuzzi",},
+	{index: "scarf", author: "NoodleJacuzzi",},
+	{index: "green", author: "NoodleJacuzzi",},
+	{index: "succubus", author: "NoodleJacuzzi",},
+	{index: "nurse", author: "NoodleJacuzzi",},
+	{index: "incubus", author: "NoodleJacuzzi",},
+	{index: "president", author: "NoodleJacuzzi",},
+	{index: "treasurer", author: "NoodleJacuzzi",},
+	{index: "ojou", author: "NoodleJacuzzi",},
+	{index: "mama", author: "NoodleJacuzzi",},
+	{index: "pinstripe", author: "NoodleJacuzzi",},
+	{index: "instructor", author: "NoodleJacuzzi",},
+	{index: "nagatoro", author: "NoodleJacuzzi",},
+	{index: "kuro", author: "CryptoGreek",},
+	{index: "maid", author: "CryptoGreek",},
+	{index: "mistress", author: "CryptoGreek",},
+	{index: "meji", author: "CryptoGreek",},
+	{index: "housekeep", author: "CryptoGreek",},
+	{index: "haze", author: "CryptoGreek",},
+	{index: "nikki", author: "CryptoGreek",},
+	{index: "cafedark", author: "CryptoGreek",},
+	{index: "sports", author: "SlackerSavior",},
+	{index: "swimmer", author: "SlackerSavior",},
+	{index: "orange", author: "SlackerSavior",},
+	{index: "cold", author: "SlackerSavior",},
+	{index: "coach", author: "SlackerSavior",},
+]
 
 //Startup & Systems config
 function startup() {
@@ -502,6 +538,10 @@ function lName(name) {
 function replaceCodenames(text) {
 	var codenameCheck = "";
 	for (geminiLoop = 0; geminiLoop < 5; geminiLoop++) {
+		if (data.player.nickname != null) {
+			text = text.replace('*Master', data.player.nickname);
+			text = text.replace('*master', data.player.nickname);
+		}
 		text = text.replace('playerF', data.player.name);
 		text = text.replace('playerGender', data.player.gender);
 		text = text.replace('playerG', data.player.gender);
@@ -517,6 +557,9 @@ function replaceCodenames(text) {
 				text = text.replace("*he", "he");
 				text = text.replace("*He", "He");
 				text = text.replace("*HE", "HE");
+				text = text.replace("*bastard", "bastard");
+				text = text.replace("*Bastard", "Bastard");
+				text = text.replace("*BASTARD", "BASTARD");
 				text = text.replace("*his", "his");
 				text = text.replace("*His", "His");
 				text = text.replace("*HIS", "HIS");
@@ -553,6 +596,9 @@ function replaceCodenames(text) {
 				text = text.replace("*he", "she");
 				text = text.replace("*He", "She");
 				text = text.replace("*HE", "SHE");
+				text = text.replace("*bastard", "bitch");
+				text = text.replace("*Bastard", "Bitch");
+				text = text.replace("*BASTARD", "BITCH");
 				text = text.replace("*his", "her");
 				text = text.replace("*His", "Her");
 				text = text.replace("*HIS", "HER");
@@ -665,6 +711,11 @@ function renamePlayer() {
 	loadEncounter("system", "prologue2");
 }
 
+function renamePlayerAlt() {
+	data.player.name = document.getElementById('nameSubmission').value;
+	changeLocation(data.player.location);
+}
+
 function renameEveryone() {
 	for (i = 0; i < data.story.length; i++) {
 		var sheet = 'nameSubmission' + i + '1';
@@ -674,6 +725,13 @@ function renameEveryone() {
 	}
 	changeLocation("playerHouse");
 }
+
+function renameNickname() {
+	data.player.name = document.getElementById('nameSubmission').value;
+	data.player.nickname = document.getElementById('nicknameSubmission').value;
+	changeLocation(data.player.location);
+}
+
 
 function checkRequirements(string) {
 	var finalResult = true;
@@ -780,23 +838,46 @@ function checkRequirements(string) {
 		}
 		string = string.replace(`!flag player `+check+`;`, ``);
 	}
-	if (string.includes("parity") == true) {
-		var check = string.split(`parity `).pop().split(`;`)[0];
+	if (string.includes("?parity") == true) {
+		var check = string.split(`?parity `).pop().split(`;`)[0];
 		switch (check) {
 			case "even": {
 				if (data.player.day%2 == 1) {
 					finalResult = false;
 				}
+				break;
 			}
 			case "odd": {
 				if (data.player.day%2 == 0) {
 					finalResult = false;
 				}
+				break;
 			}
 			default: {
 				console.log("Error! Parity defined but an invalid parity used. BE sure to use either even or odd, and make sure you have a semicolon afterwards.");
 			}
 		}
+	}
+	while (string.includes("?gender") == true) {
+		var check = string.split(`?gender `).pop().split(`;`)[0];
+		switch (check) {
+			case "man": {
+				if (data.player.gender == "woman") {
+					finalResult = false;
+				}
+				break;
+			}
+			case "woman": {
+				if (data.player.gender == "man") {
+					finalResult = false;
+				}
+				break;
+			}
+			default: {
+				console.log("Error! Parity defined but an invalid parity used. BE sure to use either even or odd, and make sure you have a semicolon afterwards.");
+			}
+		}
+		string = string.replace(`?gender `+check+`;`, ``);
 	}
 	for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
 		var corruptionTarget = data.story[characterIndex].index;
@@ -858,6 +939,105 @@ function checkRequirements(string) {
 	}
 }
 
+function cullRequirements(string) {
+	while (string.includes("!location ") == true) {
+		var check = string.split(`!location `).pop().split(`;`)[0];
+		string = string.replace(`!location `+check+`;`, ``);
+	}
+	while (string.includes("?location ") == true) {
+		var check = string.split(`?location `).pop().split(`;`)[0];
+		string = string.replace(`?location `+check+`;`, ``);
+	}
+	while (string.includes("!item ") == true) {
+		var check = string.split(`!item `).pop().split(`;`)[0];
+		string = string.replace(`!item `+check+`;`, ``);
+	}
+	while (string.includes("?item ") == true) {
+		var check = string.split(`?item `).pop().split(`;`)[0];
+		string = string.replace(`?item `+check+`;`, ``);
+	}
+	while (string.includes("!hypnosis ") == true) {
+		var check = string.split(`!hypnosis `).pop().split(`;`)[0];
+		string = string.replace(`!hypnosis `+check+`;`, ``);
+	}
+	while (string.includes("?hypnosis ") == true) {
+		var check = string.split(`?hypnosis `).pop().split(`;`)[0];
+		string = string.replace(`?hypnosis `+check+`;`, ``);
+	}
+	while (string.includes("!hacking ") == true) {
+		var check = string.split(`!hacking `).pop().split(`;`)[0];
+		string = string.replace(`!hacking `+check+`;`, ``);
+	}
+	while (string.includes("?hacking ") == true) {
+		var check = string.split(`?hacking `).pop().split(`;`)[0];
+		string = string.replace(`?hacking `+check+`;`, ``);
+	}
+	while (string.includes("!counseling ") == true) {
+		var check = string.split(`!counseling `).pop().split(`;`)[0];
+		string = string.replace(`!counseling `+check+`;`, ``);
+	}
+	while (string.includes("?counseling ") == true) {
+		var check = string.split(`?counseling `).pop().split(`;`)[0];
+		string = string.replace(`?counseling `+check+`;`, ``);
+	}
+	while (string.includes("!time ") == true) {
+		var check = string.split(`!time `).pop().split(`;`)[0];
+		string = string.replace(`!time `+check+`;`, ``);
+	}
+	while (string.includes("?time ") == true) {
+		var check = string.split(`?time `).pop().split(`;`)[0];
+		string = string.replace(`?time `+check+`;`, ``);
+	}
+	while (string.includes("?flag player ") == true) {
+		var check = string.split(`?flag player `).pop().split(`;`)[0];
+		string = string.replace(`?flag player `+check+`;`, ``);
+	}
+	while (string.includes("!flag player ") == true) {
+		var check = string.split(`!flag player `).pop().split(`;`)[0];
+		string = string.replace(`!flag player `+check+`;`, ``);
+	}
+	while (string.includes("?parity") == true) {
+		var check = string.split(`?parity `).pop().split(`;`)[0];
+		string = string.replace(`?parity `+check+`;`, ``);
+	}
+	while (string.includes("?gender") == true) {
+		var check = string.split(`?gender `).pop().split(`;`)[0];
+		string = string.replace(`?gender `+check+`;`, ``);
+	}
+	for (characterIndex = 0; characterIndex < data.story.length; characterIndex++) {
+		var corruptionTarget = data.story[characterIndex].index;
+		while (string.includes("?trust "+corruptionTarget) == true) {
+			var check = string.split(`?trust `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`?trust `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?minTrust "+corruptionTarget) == true) {
+			var check = string.split(`?minTrust `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`?minTrust `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?maxTrust "+corruptionTarget) == true) {
+			var check = string.split(`?maxTrust `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`?maxTrust `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?trustMin "+corruptionTarget) == true) {
+			var check = string.split(`?trustMin `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`?trustMin `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?trustMax "+corruptionTarget) == true) {
+			var check = string.split(`?trustMax `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`?trustMax `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("!flag "+corruptionTarget) == true) {
+			var check = string.split(`!flag `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`!flag `+corruptionTarget+` `+check+`;`, ``);
+		}
+		while (string.includes("?flag "+corruptionTarget) == true) {
+			var check = string.split(`?flag `+corruptionTarget+` `).pop().split(`;`)[0];
+			string = string.replace(`?flag `+corruptionTarget+` `+check+`;`, ``);
+		}
+	}
+	return string;
+}
+
 //Scene creation
 function loadEncounter(js, name) {
 	var targetFile = 'system';
@@ -867,6 +1047,7 @@ function loadEncounter(js, name) {
 		if (data.story[i].index == js) {
 			data.story[i].encountered = true;
 			targetFile = data.story[i].index;
+			document.getElementById('sceneAuthor').innerHTML = 'Author of this scene: <br>'+data.story[i].author;
 		}
 	}
 	var filename = "scripts/characters/"+targetFile+".js";
@@ -891,6 +1072,7 @@ function loadEvent(js, name) {
 	for (i = 0; i < data.story.length; i++) {
 		if (data.story[i].index == js) {
 			targetFile = data.story[i].index;
+			document.getElementById('sceneAuthor').innerHTML = 'Author of this scene: <br>'+data.story[i].author;
 		}
 	}
 	var filename = "scripts/characters/"+targetFile+".js";
@@ -1141,6 +1323,9 @@ function printEncounterTab(name, scene, text, altImage, altName) {
 					cancelTab = true;
 				}
 			}
+		}
+		if (checkTrust(name) == 0 && data.player.location == "map") {
+			cancelTab = true;
 		}
 		if (data.story[tabIndex].trust == 0) {
 			//text += "HIDDEN";
@@ -1450,56 +1635,87 @@ function writeSpeech (name, img, text, altName, altColor) {
 }
 
 function writeBig (img, cap) {
-	if (img.includes('profile') == true) {
-		if (data.player.pervert != true) {
-			var checkForError = "";
-			var pervertImage = img;
+	var writeBigAbort = false;
+	if (data.player.blacklist.includes(img) == true) {
+			writeBigAbort = true;
+	}
+	if (writeBigAbort == false) {
+		if (cap == "") {
+			if (character.artist != null) {
+				cap = character.artist;
+			}
 		}
-		else {
-			var backupImage = img;
-			var checkForError = `onerror ="javascript:this.src='`+backupImage+`'"`;
-			img = img.replace('profile', 'profileP');
-			console.log(img);
+		if (img.includes('profile') == true) {
+			if (data.player.pervert != true) {
+				var checkForError = "";
+				var pervertImage = img;
+			}
+			else {
+				var backupImage = img;
+				var checkForError = `onerror ="javascript:this.src='`+backupImage+`'"`;
+				img = img.replace('profile', 'profileP');
+				console.log(img);
+			}
+		}
+		if (img.includes("images") == false && img.includes("imagebox") == false && img.includes("scripts") == false) {
+			img = "images/"+character.index+"/"+img;
+		}
+		if (imagesDisabled != true) {
+			switch (data.player.style) {
+				case "lobotomy": {
+					var cssColor = "#CCCCCC";
+					for (i = 0; i < data.story.length; i++) {
+						if (img.includes(data.story[i].index) == true) {
+							cssColor = data.story[i].color;
+							break;
+						}
+					}
+					document.getElementById('output').innerHTML += `
+							<img class="bigPicture" style="border-color:`+cssColor+`; border-radius: 5px;"  id = "` + img + `" src="` + img + `"`+checkForError+` title="` + cap + `">
+						<br>
+					`;
+					break;
+				}
+				case "persona": {
+					var cssColor = "#CCCCCC";
+					for (i = 0; i < data.story.length; i++) {
+						if (img.includes(data.story[i].index) == true) {
+							cssColor = data.story[i].color;
+							break;
+						}
+					}
+					document.getElementById('output').innerHTML += `
+							<img class="bigPicture" style="border-color:`+cssColor+`; border-radius: 5px;"  id = "` + img + `" src="` + img + `"`+checkForError+` title="` + cap + `">
+						<br>
+					`;
+					break;
+				}
+				default: {
+					document.getElementById('output').innerHTML += `
+						<img class="bigPicture" id = "` + img + `" src="` + img + `"`+checkForError+` title="` + cap + `">
+						<br>
+					`;
+				}
+			}
+			if (data.player.blacklistMode == true) {
+				document.getElementById('output').innerHTML += `
+					<p class="choiceText" id = "` + img + `Button" onclick="blacklistImage('` + img + `')">
+						Blacklist this image
+					</p>
+				`;
+			}
 		}
 	}
-	if (imagesDisabled != true) {
-		switch (data.player.style) {
-			case "lobotomy": {
-				var cssColor = "#CCCCCC";
-				for (i = 0; i < data.story.length; i++) {
-					if (img.includes(data.story[i].index) == true) {
-						cssColor = data.story[i].color;
-						break;
-					}
-				}
-				document.getElementById('output').innerHTML += `
-						<img class="bigPicture" style="border-color:`+cssColor+`; border-radius: 5px;" src="` + img + `"`+checkForError+` title="` + cap + `">
-					<br>
-				`;
-				break;
-			}
-			case "persona": {
-				var cssColor = "#CCCCCC";
-				for (i = 0; i < data.story.length; i++) {
-					if (img.includes(data.story[i].index) == true) {
-						cssColor = data.story[i].color;
-						break;
-					}
-				}
-				document.getElementById('output').innerHTML += `
-						<img class="bigPicture" style="border-color:`+cssColor+`; border-radius: 5px;" src="` + img + `"`+checkForError+` title="` + cap + `">
-					<br>
-				`;
-				break;
-			}
-			default: {
-				document.getElementById('output').innerHTML += `
-					<img class="bigPicture" src="` + img + `"`+checkForError+` title="` + cap + `">
-					<br>
-				`;
-			}
-		}
-	}
+}
+
+function blacklistImage(image) {
+	console.log(image+" has been added to the blacklist+");
+	console.log(document.getElementById(image));
+	data.player.blacklist.push(image);
+	var blacklistedImage = document.getElementById(image);
+	blacklistedImage.remove();
+	var blacklistedImage = document.getElementById(image+"Button");
+	blacklistedImage.remove();
 }
 
 function writeMed (img, cap) {
@@ -1612,7 +1828,7 @@ function writeHTML(text) {
 			lines[lineCounter] = lines[lineCounter].replace(`\t`, ``);
 		}
 		//If the line is not empty (we don't want to print empty lines)
-		if (lines[lineCounter] != "") {
+		if (lines[lineCounter] != "" && checkRequirements(lines[lineCounter]) == true) {
 			//Grab the first word of the line to use as the command
 			var command = lines[lineCounter].replace(/ .*/,'');
 			//Depending on which command, execute different code. Convert the command to lowercase as well in case we used Sp instead of sp, as js is case-sensitive.
@@ -1622,7 +1838,7 @@ function writeHTML(text) {
 					//Remove the command from the line we actually want to print.
 					lines[lineCounter] = lines[lineCounter].replace(command+` `, ``);
 					//Execute the writeText command to print everything left to the screen.
-					writeText(lines[lineCounter]);
+					writeText(cullRequirements(lines[lineCounter]));
 					//Don't execute any of the below switch cases.
 					break;
 				}
@@ -1657,7 +1873,7 @@ function writeHTML(text) {
 					lines[lineCounter] = lines[lineCounter].replace(command+` `+name+`; `, ``);
 					//Execute the writeSpeech command to print everything we have left.
 					//TODO: Add custom colors and custom names
-					writeSpeech(name, image, lines[lineCounter], altName, altColor);
+					writeSpeech(name, image, cullRequirements(lines[lineCounter]), altName, altColor);
 					break;
 				}
 				case "im": {
@@ -1687,7 +1903,7 @@ function writeHTML(text) {
 						var argument = "";
 					}
 					//Write the button to the screen using the information we've collected.
-					writeFunction(func+"('"+argument+"')", name)
+					writeFunction(func+"('"+argument+"')", cullRequirements(name))
 					break;
 				}
 				//This is for convenience. If the line is just an elipses, replace it with a horizontal line cutting across the screen.
@@ -1710,13 +1926,19 @@ function listTextbooks() {
 		writeText("<p class='centeredText'>You don't have any textbooks to read.<span>");
 	}
 	if (checkItem("Hypnosis Textbook") == true) {
-		writeFunction("textbook('hypnosis')", "Read your hypnosis textbook");
+		if (checkFlag("mom", "hypnosis") != true) {
+			writeFunction("textbook('hypnosis')", "Read your hypnosis textbook");
+		}
 	}
 	if (checkItem("Hacking Textbook") == true) {
-		writeFunction("textbook('hacking')", "Read your hacking textbook");
+		if (checkFlag("mom", "hacking") != true) {
+			writeFunction("textbook('hacking')", "Read your hacking textbook");
+		}
 	}
 	if (checkItem("Counseling Textbook") == true) {
-		writeFunction("textbook('counseling')", "Read your counseling textbook");
+		if (checkFlag("mom", "counseling") != true) {
+			writeFunction("textbook('counseling')", "Read your counseling textbook");
+		}
 	}
 	writeFunction("changeLocation(data.player.location)", "Go back");
 }
@@ -1726,21 +1948,21 @@ function textbook(n) {
 	switch (n) {
 		case "hypnosis":
 			data.player.hypnosis += 1;
-			removeItem("Hypnosis Textbook");
+			addFlag("mom", "hypnosis");
 			passTime();
 			writeText("You read through the textbook. It's a bit mind-numbing, which is probably appropriate. The tricks in here help you see things in a new light, it's a different sort of feeling from being trained.");
 			writeSpecial("Your skill in hypnosis has improved!");
 		break;
 		case "hacking":
 			data.player.hacking += 1;
-			removeItem("Hacking Textbook");
+			addFlag("mom", "hacking");
 			passTime();
 			writeText("You read through the textbook. It's a bit mind-numbing, but still interesting. The tricks in here help you see things in a new light, it's a different sort of feeling from being trained.");
 			writeSpecial("Your skill in hacking has improved!");
 		break;
 		case "counseling":
 			data.player.counseling += 1;
-			removeItem("Counseling Textbook");
+			addFlag("mom", "counseling");
 			passTime();
 			writeText("You read through the textbook. It's a bit mind-numbing, but the pictures are interesting. The tricks in here help you see things in a new light, it's a different sort of feeling from being trained.");
 			writeSpecial("Your skill in counseling has improved!");
@@ -2328,6 +2550,20 @@ function updateSave() {
 		}
 		console.log(data.story);
 	}
+	if (data.player.version == 7) {
+		console.log('version 7 detected, updating save');
+		data.player.version = 8;
+		if (data.player.blacklist == null) {
+			data.player.blacklist = [];
+		}
+		for (x = 0; x < data.story.length; x++) {
+			for (y = 0; y < quickAuthorArray.length; y++) {
+				if (data.story[x].index == quickAuthorArray[y].index) {
+					data.story[x].author = quickAuthorArray[y].author;
+				}
+			}
+		}
+	}
 	saveSlot(110);
 }
 
@@ -2457,6 +2693,7 @@ function fileLoaded(){
 		data = fakedata;
 		changeLocation(data.player.location);
 	}
+	document.getElementById('loadFile').value = '';
 }
 
 function generateSave() {
@@ -2897,12 +3134,13 @@ function diagnostic() {
 			break;
 		}
 		case "vegetarian": {
+			data.player.vegetarian = true;
 			setTrust('tomgirl', -1);
 			setTrust('meji', -1);
 			setTrust('succubus', -1);
 			setTrust('housekeep', -1);
 			setTrust('nagatoro', -1);
-			writeSpecial("Trap / male characters have been deactivated. You might need to use this code again in the future when more traps are added.");
+			writeSpecial("Trap / male characters have been deactivated. Restart the game to undo this.");
 			break;
 		}
 		case "lobotomy": {
@@ -2949,13 +3187,45 @@ function diagnostic() {
 		case "nuclear option": {
 			data.player.hypnosis = 3;
 			data.player.hacking = 3;
-			data.player.counseling = 9;
+			data.player.counseling = 5;
 			updateMenu();
 			writeSpecial("All of your stats have been set to 3 or above. You can keep improving them past this point, but you shouldn't see any skill-related roadblocks from here on!");
 			break;
 		}
+		case "youwillcallme": {
+			loadEncounter('system', 'youwillcallme');
+			break;
+		}
+		case "you will call me": {
+			loadEncounter('system', 'youwillcallme');
+			break;
+		}
 		case "new name": {
 			loadEncounter('system', 'renamingRoom');
+			break;
+		}
+		case "export blacklist": {
+			document.getElementById('output').innerHTML += JSON.stringify(data.player.blacklist);
+			break;
+		}
+		case "import blacklist": {
+			var blacklist = prompt("Please paste the blacklist", "");
+			blacklist = JSON.parse(blacklist);
+			for (i = 0; i < blacklist.length; i++) {
+				data.player.blacklist.push(blacklist[i]);
+			}
+			writeText("Blacklist imported! Now adding the following:"+ JSON.stringify(blacklist));
+			break;
+		}
+		case "blacklist": {
+			if (data.player.blacklistMode != true) {
+				data.player.blacklistMode = true;
+				writeSpecial("Blacklist mode activated. Click the button beneath an image to prevent it from appearing again.");
+			}
+			else {
+				data.player.blacklistMode = false;
+				writeSpecial("Blacklist mode has been deactivated.");
+			}
 			break;
 		}
 		case "oowoo": {
@@ -2997,6 +3267,17 @@ function diagnostic() {
 			else {
 				ghostBoost += .2;
 				writeSpecial("Increased the visibility of ghosts! You can repeat this code if you need to. Refreshing the game will undo this code.");
+			}
+			break;
+		}
+		case "no disguise": {
+			if (data.player.noDisguise != true) {
+				data.player.noDisguise = true;
+				writeSpecial("No Disguise mode activated. Default player image will be used for speech during scenes with characters like mamaF.");
+			}
+			else {
+				data.player.noDisguise = false;
+				writeSpecial("You will now use disguise images in place of your usual picture for scenes with characters like mamaF.");
 			}
 			break;
 		}
